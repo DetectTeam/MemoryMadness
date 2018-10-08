@@ -210,6 +210,27 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114542453707940914, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300032, guid: f65d6cda2153f47f8a8482b0529d1517,
+        type: 3}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.01886791
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.01886791
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.01886791
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8616621a25f4bfb9a8f7cbdbd167cf, type: 2}
   m_IsPrefabAsset: 0
@@ -314,6 +335,32 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114542453707940914, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300036, guid: f65d6cda2153f47f8a8482b0529d1517,
+        type: 3}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.9137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.2627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.56732225
+      objectReference: {fileID: 0}
+    - target: {fileID: 114676360881010194, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: isCorrect
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8616621a25f4bfb9a8f7cbdbd167cf, type: 2}
@@ -439,6 +486,32 @@ Prefab:
       propertyPath: m_Name
       value: MemorySymbols (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114542453707940914, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300026, guid: f65d6cda2153f47f8a8482b0529d1517,
+        type: 3}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.99215686
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.023529433
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.07386762
+      objectReference: {fileID: 0}
+    - target: {fileID: 114676360881010194, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: isCorrect
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8616621a25f4bfb9a8f7cbdbd167cf, type: 2}
   m_IsPrefabAsset: 0
@@ -562,6 +635,17 @@ Prefab:
     - target: {fileID: 1885263058403146, guid: ae8616621a25f4bfb9a8f7cbdbd167cf, type: 2}
       propertyPath: m_Name
       value: MemorySymbols (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114542453707940914, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300040, guid: f65d6cda2153f47f8a8482b0529d1517,
+        type: 3}
+    - target: {fileID: 114676360881010194, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: isCorrect
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8616621a25f4bfb9a8f7cbdbd167cf, type: 2}
@@ -1207,6 +1291,32 @@ Prefab:
       propertyPath: m_Name
       value: MemorySymbols (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114542453707940914, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300024, guid: f65d6cda2153f47f8a8482b0529d1517,
+        type: 3}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.6987112
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.9137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.2627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 114676360881010194, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: isCorrect
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8616621a25f4bfb9a8f7cbdbd167cf, type: 2}
   m_IsPrefabAsset: 0
@@ -1427,6 +1537,32 @@ Prefab:
       propertyPath: m_Name
       value: MemorySymbols (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.9137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.2627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.35293987
+      objectReference: {fileID: 0}
+    - target: {fileID: 114542453707940914, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300040, guid: f65d6cda2153f47f8a8482b0529d1517,
+        type: 3}
+    - target: {fileID: 114676360881010194, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: isCorrect
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8616621a25f4bfb9a8f7cbdbd167cf, type: 2}
   m_IsPrefabAsset: 0
@@ -1615,6 +1751,17 @@ Prefab:
       propertyPath: m_Name
       value: MemorySymbols (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 114542453707940914, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300044, guid: f65d6cda2153f47f8a8482b0529d1517,
+        type: 3}
+    - target: {fileID: 114676360881010194, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: isCorrect
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8616621a25f4bfb9a8f7cbdbd167cf, type: 2}
   m_IsPrefabAsset: 0
@@ -1738,6 +1885,26 @@ Prefab:
     - target: {fileID: 1885263058403146, guid: ae8616621a25f4bfb9a8f7cbdbd167cf, type: 2}
       propertyPath: m_Name
       value: MemorySymbols (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.2627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.9137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.29317787
+      objectReference: {fileID: 0}
+    - target: {fileID: 114676360881010194, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: isCorrect
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8616621a25f4bfb9a8f7cbdbd167cf, type: 2}
@@ -1868,6 +2035,17 @@ Prefab:
       propertyPath: m_Name
       value: MemorySymbols (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114542453707940914, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300042, guid: f65d6cda2153f47f8a8482b0529d1517,
+        type: 3}
+    - target: {fileID: 114676360881010194, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: isCorrect
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8616621a25f4bfb9a8f7cbdbd167cf, type: 2}
   m_IsPrefabAsset: 0
@@ -1991,6 +2169,11 @@ Prefab:
     - target: {fileID: 1885263058403146, guid: ae8616621a25f4bfb9a8f7cbdbd167cf, type: 2}
       propertyPath: m_Name
       value: MemorySymbols
+      objectReference: {fileID: 0}
+    - target: {fileID: 114676360881010194, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: isCorrect
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8616621a25f4bfb9a8f7cbdbd167cf, type: 2}
@@ -2116,6 +2299,27 @@ Prefab:
       propertyPath: m_Name
       value: MemorySymbols (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 114542453707940914, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300044, guid: f65d6cda2153f47f8a8482b0529d1517,
+        type: 3}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.2627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.9137255
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8616621a25f4bfb9a8f7cbdbd167cf, type: 2}
   m_IsPrefabAsset: 0
@@ -2239,6 +2443,32 @@ Prefab:
     - target: {fileID: 1885263058403146, guid: ae8616621a25f4bfb9a8f7cbdbd167cf, type: 2}
       propertyPath: m_Name
       value: MemorySymbols (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114542453707940914, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300034, guid: f65d6cda2153f47f8a8482b0529d1517,
+        type: 3}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.41462287
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.35537556
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.6226415
+      objectReference: {fileID: 0}
+    - target: {fileID: 114676360881010194, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: isCorrect
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8616621a25f4bfb9a8f7cbdbd167cf, type: 2}
@@ -2374,6 +2604,32 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114542453707940914, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300026, guid: f65d6cda2153f47f8a8482b0529d1517,
+        type: 3}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.99215686
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.5686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.023529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 114676360881010194, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: isCorrect
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8616621a25f4bfb9a8f7cbdbd167cf, type: 2}
   m_IsPrefabAsset: 0
@@ -2498,6 +2754,22 @@ Prefab:
       propertyPath: m_Name
       value: MemorySymbols
       objectReference: {fileID: 0}
+    - target: {fileID: 114542453707940914, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300010, guid: f65d6cda2153f47f8a8482b0529d1517,
+        type: 3}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.5647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 114676360881010194, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: isCorrect
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8616621a25f4bfb9a8f7cbdbd167cf, type: 2}
   m_IsPrefabAsset: 0
@@ -2597,7 +2869,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427989c9f4d5348a9baae6fd87f6eb2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rows: []
+  rows:
+  - {fileID: 1402286368}
+  - {fileID: 292909908}
+  - {fileID: 1638250852}
+  - {fileID: 1524459378}
 --- !u!1 &1402286368
 GameObject:
   m_ObjectHideFlags: 0
@@ -3016,8 +3292,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 1199.5044}
+  m_AnchoredPosition: {x: 2.1, y: -42.1}
+  m_SizeDelta: {x: 795.8, y: 1283}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1474130676
 MonoBehaviour:
@@ -3270,7 +3546,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 225.94524, y: 1245.625}
+  m_Target: {x: 181.13277, y: 899.6693}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
@@ -3411,6 +3687,27 @@ Prefab:
       propertyPath: m_Name
       value: MemorySymbols (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.0271004
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.027172778
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.028301895
+      objectReference: {fileID: 0}
+    - target: {fileID: 114542453707940914, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300032, guid: f65d6cda2153f47f8a8482b0529d1517,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8616621a25f4bfb9a8f7cbdbd167cf, type: 2}
   m_IsPrefabAsset: 0
@@ -3639,6 +3936,32 @@ Prefab:
     - target: {fileID: 1885263058403146, guid: ae8616621a25f4bfb9a8f7cbdbd167cf, type: 2}
       propertyPath: m_Name
       value: MemorySymbols (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114542453707940914, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300018, guid: f65d6cda2153f47f8a8482b0529d1517,
+        type: 3}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.010145942
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.7169812
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.09505962
+      objectReference: {fileID: 0}
+    - target: {fileID: 114676360881010194, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: isCorrect
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8616621a25f4bfb9a8f7cbdbd167cf, type: 2}
@@ -4359,6 +4682,27 @@ Prefab:
       propertyPath: m_Name
       value: MemorySymbols
       objectReference: {fileID: 0}
+    - target: {fileID: 114542453707940914, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300044, guid: f65d6cda2153f47f8a8482b0529d1517,
+        type: 3}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.2627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.9137255
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8616621a25f4bfb9a8f7cbdbd167cf, type: 2}
   m_IsPrefabAsset: 0
@@ -4463,6 +4807,26 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.9137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.2627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124333063134186, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.87856084
+      objectReference: {fileID: 0}
+    - target: {fileID: 114676360881010194, guid: ae8616621a25f4bfb9a8f7cbdbd167cf,
+        type: 2}
+      propertyPath: isCorrect
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8616621a25f4bfb9a8f7cbdbd167cf, type: 2}
