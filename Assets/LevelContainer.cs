@@ -19,7 +19,7 @@ public class LevelContainer : MonoBehaviour
 
 		while( count >= 0 )
 		{
-			yield return new WaitForSeconds( 0.35f );
+			yield return new WaitForSeconds( 0.2f );
 			Debug.Log( count );
 			rows[count].SetActive( true );
 			count --;
