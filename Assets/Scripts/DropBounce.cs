@@ -7,9 +7,19 @@ public class DropBounce : MonoBehaviour {
 	// Use this for initialization
 
 	[SerializeField] private Vector3 target;
-	void Start () 
+
+	private void OnEnable()
 	{
-		  iTween.MoveTo(gameObject,iTween.Hash(
+		Drop();
+	}
+	private void Start () 
+	{
+		  Drop();
+	}
+
+	private void Drop()
+	{
+		 iTween.MoveTo(gameObject,iTween.Hash(
 			  "position", target,
 			  "islocal", true,
 			  "easetype",iTween.EaseType.easeOutBounce,

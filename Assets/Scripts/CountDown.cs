@@ -11,13 +11,33 @@ public class CountDown : MonoBehaviour
 
 	[SerializeField] private GameObject game;
 	// Use this for initialization
+
+	private int tmpTime;
+
+	
 	private void Start () 
 	{
+		//StartCoroutine( Sequence() );
+		tmpTime = timeLeft;
+		
+	}
+
+	private void OnEnable()
+	{
+		//timeLeft = 4;
+		timer.text = timeLeft.ToString();
 		StartCoroutine( Sequence() );
+
+	}
+
+	private void OnDisable()
+	{
+		timeLeft = tmpTime;
 	}
 
 	private IEnumerator Sequence()
 	{
+		
 		yield return new WaitForSeconds( 1.0f );
 
 		while( timeLeft > 0 )
@@ -28,7 +48,6 @@ public class CountDown : MonoBehaviour
 		}
 
 		yield return new WaitForSeconds( 1.0f );
-
 		game.SetActive( true );
 
 
