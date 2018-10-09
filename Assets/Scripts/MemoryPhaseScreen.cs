@@ -15,7 +15,6 @@ public class MemoryPhaseScreen : MonoBehaviour
 
 	private void Start()
 	{
-		Debug.Log( "Start Called..." );
 		rectTransform = GetComponent<RectTransform>();
 	}
 
