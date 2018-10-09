@@ -27,7 +27,7 @@ public class CountDown : MonoBehaviour
 			timer.text = timeLeft.ToString();
 		}
 
-		yield return new WaitForSeconds( 0.5f );
+		yield return new WaitForSeconds( 1.0f );
 
 		game.SetActive( true );
 
