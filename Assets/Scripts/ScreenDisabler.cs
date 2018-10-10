@@ -6,6 +6,11 @@ public class ScreenDisabler : MonoBehaviour
 {
 	[SerializeField] private GameObject screen;
 
+	void OnEnable()
+	{
+		StartCoroutine( Sequence() );
+	}
+
 	void Start () 
 	{
 
@@ -13,8 +18,7 @@ public class ScreenDisabler : MonoBehaviour
 		{
 			Debug.LogWarning( "Screen not set..." );
 		}
-
-		StartCoroutine( Sequence() );
+	
 	}
 	
 	private IEnumerator Sequence()

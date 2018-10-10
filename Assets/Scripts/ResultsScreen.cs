@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class ResultsScreen : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+	[SerializeField] private Vector3 startingPosition;
+	private RectTransform rectTransform;
 	
-	// Update is called once per frame
-	void Update () {
+	private void OnDisable()
+	{
+		rectTransform.localPosition = startingPosition;
+	}
+
+	private void Start()
+	{
 		
+		rectTransform = GetComponent<RectTransform>();
 	}
 }
