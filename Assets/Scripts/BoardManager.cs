@@ -48,16 +48,17 @@ public class BoardManager : MonoBehaviour
 		{
 			levelToLoad = PlayerPrefs.GetInt( "CurrentLevel" );
 		}
-		else
-		{
-			levelToLoad = 0;			
-		}
+	
+		Debug.Log( levelToLoad + " " + levels.Length  );
 
 		//Enable the selected level
-		levels[ levelToLoad ].level.SetActive( true );
+		if( levelToLoad < (levels.Length ) )
+		{
+			levels[ levelToLoad ].level.SetActive( true );
 
-		//Broadcast Type of Game to relevant listeners...
-		Messenger.Broadcast<GameType>( "GameType" , levels[ levelToLoad ].gameType );
+			//Broadcast Type of Game to relevant listeners...
+			Messenger.Broadcast<GameType>( "GameType" , levels[ levelToLoad ].gameType );
+		}
 	}
 	
 }

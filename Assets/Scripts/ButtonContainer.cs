@@ -35,11 +35,13 @@ public class ButtonContainer : MonoBehaviour
 		if( gameType == GameType.SameDifferent )
 		{
 			Debug.Log( "Loading yes no buttons" );
+			buttons[1].SetActive( false );
 			buttons[0].SetActive( true );
 		}
 		else
 		{
 			Debug.Log( "Loading I got em all buttons..." );
+			buttons[0].SetActive( false );
 			buttons[1].SetActive( true );
 		}
 	}

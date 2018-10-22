@@ -19,6 +19,17 @@ public class MemorySymbols : MonoBehaviour
 	[SerializeField] private GameObject button;
 
 	// Use this for initialization
+	
+	void OnEnable()
+	{
+		transform.localScale = new Vector3( 0.01f, 0.01f, 0.01f );
+	}
+
+	void OnDisable()
+	{
+		Reset();
+	}
+	
 	void Start () 
 	{
 		transform.localScale = new Vector3( 0.01f, 0.01f, 0.01f );
@@ -54,6 +65,16 @@ public class MemorySymbols : MonoBehaviour
 	private void ShakePosition()
 	{
 		iTween.ShakePosition( gameObject, shakeAmount, shakeTime );
+	}
+
+
+	private void Reset()
+	{
+		successImage.SetActive( false ); 
+		errorImage.SetActive( false );
+		backgroundColor.SetActive( true );
+		rune.SetActive( true );
+		button.SetActive( true );
 	}
 	
 	

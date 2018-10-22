@@ -11,6 +11,7 @@ public class DropBounce : MonoBehaviour {
 	private void OnEnable()
 	{
 		Drop();
+		//PlayerPrefs.DeleteAll();
 	}
 	private void Start () 
 	{

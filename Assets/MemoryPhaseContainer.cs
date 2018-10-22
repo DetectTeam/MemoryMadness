@@ -24,12 +24,16 @@ public class MemoryPhaseContainer : MonoBehaviour
 	{
 		yield return new WaitForSeconds( delay );
 
-		int currentPhase = 2;
+		int currentPhase = 0;
 		//Check the level count
 
 		if( PlayerPrefs.HasKey( "CurrentLevel" ) )
 		{
 			currentPhase = PlayerPrefs.GetInt( "CurrentLevel" );
+		}
+		else
+		{
+			PlayerPrefs.SetInt( "CurrentLevel" , currentPhase );
 		}
 		
 		phases[ currentPhase ].SetActive( true );

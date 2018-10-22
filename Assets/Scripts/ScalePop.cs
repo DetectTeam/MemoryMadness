@@ -6,9 +6,16 @@ public class ScalePop : MonoBehaviour
 {
 	[SerializeField] private Vector3 target;
 	// Use this for initialization
-	void Start () 
+	
+	
+	void OnEnable()
 	{
 		StartCoroutine( Sequence() );
+	}
+	
+	void Start () 
+	{
+		//StartCoroutine( Sequence() );
 	}
 
 	private IEnumerator Sequence()
