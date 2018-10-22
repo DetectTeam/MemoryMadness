@@ -14,14 +14,14 @@ public class LevelContainer : MonoBehaviour
 
 	private IEnumerator Sequence()
 	{
-		int count = 3;
+		int count = rows.Length;
 		yield return null;
 
-		while( count >= 0 )
+		while( count > 0 )
 		{
 			yield return new WaitForSeconds( 0.2f );
-			Debug.Log( count );
-			rows[count].SetActive( true );
+		
+			rows[count-1].SetActive( true );
 			count --;
 		}
 

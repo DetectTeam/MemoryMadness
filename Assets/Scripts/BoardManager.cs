@@ -2,11 +2,62 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoardManager : MonoBehaviour {
+
+public enum GameType
+{
+	SameDifferent,
+	MulitMatch
+}
+
+
+[System.Serializable]
+public struct Level
+{
+	public string name;
+	public GameType gameType;
+	public int winCount;
+	public GameObject level;
+}
+
+public class BoardManager : MonoBehaviour 
+{
+
+	[SerializeField] private  Level[] levels;
+
+
+	private void OnEnable()
+	{
+		StartCoroutine( LoadLevel() );
+	}
 
 	// Use this for initialization
-	void Start () {
+	private void Start () 
+	{
 		
+	}
+
+
+	private IEnumerator LoadLevel()
+	{
+		int levelToLoad = 0; 
+
+		yield return new WaitForSeconds ( 0.1f );
+
+		//Check which level to load
+		if( PlayerPrefs.HasKey( "CurrentLevel" ) )
+		{
+			levelToLoad = PlayerPrefs.GetInt( "CurrentLevel" );
+		}
+		else
+		{
+			levelToLoad = 0;			
+		}
+
+		//Enable the selected level
+		levels[ levelToLoad ].level.SetActive( true );
+
+		//Broadcast Type of Game to relevant listeners...
+		Messenger.Broadcast<GameType>( "GameType" , levels[ levelToLoad ].gameType );
 	}
 	
 }
