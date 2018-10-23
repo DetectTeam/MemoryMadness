@@ -66,7 +66,7 @@ public class BoardManager : MonoBehaviour
 		Debug.Log( levelToLoad + " " + levels.Length  );
 
 		//Enable the selected level
-		if( levelToLoad < (levels.Length ) )
+		if( levelToLoad <= (levels.Length ) )
 		{
 			levels[ levelToLoad ].LevelObj.SetActive( true );
 
@@ -84,7 +84,7 @@ public class BoardManager : MonoBehaviour
 		if( b && levels[ levelToLoad ].IsMatch )
 		{
 			Debug.Log( "ITS A WIN !!!" );
-			successMessage.SetActive( true );
+			Success();
 		}
 		else if( b && !levels[ levelToLoad ].IsMatch )
 		{
@@ -94,12 +94,14 @@ public class BoardManager : MonoBehaviour
 		else if( !b && levels[ levelToLoad ].IsMatch )
 		{
 			Debug.Log( "YOU FAILED ....You chose no when it should have been yes" );
+			Failure();
 			
 		}
 		else if( !b && !levels[ levelToLoad ].IsMatch )
 		{
 			Debug.Log( "CORRECT THERE IS NO MATCH" );
-			Failure();
+			Success();
+			
 		}
 		else
 		{
@@ -111,9 +113,15 @@ public class BoardManager : MonoBehaviour
 
 	private void ChangeLevel()
 	{
+		
 		resultPanel.SetActive( true );
+		successMessage.SetActive( false );
 	}
 
+	private void Success()
+	{
+		successMessage.SetActive( true );
+	}
 
 	private void Failure()
 	{
