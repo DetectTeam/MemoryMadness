@@ -9,29 +9,39 @@ public class ProgressBar : MonoBehaviour
 	[SerializeField] private Image progressBar;
 	[SerializeField] private TextMeshProUGUI percentageText;
 
-	private int speed = 1;
-	
+	[SerializeField] private BoardManager boardManager;
 
-	// Use this for initialization
-	void Start () 
-	{
-		StartCoroutine( Fill() );
+	private int speed = 1;
+
+	private void OnEnable()
+	{		
+		if( boardManager )
+			StartCoroutine( Fill( boardManager.calculateScore() ) );
+	
 	}
 
-	private IEnumerator Fill()
+
+
+	// Use this for initialization
+	private void Start () 
+	{
+	
+	}
+
+	private IEnumerator Fill( float percentage )
 	{
 		float currentValue = 0;
+		progressBar.fillAmount = 0f;
 
 		yield return new WaitForSeconds( 2.0f );
 		
-		while( currentValue < 100 )
+		while( currentValue < percentage )
 		{
 			yield return null;
 			currentValue ++; //speed; //* Time.deltaTime;
 			percentageText.text = currentValue.ToString()  +  "%";
-			progressBar.fillAmount = ( currentValue / 100 );
-
-			
+			progressBar.fillAmount = ( currentValue / 133 );
+	
 		}
 	}
 	

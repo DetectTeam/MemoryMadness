@@ -25,6 +25,7 @@ public struct Level
 
 	[SerializeField] private bool isMatch;
 	public bool IsMatch { get{ return isMatch; } set{  isMatch = value; } }
+
 }
 
 public class BoardManager : MonoBehaviour 
@@ -35,6 +36,9 @@ public class BoardManager : MonoBehaviour
 	[SerializeField] private GameObject failureMessage;
 	[SerializeField] private GameObject endLevelBackground;
 	[SerializeField] private GameObject resultPanel;
+  	[SerializeField] private float percentage = 65;
+   	public float Percentage { get{ return percentage; } set{ percentage = value; } }
+
 
 
 	private int levelToLoad = 0; 
@@ -126,6 +130,11 @@ public class BoardManager : MonoBehaviour
 	private void Failure()
 	{
 		//failureMessage.SetActive( true );
+	}
+
+	public float calculateScore()
+	{
+		return  100;//Random.Range( 0, 100 ); 
 	}
 
 	
