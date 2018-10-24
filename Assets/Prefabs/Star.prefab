@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224397111440945738}
   - component: {fileID: 222951720063907580}
   - component: {fileID: 114579942615977596}
+  - component: {fileID: 114409501830671196}
   m_Layer: 0
   m_Name: Star
   m_TagString: Untagged
@@ -28,6 +29,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114409501830671196
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1037916857631190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf5cc2dd8f9b1403b80a34615b0842cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  starSpriteRenderer: {fileID: 0}
 --- !u!114 &114579942615977596
 MonoBehaviour:
   m_ObjectHideFlags: 1

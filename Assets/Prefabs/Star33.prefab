@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 224909230994929916}
   - component: {fileID: 222478986917005978}
   - component: {fileID: 114202666987640016}
+  - component: {fileID: 114753175627378908}
   m_Layer: 0
   m_Name: Star
   m_TagString: Untagged
@@ -114,6 +115,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114753175627378908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1280370958699576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf5cc2dd8f9b1403b80a34615b0842cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  starSpriteRenderer: {fileID: 0}
 --- !u!222 &222411086120373964
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -144,7 +157,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -216, y: 156.2544}
-  m_SizeDelta: {x: 125, y: 125}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224878703389140160
 RectTransform:
@@ -163,7 +176,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13, y: -153}
+  m_AnchoredPosition: {x: -13, y: -156}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224909230994929916
@@ -182,5 +195,5 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -215.99997, y: 170.25438}
-  m_SizeDelta: {x: 125, y: 125}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
