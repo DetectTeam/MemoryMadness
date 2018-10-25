@@ -23,8 +23,17 @@ public class ProgressBar : MonoBehaviour
 	{		
 		if( boardManager )
 			StartCoroutine( Fill( boardManager.calculateScore() ) );
-	
+
+		
 	}
+
+	private void OnDisable()
+	{
+		if( particleContainer.activeSelf )
+			particleContainer.SetActive( false );
+	}
+
+	
 
 
 

@@ -17,11 +17,6 @@ public class ParticleSpawner : MonoBehaviour
 	private void OnDisable()
 	{
 		StopCoroutine( "SpawnParticle" );
-	}
-
-	// Use this for initialization
-	private void Start () 
-	{
 		
 	}
 

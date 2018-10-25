@@ -597,11 +597,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -780,6 +780,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 76367877}
+  - component: {fileID: 76367878}
   m_Layer: 0
   m_Name: ParticleContainer
   m_TagString: Untagged
@@ -803,6 +804,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &76367878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 76367876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9936147d5d2f84662a86fc7a668b49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &113481621
 GameObject:
   m_ObjectHideFlags: 0
@@ -3369,7 +3381,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 583.2033, y: 4043.7097}
+  m_Target: {x: 578.4053, y: 5325.3784}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
@@ -3489,11 +3501,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -7803,7 +7815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1570466767
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9092,7 +9104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1766364038
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9815,6 +9827,7 @@ MonoBehaviour:
   - {fileID: 953345641}
   - {fileID: 1345756765}
   delay: 0
+  results: {fileID: 1766364037}
 --- !u!1001 &2007890424
 Prefab:
   m_ObjectHideFlags: 0

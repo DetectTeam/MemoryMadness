@@ -9,8 +9,15 @@ public class MemoryPhaseContainer : MonoBehaviour
 	[SerializeField] private GameObject[] phases;
 	[SerializeField] private float delay;
 
+	[SerializeField] private GameObject results;
+
 	private void OnEnable()
 	{
+		if( results.activeSelf ) 
+			results.SetActive( false );
+
+		
+
 		StartCoroutine( LoadPhase() );
 	}
 
