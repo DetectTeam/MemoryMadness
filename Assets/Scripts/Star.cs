@@ -7,6 +7,7 @@ public class Star : MonoBehaviour
 {
 
 	[SerializeField] private Image starImage;
+	[SerializeField] private Vector3 scaleSize;
 
 	private Color originalColor;
 
@@ -32,7 +33,7 @@ public class Star : MonoBehaviour
 	
 	public void Activate()
 	{
-		gameObject.transform.localScale = new Vector3( 1.25f, 1.25f, 1.25f );
+		gameObject.transform.localScale = scaleSize;
 		iTween.PunchScale( gameObject, iTween.Hash( "x",-2, "y",-2, "time",0.75f));
 		starImage.color = new Color( 0.9716f, 0.8722f, 0.1512f, 1 );
 				
