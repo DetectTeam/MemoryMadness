@@ -15,6 +15,8 @@ public class ProgressBar : MonoBehaviour
 	[SerializeField] private Star star2;
 	[SerializeField] private Star star3;
 
+	[SerializeField] private GameObject particleContainer;
+
 	private int speed = 1;
 
 	private void OnEnable()
@@ -56,7 +58,13 @@ public class ProgressBar : MonoBehaviour
 				star3.Activate();
 
 		}
+
+		yield return new WaitForSeconds( 1.5f );
+
+		particleContainer.SetActive( true );
 	}
+
+	
 	
 	
 }
