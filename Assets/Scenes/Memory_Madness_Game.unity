@@ -7543,7 +7543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7af50f00b8c824af1a4dbdf6b083a60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {x: -120, y: 450, z: 0}
+  target: {x: -120, y: 400, z: 0}
   delayEnabled: 0
   delay: 0
 --- !u!257 &1525282115
@@ -8908,7 +8908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7af50f00b8c824af1a4dbdf6b083a60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {x: 26, y: 286, z: 0}
+  target: {x: 26, y: 240, z: 0}
   delayEnabled: 0
   delay: 0
 --- !u!1001 &1744760434
