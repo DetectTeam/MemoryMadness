@@ -11,6 +11,10 @@ public class ProgressBar : MonoBehaviour
 
 	[SerializeField] private BoardManager boardManager;
 
+	[SerializeField] private Star star1;
+	[SerializeField] private Star star2;
+	[SerializeField] private Star star3;
+
 	private int speed = 1;
 
 	private void OnEnable()
@@ -41,7 +45,16 @@ public class ProgressBar : MonoBehaviour
 			currentValue ++; //speed; //* Time.deltaTime;
 			percentageText.text = currentValue.ToString()  +  "%";
 			progressBar.fillAmount = ( currentValue / 133 );
-	
+
+			if( currentValue == 33 )
+				star1.Activate();
+			
+			if( currentValue == 66 )
+				star2.Activate();
+
+			if( currentValue == 99 )
+				star3.Activate();
+
 		}
 	}
 	
