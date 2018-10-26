@@ -28,9 +28,20 @@ public struct Level
 
 }
 
+[System.Serializable]
+public struct Stage
+{
+	[SerializeField] private string name;
+	public string Name { get{ return name; } set{  name = value; } }
+	[SerializeField] private Level[] level;
+	public Level[] Level { get{ return level; } set{  level = value; } }
+ }
+
 public class BoardManager : MonoBehaviour 
 {
 
+
+	[SerializeField] private Stage[] stages;
 	[SerializeField] private  Level[] levels;
 	[SerializeField] private GameObject successMessage;
 	[SerializeField] private GameObject failureMessage;

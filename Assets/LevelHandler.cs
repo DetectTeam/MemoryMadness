@@ -39,10 +39,11 @@ public class LevelHandler : MonoBehaviour {
 			{
 				//Reset the level count
 				currentLevel = 0;
-				currentStage = 1;
+				currentStage ++;
 
 				//Update the current level count
 				PlayerPrefs.SetInt( "CurrentLevel", currentLevel );
+				PlayerPrefs.SetInt( "CurrentStage", currentStage );
 
 				//Load the Stats screen
 				results.SetActive( true );
