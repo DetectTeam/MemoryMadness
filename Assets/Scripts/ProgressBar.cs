@@ -29,7 +29,7 @@ public class ProgressBar : MonoBehaviour
 
 	private void OnDisable()
 	{
-		if( particleContainer.activeSelf )
+		if( particleContainer && particleContainer.activeSelf )
 			particleContainer.SetActive( false );
 	}
 

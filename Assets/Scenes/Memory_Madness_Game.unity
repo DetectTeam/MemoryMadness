@@ -1057,6 +1057,21 @@ Prefab:
       propertyPath: m_Name
       value: Star99
       objectReference: {fileID: 0}
+    - target: {fileID: 114753175627378908, guid: 074093959f6564ebdb900b8fc4ac2f9d,
+        type: 2}
+      propertyPath: scaleSize.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114753175627378908, guid: 074093959f6564ebdb900b8fc4ac2f9d,
+        type: 2}
+      propertyPath: scaleSize.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114753175627378908, guid: 074093959f6564ebdb900b8fc4ac2f9d,
+        type: 2}
+      propertyPath: scaleSize.z
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 074093959f6564ebdb900b8fc4ac2f9d, type: 2}
   m_IsPrefabAsset: 0
@@ -1739,7 +1754,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.5154415, g: 0.65235424, b: 0.764151, a: 0}
+  m_BackGroundColor: {r: 0.13260946, g: 0.1632726, b: 0.18867922, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -2394,6 +2409,21 @@ Prefab:
         type: 2}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114753175627378908, guid: 074093959f6564ebdb900b8fc4ac2f9d,
+        type: 2}
+      propertyPath: scaleSize.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114753175627378908, guid: 074093959f6564ebdb900b8fc4ac2f9d,
+        type: 2}
+      propertyPath: scaleSize.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114753175627378908, guid: 074093959f6564ebdb900b8fc4ac2f9d,
+        type: 2}
+      propertyPath: scaleSize.z
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 074093959f6564ebdb900b8fc4ac2f9d, type: 2}
@@ -3401,7 +3431,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 583.2033, y: 4043.7097}
+  m_Target: {x: 395.50006, y: 2741.9968}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
@@ -10036,6 +10066,16 @@ Prefab:
     - target: {fileID: 1280370958699576, guid: 074093959f6564ebdb900b8fc4ac2f9d, type: 2}
       propertyPath: m_Name
       value: Star66
+      objectReference: {fileID: 0}
+    - target: {fileID: 114753175627378908, guid: 074093959f6564ebdb900b8fc4ac2f9d,
+        type: 2}
+      propertyPath: scaleSize.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114753175627378908, guid: 074093959f6564ebdb900b8fc4ac2f9d,
+        type: 2}
+      propertyPath: scaleSize.y
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 074093959f6564ebdb900b8fc4ac2f9d, type: 2}
