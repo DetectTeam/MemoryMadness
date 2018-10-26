@@ -66,7 +66,9 @@ public class BoardManager : MonoBehaviour
 
 		yield return new WaitForSeconds ( 0.1f );
 
-		
+		levelToLoad = 0;
+
+		Debug.Log("Update" + levelToLoad);
 		Debug.Log( levelToLoad + " " + levels.Length  );
 
 		//Enable the selected level
@@ -75,7 +77,7 @@ public class BoardManager : MonoBehaviour
 			levels[ levelToLoad ].LevelObj.SetActive( true );
 
 			//Broadcast Type of Game to relevant listeners...
-			Messenger.Broadcast<GameType>( "GameType" , levels[ levelToLoad ].GameType );
+			Messenger.Broadcast<GameType>( "GameType" , levels[ 0 ].GameType );
 		}
 	}
 
@@ -112,13 +114,16 @@ public class BoardManager : MonoBehaviour
 
 		}
 
+		
 		Invoke( "ChangeLevel", 3 );
+	
+			
 	}
 
 	private void ChangeLevel()
 	{
-		
-		resultPanel.SetActive( true );
+		Messenger.Broadcast( "LoadNextLevel" );
+		//resultPanel.SetActive( true );
 		successMessage.SetActive( false );
 	}
 

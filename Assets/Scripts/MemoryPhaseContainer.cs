@@ -10,11 +10,15 @@ public class MemoryPhaseContainer : MonoBehaviour
 	[SerializeField] private float delay;
 
 	[SerializeField] private GameObject results;
+	[SerializeField] private GameObject game;
 
 	private void OnEnable()
 	{
 		if( results.activeSelf ) 
 			results.SetActive( false );
+		
+		if( gameObject.activeSelf )
+			game.SetActive( false );
 
 		
 
@@ -43,7 +47,7 @@ public class MemoryPhaseContainer : MonoBehaviour
 			PlayerPrefs.SetInt( "CurrentLevel" , currentPhase );
 		}
 		
-		phases[ currentPhase ].SetActive( true );
+		phases[ 0 ].SetActive( true );
 		//Based on level count set correct phase to active
 	}
 	

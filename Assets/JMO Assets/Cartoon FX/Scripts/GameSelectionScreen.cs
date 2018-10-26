@@ -29,7 +29,6 @@ public class GameSelectionScreen : MonoBehaviour
 	{
 		StartCoroutine( Sequence() );
 		rectTransform = GetComponent<RectTransform>();
-		Debug.Log( rectTransform.position.y );
 	}
 	
 	private IEnumerator Sequence()
