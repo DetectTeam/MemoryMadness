@@ -17,6 +17,7 @@ public class LevelHandler : MonoBehaviour {
 	private void OnEnable()
 	{
 		Messenger.AddListener( "LoadNextLevel", LoadNextLevel );
+		Debug.Log("Level Handler Update");
 	}
 
 	private void OnDisable()
