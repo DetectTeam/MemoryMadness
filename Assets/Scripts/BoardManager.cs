@@ -208,6 +208,7 @@ public class BoardManager : MonoBehaviour
 	{
 		
 		Debug.Log( selectedButtonCount + " " + levels[ levelToLoad ].WinCount );
+		endLevelBackground.SetActive( true );
 		
 		if( selectedButtonCount == levels[ levelToLoad ].WinCount )
 		{

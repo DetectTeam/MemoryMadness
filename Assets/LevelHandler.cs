@@ -53,6 +53,10 @@ public class LevelHandler : MonoBehaviour {
 				if( currentStage >= numberOfStages )
 				{
 					Debug.Log( "Game Finished...." );
+
+					//Reset Game for testing only
+					PlayerPrefs.SetInt( "CurrentLevel", 0 );
+					PlayerPrefs.SetInt( "CurrentStage", 0 );
 				}
 				else
 				{
@@ -61,8 +65,10 @@ public class LevelHandler : MonoBehaviour {
 					PlayerPrefs.SetInt( "CurrentStage", currentStage );
 
 					//Load the Stats screen
-					results.SetActive( true );
+					
 				}
+
+				results.SetActive( true );
 				
 
 			}
