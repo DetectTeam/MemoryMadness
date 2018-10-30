@@ -56,6 +56,8 @@ public class BoardManager : MonoBehaviour
 	[SerializeField] private GameObject endLevelBackground;
 	[SerializeField] private GameObject resultPanel;
   	[SerializeField] private float percentage = 65;
+	[SerializeField] private int currentPhase = 0;
+
    	public float Percentage { get{ return percentage; } set{ percentage = value; } }
 
 
@@ -98,7 +100,9 @@ public class BoardManager : MonoBehaviour
 	{
 		yield return new WaitForSeconds( delay );
 
-		int currentPhase = 0;
+		//Get current Stage
+		int currentStage = PlayerPrefs.GetInt( "CurrentStage" );
+
 		//Check the level count
 
 		if( PlayerPrefs.HasKey( "CurrentLevel" ) )
@@ -110,7 +114,9 @@ public class BoardManager : MonoBehaviour
 			PlayerPrefs.SetInt( "CurrentLevel" , currentPhase );
 		}
 		
-		levels[ currentPhase ].MemoryPhase.SetActive( true );
+		
+		if( currentStage < stages.Length )
+			stages[ currentStage ].Level[ currentPhase ].MemoryPhase.SetActive( true );
 		
 		//phases[ 0 ].SetActive( true );
 		//Based on level count set correct phase to active
@@ -205,6 +211,7 @@ public class BoardManager : MonoBehaviour
 		Messenger.Broadcast( "LoadNextLevel" );
 		//resultPanel.SetActive( true );
 		successMessage.SetActive( false );
+		levels[ currentPhase ].MemoryPhase.SetActive( false );
 	}
 
 	private void Success()

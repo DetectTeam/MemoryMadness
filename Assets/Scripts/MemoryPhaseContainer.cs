@@ -41,11 +41,14 @@ public class MemoryPhaseContainer : MonoBehaviour
 		if( PlayerPrefs.HasKey( "CurrentLevel" ) )
 		{
 			currentPhase = PlayerPrefs.GetInt( "CurrentLevel" );
+			
 		}
 		else
 		{
 			PlayerPrefs.SetInt( "CurrentLevel" , currentPhase );
 		}
+
+		Debug.Log( "currentPhase " + currentPhase );
 		
 		Messenger.Broadcast( "LoadPhase" );
 		//phases[ 0 ].SetActive( true );
