@@ -103,6 +103,12 @@ public class BoardManager : MonoBehaviour
 		//Get current Stage
 		int currentStage = PlayerPrefs.GetInt( "CurrentStage" );
 
+		Debug.Log( "Current Stage " + currentStage );
+		if( currentStage <= stages.Length - 1 )
+		{
+			Debug.Log( "Game Over.." ); 
+		}
+
 		//Check the level count
 
 		if( PlayerPrefs.HasKey( "CurrentLevel" ) )
@@ -116,7 +122,9 @@ public class BoardManager : MonoBehaviour
 		
 		
 		if( currentStage < stages.Length )
+		{
 			stages[ currentStage ].Level[ currentPhase ].MemoryPhase.SetActive( true );
+		}
 		
 		//phases[ 0 ].SetActive( true );
 		//Based on level count set correct phase to active
@@ -129,8 +137,12 @@ public class BoardManager : MonoBehaviour
 	private IEnumerator IELoadLevel()
 	{
 		
-
 		yield return new WaitForSeconds ( 0.1f );
+
+		int currentStage  = 0;
+
+		if( PlayerPrefs.HasKey( "CurrentStage" ) )
+			currentStage = PlayerPrefs.GetInt( "CurrentStage" );
 
 		levelToLoad = 0;
 
@@ -141,9 +153,9 @@ public class BoardManager : MonoBehaviour
 			levelToLoad  = PlayerPrefs.GetInt( "CurrentLevel" );
 	
 		//Enable the selected level
-		if( levelToLoad <= (levels.Length ) )
+		if( levelToLoad <= ( stages[ currentStage ].Level.Length ) )
 		{
-			levels[ levelToLoad ].LevelObj.SetActive( true );
+			stages[ currentStage ].Level[ levelToLoad ].LevelObj.SetActive( true );
 
 			//Broadcast Type of Game to relevant listeners...
 			Messenger.Broadcast<GameType>( "GameType" , levels[ levelToLoad ].GameType );
@@ -201,9 +213,15 @@ public class BoardManager : MonoBehaviour
 		{
 			 Success();
 			 selectedButtonCount = 0;
-			 Invoke( "ChangeLevel", 3 );
+		
 			
 		}
+		else
+		{
+			Failure();
+		}
+
+		Invoke( "ChangeLevel", 3 );
 	}
 
 	private void ChangeLevel()

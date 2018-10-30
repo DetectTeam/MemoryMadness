@@ -27,6 +27,12 @@ public class LevelHandler : MonoBehaviour {
 	public void LoadNextLevel()
 	{
 		currentLevel = 0;
+
+		Debug.Log( " >>> " + currentStage + " " + numberOfStages  );
+
+		
+
+		
 		
 		if( PlayerPrefs.HasKey( "CurrentLevel" ) )
 		{
@@ -35,6 +41,8 @@ public class LevelHandler : MonoBehaviour {
 			currentLevel++;
 
 			Debug.Log( currentLevel + " " + levelsPerStage );
+
+			
 			
 			if( currentLevel == levelsPerStage )
 			{
@@ -42,12 +50,21 @@ public class LevelHandler : MonoBehaviour {
 				currentLevel = 0;
 				currentStage ++;
 
-				//Update the current level count
-				PlayerPrefs.SetInt( "CurrentLevel", currentLevel );
-				PlayerPrefs.SetInt( "CurrentStage", currentStage );
+				if( currentStage >= numberOfStages )
+				{
+					Debug.Log( "Game Finished...." );
+				}
+				else
+				{
+					//Update the current level count
+					PlayerPrefs.SetInt( "CurrentLevel", currentLevel );
+					PlayerPrefs.SetInt( "CurrentStage", currentStage );
 
-				//Load the Stats screen
-				results.SetActive( true );
+					//Load the Stats screen
+					results.SetActive( true );
+				}
+				
+
 			}
 			else
 			{
