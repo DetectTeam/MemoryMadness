@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelHandler : MonoBehaviour {
 
 	
-	[SerializeField] private int levelsPerStage = 6;
+	[SerializeField] private int levelsPerStage = 3;
 	[SerializeField] private int numberOfStages = 4;
 
 	[SerializeField] private int currentLevel;
@@ -17,7 +17,7 @@ public class LevelHandler : MonoBehaviour {
 	private void OnEnable()
 	{
 		Messenger.AddListener( "LoadNextLevel", LoadNextLevel );
-		Debug.Log("Level Handler Update");
+		
 	}
 
 	private void OnDisable()

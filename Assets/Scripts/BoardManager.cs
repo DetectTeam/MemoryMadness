@@ -20,6 +20,10 @@ public struct Level
 	public GameType GameType { get{ return gameType; } set{  gameType = value; } }
 	[SerializeField] private int winCount;
 	public int WinCount { get{ return winCount; } set{  winCount = value; } }
+	
+	[SerializeField] private GameObject memoryPhase;
+	public GameObject MemoryPhase { get{ return memoryPhase; } set{ memoryPhase = value; } }
+	
 	[SerializeField] private GameObject level;
 	public GameObject LevelObj { get{ return level; } set{  level = value; } }
 
@@ -37,10 +41,14 @@ public struct Stage
 	public Level[] Level { get{ return level; } set{  level = value; } }
  }
 
+
+ 
+
 public class BoardManager : MonoBehaviour 
 {
 
-
+	[SerializeField] private int selectedButtonCount;
+	[SerializeField] private float delay;
 	[SerializeField] private Stage[] stages;
 	[SerializeField] private  Level[] levels;
 	[SerializeField] private GameObject successMessage;
@@ -57,7 +65,17 @@ public class BoardManager : MonoBehaviour
 
 	private void OnEnable()
 	{
-		StartCoroutine( LoadLevel() );
+		Messenger.AddListener( "LoadPhase" , LoadPhase );
+		Messenger.AddListener( "LoadLevel" , LoadLevel );
+		Messenger.AddListener( "IncrementButtonCount", IncrementButtonCount );
+		//StartCoroutine( LoadLevel() );
+	}
+
+	private void OnDisable()
+	{
+		Messenger.RemoveListener( "LoadPhase" , LoadPhase );
+		Messenger.RemoveListener( "LoadLevel" , LoadLevel );
+		Messenger.RemoveListener( "IncrementButtonCount", IncrementButtonCount );
 	}
 
 	// Use this for initialization
@@ -71,7 +89,38 @@ public class BoardManager : MonoBehaviour
 	}
 
 
-	private IEnumerator LoadLevel()
+	private void LoadPhase()
+	{
+		StartCoroutine( IELoadPhase() );
+	}
+
+	private IEnumerator IELoadPhase()
+	{
+		yield return new WaitForSeconds( delay );
+
+		int currentPhase = 0;
+		//Check the level count
+
+		if( PlayerPrefs.HasKey( "CurrentLevel" ) )
+		{
+			currentPhase = PlayerPrefs.GetInt( "CurrentLevel" );
+		}
+		else
+		{
+			PlayerPrefs.SetInt( "CurrentLevel" , currentPhase );
+		}
+		
+		levels[ currentPhase ].MemoryPhase.SetActive( true );
+		
+		//phases[ 0 ].SetActive( true );
+		//Based on level count set correct phase to active
+	}
+
+	private void LoadLevel()
+	{
+		StartCoroutine( IELoadLevel() );
+	}
+	private IEnumerator IELoadLevel()
 	{
 		
 
@@ -82,13 +131,16 @@ public class BoardManager : MonoBehaviour
 		Debug.Log("Update" + levelToLoad);
 		Debug.Log( levelToLoad + " " + levels.Length  );
 
+		if( PlayerPrefs.HasKey( "CurrentLevel" ) )
+			levelToLoad  = PlayerPrefs.GetInt( "CurrentLevel" );
+	
 		//Enable the selected level
 		if( levelToLoad <= (levels.Length ) )
 		{
 			levels[ levelToLoad ].LevelObj.SetActive( true );
 
 			//Broadcast Type of Game to relevant listeners...
-			Messenger.Broadcast<GameType>( "GameType" , levels[ 0 ].GameType );
+			Messenger.Broadcast<GameType>( "GameType" , levels[ levelToLoad ].GameType );
 		}
 	}
 
@@ -125,10 +177,27 @@ public class BoardManager : MonoBehaviour
 
 		}
 
-		
 		Invoke( "ChangeLevel", 3 );
-	
 			
+	}
+
+	public void IncrementButtonCount()
+	{
+		selectedButtonCount++;
+	}
+
+	public void CheckForWinMM( )
+	{
+		
+		Debug.Log( selectedButtonCount + " " + levels[ levelToLoad ].WinCount );
+		
+		if( selectedButtonCount == levels[ levelToLoad ].WinCount )
+		{
+			 Success();
+			 selectedButtonCount = 0;
+			 Invoke( "ChangeLevel", 3 );
+			
+		}
 	}
 
 	private void ChangeLevel()

@@ -21,7 +21,7 @@ public class MemoryPhaseContainer : MonoBehaviour
 			game.SetActive( false );
 
 		
-
+		Debug.Log( "Starting Memory Phase" );
 		StartCoroutine( LoadPhase() );
 	}
 
@@ -47,7 +47,8 @@ public class MemoryPhaseContainer : MonoBehaviour
 			PlayerPrefs.SetInt( "CurrentLevel" , currentPhase );
 		}
 		
-		phases[ 0 ].SetActive( true );
+		Messenger.Broadcast( "LoadPhase" );
+		//phases[ 0 ].SetActive( true );
 		//Based on level count set correct phase to active
 	}
 	

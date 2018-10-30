@@ -45,6 +45,8 @@ public class MemorySymbols : MonoBehaviour
 			backgroundColor.SetActive( false );
 			rune.SetActive( false );
 			button.SetActive( false );
+
+			Messenger.Broadcast( "IncrementButtonCount" );
 		}
 		else
 		{
