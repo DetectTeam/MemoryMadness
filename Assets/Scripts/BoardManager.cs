@@ -213,15 +213,13 @@ public class BoardManager : MonoBehaviour
 		if( selectedButtonCount == levels[ levelToLoad ].WinCount )
 		{
 			 Success();
-			 selectedButtonCount = 0;
-		
-			
 		}
 		else
 		{
 			Failure();
 		}
 
+		selectedButtonCount = 0;
 		Invoke( "ChangeLevel", 3 );
 	}
 
@@ -229,7 +227,12 @@ public class BoardManager : MonoBehaviour
 	{
 		Messenger.Broadcast( "LoadNextLevel" );
 		//resultPanel.SetActive( true );
-		successMessage.SetActive( false );
+		if( successMessage.activeSelf )
+			successMessage.SetActive( false );
+		
+		if( failureMessage.activeSelf )	
+			failureMessage.SetActive( false );
+
 		levels[ currentPhase ].MemoryPhase.SetActive( false );
 	}
 
@@ -240,7 +243,7 @@ public class BoardManager : MonoBehaviour
 
 	private void Failure()
 	{
-		//failureMessage.SetActive( true );
+		failureMessage.SetActive( true );
 	}
 
 	public float calculateScore()
