@@ -125,6 +125,7 @@ PlayerSettings:
   m_HolographicPauseOnTrackingLoss: 1
   xboxOneDisableKinectGpuReservation: 0
   xboxOneEnable7thCore: 0
+  isWsaHolographicRemotingEnabled: 0
   vrSettings:
     cardboard:
       depthFormat: 0
@@ -512,6 +513,7 @@ PlayerSettings:
   switchAllowsVideoCapturing: 1
   switchAllowsRuntimeAddOnContentInstall: 0
   switchDataLossConfirmation: 0
+  switchUserAccountLockEnabled: 0
   switchSupportedNpadStyles: 3
   switchNativeFsCacheSize: 32
   switchIsHoldTypeHorizontal: 0
@@ -734,7 +736,11 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
-    UNet: 1
+    Build: 0
+    Collab: 0
+    ErrorHub: 0
+    Hub: 0
+    UNet: 0
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: e4d7406c-7f75-4060-828e-d57162ba5fa7

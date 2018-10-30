@@ -1619,7 +1619,7 @@ Prefab:
     - target: {fileID: 114790246175398368, guid: b35389c3fc11f4ab68b12ced383223a7,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114790246175398368, guid: b35389c3fc11f4ab68b12ced383223a7,
         type: 2}
@@ -1681,6 +1681,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf8d27cb5a874c68a82ec9593f64477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stages:
+  - name: Stage 1
+    level:
+    - name: 
+      gameType: 0
+      winCount: 0
+      level: {fileID: 0}
+      isMatch: 0
+    - name: 
+      gameType: 0
+      winCount: 0
+      level: {fileID: 0}
+      isMatch: 0
+    - name: 
+      gameType: 0
+      winCount: 0
+      level: {fileID: 0}
+      isMatch: 0
+    - name: 
+      gameType: 0
+      winCount: 0
+      level: {fileID: 0}
+      isMatch: 0
+    - name: 
+      gameType: 0
+      winCount: 0
+      level: {fileID: 0}
+      isMatch: 0
+    - name: 
+      gameType: 0
+      winCount: 0
+      level: {fileID: 0}
+      isMatch: 0
   levels:
   - name: Level1
     gameType: 0
@@ -1700,7 +1733,7 @@ MonoBehaviour:
   successMessage: {fileID: 270616639}
   failureMessage: {fileID: 0}
   endLevelBackground: {fileID: 1247521995}
-  resultPanel: {fileID: 1766364037}
+  resultPanel: {fileID: 2004355213}
   percentage: 65
 --- !u!1 &252514946
 GameObject:
@@ -4241,7 +4274,7 @@ GameObject:
   - component: {fileID: 866987695}
   - component: {fileID: 866987694}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: PlayerPrefs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4258,6 +4291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 406e89c9bb9f54d718bb078488acc817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clearPlayerPrefs: 1
 --- !u!4 &866987695
 Transform:
   m_ObjectHideFlags: 0
@@ -9097,10 +9131,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ea4d78b80234f908f94b20eafe289f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelsPerStage: 6
+  levelsPerStage: 2
   numberOfStages: 4
   currentLevel: 0
-  results: {fileID: 0}
+  currentStage: 0
+  results: {fileID: 1766364037}
+  memoryPhase: {fileID: 2004355213}
 --- !u!4 &1718112925
 Transform:
   m_ObjectHideFlags: 0
@@ -9956,7 +9992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0.33962262, g: 0.32200068, b: 0.32200068, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -10086,6 +10122,7 @@ MonoBehaviour:
   - {fileID: 1345756765}
   delay: 0
   results: {fileID: 1766364037}
+  game: {fileID: 2089274043}
 --- !u!1001 &2007890424
 Prefab:
   m_ObjectHideFlags: 0
