@@ -104,11 +104,7 @@ public class BoardManager : MonoBehaviour
 		int currentStage = PlayerPrefs.GetInt( "CurrentStage" );
 
 		Debug.Log( "Current Stage " + currentStage );
-		if( currentStage <= stages.Length - 1 )
-		{
-			Debug.Log( "Game Over.." ); 
-		}
-
+	
 		//Check the level count
 
 		if( PlayerPrefs.HasKey( "CurrentLevel" ) )
@@ -147,7 +143,7 @@ public class BoardManager : MonoBehaviour
 		levelToLoad = 0;
 
 		Debug.Log("Update" + levelToLoad);
-		Debug.Log( levelToLoad + " " + levels.Length  );
+		Debug.Log( "Level " + levelToLoad + " " + levels.Length  );
 
 		if( PlayerPrefs.HasKey( "CurrentLevel" ) )
 			levelToLoad  = PlayerPrefs.GetInt( "CurrentLevel" );

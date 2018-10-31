@@ -40,7 +40,7 @@ public class LevelHandler : MonoBehaviour {
 
 			currentLevel++;
 
-			Debug.Log( currentLevel + " " + levelsPerStage );
+			Debug.Log( "Current Level " + currentLevel + " " + levelsPerStage );
 
 			
 			
@@ -57,17 +57,17 @@ public class LevelHandler : MonoBehaviour {
 					//Reset Game for testing only
 					PlayerPrefs.SetInt( "CurrentLevel", 0 );
 					PlayerPrefs.SetInt( "CurrentStage", 0 );
+					currentStage = 0;
 				}
 				else
 				{
 					//Update the current level count
 					PlayerPrefs.SetInt( "CurrentLevel", currentLevel );
 					PlayerPrefs.SetInt( "CurrentStage", currentStage );
-
-					//Load the Stats screen
-					
+	
 				}
 
+				//Load the Stats screen
 				results.SetActive( true );
 				
 
