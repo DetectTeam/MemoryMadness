@@ -236,7 +236,7 @@ public class BoardManager : MonoBehaviour
 
 	private void Failure()
 	{
-		//failureMessage.SetActive( true );
+		failureMessage.SetActive( true );
 	}
 
 	public float calculateScore()
