@@ -13,6 +13,8 @@ public class LevelHandler : MonoBehaviour {
 
 	[SerializeField] private GameObject results;
 	[SerializeField] private GameObject memoryPhase;
+
+	[SerializeField] private bool isGameOver = false;
 	
 	private void OnEnable()
 	{
@@ -24,16 +26,27 @@ public class LevelHandler : MonoBehaviour {
 	{
 		Messenger.RemoveListener( "LoadNextLevel", LoadNextLevel );
 	}
+	
+	public void IncrementStage()
+	{
+		currentStage ++;
+
+		if( currentStage >= numberOfStages  )
+		{
+			currentStage = 0;
+			PlayerPrefs.SetInt( "CurrentStage" , currentStage );
+		}
+	}
+
+
+	
 	public void LoadNextLevel()
 	{
+		
+		
+
 		currentLevel = 0;
 
-		Debug.Log( " >>> " + currentStage + " " + numberOfStages  );
-
-		
-
-		
-		
 		if( PlayerPrefs.HasKey( "CurrentLevel" ) )
 		{
 			currentLevel = PlayerPrefs.GetInt( "CurrentLevel" );
@@ -42,35 +55,24 @@ public class LevelHandler : MonoBehaviour {
 
 			Debug.Log( "Current Level " + currentLevel + " " + levelsPerStage );
 
-			
-			
 			if( currentLevel == levelsPerStage )
 			{
 				//Reset the level count
 				currentLevel = 0;
+				PlayerPrefs.SetInt( "CurrentLevel", currentLevel );
+
 				currentStage ++;
-
-				if( currentStage >= numberOfStages )
-				{
-					Debug.Log( "Game Finished...." );
-
-					//Reset Game for testing only
-					PlayerPrefs.SetInt( "CurrentLevel", 0 );
-					PlayerPrefs.SetInt( "CurrentStage", 0 );
-					currentStage = 0;
-				}
-				else
-				{
-					//Update the current level count
-					PlayerPrefs.SetInt( "CurrentLevel", currentLevel );
-					PlayerPrefs.SetInt( "CurrentStage", currentStage );
-	
-				}
 
 				//Load the Stats screen
 				results.SetActive( true );
-				
 
+				if( currentStage >= numberOfStages )
+				{
+					Debug.Log( "You have completed the game..." );
+					return;
+				}
+
+			
 			}
 			else
 			{

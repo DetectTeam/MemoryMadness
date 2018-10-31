@@ -226,6 +226,8 @@ public class BoardManager : MonoBehaviour
 		Messenger.Broadcast( "LoadNextLevel" );
 		//resultPanel.SetActive( true );
 		successMessage.SetActive( false );
+		failureMessage.SetActive( false );
+		
 		levels[ currentPhase ].MemoryPhase.SetActive( false );
 	}
 
