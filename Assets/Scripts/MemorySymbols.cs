@@ -18,6 +18,8 @@ public class MemorySymbols : MonoBehaviour
 
 	[SerializeField] private GameObject button;
 
+	[SerializeField] private int slotNumber;
+
 	// Use this for initialization
 	
 	void OnEnable()

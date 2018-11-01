@@ -50,7 +50,7 @@ public class BoardManager : MonoBehaviour
 	[SerializeField] private int selectedButtonCount;
 	[SerializeField] private float delay;
 	[SerializeField] private Stage[] stages;
-	[SerializeField] private  Level[] levels;
+	//[SerializeField] private  Level[] levels;
 	[SerializeField] private GameObject successMessage;
 	[SerializeField] private GameObject failureMessage;
 	[SerializeField] private GameObject endLevelBackground;
@@ -63,6 +63,7 @@ public class BoardManager : MonoBehaviour
 
 
 	private int levelToLoad = 0; 
+	private	int currentStage  = 0;
 
 
 	private void OnEnable()
@@ -101,7 +102,7 @@ public class BoardManager : MonoBehaviour
 		yield return new WaitForSeconds( delay );
 
 		//Get current Stage
-		int currentStage = PlayerPrefs.GetInt( "CurrentStage" );
+		currentStage = PlayerPrefs.GetInt( "CurrentStage" );
 
 		Debug.Log( "Current Stage " + currentStage );
 	
@@ -135,7 +136,7 @@ public class BoardManager : MonoBehaviour
 		
 		yield return new WaitForSeconds ( 0.1f );
 
-		int currentStage  = 0;
+	
 
 		if( PlayerPrefs.HasKey( "CurrentStage" ) )
 			currentStage = PlayerPrefs.GetInt( "CurrentStage" );
@@ -143,7 +144,7 @@ public class BoardManager : MonoBehaviour
 		levelToLoad = 0;
 
 		Debug.Log("Update" + levelToLoad);
-		Debug.Log( "Level " + levelToLoad + " " + levels.Length  );
+		Debug.Log( "Level " + levelToLoad + " " + stages[ currentStage ].Level.Length  );
 
 		if( PlayerPrefs.HasKey( "CurrentLevel" ) )
 			levelToLoad  = PlayerPrefs.GetInt( "CurrentLevel" );
@@ -154,7 +155,7 @@ public class BoardManager : MonoBehaviour
 			stages[ currentStage ].Level[ levelToLoad ].LevelObj.SetActive( true );
 
 			//Broadcast Type of Game to relevant listeners...
-			Messenger.Broadcast<GameType>( "GameType" , levels[ levelToLoad ].GameType );
+			Messenger.Broadcast<GameType>( "GameType" , stages[ currentStage ].Level[ levelToLoad ].GameType );
 		}
 	}
 
@@ -164,23 +165,23 @@ public class BoardManager : MonoBehaviour
 	{
 		endLevelBackground.SetActive( true );
 		
-		if( b && levels[ levelToLoad ].IsMatch )
+		if( b && stages[ currentStage ].Level[ levelToLoad ].IsMatch )
 		{
 			Debug.Log( "ITS A WIN !!!" );
 			Success();
 		}
-		else if( b && !levels[ levelToLoad ].IsMatch )
+		else if( b && !stages[ currentStage ].Level[ levelToLoad ].IsMatch )
 		{
 			Debug.Log( "YOU FAILED ...You chose yes but no was required" );
 			Failure();
 		}
-		else if( !b && levels[ levelToLoad ].IsMatch )
+		else if( !b && stages[ currentStage ].Level[ levelToLoad ].IsMatch )
 		{
 			Debug.Log( "YOU FAILED ....You chose no when it should have been yes" );
 			Failure();
 			
 		}
-		else if( !b && !levels[ levelToLoad ].IsMatch )
+		else if( !b && !stages[ currentStage ].Level[ levelToLoad ].IsMatch )
 		{
 			Debug.Log( "CORRECT THERE IS NO MATCH" );
 			Success();
@@ -203,20 +204,19 @@ public class BoardManager : MonoBehaviour
 	public void CheckForWinMM( )
 	{
 		
-		Debug.Log( selectedButtonCount + " " + levels[ levelToLoad ].WinCount );
+		Debug.Log( selectedButtonCount + " " + stages[ currentStage ].Level[ levelToLoad ].WinCount );
 		endLevelBackground.SetActive( true );
 		
-		if( selectedButtonCount == levels[ levelToLoad ].WinCount )
+		if( selectedButtonCount == stages[ currentStage ].Level[ levelToLoad ].WinCount )
 		{
 			 Success();
-			 selectedButtonCount = 0;
-		
-			
 		}
 		else
 		{
 			Failure();
 		}
+
+		selectedButtonCount = 0;
 
 		Invoke( "ChangeLevel", 3 );
 	}
@@ -225,10 +225,14 @@ public class BoardManager : MonoBehaviour
 	{
 		Messenger.Broadcast( "LoadNextLevel" );
 		//resultPanel.SetActive( true );
-		successMessage.SetActive( false );
-		failureMessage.SetActive( false );
 		
-		levels[ currentPhase ].MemoryPhase.SetActive( false );
+		if( successMessage.activeSelf )
+			successMessage.SetActive( false );
+		
+		if( failureMessage.activeSelf )	
+			failureMessage.SetActive( false );
+		
+		stages[ currentStage ].Level[ currentPhase ].MemoryPhase.SetActive( false );
 	}
 
 	private void Success()
