@@ -1358,19 +1358,30 @@ MonoBehaviour:
       winCount: 2
       memoryPhase: {fileID: 1874311376}
       level: {fileID: 2082198635}
-      isMatch: 1
+      isMatch: 0
     - name: Level 17
       gameType: 1
       winCount: 2
       memoryPhase: {fileID: 953345641}
       level: {fileID: 1543176171}
-      isMatch: 1
+      isMatch: 0
+    - name: Level 5
+      gameType: 1
+      winCount: 4
+      memoryPhase: {fileID: 604617880}
+      level: {fileID: 247030211}
+      isMatch: 0
   successMessage: {fileID: 270616639}
   failureMessage: {fileID: 548647233}
   endLevelBackground: {fileID: 1247521995}
   resultPanel: {fileID: 2004355213}
   percentage: 65
   currentPhase: 0
+--- !u!1 &247030211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1567399887390310, guid: 5ba8af2d076b44f01b6d5559e82bf7e2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1001234465}
 --- !u!1 &252514946
 GameObject:
   m_ObjectHideFlags: 0
@@ -2315,6 +2326,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 444950648}
   m_Script: {fileID: 11500000, guid: bf5cc2dd8f9b1403b80a34615b0842cb, type: 3}
+--- !u!1 &604617880 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1458794429249684, guid: 091006bb808ea4866890a01bf0fe6322,
+    type: 2}
+  m_PrefabInternal: {fileID: 364243951}
 --- !u!1001 &615116369
 Prefab:
   m_ObjectHideFlags: 0
@@ -4053,6 +4069,40 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567399887390310, guid: 5ba8af2d076b44f01b6d5559e82bf7e2, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114069712176900918, guid: 5ba8af2d076b44f01b6d5559e82bf7e2,
+        type: 2}
+      propertyPath: isCorrect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114137620552610446, guid: 5ba8af2d076b44f01b6d5559e82bf7e2,
+        type: 2}
+      propertyPath: isCorrect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084772435918892, guid: 5ba8af2d076b44f01b6d5559e82bf7e2,
+        type: 2}
+      propertyPath: isCorrect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114879345751514808, guid: 5ba8af2d076b44f01b6d5559e82bf7e2,
+        type: 2}
+      propertyPath: isCorrect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114064937583153012, guid: 5ba8af2d076b44f01b6d5559e82bf7e2,
+        type: 2}
+      propertyPath: isCorrect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114649711897307392, guid: 5ba8af2d076b44f01b6d5559e82bf7e2,
+        type: 2}
+      propertyPath: isCorrect
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ba8af2d076b44f01b6d5559e82bf7e2, type: 2}

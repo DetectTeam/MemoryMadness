@@ -31,6 +31,11 @@ public class ProgressBar : MonoBehaviour
 	{
 		if( particleContainer && particleContainer.activeSelf )
 			particleContainer.SetActive( false );
+
+
+			progressBar.fillAmount = 0;
+			percentageText.text = "0%";
+
 	}
 
 	
