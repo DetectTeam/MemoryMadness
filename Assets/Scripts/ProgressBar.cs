@@ -70,7 +70,7 @@ public class ProgressBar : MonoBehaviour
 
 		yield return new WaitForSeconds( 1.5f );
 
-		particleContainer.SetActive( true );
+		//particleContainer.SetActive( true );
 	}
 
 	

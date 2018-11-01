@@ -54,6 +54,7 @@ public class MemorySymbols : MonoBehaviour
 		{
 			ShakePosition();
 			errorImage.SetActive( true );
+			button.SetActive( false );
 		}
 	}
 

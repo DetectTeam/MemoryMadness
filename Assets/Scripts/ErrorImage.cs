@@ -9,7 +9,7 @@ public class ErrorImage : MonoBehaviour {
 
 	private void OnEnable()
 	{
-		StartCoroutine( FadeImage() );
+		//StartCoroutine( FadeImage() );
 	}
 
 	private void OnDisable()
