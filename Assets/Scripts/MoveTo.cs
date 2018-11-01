@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class MoveTo : MonoBehaviour 
 {
+	[SerializeField] private Vector3 startPosition;
 	[SerializeField] private Vector3 target;
+
 
 	[SerializeField] private float delay;
 
@@ -13,6 +15,11 @@ public class MoveTo : MonoBehaviour
 	private void OnEnable()
 	{
 		StartCoroutine( Move() );
+	}
+
+	private void OnDisable()
+	{
+		transform.position = startPosition;
 	}
 
 
