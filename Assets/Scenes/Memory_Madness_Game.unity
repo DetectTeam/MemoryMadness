@@ -1429,6 +1429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9334e35bd8d6545b9ab86c40362a28cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPosition: {x: 0, y: 0, z: 0}
   target: {x: 0, y: -413, z: 0}
   delay: 2
 --- !u!1 &255070680
@@ -1640,6 +1641,10 @@ Prefab:
     - target: {fileID: 4565685280606086, guid: 091006bb808ea4866890a01bf0fe6322, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458794429249684, guid: 091006bb808ea4866890a01bf0fe6322, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 091006bb808ea4866890a01bf0fe6322, type: 2}
@@ -2097,6 +2102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9334e35bd8d6545b9ab86c40362a28cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPosition: {x: 0, y: 0, z: 0}
   target: {x: 0, y: -615.285, z: 0}
   delay: 2
 --- !u!1 &548647233
@@ -4072,7 +4078,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1567399887390310, guid: 5ba8af2d076b44f01b6d5559e82bf7e2, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114069712176900918, guid: 5ba8af2d076b44f01b6d5559e82bf7e2,
         type: 2}
@@ -4506,6 +4512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9334e35bd8d6545b9ab86c40362a28cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPosition: {x: 0, y: 0, z: 0}
   target: {x: 0, y: 0, z: 0}
   delay: 0
 --- !u!1 &1091269279
@@ -7655,6 +7662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9334e35bd8d6545b9ab86c40362a28cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPosition: {x: -900, y: 0, z: 0}
   target: {x: 0, y: -615.285, z: 0}
   delay: 2
 --- !u!1 &1710083856
@@ -7854,7 +7862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ea4d78b80234f908f94b20eafe289f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelsPerStage: 2
+  levelsPerStage: 3
   numberOfStages: 1
   currentLevel: 0
   currentStage: 0
@@ -8986,7 +8994,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2089274044
 RectTransform:
   m_ObjectHideFlags: 0
