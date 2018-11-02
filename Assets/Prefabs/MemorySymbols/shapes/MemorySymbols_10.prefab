@@ -240,6 +240,7 @@ MonoBehaviour:
   backgroundColor: {fileID: 1178619533412980}
   rune: {fileID: 1630129347591410}
   button: {fileID: 1064760954719168}
+  slotNumber: 0
 --- !u!114 &114113759401913514
 MonoBehaviour:
   m_ObjectHideFlags: 1
