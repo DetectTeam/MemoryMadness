@@ -2,58 +2,56 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MemoryPhaseContainer : MonoBehaviour 
+
+namespace MemoryMadness
 {
-
-
-	[SerializeField] private GameObject[] phases;
-	[SerializeField] private float delay;
-
-	[SerializeField] private GameObject results;
-	[SerializeField] private GameObject game;
-
-	private void OnEnable()
+	public class MemoryPhaseContainer : MonoBehaviour 
 	{
-		if( results.activeSelf ) 
-			results.SetActive( false );
-		
-		if( gameObject.activeSelf )
-			game.SetActive( false );
+		[SerializeField] private GameObject[] phases;
+		[SerializeField] private float delay;
 
-		
-		Debug.Log( "Starting Memory Phase" );
-		StartCoroutine( LoadPhase() );
-	}
+		[SerializeField] private GameObject results;
+		[SerializeField] private GameObject game;
 
-	// Use this for initialization
-	void Start () 
-	{
-		
-	}
-
-	private IEnumerator LoadPhase()
-	{
-		yield return new WaitForSeconds( delay );
-
-		int currentPhase = 0;
-		//Check the level count
-
-		if( PlayerPrefs.HasKey( "CurrentLevel" ) )
+		private void OnEnable()
 		{
-			currentPhase = PlayerPrefs.GetInt( "CurrentLevel" );
+			if( results.activeSelf ) 
+				results.SetActive( false );
 			
-		}
-		else
-		{
-			PlayerPrefs.SetInt( "CurrentLevel" , currentPhase );
+			if( gameObject.activeSelf )
+				game.SetActive( false );
+
+			
+			Debug.Log( "Starting Memory Phase" );
+			StartCoroutine( LoadPhase() );
 		}
 
-		Debug.Log( "currentPhase " + currentPhase );
+
+		private IEnumerator LoadPhase()
+		{
+			yield return new WaitForSeconds( delay );
+
+			int currentPhase = 0;
+			//Check the level count
+
+			if( PlayerPrefs.HasKey( "CurrentLevel" ) )
+			{
+				currentPhase = PlayerPrefs.GetInt( "CurrentLevel" );
+				
+			}
+			else
+			{
+				PlayerPrefs.SetInt( "CurrentLevel" , currentPhase );
+			}
+
+			Debug.Log( "currentPhase " + currentPhase );
+			
+			Messenger.Broadcast( "LoadPhase" );
+			//phases[ 0 ].SetActive( true );
+			//Based on level count set correct phase to active
+		}
 		
-		Messenger.Broadcast( "LoadPhase" );
-		//phases[ 0 ].SetActive( true );
-		//Based on level count set correct phase to active
+		
 	}
-	
-	
+
 }

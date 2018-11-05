@@ -2,47 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonContainer : MonoBehaviour 
+
+namespace MemoryMadness
 {
-
-	[SerializeField] GameObject[] buttons;
-
-	private void OnEnable()
+	public class ButtonContainer : MonoBehaviour 
 	{
-		Messenger.AddListener<GameType>( "GameType" , LoadButton );
-	}
 
-	private void OnDisable()
-	{
-		
-	}
+		[SerializeField] GameObject[] buttons;
 
-	// Use this for initialization
-	void Start () 
-	{
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+		private const string m_GameType = "GameType";
 
-	private void LoadButton( GameType gameType )
-	{
-		Debug.Log( "Load Button Called...." + gameType );
-
-		if( gameType == GameType.SameDifferent )
+		private void OnEnable()
 		{
-			Debug.Log( "Loading yes no buttons" );
-			buttons[1].SetActive( false );
-			buttons[0].SetActive( true );
+			Messenger.AddListener<GameType>( m_GameType , LoadButton );
 		}
-		else
+
+		private void OnDisable()
 		{
-			Debug.Log( "Loading I got em all buttons..." );
-			buttons[0].SetActive( false );
-			buttons[1].SetActive( true );
+			Messenger.RemoveListener<GameType>( m_GameType , LoadButton );
+		}
+
+		private void LoadButton( GameType gameType )
+		{
+			if( gameType == GameType.SameDifferent )
+			{
+				buttons[1].SetActive( false );
+				buttons[0].SetActive( true );
+			}
+			else
+			{
+				buttons[0].SetActive( false );
+				buttons[1].SetActive( true );
+			}
 		}
 	}
+
 }

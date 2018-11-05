@@ -2,19 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResetPositionHandler : MonoBehaviour {
 
-	[SerializeField] private Vector3 startPosition;
+namespace MemoryMadness
+{
+	public class ResetPositionHandler : MonoBehaviour {
 
-	private void OnDisable()
-	{
-		Reset();
+		[SerializeField] private Vector3 startPosition;
+
+		private void OnDisable()
+		{
+			Reset();
+		}
+
+		
+		private void Reset()
+		{
+			transform.localPosition = startPosition;
+		}
+		
 	}
-
-	
-	private void Reset()
-	{
-		transform.localPosition = startPosition;
-	}
-	
 }

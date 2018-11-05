@@ -5,8 +5,6 @@ using UnityEngine;
 public class DropBounce : MonoBehaviour {
 
 	// Use this for initialization
-
-
 	[SerializeField] private Vector3 target;
 
 	[SerializeField] private bool delayEnabled = false;

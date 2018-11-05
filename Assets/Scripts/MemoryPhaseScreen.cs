@@ -2,22 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MemoryPhaseScreen : MonoBehaviour 
+namespace MemoryMadness
 {
 
-	[SerializeField] private Vector3 startingPosition;
-	private RectTransform rectTransform;
-	
-	private void OnDisable()
+	public class MemoryPhaseScreen : MonoBehaviour 
 	{
-		rectTransform.localPosition = startingPosition;
-	}
 
-	private void Start()
-	{
-		rectTransform = GetComponent<RectTransform>();
-	}
+		[SerializeField] private Vector3 startingPosition;
+		private RectTransform rectTransform;
+		
+		private void OnDisable()
+		{
+			rectTransform.localPosition = startingPosition;
+		}
 
-	// Use this for initialization
+		private void Start()
+		{
+			rectTransform = GetComponent<RectTransform>();
+		}
+
+		// Use this for initialization
+
+	}
 
 }

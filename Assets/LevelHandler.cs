@@ -2,83 +2,84 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelHandler : MonoBehaviour {
 
-	
-	[SerializeField] private int levelsPerStage = 3;
-	[SerializeField] private int numberOfStages = 4;
+namespace MemoryMadness
+{
+	public class LevelHandler : MonoBehaviour {
 
-	[SerializeField] private int currentLevel;
-	[SerializeField] private int currentStage;
-
-	[SerializeField] private GameObject results;
-	[SerializeField] private GameObject memoryPhase;
-
-	[SerializeField] private bool isGameOver = false;
-	
-	private void OnEnable()
-	{
-		Messenger.AddListener( "LoadNextLevel", LoadNextLevel );
 		
-	}
+		[SerializeField] private int levelsPerStage = 3;
+		[SerializeField] private int numberOfStages = 4;
 
-	private void OnDisable()
-	{
-		Messenger.RemoveListener( "LoadNextLevel", LoadNextLevel );
-	}
-	
-	public void IncrementStage()
-	{
-		currentStage ++;
+		[SerializeField] private int currentLevel;
+		[SerializeField] private int currentStage;
 
-		if( currentStage >= numberOfStages  )
+		[SerializeField] private GameObject results;
+		[SerializeField] private GameObject memoryPhase;
+
+		[SerializeField] private bool isGameOver = false;
+
+		//Messages
+
+		private const string LoadNextLevelMessage = "LoadNextLevel";
+		private const string CurrentStageMessage = "CurrentStage";
+		private const string CurrentLevelPrefs = "CurrentLevel";
+		
+		private void OnEnable()
 		{
-			currentStage = 0;
-			PlayerPrefs.SetInt( "CurrentStage" , currentStage );
+			Messenger.AddListener( LoadNextLevelMessage, LoadNextLevel );
 		}
-	}
 
-
-	
-	public void LoadNextLevel()
-	{
-		
-		
-
-		currentLevel = 0;
-
-		if( PlayerPrefs.HasKey( "CurrentLevel" ) )
+		private void OnDisable()
 		{
-			currentLevel = PlayerPrefs.GetInt( "CurrentLevel" );
+			Messenger.RemoveListener( LoadNextLevelMessage, LoadNextLevel );
+		}
+		
+		public void IncrementStage()
+		{
+			currentStage ++;
 
-			currentLevel++;
-
-			Debug.Log( "Current Level " + currentLevel + " " + levelsPerStage );
-
-			if( currentLevel == levelsPerStage )
+			if( currentStage >= numberOfStages  )
 			{
-				//Reset the level count
-				currentLevel = 0;
-				PlayerPrefs.SetInt( "CurrentLevel", currentLevel );
+				currentStage = 0;
+				PlayerPrefs.SetInt( LoadNextLevelMessage , currentStage );
+			}
+		}
 
-				currentStage ++;
+		public void LoadNextLevel()
+		{
+			currentLevel = 0;
 
-				//Load the Stats screen
-				results.SetActive( true );
+			if( PlayerPrefs.HasKey( CurrentLevelPrefs ) )
+			{
+				currentLevel = PlayerPrefs.GetInt( CurrentLevelPrefs );
 
-				if( currentStage >= numberOfStages )
+				currentLevel++;
+
+				if( currentLevel == levelsPerStage )
 				{
-					Debug.Log( "You have completed the game..." );
-					return;
-				}
+					//Reset the level count
+					currentLevel = 0;
+					PlayerPrefs.SetInt( CurrentLevelPrefs, currentLevel );
 
-			
-			}
-			else
-			{
-				PlayerPrefs.SetInt( "CurrentLevel" , currentLevel );
-				memoryPhase.SetActive( true );
+					currentStage ++;
+
+					//Load the Stats screen
+					results.SetActive( true );
+
+					if( currentStage >= numberOfStages )
+					{
+						return;
+					}
+
+				}
+				else
+				{
+					PlayerPrefs.SetInt( CurrentLevelPrefs , currentLevel );
+					memoryPhase.SetActive( true );
+				}
 			}
 		}
 	}
+
 }

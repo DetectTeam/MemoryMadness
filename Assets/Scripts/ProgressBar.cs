@@ -4,81 +4,73 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ProgressBar : MonoBehaviour 
+
+namespace MemoryMadness
 {
-	[SerializeField] private Image progressBar;
-	[SerializeField] private TextMeshProUGUI percentageText;
-
-	[SerializeField] private BoardManager boardManager;
-
-	[SerializeField] private Star star1;
-	[SerializeField] private Star star2;
-	[SerializeField] private Star star3;
-
-	[SerializeField] private GameObject particleContainer;
-
-	private int speed = 1;
-
-	private void OnEnable()
-	{		
-		if( boardManager )
-			StartCoroutine( Fill( boardManager.calculateScore() ) );
-
-		
-	}
-
-	private void OnDisable()
+	public class ProgressBar : MonoBehaviour 
 	{
-		if( particleContainer && particleContainer.activeSelf )
-			particleContainer.SetActive( false );
+		[SerializeField] private Image progressBar;
+		[SerializeField] private TextMeshProUGUI percentageText;
 
+		[SerializeField] private BoardManager boardManager;
 
-			progressBar.fillAmount = 0;
-			percentageText.text = "0%";
+		[SerializeField] private Star star1;
+		[SerializeField] private Star star2;
+		[SerializeField] private Star star3;
 
-	}
+		[SerializeField] private GameObject particleContainer;
 
+		private int speed = 1;
+
+		private void OnEnable()
+		{		
+			if( boardManager )
+				StartCoroutine( Fill( boardManager.calculateScore() ) );
 	
+		}
 
-
-
-	// Use this for initialization
-	private void Start () 
-	{
-	
-	}
-
-	private IEnumerator Fill( float percentage )
-	{
-		float currentValue = 0;
-		progressBar.fillAmount = 0f;
-
-		yield return new WaitForSeconds( 2.0f );
-		
-		while( currentValue < percentage )
+		private void OnDisable()
 		{
-			yield return null;
-			currentValue ++; //speed; //* Time.deltaTime;
-			percentageText.text = currentValue.ToString()  +  "%";
-			progressBar.fillAmount = ( currentValue / 133 );
+			if( particleContainer && particleContainer.activeSelf )
+				particleContainer.SetActive( false );
 
-			if( currentValue == 33 )
-				star1.Activate();
-			
-			if( currentValue == 66 )
-				star2.Activate();
 
-			if( currentValue == 99 )
-				star3.Activate();
+				progressBar.fillAmount = 0;
+				percentageText.text = "0%";
 
 		}
 
-		yield return new WaitForSeconds( 1.5f );
 
-		//particleContainer.SetActive( true );
+		private IEnumerator Fill( float percentage )
+		{
+			float currentValue = 0;
+			progressBar.fillAmount = 0f;
+
+			yield return new WaitForSeconds( 2.0f );
+			
+			while( currentValue < percentage )
+			{
+				yield return null;
+				currentValue ++; //speed; //* Time.deltaTime;
+				percentageText.text = currentValue.ToString()  +  "%";
+				progressBar.fillAmount = ( currentValue / 133 );
+
+				if( currentValue == 33 )
+					star1.Activate();
+				
+				if( currentValue == 66 )
+					star2.Activate();
+
+				if( currentValue == 99 )
+					star3.Activate();
+
+			}
+
+			yield return new WaitForSeconds( 1.5f );
+
+			//particleContainer.SetActive( true );
+		}	
+		
 	}
 
-	
-	
-	
 }

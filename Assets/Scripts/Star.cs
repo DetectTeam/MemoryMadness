@@ -3,45 +3,49 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Star : MonoBehaviour 
+namespace MemoryMadness
 {
-
-	[SerializeField] private Image starImage;
-	[SerializeField] private Vector3 scaleSize;
-
-	private Color originalColor;
-
-
-	private void OnDisable()
+	public class Star : MonoBehaviour 
 	{
-		Reset();
-	}
 
-	// Use this for initialization
-	private void Start () 
-	{
-		Debug.Log( "Start Called" );
+		[SerializeField] private Image starImage;
+		[SerializeField] private Vector3 scaleSize;
+
+		private Color originalColor;
+
+
+		private void OnDisable()
+		{
+			Reset();
+		}
+
+		// Use this for initialization
+		private void Start () 
+		{
+			Debug.Log( "Start Called" );
+			
+			starImage = GetComponent<Image>();
+			originalColor = starImage.color;
+			
+			if( !starImage )
+				Debug.Log( "NONE" );
+
+			//Invoke( "Activate" , 5.0f );
+		}
 		
-		starImage = GetComponent<Image>();
-		originalColor = starImage.color;
-		
-		if( !starImage )
-			Debug.Log( "NONE" );
+		public void Activate()
+		{
+			gameObject.transform.localScale = scaleSize;
+			iTween.PunchScale( gameObject, iTween.Hash( "x",-2, "y",-2, "time",0.75f));
+			starImage.color = new Color( 0.9716f, 0.8722f, 0.1512f, 1 );
+					
+		}
 
-		//Invoke( "Activate" , 5.0f );
-	}
-	
-	public void Activate()
-	{
-		gameObject.transform.localScale = scaleSize;
-		iTween.PunchScale( gameObject, iTween.Hash( "x",-2, "y",-2, "time",0.75f));
-		starImage.color = new Color( 0.9716f, 0.8722f, 0.1512f, 1 );
-				
+		private void Reset()
+		{
+			gameObject.transform.localScale = new Vector3( 1,1,1 );
+			starImage.color = originalColor;
+		}
 	}
 
-	private void Reset()
-	{
-		gameObject.transform.localScale = new Vector3( 1,1,1 );
-		starImage.color = originalColor;
-	}
 }

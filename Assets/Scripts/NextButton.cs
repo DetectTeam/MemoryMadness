@@ -2,20 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NextButton : MonoBehaviour 
+namespace MemoryMadness
 {
-
-	public void LoadNextLevel()
+	public class NextButton : MonoBehaviour 
 	{
-		int currentLevel = 0;
-		
-		if( PlayerPrefs.HasKey( "CurrentLevel" ) )
-		{
-			currentLevel = PlayerPrefs.GetInt( "CurrentLevel" );
-			currentLevel++;
 
-			PlayerPrefs.SetInt( "CurrentLevel" , currentLevel );
+		public void LoadNextLevel()
+		{
+			int currentLevel = 0;
+			
+			if( PlayerPrefs.HasKey( "CurrentLevel" ) )
+			{
+				currentLevel = PlayerPrefs.GetInt( "CurrentLevel" );
+				currentLevel++;
+
+				PlayerPrefs.SetInt( "CurrentLevel" , currentLevel );
+			}
 		}
+
 	}
 
 }
