@@ -1846,7 +1846,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1821322196170122, guid: b35389c3fc11f4ab68b12ced383223a7, type: 2}
       propertyPath: m_Name
-      value: Yes
+      value: Same
       objectReference: {fileID: 0}
     - target: {fileID: 114757095241436816, guid: b35389c3fc11f4ab68b12ced383223a7,
         type: 2}
@@ -1881,7 +1881,7 @@ Prefab:
     - target: {fileID: 114757095241436816, guid: b35389c3fc11f4ab68b12ced383223a7,
         type: 2}
       propertyPath: m_text
-      value: Yes
+      value: Same
       objectReference: {fileID: 0}
     - target: {fileID: 114757095241436816, guid: b35389c3fc11f4ab68b12ced383223a7,
         type: 2}
@@ -2207,7 +2207,7 @@ MonoBehaviour:
       winCount: 0
       memoryPhase: {fileID: 888301986}
       level: {fileID: 877897976}
-      isMatch: 0
+      isMatch: 1
   successMessage: {fileID: 270616639}
   failureMessage: {fileID: 548647233}
   endLevelBackground: {fileID: 1247521995}
@@ -11020,12 +11020,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1821322196170122, guid: b35389c3fc11f4ab68b12ced383223a7, type: 2}
       propertyPath: m_Name
-      value: No
+      value: Different
       objectReference: {fileID: 0}
     - target: {fileID: 114757095241436816, guid: b35389c3fc11f4ab68b12ced383223a7,
         type: 2}
       propertyPath: m_havePropertiesChanged
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114790246175398368, guid: b35389c3fc11f4ab68b12ced383223a7,
         type: 2}
@@ -11055,12 +11055,12 @@ Prefab:
     - target: {fileID: 114757095241436816, guid: b35389c3fc11f4ab68b12ced383223a7,
         type: 2}
       propertyPath: m_text
-      value: No
+      value: Different
       objectReference: {fileID: 0}
     - target: {fileID: 114757095241436816, guid: b35389c3fc11f4ab68b12ced383223a7,
         type: 2}
       propertyPath: m_isInputParsingRequired
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224074236112687900, guid: b35389c3fc11f4ab68b12ced383223a7,
         type: 2}
@@ -17734,7 +17734,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 301.2603, y: 1600.5}
+  m_Target: {x: 225.94524, y: 1264.375}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
@@ -20873,7 +20873,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 69}
+  m_AnchoredPosition: {x: -26, y: 69}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1910172110
@@ -22514,7 +22514,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -183, y: -401}
+  m_AnchoredPosition: {x: -179, y: -401}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2065343099
@@ -22564,8 +22564,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -22582,7 +22582,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 30
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -22610,7 +22610,7 @@ MonoBehaviour:
     spaceCount: 16
     wordCount: 16
     linkCount: 0
-    lineCount: 3
+    lineCount: 4
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
