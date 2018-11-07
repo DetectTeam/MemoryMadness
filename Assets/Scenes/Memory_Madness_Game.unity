@@ -3525,7 +3525,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1458794429249684, guid: 091006bb808ea4866890a01bf0fe6322, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4565685280606086, guid: 091006bb808ea4866890a01bf0fe6322, type: 2}
       propertyPath: m_LocalScale.x
@@ -3674,6 +3674,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4565685280606086, guid: 091006bb808ea4866890a01bf0fe6322,
     type: 2}
   m_PrefabInternal: {fileID: 234592412}
+--- !u!1 &234592414 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1458794429249684, guid: 091006bb808ea4866890a01bf0fe6322,
+    type: 2}
+  m_PrefabInternal: {fileID: 234592412}
 --- !u!1 &241129526
 GameObject:
   m_ObjectHideFlags: 0
@@ -3790,13 +3795,13 @@ MonoBehaviour:
       winCount: 3
       memoryPhase: {fileID: 406808008}
       level: {fileID: 1163880714}
-      isMatch: 1
+      isMatch: 0
     - name: Level 12
       gameType: 1
       winCount: 3
-      memoryPhase: {fileID: 888301986}
+      memoryPhase: {fileID: 234592414}
       level: {fileID: 36224072}
-      isMatch: 1
+      isMatch: 0
     - name: Final Level Stage 1
       gameType: 0
       winCount: 0
@@ -15500,7 +15505,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1458794429249684, guid: 091006bb808ea4866890a01bf0fe6322, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4565685280606086, guid: 091006bb808ea4866890a01bf0fe6322, type: 2}
       propertyPath: m_LocalScale.x
@@ -33919,7 +33924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2004355214
 RectTransform:
   m_ObjectHideFlags: 0
