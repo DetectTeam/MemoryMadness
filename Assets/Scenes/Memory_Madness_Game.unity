@@ -1850,7 +1850,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1458794429249684, guid: 091006bb808ea4866890a01bf0fe6322, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4565685280606086, guid: 091006bb808ea4866890a01bf0fe6322, type: 2}
       propertyPath: m_LocalScale.x
@@ -1979,7 +1979,7 @@ RectTransform:
   - {fileID: 725327763}
   - {fileID: 2065343098}
   m_Father: {fileID: 2089274044}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2486,6 +2486,12 @@ MonoBehaviour:
       memoryPhase: {fileID: 202341547}
       level: {fileID: 680270779}
       isMatch: 0
+    - name: Level 11 Stage 1
+      gameType: 0
+      winCount: 0
+      memoryPhase: {fileID: 1502623932}
+      level: {fileID: 2080617474}
+      isMatch: 1
     - name: Final Level Stage 1
       gameType: 0
       winCount: 0
@@ -2721,7 +2727,7 @@ RectTransform:
   - {fileID: 1373285435}
   - {fileID: 655927754}
   m_Father: {fileID: 2089274044}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -8547,7 +8553,7 @@ RectTransform:
   - {fileID: 1091269280}
   - {fileID: 571041412}
   m_Father: {fileID: 2089274044}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -20230,7 +20236,7 @@ RectTransform:
   m_LocalScale: {x: 1.1875, y: 1.175, z: 1}
   m_Children: []
   m_Father: {fileID: 2089274044}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -26527,7 +26533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ea4d78b80234f908f94b20eafe289f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelsPerStage: 10
+  levelsPerStage: 11
   numberOfStages: 2
   currentLevel: 0
   currentStage: 0
@@ -31934,7 +31940,7 @@ Prefab:
     - target: {fileID: 224573938845110154, guid: 5ba8af2d076b44f01b6d5559e82bf7e2,
         type: 2}
       propertyPath: m_RootOrder
-      value: 23
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 224573938845110154, guid: 5ba8af2d076b44f01b6d5559e82bf7e2,
         type: 2}
@@ -32946,6 +32952,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224573938845110154, guid: 5ba8af2d076b44f01b6d5559e82bf7e2,
     type: 2}
   m_PrefabInternal: {fileID: 2080617472}
+--- !u!1 &2080617474 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1567399887390310, guid: 5ba8af2d076b44f01b6d5559e82bf7e2,
+    type: 2}
+  m_PrefabInternal: {fileID: 2080617472}
 --- !u!1 &2082198635 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1258271593873482, guid: aba4af737b9d64e8da52c4c7ce6a4692,
@@ -32968,7 +32979,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2089274044
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32998,11 +33009,11 @@ RectTransform:
   - {fileID: 889014755}
   - {fileID: 1070963834}
   - {fileID: 680270778}
+  - {fileID: 2080617473}
   - {fileID: 220314349}
   - {fileID: 1247521996}
   - {fileID: 270616640}
   - {fileID: 548647234}
-  - {fileID: 2080617473}
   m_Father: {fileID: 425608680}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
