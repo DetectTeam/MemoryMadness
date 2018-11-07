@@ -7,20 +7,42 @@ namespace MemoryMadness
 {
 	public class MemorySymbols : MonoBehaviour 
 	{
+
+		//Boolean used to set whether a symbol is correct or not
 		[SerializeField] private bool isCorrect;
+		public bool IsCorrect { get{ return isCorrect; } set{ isCorrect = value; } }
+
+		//ITween shake amount
 		[SerializeField] private Vector3 shakeAmount;
+		public Vector3 ShakeAmount { get{ return shakeAmount; } set{ shakeAmount = value; } }
+
+		//Itween shake duration
 		[SerializeField] private float shakeTime;
+		public float ShakeTime { get{ return shakeTime; } set{ shakeTime = value; } }
 
+		//Error Image displayed when user clicks on symbol and isCorrect is false
 		[SerializeField] private GameObject errorImage;
+		public GameObject ErrorImage { get{ return errorImage; } set{ errorImage = value; } }
 
-
+		//Success Image displayed when user clicks on symbol and isCorrect is true
 		[SerializeField] private GameObject successImage;
+		public GameObject SuccessImage { get{ return successImage; } set{ successImage = value; } }
+
+		//Symbol Background colour
 		[SerializeField] private GameObject backgroundColor;
+		public GameObject BackgroundColor { get{ return backgroundColor; } set{ backgroundColor = value; } }
+
+		//Symbols rune or symbol
 		[SerializeField] private GameObject rune;
+		public GameObject Rune { get{ return rune; } set{ rune = value; } }
 
+		//Button component of symbol
 		[SerializeField] private GameObject button;
+		public GameObject Button { get{ return button; } set{ button = value; } }
 
+		//The symbols position on the game grid . A value between 1 - 20 usually
 		[SerializeField] private int slotNumber;
+		public int SlotNumber{ get{ return slotNumber; } set{ slotNumber = value; } }
 
 		// Use this for initialization
 		
@@ -50,13 +72,15 @@ namespace MemoryMadness
 				rune.SetActive( false );
 				button.SetActive( false );
 
-				Messenger.Broadcast( "IncrementButtonCount" );
+				Messenger.Broadcast( "IncrementButtonCount" ); //Request to Increment the correct selection count
+				//Messenger.Broadcast( "CheckForWin" );  //Request to check for a win 
 			}
 			else
 			{
 				ShakePosition();
 				errorImage.SetActive( true );
 				button.SetActive( false );
+				//Messenger.Broadcast( "DecrementLife" );
 			}
 		}
 

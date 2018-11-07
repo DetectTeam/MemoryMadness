@@ -33,6 +33,8 @@ namespace MemoryMadness
 		[SerializeField] private bool isMatch;
 		public bool IsMatch { get{ return isMatch; } set{  isMatch = value; } }
 
+
+
 	}
 
 	[System.Serializable]
@@ -44,8 +46,6 @@ namespace MemoryMadness
 		public Level[] Level { get{ return level; } set{  level = value; } }
 	}
 
-
-	
 
 	public class BoardManager : MonoBehaviour 
 	{
@@ -61,12 +61,17 @@ namespace MemoryMadness
 		[SerializeField] private float percentage = 65;
 		[SerializeField] private int currentPhase = 0;
 
+
+		[SerializeField] private int winCount;
+
+		public int WinCount { get{ return winCount; } set{ winCount = value; } }
+
 		public float Percentage { get{ return percentage; } set{ percentage = value; } }
-
-
 
 		private int levelToLoad = 0; 
 		private	int currentStage  = 0;
+
+		[SerializeField] private int lifeCount;
 
 
 		private void OnEnable()
@@ -74,7 +79,13 @@ namespace MemoryMadness
 			Messenger.AddListener( "LoadPhase" , LoadPhase );
 			Messenger.AddListener( "LoadLevel" , LoadLevel );
 			Messenger.AddListener( "IncrementButtonCount", IncrementButtonCount );
+			Messenger.AddListener( "DecrementLife" , DecrementLifeCount );
+			Messenger.AddListener( "CheckForWin", CheckWinStatus );
+			Messenger.AddListener( "Failure", Failure );
+			Messenger.AddListener( "ChangeLevel", ChangeLevel );
 			//StartCoroutine( LoadLevel() );
+
+			
 		}
 
 		private void OnDisable()
@@ -82,6 +93,10 @@ namespace MemoryMadness
 			Messenger.RemoveListener( "LoadPhase" , LoadPhase );
 			Messenger.RemoveListener( "LoadLevel" , LoadLevel );
 			Messenger.RemoveListener( "IncrementButtonCount", IncrementButtonCount );
+			Messenger.RemoveListener( "DecrementLife" , DecrementLifeCount );
+			Messenger.RemoveListener( "CheckForWin", CheckWinStatus );
+			Messenger.RemoveListener( "Failure", Failure );
+			Messenger.RemoveListener( "ChangeLevel", ChangeLevel );
 		}
 
 		// Use this for initialization
@@ -92,6 +107,7 @@ namespace MemoryMadness
 			{
 				levelToLoad = PlayerPrefs.GetInt( "CurrentLevel" );
 			}
+
 		}
 
 
@@ -106,6 +122,8 @@ namespace MemoryMadness
 
 			//Get current Stage
 			currentStage = PlayerPrefs.GetInt( "CurrentStage" );
+
+		
 
 			Debug.Log( "Current Stage " + currentStage );
 		
@@ -134,6 +152,8 @@ namespace MemoryMadness
 		{
 			StartCoroutine( IELoadLevel() );
 		}
+
+
 		private IEnumerator IELoadLevel()
 		{
 			
@@ -154,6 +174,9 @@ namespace MemoryMadness
 
 				//Broadcast Type of Game to relevant listeners...
 				Messenger.Broadcast<GameType>( "GameType" , stages[ currentStage ].Level[ levelToLoad ].GameType );
+			    
+				if( stages[ currentStage ].Level[ levelToLoad ].GameType == GameType.MulitMatch )
+					lifeCount = stages[ currentStage ].Level[ levelToLoad ].WinCount;
 			}
 		}
 
@@ -190,7 +213,7 @@ namespace MemoryMadness
 
 			}
 
-			Invoke( "ChangeLevel", 3 );
+			ChangeLevel();
 				
 		}
 
@@ -199,28 +222,58 @@ namespace MemoryMadness
 			selectedButtonCount++;
 		}
 
+		public void DecrementLifeCount()
+		{
+			
+			lifeCount --;
+			Messenger.Broadcast( "RemoveHeart" );
+
+			if( lifeCount == 0 )
+			{
+				endLevelBackground.SetActive( true );
+				Failure(); //Request failure message
+				ChangeLevel(); //Request level change
+
+			}
+		}
+
+
+		public void CheckWinStatus()
+		{
+			if( stages[ currentStage ].Level[ levelToLoad ].GameType == GameType.SameDifferent )
+			{
+
+			}
+			else
+			{
+				CheckForWinMM();
+			}
+		}
+
 		public void CheckForWinMM( )
 		{
 			
 			Debug.Log( selectedButtonCount + " " + stages[ currentStage ].Level[ levelToLoad ].WinCount );
-			endLevelBackground.SetActive( true );
+			
 			
 			if( selectedButtonCount == stages[ currentStage ].Level[ levelToLoad ].WinCount )
 			{
+				endLevelBackground.SetActive( true );
 				Success();
+				ChangeLevel();
+				selectedButtonCount = 0;
 			}
-			else
-			{
-				Failure();
-			}
-
-			selectedButtonCount = 0;
-
-			Invoke( "ChangeLevel", 3 );
+			
 		}
 
 		private void ChangeLevel()
 		{
+			StartCoroutine( IEChangeLevel() );
+		}
+		private IEnumerator IEChangeLevel()
+		{
+			yield return new WaitForSeconds( 3.0f );
+			
 			Messenger.Broadcast( "LoadNextLevel" );
 			//resultPanel.SetActive( true );
 			
@@ -235,6 +288,7 @@ namespace MemoryMadness
 
 		private void Success()
 		{
+			
 			successMessage.SetActive( true );
 		}
 
@@ -247,9 +301,7 @@ namespace MemoryMadness
 		{
 			return  100;//Random.Range( 0, 100 ); 
 		}
-
-		
-		
+	
 	}
 
 }

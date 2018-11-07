@@ -8,10 +8,19 @@ namespace MemoryMadness
 	public class LevelContainer : MonoBehaviour 
 	{
 		[SerializeField] private GameObject[] rows;
+	//	[SerializeField] private GameObject gameManager;
+
+	//	[SerializeField] private BoardManager boardManager;
+
+		[SerializeField] private int heartCount;
+
+		private const string currentStageStr = "CurrentStage";
 
 		void OnEnable()
 		{
 			StartCoroutine( Sequence() );
+
+			
 		}
 
 		void OnDisable()
@@ -19,12 +28,7 @@ namespace MemoryMadness
 			gameObject.SetActive( false );
 		}
 
-		// Use this for initialization
-		void Start () 
-		{
-			//StartCoroutine( Sequence() );
-		}
-
+		
 		private IEnumerator Sequence()
 		{
 			int count = 0;
@@ -40,6 +44,7 @@ namespace MemoryMadness
 
 			
 		}
+
 		
 		
 	}
