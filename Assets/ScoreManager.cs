@@ -9,8 +9,9 @@ public class ScoreManager : MonoBehaviour
 
 	[SerializeField] private TextMeshProUGUI scorePopUpText;
 	[SerializeField] private TextMeshProUGUI scoreText;
-
 	[SerializeField] private int score;
+	[SerializeField] private Color successColour;
+	[SerializeField] private Color failureColour;
 
 	
 	private void OnEnable()
@@ -69,15 +70,13 @@ public class ScoreManager : MonoBehaviour
 
 		iTween.MoveBy( clone, iTween.Hash(
      		"y"   , 100f,
-     		"time", 0.5f
+     		"time", 0.65f
  		));
 
-		iTween.FadeTo( clone, iTween.Hash(
-			"alpha", "1f",
-			"time", "2f",
-			"easetype", iTween.EaseType.easeOutBounce,
-			"delay", "1f"
-		 ));
+		yield return new WaitForSeconds( 0.75f );
+		Destroy( clone );
+
+		
  
 	}
 		
