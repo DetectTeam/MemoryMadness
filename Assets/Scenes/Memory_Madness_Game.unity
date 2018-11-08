@@ -3688,6 +3688,7 @@ GameObject:
   m_Component:
   - component: {fileID: 241129527}
   - component: {fileID: 241129528}
+  - component: {fileID: 241129529}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3842,6 +3843,18 @@ MonoBehaviour:
   currentPhase: 0
   winCount: 0
   lifeCount: 0
+--- !u!114 &241129529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 241129526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b69f7998334cd4f95b4f31b975b3dbbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePopUpText: {fileID: 0}
 --- !u!1 &247030211 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1567399887390310, guid: 5ba8af2d076b44f01b6d5559e82bf7e2,
@@ -18075,7 +18088,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1567399887390310, guid: 5ba8af2d076b44f01b6d5559e82bf7e2, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114069712176900918, guid: 5ba8af2d076b44f01b6d5559e82bf7e2,
         type: 2}
@@ -20845,7 +20858,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1567399887390310, guid: 5ba8af2d076b44f01b6d5559e82bf7e2, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114069712176900918, guid: 5ba8af2d076b44f01b6d5559e82bf7e2,
         type: 2}
@@ -36544,7 +36557,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2004355214
 RectTransform:
   m_ObjectHideFlags: 0
