@@ -47,12 +47,12 @@ namespace MemoryMadness
 
 			Debug.Log( "Current Number of Hearts To Display is: " + heartCount );
 
-			for( int i = 0; i < heartCount; i++ )
+			for( int i = 0; i <= heartCount; i++ )
 			{
 				hearts[ i ].SetActive( true );
 			}
 
-			ActiveHearts = heartCount;
+			ActiveHearts =  3; //heartCount;
 			
 		}
 

@@ -32,7 +32,7 @@ namespace MemoryMadness
 			else
 			{
 				buttons[0].SetActive( false );
-				buttons[1].SetActive( true );
+				//buttons[1].SetActive( true );
 			}
 		}
 	}

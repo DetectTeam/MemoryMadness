@@ -8,7 +8,6 @@ namespace MemoryMadness
 
 	public class CountDown : MonoBehaviour 
 	{
-
 		[SerializeField] private int timeLeft;
 		[SerializeField] private TextMeshProUGUI timer;
 
@@ -20,24 +19,26 @@ namespace MemoryMadness
 		private int tmpTime;
 
 		
+		private void OnEnable()
+		{
+			Messenger.AddListener( "StopCountDown", StopTimer );
+
+			//timeLeft = 4;
+			timer.text = timeLeft.ToString();
+			StartCoroutine( "Sequence" );
+		}
+
+		private void OnDisable()
+		{
+			Messenger.RemoveListener( "StopCountDown", StopTimer );
+			timeLeft = tmpTime;
+		}
+
 		private void Start () 
 		{
 			//StartCoroutine( Sequence() );
 			tmpTime = timeLeft;
 		
-		}
-
-		private void OnEnable()
-		{
-			//timeLeft = 4;
-			timer.text = timeLeft.ToString();
-			StartCoroutine( "Sequence" );
-
-		}
-
-		private void OnDisable()
-		{
-			timeLeft = tmpTime;
 		}
 
 		private IEnumerator Sequence()

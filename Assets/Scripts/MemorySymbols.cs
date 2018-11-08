@@ -73,14 +73,14 @@ namespace MemoryMadness
 				button.SetActive( false );
 
 				Messenger.Broadcast( "IncrementButtonCount" ); //Request to Increment the correct selection count
-				//Messenger.Broadcast( "CheckForWin" );  //Request to check for a win 
+				Messenger.Broadcast( "CheckForWin" );  //Request to check for a win 
 			}
 			else
 			{
 				ShakePosition();
 				errorImage.SetActive( true );
 				button.SetActive( false );
-				//Messenger.Broadcast( "DecrementLife" );
+				Messenger.Broadcast( "DecrementLife" );
 			}
 		}
 

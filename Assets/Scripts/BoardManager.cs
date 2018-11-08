@@ -113,6 +113,7 @@ namespace MemoryMadness
 
 		private void LoadPhase()
 		{
+			selectedButtonCount = 0;
 			StartCoroutine( IELoadPhase() );
 		}
 
@@ -218,9 +219,11 @@ namespace MemoryMadness
 		}
 
 		public void IncrementButtonCount()
-		{
+		{	
 			selectedButtonCount++;
+			Debug.Log( "INCREMENT ::: " + selectedButtonCount );
 		}
+
 
 		public void DecrementLifeCount()
 		{
@@ -230,6 +233,8 @@ namespace MemoryMadness
 
 			if( lifeCount == 0 )
 			{
+				
+				Messenger.Broadcast( "StopCountDown" );
 				endLevelBackground.SetActive( true );
 				Failure(); //Request failure message
 				ChangeLevel(); //Request level change
@@ -253,11 +258,12 @@ namespace MemoryMadness
 		public void CheckForWinMM( )
 		{
 			
-			Debug.Log( selectedButtonCount + " " + stages[ currentStage ].Level[ levelToLoad ].WinCount );
+			Debug.Log( "Check for win : " + selectedButtonCount + " " + stages[ currentStage ].Level[ levelToLoad ].WinCount );
 			
 			
 			if( selectedButtonCount == stages[ currentStage ].Level[ levelToLoad ].WinCount )
 			{
+				Messenger.Broadcast( "StopCountDown" );
 				endLevelBackground.SetActive( true );
 				Success();
 				ChangeLevel();
