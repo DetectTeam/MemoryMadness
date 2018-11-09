@@ -817,6 +817,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2010424276}
   - component: {fileID: 2010424275}
+  - component: {fileID: 2010424277}
   m_Layer: 0
   m_Name: ScoreManager
   m_TagString: Untagged
@@ -835,8 +836,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69f7998334cd4f95b4f31b975b3dbbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scorePopUpText: {fileID: 1673488669740298, guid: 84cc01bc3ef974198b80764b166e526d,
-    type: 2}
   scoreText: {fileID: 1152544592}
   score: 0
 --- !u!4 &2010424276
@@ -852,6 +851,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2010424277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2010424274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fd58e54837124b1885fb2d0e6025023, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effect: {fileID: 1946795097543306, guid: ba79216c9804843588effb73868077ae, type: 2}
+  target: {fileID: 1152544590}
 --- !u!1001 &2127967189
 Prefab:
   m_ObjectHideFlags: 0

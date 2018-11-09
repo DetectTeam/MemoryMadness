@@ -66,25 +66,28 @@ namespace MemoryMadness
 		{
 			if( isCorrect )
 			{
-				PunchScale();
+				//PunchScale();
 				successImage.SetActive( true );
 				backgroundColor.SetActive( false );
 				rune.SetActive( false );
-				button.SetActive( false );
+				//button.SetActive( false );
 
-			//	Messenger.Broadcast( "IncrementButtonCount" ); //Request to Increment the correct selection count
-			//	Messenger.Broadcast( "CheckForWin" );  //Request to check for a win 
+				//Messenger.Broadcast( "IncrementButtonCount" ); //Request to Increment the correct selection count
+				//Messenger.Broadcast( "CheckForWin" );  //Request to check for a win 
 				Messenger.Broadcast<int>( "IncreaseScore" , 100 );
+				
 			}
 			else
 			{
 				ShakePosition();
 				errorImage.SetActive( true );
-				button.SetActive( false );
+				//button.SetActive( false );
 				//Messenger.Broadcast( "DecrementLife" );
 				Messenger.Broadcast<int>( "DecreaseScore" , 100 );
-				Messenger.Broadcast<GameObject>( "FloatScore", gameObject );
+			
 			}
+
+			Messenger.Broadcast( "TriggerEffect" ); //ITween PunchScale effect . Used on score text
 		}
 
 
