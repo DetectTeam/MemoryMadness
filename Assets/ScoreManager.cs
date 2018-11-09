@@ -14,6 +14,7 @@ public class ScoreManager : MonoBehaviour
 	{
 		Messenger.AddListener<int>( "IncreaseScore" , IncrementScore );
 		Messenger.AddListener<int>( "DecreaseScore" , DecrementScore );
+		
 	}
 
 	private void OnDisable()
@@ -22,7 +23,6 @@ public class ScoreManager : MonoBehaviour
 		Messenger.RemoveListener<int>( "DecreaseScore" , DecrementScore );
 	}
 
-	
 	private void IncrementScore( int amt )
 	{	
 		score = score + amt;
@@ -40,15 +40,15 @@ public class ScoreManager : MonoBehaviour
 	{
 		if( score < 0 )
 		{
-			scoreText.text = "-000" + Mathf.Abs(score).ToString();
+			scoreText.text = "-0" + Mathf.Abs(score).ToString();
 		}
 		else if( score > 0 )
 		{
-			scoreText.text = "000" + score.ToString();
+			scoreText.text = "0" + score.ToString();
 		} 
 		else if( score == 0 )
 		{
-			scoreText.text = "000000";
+			scoreText.text = "0000";
 		}
 			
 	}
