@@ -9,11 +9,14 @@ public class ScoreManager : MonoBehaviour
 
 	[SerializeField] private TextMeshProUGUI scoreText;
 	[SerializeField] private int score;
+
+	 List<float> listOfLevelTimes = new List<float>();
 	
 	private void OnEnable()
 	{
 		Messenger.AddListener<int>( "IncreaseScore" , IncrementScore );
 		Messenger.AddListener<int>( "DecreaseScore" , DecrementScore );
+		Messenger.AddListener<float>( "RecordLevelTime", AddLevelTime );
 		
 	}
 
@@ -21,6 +24,7 @@ public class ScoreManager : MonoBehaviour
 	{
 		Messenger.RemoveListener<int>( "IncreaseScore" , IncrementScore );
 		Messenger.RemoveListener<int>( "DecreaseScore" , DecrementScore );
+		Messenger.RemoveListener<float>( "RecordLevelTime", AddLevelTime );
 	}
 
 	private void IncrementScore( int amt )
@@ -51,6 +55,11 @@ public class ScoreManager : MonoBehaviour
 			scoreText.text = "0000";
 		}
 			
+	}
+
+	private void AddLevelTime(  float time )
+	{
+		listOfLevelTimes.Add( time );
 	}
 
 }

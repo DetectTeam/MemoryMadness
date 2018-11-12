@@ -8,7 +8,8 @@ namespace MemoryMadness
 
 	public class CountDown : MonoBehaviour 
 	{
-		[SerializeField] private int timeLeft;
+		[SerializeField] private float totalTime = 30;
+		[SerializeField] private float timeLeft;
 		[SerializeField] private TextMeshProUGUI timer;
 
 		[SerializeField] private GameObject game;
@@ -16,7 +17,10 @@ namespace MemoryMadness
 
 		[SerializeField] private bool isFinished = false;
 
-		private int tmpTime;
+
+		private float tmpTime;
+
+
 
 		
 		private void OnEnable()
@@ -66,6 +70,7 @@ namespace MemoryMadness
 		public void StopTimer()
 		{
 			isFinished = true;
+			Debug.Log( totalTime - timeLeft );
 		}
 		
 		
