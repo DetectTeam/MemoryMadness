@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1680818037926242}
+  m_IsPrefabAsset: 1
+--- !u!1 &1680818037926242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 224036364955188348}
+  - component: {fileID: 114185476590715382}
+  m_Layer: 5
+  m_Name: ColourPicker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &114185476590715382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1680818037926242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f1ca9c0aee894fb78d76e2439791135, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colourList:
+  - {r: 0.09411765, g: 0.50980395, b: 0.85882354, a: 1}
+  - {r: 0.39607844, g: 0.24313726, b: 0.09411765, a: 1}
+  - {r: 0.9607843, g: 0.6862745, b: 0.050980393, a: 1}
+  - {r: 0.09411765, g: 0.50980395, b: 0.2509804, a: 1}
+  - {r: 0.85882354, g: 0.09411765, b: 0.827451, a: 1}
+  - {r: 0.94509804, g: 0.9607843, b: 0.08627451, a: 1}
+  - {r: 0.4509804, g: 0.7921569, b: 0.39215687, a: 1}
+  - {r: 0.93333334, g: 0.84313726, b: 0.47058824, a: 1}
+  - {r: 0.42745098, g: 0.7019608, b: 0.93333334, a: 1}
+  - {r: 0.85882354, g: 0.09411765, b: 0.15294118, a: 1}
+  - {r: 0.75686276, g: 0.8745098, b: 0.972549, a: 1}
+  - {r: 0.47058824, g: 0.078431375, b: 0.8117647, a: 1}
+  - {r: 0.69803923, g: 0.69803923, b: 0.69803923, a: 1}
+  - {r: 0.951, g: 0.69803923, b: 0.698, a: 1}
+  usedColourList: []
+  selectedColour: {r: 0, g: 0, b: 0, a: 0}
+--- !u!224 &224036364955188348
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1680818037926242}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
