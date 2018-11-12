@@ -18,7 +18,7 @@ namespace MemoryMadness
 
 		void OnEnable()
 		{
-			StartCoroutine( Sequence() );
+			//StartCoroutine( Sequence() );
 
 			
 		}

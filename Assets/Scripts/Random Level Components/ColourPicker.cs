@@ -8,6 +8,17 @@ using System.Security.Cryptography;
 	{
 
 		[SerializeField] private List<Color> colourList = new List<Color>();
+		public List<Color> ColourList { get{ return colourList; } } 
+
+		private void OnEnable()
+		{
+			GetColourList();
+		}
+
+		private void Start()
+		{
+			GetColourList();
+		}
 	
 		public List<Color> GetColourList()
 		{

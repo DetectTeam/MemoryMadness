@@ -8,6 +8,16 @@ public class ShapePicker : MonoBehaviour
 
 		[SerializeField] private string name;
 		[SerializeField] private List<Sprite> imageList = new List<Sprite>();
+		public List<Sprite> ImageList { get{ return ImageList; } } 
+		private void OnEnable()
+		{
+			GetShapeList();
+		}
+
+		private void Start()
+		{
+			GetShapeList();
+		}
 
 		public List<Sprite> GetShapeList()
 		{

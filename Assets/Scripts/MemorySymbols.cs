@@ -66,7 +66,7 @@ namespace MemoryMadness
 		{
 			if( isCorrect )
 			{
-				//PunchScale();
+				PunchScale();
 				successImage.SetActive( true );
 				backgroundColor.SetActive( false );
 				rune.SetActive( false );
