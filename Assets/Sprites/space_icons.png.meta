@@ -27,6 +27,7 @@ TextureImporter:
     21300044: space_icons_22
     21300046: space_icons_23
     21300048: space_icons_24
+    21300050: space_icons_25
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -145,12 +146,12 @@ TextureImporter:
       name: space_icons_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2163
-        width: 364
-        height: 333
+        x: 4
+        y: 2177
+        width: 310
+        height: 319
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,12 +166,12 @@ TextureImporter:
       name: space_icons_1
       rect:
         serializedVersion: 2
-        x: 511
-        y: 2175
-        width: 421
-        height: 321
+        x: 553
+        y: 2203
+        width: 310
+        height: 293
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -185,12 +186,12 @@ TextureImporter:
       name: space_icons_2
       rect:
         serializedVersion: 2
-        x: 1037
-        y: 2184
-        width: 405
-        height: 312
+        x: 1121
+        y: 2205
+        width: 269
+        height: 291
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -210,7 +211,7 @@ TextureImporter:
         width: 384
         height: 312
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -225,12 +226,12 @@ TextureImporter:
       name: space_icons_4
       rect:
         serializedVersion: 2
-        x: 2144
-        y: 2171
-        width: 360
-        height: 325
+        x: 2207
+        y: 2199
+        width: 297
+        height: 297
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -250,7 +251,7 @@ TextureImporter:
         width: 327
         height: 426
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -265,12 +266,12 @@ TextureImporter:
       name: space_icons_6
       rect:
         serializedVersion: 2
-        x: 486
-        y: 1595
-        width: 409
-        height: 422
+        x: 550
+        y: 1656
+        width: 301
+        height: 290
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -285,12 +286,12 @@ TextureImporter:
       name: space_icons_7
       rect:
         serializedVersion: 2
-        x: 1012
-        y: 1607
-        width: 447
-        height: 405
+        x: 1102
+        y: 1645
+        width: 310
+        height: 312
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -305,12 +306,12 @@ TextureImporter:
       name: space_icons_8
       rect:
         serializedVersion: 2
-        x: 1555
-        y: 1611
-        width: 438
-        height: 406
+        x: 1655
+        y: 1656
+        width: 301
+        height: 290
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -325,12 +326,12 @@ TextureImporter:
       name: space_icons_9
       rect:
         serializedVersion: 2
-        x: 2094
-        y: 1620
-        width: 410
-        height: 413
+        x: 2204
+        y: 1652
+        width: 300
+        height: 299
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -350,7 +351,7 @@ TextureImporter:
         width: 348
         height: 409
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -365,12 +366,12 @@ TextureImporter:
       name: space_icons_11
       rect:
         serializedVersion: 2
-        x: 486
-        y: 1068
-        width: 409
-        height: 372
+        x: 551
+        y: 1098
+        width: 308
+        height: 297
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -390,7 +391,7 @@ TextureImporter:
         width: 447
         height: 389
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -410,7 +411,7 @@ TextureImporter:
         width: 446
         height: 405
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -425,12 +426,12 @@ TextureImporter:
       name: space_icons_14
       rect:
         serializedVersion: 2
-        x: 2127
-        y: 1056
-        width: 377
-        height: 401
+        x: 2206
+        y: 1098
+        width: 298
+        height: 301
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -442,35 +443,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: space_icons_15
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 454
-        width: 314
-        height: 460
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ffb4a54e0107c46069984aa826674ce8
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: space_icons_16
       rect:
         serializedVersion: 2
-        x: 431
-        y: 471
-        width: 472
-        height: 447
+        x: 24
+        y: 549
+        width: 254
+        height: 296
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -485,12 +466,12 @@ TextureImporter:
       name: space_icons_17
       rect:
         serializedVersion: 2
-        x: 999
-        y: 479
-        width: 485
-        height: 468
+        x: 1101
+        y: 536
+        width: 310
+        height: 319
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -505,12 +486,12 @@ TextureImporter:
       name: space_icons_18
       rect:
         serializedVersion: 2
-        x: 1563
-        y: 492
-        width: 455
-        height: 451
+        x: 1653
+        y: 535
+        width: 310
+        height: 319
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -525,12 +506,12 @@ TextureImporter:
       name: space_icons_19
       rect:
         serializedVersion: 2
-        x: 2114
-        y: 525
-        width: 390
-        height: 422
+        x: 2200
+        y: 535
+        width: 304
+        height: 309
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -546,11 +527,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 373
-        height: 413
+        y: 33
+        width: 294
+        height: 294
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -565,12 +546,12 @@ TextureImporter:
       name: space_icons_21
       rect:
         serializedVersion: 2
-        x: 486
+        x: 552
         y: 0
-        width: 430
-        height: 417
+        width: 310
+        height: 319
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -585,12 +566,12 @@ TextureImporter:
       name: space_icons_22
       rect:
         serializedVersion: 2
-        x: 991
+        x: 1105
         y: 0
-        width: 493
-        height: 413
+        width: 310
+        height: 304
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -605,12 +586,12 @@ TextureImporter:
       name: space_icons_23
       rect:
         serializedVersion: 2
-        x: 1538
+        x: 1655
         y: 0
-        width: 476
-        height: 413
+        width: 310
+        height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -625,18 +606,38 @@ TextureImporter:
       name: space_icons_24
       rect:
         serializedVersion: 2
-        x: 2131
+        x: 2222
         y: 0
-        width: 373
-        height: 408
+        width: 282
+        height: 292
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: d0ca6c8bcaf624d9d98839efbba06640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: space_icons_25
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 537
+        width: 310
+        height: 310
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff4c4e602691b450a9b2ffcc534c2053
       vertices: []
       indices: 
       edges: []
