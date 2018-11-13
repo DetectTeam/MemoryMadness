@@ -28,6 +28,8 @@ namespace MemoryMadness
 		[SerializeField] private GameObject successImage;
 		public GameObject SuccessImage { get{ return successImage; } set{ successImage = value; } }
 
+		[SerializeField] private GameObject successColor;
+
 		//Symbol Background colour
 		[SerializeField] private GameObject backgroundColor;
 		public GameObject BackgroundColor { get{ return backgroundColor; } set{ backgroundColor = value; } }
@@ -67,9 +69,10 @@ namespace MemoryMadness
 			if( isCorrect )
 			{
 				PunchScale();
+				successColor.SetActive( true );
 				successImage.SetActive( true );
-				backgroundColor.SetActive( false );
-				rune.SetActive( false );
+				//backgroundColor.SetActive( false );
+				//rune.SetActive( false );
 				button.SetActive( false );
 
 				Messenger.Broadcast( "IncrementButtonCount" ); //Request to Increment the correct selection count
@@ -107,6 +110,7 @@ namespace MemoryMadness
 
 		private void Reset()
 		{
+			successColor.SetActive( false );
 			successImage.SetActive( false ); 
 			errorImage.SetActive( false );
 			backgroundColor.SetActive( true );

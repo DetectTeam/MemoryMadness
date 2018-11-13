@@ -192,10 +192,10 @@ TextureImporter:
       name: shapes_sprite_sheet_3
       rect:
         serializedVersion: 2
-        x: 746
+        x: 768
         y: 756
-        width: 225
-        height: 236
+        width: 184
+        height: 227
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,10 +212,10 @@ TextureImporter:
       name: shapes_sprite_sheet_4
       rect:
         serializedVersion: 2
-        x: 759
-        y: 499
-        width: 229
-        height: 213
+        x: 772
+        y: 510
+        width: 204
+        height: 198
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
