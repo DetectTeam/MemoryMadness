@@ -8,7 +8,7 @@ namespace MemoryMadness
 {
 	public class RandomLevelGenerator : MonoBehaviour 
 	{
-
+   
 		[SerializeField] private ColourPicker colorPicker;
 		[SerializeField] private ShapePicker namedShapePicker;
 		[SerializeField] private ShapePicker unamedShapePicker;
@@ -19,7 +19,10 @@ namespace MemoryMadness
 		[SerializeField] private List<Sprite> unamedShapes;
 		[SerializeField] private List<GameObject> cloneSymbols;
 
+		[SerializeField] private List<GameObject> memoryPhaseSymbols;
 		[SerializeField] private GameObject symbolPrefab;
+
+	     
 		
 		// Use this for initialization
 		
@@ -29,8 +32,8 @@ namespace MemoryMadness
 			Debug.Log( "OnEnable Function Called..." );
 			//LoadLists();
 			//CreateSymbols();
-			if( cloneSymbols.Count > 0 )
-				UpdateSymbols();
+			SetupSymbols();
+			
 		}
 
 		private void OnDisable()
@@ -46,8 +49,7 @@ namespace MemoryMadness
 			LoadLists();
 			InitSymbols();
 			
-			if( cloneSymbols.Count > 0 )
-				UpdateSymbols();
+			SetupSymbols();
 		}
 
 		private void LoadLists()
@@ -77,6 +79,15 @@ namespace MemoryMadness
 			}
 		}
 
+		private void SetupSymbols()
+		{
+			if( cloneSymbols.Count > 0 )
+			{
+				UpdateSymbols();
+				GenerateMemoryPhaseSymbols();
+			}
+		}
+
 		private void UpdateSymbols()
 		{
 			for( int i = 0; i < cloneSymbols.Count; i++ )
@@ -89,6 +100,28 @@ namespace MemoryMadness
 
 				cloneSymbols[i].transform.parent = anchors[ i ].transform.parent;
 			}
+		}
+
+		private void GenerateMemoryPhaseSymbols()
+		{
+			GameObject randomSymbol;
+			int memPhaseSymbolCount = 3;
+			//Randomly select 2 - 5 ( depending on which stage we are on ) symbols from the clone list
+			//ie the list of symbols that will be displayed on the game screen
+			if( memoryPhaseSymbols.Count > 0 )
+				memoryPhaseSymbols.Clear();
+
+			for( int i = 0; i < memPhaseSymbolCount; i++ )
+			{
+				randomSymbol = cloneSymbols[ Random.Range( 0, 19 ) ] ;
+				randomSymbol.GetComponent<MemorySymbols>().IsCorrect = true;
+				
+				memoryPhaseSymbols.Add( randomSymbol );
+			}	
+
+			//Store these symbols in a list. 
+
+			//Use that list to populate the memory phase page.
 		}
 
 		private void DisableSymbols()

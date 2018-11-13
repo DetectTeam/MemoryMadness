@@ -46,8 +46,6 @@ namespace MemoryMadness
 		[SerializeField] private int slotNumber;
 		public int SlotNumber{ get{ return slotNumber; } set{ slotNumber = value; } }
 
-		// Use this for initialization
-		
 		void OnEnable()
 		{
 			transform.localScale = new Vector3( 0.01f, 0.01f, 0.01f );

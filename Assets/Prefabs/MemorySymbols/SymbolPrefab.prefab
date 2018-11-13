@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bff118db82f94605b5604f1bd63b7cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCorrect: 1
+  isCorrect: 0
   shakeAmount: {x: 7.5, y: 7.5, z: 7.5}
   shakeTime: 0.75
   errorImage: {fileID: 1887254206531480}
