@@ -4,6 +4,28 @@ TextureImporter:
   fileIDToRecycleName:
     21300000: Shapes_Space_0
     21300002: Shapes_Space_1
+    21300004: Shapes_Space_2
+    21300006: Shapes_Space_3
+    21300008: Shapes_Space_4
+    21300010: Shapes_Space_5
+    21300012: Shapes_Space_6
+    21300014: Shapes_Space_7
+    21300016: Shapes_Space_8
+    21300018: Shapes_Space_9
+    21300020: Shapes_Space_10
+    21300022: Shapes_Space_11
+    21300024: Shapes_Space_12
+    21300026: Shapes_Space_13
+    21300028: Shapes_Space_14
+    21300030: Shapes_Space_15
+    21300032: Shapes_Space_16
+    21300034: Shapes_Space_17
+    21300036: Shapes_Space_18
+    21300038: Shapes_Space_19
+    21300040: Shapes_Space_20
+    21300042: Shapes_Space_21
+    21300044: Shapes_Space_22
+    21300046: Shapes_Space_23
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -123,9 +145,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 148
-        y: 2343
-        width: 315
-        height: 315
+        y: 2331
+        width: 320
+        height: 340
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,9 +165,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 692
-        y: 2339
-        width: 330
-        height: 329
+        y: 2333
+        width: 340
+        height: 340
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,6 +176,446 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 507a96c2f321742b5a15ac65ffbee93b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shapes_Space_2
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 2332
+        width: 323
+        height: 336
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c88b36a794a74fa5a81cec162cf502e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shapes_Space_3
+      rect:
+        serializedVersion: 2
+        x: 2353
+        y: 2333
+        width: 320
+        height: 340
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a69306090f03450eb354e4b26c1d711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shapes_Space_4
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 1767
+        width: 370
+        height: 370
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c082b78977055417785d1bdb940d5c85
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shapes_Space_5
+      rect:
+        serializedVersion: 2
+        x: 1240
+        y: 1781
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44ddd6817b9b7418c839c310f00db484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shapes_Space_6
+      rect:
+        serializedVersion: 2
+        x: 1789
+        y: 1773
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 060bb205927ef475c9fe6fbf705e46c1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shapes_Space_7
+      rect:
+        serializedVersion: 2
+        x: 2338
+        y: 1773
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea2d25390be29420188c4a78d919edd0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shapes_Space_8
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 1218
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e83a67968b0f74dd4be5b8a7a15668ac
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shapes_Space_9
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 1220
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca6bb29f69a6b4dc7a6ca90e2821bee3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shapes_Space_10
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 1224
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d4b2f32bfb304ecca590c3e5734f0da
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shapes_Space_11
+      rect:
+        serializedVersion: 2
+        x: 1790
+        y: 1221
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c004d9b6a29941c7b166b4d263e753f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shapes_Space_12
+      rect:
+        serializedVersion: 2
+        x: 2339
+        y: 1225
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7710763e706814f178a0ed624d263cd7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shapes_Space_13
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 1773
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28ee713c0cbe14eb49c73aef3ea69d61
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shapes_Space_14
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 664
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdb397357712f4ff18ad73eb135545e9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shapes_Space_15
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 668
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 017813ee83334432987df7e753859be0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shapes_Space_16
+      rect:
+        serializedVersion: 2
+        x: 1237
+        y: 668
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8085186733fa4e6bb74e59defcbe422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shapes_Space_17
+      rect:
+        serializedVersion: 2
+        x: 1787
+        y: 669
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 524bb2581c34944fcbc6c27cbe2c4614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shapes_Space_18
+      rect:
+        serializedVersion: 2
+        x: 2336
+        y: 665
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d106073d910f4431bec1c1832959a48
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shapes_Space_19
+      rect:
+        serializedVersion: 2
+        x: 2344
+        y: 111
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e234216d34dd4740a61ddf4427acaa7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shapes_Space_20
+      rect:
+        serializedVersion: 2
+        x: 1787
+        y: 109
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce33d1c2a960e4ddca5ad2a68ae085f1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shapes_Space_21
+      rect:
+        serializedVersion: 2
+        x: 1232
+        y: 120
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cf30e238302545ebb6f9bc4e91c3cf9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shapes_Space_22
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 112
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1056c03bab994950b253a46d48ea35c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shapes_Space_23
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 152
+        width: 370
+        height: 370
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec951db7d100b4e30a53dfc68947cd1c
       vertices: []
       indices: 
       edges: []

@@ -128,12 +128,12 @@ TextureImporter:
       name: Symbols2_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 0
-        width: 165
-        height: 227
+        x: 9
+        y: 49
+        width: 149
+        height: 171
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -148,12 +148,12 @@ TextureImporter:
       name: Symbols2_1
       rect:
         serializedVersion: 2
-        x: 180
-        y: 0
-        width: 165
-        height: 227
+        x: 175
+        y: 44
+        width: 164
+        height: 170
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,12 +168,12 @@ TextureImporter:
       name: Symbols2_2
       rect:
         serializedVersion: 2
-        x: 347
-        y: 0
-        width: 165
-        height: 227
+        x: 360
+        y: 17
+        width: 138
+        height: 210
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,11 +189,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 509
-        y: 0
-        width: 165
-        height: 227
+        y: 33
+        width: 183
+        height: 179
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -208,12 +208,12 @@ TextureImporter:
       name: Symbols2_4
       rect:
         serializedVersion: 2
-        x: 711
-        y: 0
-        width: 165
-        height: 227
+        x: 701
+        y: 24
+        width: 188
+        height: 168
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -229,11 +229,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 902
-        y: 0
+        y: 35
         width: 165
-        height: 227
+        height: 164
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -249,11 +249,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1088
-        y: 0
+        y: 26
         width: 165
-        height: 227
+        height: 177
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -268,12 +268,12 @@ TextureImporter:
       name: Symbols2_7
       rect:
         serializedVersion: 2
-        x: 1273
-        y: 0
+        x: 1289
+        y: 28
         width: 165
-        height: 227
+        height: 171
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

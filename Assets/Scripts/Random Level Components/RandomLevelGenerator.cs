@@ -83,7 +83,7 @@ namespace MemoryMadness
 			{
 				cloneSymbols[i].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = colorPicker.ColourList[ i ];
 				
-				cloneSymbols[i].transform.Find( "Rune" ).GetComponent<Image>().sprite = namedShapes[i];
+				cloneSymbols[i].transform.Find( "Rune" ).GetComponent<Image>().sprite = unamedShapes[i];
 
 				cloneSymbols[i].SetActive( true );
 
