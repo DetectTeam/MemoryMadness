@@ -71,7 +71,7 @@ namespace MemoryMadness
 				successImage.SetActive( true );
 				//backgroundColor.SetActive( false );
 				//rune.SetActive( false );
-				button.SetActive( false );
+				DisableButton();
 
 				Messenger.Broadcast( "IncrementButtonCount" ); //Request to Increment the correct selection count
 				Messenger.Broadcast( "CheckForWin" );  //Request to check for a win 
@@ -82,7 +82,7 @@ namespace MemoryMadness
 			{
 				ShakePosition();
 				errorImage.SetActive( true );
-				button.SetActive( false );
+				DisableButton();
 				Messenger.Broadcast( "DecrementLife" );
 				Messenger.Broadcast<int>( "DecreaseScore" , 100 );
 			
@@ -105,7 +105,14 @@ namespace MemoryMadness
 			iTween.ShakePosition( gameObject, shakeAmount, shakeTime );
 		}
 
-
+		public void EnableButton()
+		{
+			button.SetActive( true );  
+		}
+		public void DisableButton()
+		{
+			button.SetActive( false );
+		}
 		private void Reset()
 		{
 			successColor.SetActive( false );
@@ -113,7 +120,7 @@ namespace MemoryMadness
 			errorImage.SetActive( false );
 			backgroundColor.SetActive( true );
 			rune.SetActive( true );
-			button.SetActive( true );
+			EnableButton();
 		}
 		
 		

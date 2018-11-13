@@ -116,8 +116,11 @@ namespace MemoryMadness
 				randomSymbol = cloneSymbols[ Random.Range( 0, 19 ) ] ;
 				randomSymbol.GetComponent<MemorySymbols>().IsCorrect = true;
 				
-				memoryPhaseSymbols.Add( randomSymbol );
-			}	
+				memoryPhaseSymbols.Add( Instantiate( randomSymbol, randomSymbol.transform.position, Quaternion.identity ) );
+				memoryPhaseSymbols[i].GetComponent<MemorySymbols>().DisableButton();
+			}
+
+			
 
 			//Store these symbols in a list. 
 
