@@ -33,13 +33,17 @@ namespace MemoryMadness
 		[SerializeField] private List<Sprite> unamedShapes;
 		[SerializeField] private List<GameObject> cloneSymbols;
 
-		[SerializeField] private List<Symbol> memoryPhaseSymbols = new List<Symbol>();
+		[SerializeField] private List<GameObject> colourSwitchedSymbols;
+
+		[SerializeField] private List<Symbol> memoryPhaseSymbols;
 		public List<Symbol> MemoryPhaseSymbols { get{ return memoryPhaseSymbols; } }
 
 		[SerializeField] private GameObject symbolPrefab;
 
 		[SerializeField] private GameObject memoryPhaseContainer;
 		[SerializeField] private GameObject memorySymbolContainer;
+
+
 
 		// Use this for initialization
 		
@@ -48,7 +52,7 @@ namespace MemoryMadness
 			
 			Debug.Log( "OnEnable Function Called..." );
 			LoadLists();
-			//CreateSymbols();
+			
 			InitSymbols();
 			
 			//1 Setup symbols
@@ -113,6 +117,7 @@ namespace MemoryMadness
 			{
 				UpdateSymbols();
 				GenerateMemoryPhaseSymbols();
+				//ColourSwitchSymbols();
 			}
 		}
 
@@ -123,6 +128,8 @@ namespace MemoryMadness
 				cloneSymbols[i].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = colorPicker.ColourList[ i ];
 				
 				cloneSymbols[i].transform.Find( "Rune" ).GetComponent<Image>().sprite = unamedShapes[i];
+
+				cloneSymbols[i].transform.gameObject.GetComponent<MemorySymbols>().SlotNumber = ( i+1 );
 
 				cloneSymbols[i].SetActive( true );
 
@@ -150,8 +157,8 @@ namespace MemoryMadness
 
 				randomSymbol = cloneSymbols[ rand ] ;
 				var memorySymbolsScript = randomSymbol.GetComponent<MemorySymbols>();
-				cloneSymbols.RemoveAt( rand );
-				max--;
+				//cloneSymbols.RemoveAt( rand );
+				//max--;
 
 				Debug.Log( "New Symbol..." );
 				Symbol symbol = new Symbol();
@@ -170,6 +177,15 @@ namespace MemoryMadness
 			
 			}
 
+		}
+
+		private void ColourSwitchSymbols()
+		{
+			Debug.Log( "MPS " + memoryPhaseSymbols.Count );
+			for( int i = 0; i < memoryPhaseSymbols.Count; i++ )
+			{
+				 
+			}
 		}
 
 		private void DisableSymbols()

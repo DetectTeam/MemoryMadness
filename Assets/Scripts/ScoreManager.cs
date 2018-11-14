@@ -42,15 +42,12 @@ public class ScoreManager : MonoBehaviour
 
 	private void UpdateScore( int score )
 	{
-		if( score < 0 )
-		{
-			scoreText.text = "-0" + Mathf.Abs(score).ToString();
-		}
-		else if( score > 0 )
+		
+		if( score > 0 )
 		{
 			scoreText.text = "0" + score.ToString();
 		} 
-		else if( score == 0 )
+		else if( score <= 0   )
 		{
 			scoreText.text = "0000";
 		}

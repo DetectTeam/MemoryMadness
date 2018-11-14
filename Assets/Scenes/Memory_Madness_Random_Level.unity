@@ -2260,7 +2260,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &241129527
 Transform:
   m_ObjectHideFlags: 0
@@ -2285,6 +2285,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf8d27cb5a874c68a82ec9593f64477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomLevelGenerator: {fileID: 1307170610}
+  memoryPhaseScreen: {fileID: 2004355213}
   selectedButtonCount: 0
   delay: 0
   stages:
@@ -2407,7 +2409,7 @@ MonoBehaviour:
   percentage: 65
   currentPhase: 0
   winCount: 0
-  lifeCount: 0
+  lifeCount: 3
 --- !u!114 &241129529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8242,6 +8244,114 @@ RectTransform:
   m_AnchoredPosition: {x: -3.8, y: 14.7}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &937487377
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1570466767}
+    m_Modifications:
+    - target: {fileID: 224484754129373506, guid: 0714dffddbe2c4015b263d6107e3804d,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224484754129373506, guid: 0714dffddbe2c4015b263d6107e3804d,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224484754129373506, guid: 0714dffddbe2c4015b263d6107e3804d,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224484754129373506, guid: 0714dffddbe2c4015b263d6107e3804d,
+        type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224484754129373506, guid: 0714dffddbe2c4015b263d6107e3804d,
+        type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224484754129373506, guid: 0714dffddbe2c4015b263d6107e3804d,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224484754129373506, guid: 0714dffddbe2c4015b263d6107e3804d,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224484754129373506, guid: 0714dffddbe2c4015b263d6107e3804d,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 224484754129373506, guid: 0714dffddbe2c4015b263d6107e3804d,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -300
+      objectReference: {fileID: 0}
+    - target: {fileID: 224484754129373506, guid: 0714dffddbe2c4015b263d6107e3804d,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 224484754129373506, guid: 0714dffddbe2c4015b263d6107e3804d,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 224484754129373506, guid: 0714dffddbe2c4015b263d6107e3804d,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 224484754129373506, guid: 0714dffddbe2c4015b263d6107e3804d,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224484754129373506, guid: 0714dffddbe2c4015b263d6107e3804d,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224484754129373506, guid: 0714dffddbe2c4015b263d6107e3804d,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224484754129373506, guid: 0714dffddbe2c4015b263d6107e3804d,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224484754129373506, guid: 0714dffddbe2c4015b263d6107e3804d,
+        type: 2}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224484754129373506, guid: 0714dffddbe2c4015b263d6107e3804d,
+        type: 2}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744334533397012, guid: 0714dffddbe2c4015b263d6107e3804d, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945153130042186, guid: 0714dffddbe2c4015b263d6107e3804d, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0714dffddbe2c4015b263d6107e3804d, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &945730372
 GameObject:
   m_ObjectHideFlags: 0
@@ -10236,6 +10346,11 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1123002454}
   m_CullTransparentMesh: 0
+--- !u!224 &1137334220 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 224484754129373506, guid: 0714dffddbe2c4015b263d6107e3804d,
+    type: 2}
+  m_PrefabInternal: {fileID: 937487377}
 --- !u!1 &1166221491
 GameObject:
   m_ObjectHideFlags: 0
@@ -13425,7 +13540,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 168.3872, y: 2004.6462}
+  m_Target: {x: 282.43155, y: 1634.4688}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
@@ -13998,6 +14113,7 @@ RectTransform:
   - {fileID: 1525282111}
   - {fileID: 1710083857}
   - {fileID: 885018754}
+  - {fileID: 1137334220}
   m_Father: {fileID: 425608680}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15488,13 +15604,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ea4d78b80234f908f94b20eafe289f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelCount: 0
   levelsPerStage: 9
   numberOfStages: 2
   currentLevel: 0
   currentStage: 0
-  results: {fileID: 1766364037}
-  memoryPhase: {fileID: 2004355213}
   isGameOver: 0
+  memoryPhase: {fileID: 2004355213}
+  results: {fileID: 1766364037}
 --- !u!4 &1718112925
 Transform:
   m_ObjectHideFlags: 0

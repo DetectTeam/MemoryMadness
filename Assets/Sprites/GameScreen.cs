@@ -9,7 +9,7 @@ public class GameScreen : MonoBehaviour {
 	
 	private void OnEnable()
 	{
-		Messenger.Broadcast( "LoadLevel" );
+		//Messenger.Broadcast( "LoadLevel" );
 	}
 	private void OnDisable()
 	{

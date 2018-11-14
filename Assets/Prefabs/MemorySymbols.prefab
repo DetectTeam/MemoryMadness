@@ -342,6 +342,7 @@ MonoBehaviour:
   shakeTime: 0.75
   errorImage: {fileID: 1203899875131880}
   successImage: {fileID: 1277898102227872}
+  successColor: {fileID: 0}
   backgroundColor: {fileID: 1021654477957376}
   rune: {fileID: 1883544195650268}
   button: {fileID: 1390176980837124}
@@ -358,7 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5, g: 0.4976415, b: 0.49775517, a: 1}
+  m_Color: {r: 0.5, g: 0.4976415, b: 0.49775517, a: 0.28627452}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

@@ -23,7 +23,7 @@ namespace MemoryMadness
 
 			
 			Debug.Log( "Starting Memory Phase" );
-			StartCoroutine( LoadPhase() );
+			//StartCoroutine( LoadPhase() );
 		}
 
 
@@ -46,7 +46,7 @@ namespace MemoryMadness
 
 			Debug.Log( "currentPhase " + currentPhase );
 			
-			Messenger.Broadcast( "LoadPhase" );
+			//Messenger.Broadcast( "LoadPhase" );
 			//phases[ 0 ].SetActive( true );
 			//Based on level count set correct phase to active
 		}

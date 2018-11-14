@@ -49,7 +49,8 @@ namespace MemoryMadness
 
 	public class BoardManager : MonoBehaviour 
 	{
-
+		[SerializeField] private GameObject randomLevelGenerator;
+		[SerializeField] private GameObject memoryPhaseScreen;
 		[SerializeField] private int selectedButtonCount;
 		[SerializeField] private float delay;
 		[SerializeField] private Stage[] stages;
@@ -60,6 +61,8 @@ namespace MemoryMadness
 		[SerializeField] private GameObject resultPanel;
 		[SerializeField] private float percentage = 65;
 		[SerializeField] private int currentPhase = 0;
+
+
 
 
 		[SerializeField] private int winCount;
@@ -76,13 +79,14 @@ namespace MemoryMadness
 
 		private void OnEnable()
 		{
-			Messenger.AddListener( "LoadPhase" , LoadPhase );
+			//Messenger.AddListener( "LoadPhase" , LoadPhase );
 			Messenger.AddListener( "LoadLevel" , LoadLevel );
 			Messenger.AddListener( "IncrementButtonCount", IncrementButtonCount );
 			Messenger.AddListener( "DecrementLife" , DecrementLifeCount );
 			Messenger.AddListener( "CheckForWin", CheckWinStatus );
 			Messenger.AddListener( "Failure", Failure );
 			Messenger.AddListener( "ChangeLevel", ChangeLevel );
+			Messenger.AddListener( "ResetLevelGenerator" , ResetLevelGenerator );
 			//StartCoroutine( LoadLevel() );
 
 			
@@ -90,7 +94,7 @@ namespace MemoryMadness
 
 		private void OnDisable()
 		{
-			Messenger.RemoveListener( "LoadPhase" , LoadPhase );
+			//Messenger.RemoveListener( "LoadPhase" , LoadPhase );
 			Messenger.RemoveListener( "LoadLevel" , LoadLevel );
 			Messenger.RemoveListener( "IncrementButtonCount", IncrementButtonCount );
 			Messenger.RemoveListener( "DecrementLife" , DecrementLifeCount );
@@ -110,11 +114,17 @@ namespace MemoryMadness
 
 		}
 
+		private void ResetLevelGenerator()
+		{
+			randomLevelGenerator.SetActive( false );
+			randomLevelGenerator.SetActive( true );
+			lifeCount = 3;
+		}
 
 		private void LoadPhase()
 		{
-			selectedButtonCount = 0;
-			StartCoroutine( IELoadPhase() );
+			//selectedButtonCount = 0;
+			//StartCoroutine( IELoadPhase() );
 		}
 
 		private IEnumerator IELoadPhase()
@@ -283,13 +293,13 @@ namespace MemoryMadness
 			Messenger.Broadcast( "LoadNextLevel" );
 			//resultPanel.SetActive( true );
 			
-			if( successMessage.activeSelf )
-				successMessage.SetActive( false );
+			// if( successMessage.activeSelf )
+			// 	successMessage.SetActive( false );
 			
-			if( failureMessage.activeSelf )	
-				failureMessage.SetActive( false );
+			// if( failureMessage.activeSelf )	
+			// 	failureMessage.SetActive( false );
 			
-			stages[ currentStage ].Level[ currentPhase ].MemoryPhase.SetActive( false );
+			// stages[ currentStage ].Level[ currentPhase ].MemoryPhase.SetActive( false );
 		}
 
 		private void Success()
