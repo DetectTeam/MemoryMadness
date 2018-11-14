@@ -291,13 +291,14 @@ namespace MemoryMadness
 			yield return new WaitForSeconds( 3.0f );
 			
 			Messenger.Broadcast( "LoadNextLevel" );
+		
 			//resultPanel.SetActive( true );
 			
-			// if( successMessage.activeSelf )
-			// 	successMessage.SetActive( false );
+			 if( successMessage.activeSelf )
+				successMessage.SetActive( false );
 			
-			// if( failureMessage.activeSelf )	
-			// 	failureMessage.SetActive( false );
+			 if( failureMessage.activeSelf )	
+				failureMessage.SetActive( false );
 			
 			// stages[ currentStage ].Level[ currentPhase ].MemoryPhase.SetActive( false );
 		}
