@@ -32,7 +32,12 @@ namespace MemoryMadness
 			Debug.Log( "OnEnable Function Called..." );
 			//LoadLists();
 			//CreateSymbols();
+			
+
+			//1 Setup symbols
 			SetupSymbols();
+			//2. display the memory phase page.
+			
 			
 		}
 
@@ -106,8 +111,10 @@ namespace MemoryMadness
 		{
 			GameObject randomSymbol;
 			int memPhaseSymbolCount = 3;
-			//Randomly select 2 - 5 ( depending on which stage we are on ) symbols from the clone list
+			//Randomly select and copy 2 - 5 ( depending on which stage we are on ) symbols from the clone list
 			//ie the list of symbols that will be displayed on the game screen
+			
+			
 			if( memoryPhaseSymbols.Count > 0 )
 				memoryPhaseSymbols.Clear();
 
@@ -116,15 +123,14 @@ namespace MemoryMadness
 				randomSymbol = cloneSymbols[ Random.Range( 0, 19 ) ] ;
 				randomSymbol.GetComponent<MemorySymbols>().IsCorrect = true;
 				
+				//Copy and add symbols to list
 				memoryPhaseSymbols.Add( Instantiate( randomSymbol, randomSymbol.transform.position, Quaternion.identity ) );
+				
+				//Disable the button component on each symbol. 
+				//We dont want the user to be able to click on the symbols in the memory phase
 				memoryPhaseSymbols[i].GetComponent<MemorySymbols>().DisableButton();
 			}
 
-			
-
-			//Store these symbols in a list. 
-
-			//Use that list to populate the memory phase page.
 		}
 
 		private void DisableSymbols()
