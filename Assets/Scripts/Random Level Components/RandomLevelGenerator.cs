@@ -6,6 +6,20 @@ using UnityEngine.UI;
 
 namespace MemoryMadness
 {
+	
+	[System.Serializable]
+	public class Symbol
+	{
+		[SerializeField] private string name;
+		public string Name { get{ return name; } set{ name = value; } }
+		[SerializeField] private Color backgroundColor;
+		public Color BackgroundColor { get{ return backgroundColor; } set{ backgroundColor = value; } }
+		private Image rune;
+		public Image Rune { get{ return rune; } set{ rune = value; } }
+		
+	}
+	
+
 	public class RandomLevelGenerator : MonoBehaviour 
 	{
    
@@ -19,26 +33,31 @@ namespace MemoryMadness
 		[SerializeField] private List<Sprite> unamedShapes;
 		[SerializeField] private List<GameObject> cloneSymbols;
 
-		[SerializeField] private List<GameObject> memoryPhaseSymbols;
+		[SerializeField] private List<Symbol> memoryPhaseSymbols = new List<Symbol>();
+		public List<Symbol> MemoryPhaseSymbols { get{ return memoryPhaseSymbols; } }
+
 		[SerializeField] private GameObject symbolPrefab;
 
-	     
-		
+		[SerializeField] private GameObject memoryPhaseContainer;
+		[SerializeField] private GameObject memorySymbolContainer;
+
 		// Use this for initialization
 		
 		private void OnEnable()
 		{
 			
 			Debug.Log( "OnEnable Function Called..." );
-			//LoadLists();
+			LoadLists();
 			//CreateSymbols();
+			InitSymbols();
 			
-
 			//1 Setup symbols
 			SetupSymbols();
+			
 			//2. display the memory phase page.
-			
-			
+			if(  memoryPhaseContainer != null )
+				memoryPhaseContainer.SetActive( true );
+		
 		}
 
 		private void OnDisable()
@@ -50,11 +69,11 @@ namespace MemoryMadness
 		
 		private void Start () 
 		{
-			Debug.Log( "Start Function Called..." );
-			LoadLists();
-			InitSymbols();
+			//Debug.Log( "Start Function Called..." );
+			//LoadLists();
+			//InitSymbols();
 			
-			SetupSymbols();
+			//SetupSymbols();
 		}
 
 		private void LoadLists()
@@ -74,6 +93,10 @@ namespace MemoryMadness
 
 		private void InitSymbols()
 		{
+			
+			if( cloneSymbols.Count > 0 )
+				cloneSymbols.Clear();
+			
 			for( int i = 0; i < anchors.Count; i++ )
 			{
 				var clone  = Instantiate( symbolPrefab, anchors[ i ].transform.position, Quaternion.identity );
@@ -111,6 +134,7 @@ namespace MemoryMadness
 		{
 			GameObject randomSymbol;
 			int memPhaseSymbolCount = 3;
+			int max = 19;
 			//Randomly select and copy 2 - 5 ( depending on which stage we are on ) symbols from the clone list
 			//ie the list of symbols that will be displayed on the game screen
 			
@@ -120,15 +144,30 @@ namespace MemoryMadness
 
 			for( int i = 0; i < memPhaseSymbolCount; i++ )
 			{
-				randomSymbol = cloneSymbols[ Random.Range( 0, 19 ) ] ;
-				randomSymbol.GetComponent<MemorySymbols>().IsCorrect = true;
 				
-				//Copy and add symbols to list
-				memoryPhaseSymbols.Add( Instantiate( randomSymbol, randomSymbol.transform.position, Quaternion.identity ) );
+				int rand = Random.Range( 0, max );
+			
+
+				randomSymbol = cloneSymbols[ rand ] ;
+				var memorySymbolsScript = randomSymbol.GetComponent<MemorySymbols>();
+				cloneSymbols.RemoveAt( rand );
+				max--;
+
+				Debug.Log( "New Symbol..." );
+				Symbol symbol = new Symbol();
+
+				symbol.Name = "Symbol_" + ( i + 1 );
+				symbol.BackgroundColor = memorySymbolsScript.BackgroundColor.GetComponent<Image>().color;
+				symbol.Rune = memorySymbolsScript.Rune.GetComponent<Image>();
+
+				memorySymbolsScript.IsCorrect = true;
+
+				memoryPhaseSymbols.Add( symbol );
+
+				cloneSymbols.ShuffleList();
 				
-				//Disable the button component on each symbol. 
-				//We dont want the user to be able to click on the symbols in the memory phase
-				memoryPhaseSymbols[i].GetComponent<MemorySymbols>().DisableButton();
+				
+			
 			}
 
 		}
