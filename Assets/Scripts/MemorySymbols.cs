@@ -116,7 +116,7 @@ namespace MemoryMadness
 		}
 		public void Reset()
 		{
-			//isCorrect = false;
+			isCorrect = false;
 			successColor.SetActive( false );
 			successImage.SetActive( false ); 
 			errorImage.SetActive( false );

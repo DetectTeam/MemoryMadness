@@ -49,25 +49,16 @@ namespace MemoryMadness
 		
 		private void OnEnable()
 		{
+			Messenger.Broadcast( "ResetButtonCount" );
 			
-			Debug.Log( "OnEnable Function Called..." );
 			LoadLists();
-			
-			//InitSymbols();
-			
 			//1 Setup symbols
 			SetupSymbols();
-			
-			// //2. display the memory phase page.
-			// if(  memoryPhaseContainer != null )
-			// 	memoryPhaseContainer.SetActive( true );
-		
 		}
 
 		private void OnDisable()
 		{
-			Debug.Log( "OnDisable Function Called..." );
-			//DisableSymbols();
+		
 		}
 		
 		
@@ -93,22 +84,6 @@ namespace MemoryMadness
 			else
 				Debug.Log( "UNamed Shape List not set..." );
 
-		}
-
-		private void InitSymbols()
-		{
-			
-			if( cloneSymbols.Count > 0 )
-				cloneSymbols.Clear();
-			
-			for( int i = 0; i < anchors.Count; i++ )
-			{
-				var clone  = Instantiate( symbolPrefab, anchors[ i ].transform.position, Quaternion.identity );
-				clone.transform.parent = anchors[ i ].transform.parent;
-				cloneSymbols.Add( clone );
-				clone.SetActive( false );
-				
-			}
 		}
 
 		private void SetupSymbols()
@@ -142,44 +117,101 @@ namespace MemoryMadness
 
 		private void GenerateMemoryPhaseSymbols()
 		{
+			
+			Debug.Log( "Generate Memory Phase Symbols..." );
+			
 			GameObject randomSymbol;
 			int memPhaseSymbolCount = 3;
 			int max = 19;
+
 			//Randomly select and copy 2 - 5 ( depending on which stage we are on ) symbols from the clone list
 			//ie the list of symbols that will be displayed on the game screen
-			
-			
 			if( memoryPhaseSymbols.Count > 0 )
 				memoryPhaseSymbols.Clear();
 
-			for( int i = 0; i < memPhaseSymbolCount; i++ )
+			int count = 0;
+
+			List<int> pickedNumberList = new List<int>();
+
+			while( count < memPhaseSymbolCount )
 			{
+				Debug.Log( ">>> " + pickedNumberList.Count  );
+				int rand = Random.Range( 0,  max );
 				
-				int rand = Random.Range( 0, max );
-			
-
-				randomSymbol = cloneSymbols[ rand ] ;
-				var memorySymbolsScript = randomSymbol.GetComponent<MemorySymbols>();
-				//cloneSymbols.RemoveAt( rand );
-				//max--;
-
-				Debug.Log( "New Symbol..." );
-				Symbol symbol = new Symbol();
-
-				symbol.Name = "Symbol_" + ( i + 1 );
-				symbol.BackgroundColor = memorySymbolsScript.BackgroundColor.GetComponent<Image>().color;
-				symbol.Rune = memorySymbolsScript.Rune.GetComponent<Image>();
-
-				memorySymbolsScript.IsCorrect = true;
-
-				memoryPhaseSymbols.Add( symbol );
-
-				cloneSymbols.ShuffleList();
+				if( pickedNumberList.Count == 0 )
+				{
+				  Debug.Log( "First Pick" );
+					pickedNumberList.Add( rand );
+					PickColourAndShape( rand );
+					count ++;
+				}
+				else if( !pickedNumberList.Contains( rand )  )
+				{
+					
+					Debug.Log( "Pick Colour and Shape... " );
+					pickedNumberList.Add( rand );
+					PickColourAndShape( rand );
+					count++;
+					
+				}
+				else if( pickedNumberList.Contains( rand )  )
+				{
+					Debug.Log( "Match Found Picking again ...." + rand  );
 				
-				
-			
+				}
+	
 			}
+			count = 0;
+			cloneSymbols.ShuffleList();
 
+
+			// for( int i = 0; i < memPhaseSymbolCount; i++ )
+			// {
+				
+				
+				
+			// 	int rand = Random.Range( 0, max );
+			
+			// 	randomSymbol = cloneSymbols[ rand ] ;
+			// 	var memorySymbolsScript = randomSymbol.GetComponent<MemorySymbols>();
+			// 	//cloneSymbols.RemoveAt( rand );
+			// 	//max--;
+
+			// 	Symbol symbol = new Symbol();
+
+			// 	symbol.Name = "Symbol_" + ( i + 1 );
+			// 	symbol.BackgroundColor = memorySymbolsScript.BackgroundColor.GetComponent<Image>().color;
+			// 	symbol.Rune = memorySymbolsScript.Rune.GetComponent<Image>();
+
+			// 	memorySymbolsScript.IsCorrect = true;
+
+			// 	memoryPhaseSymbols.Add( symbol );
+
+			// 	cloneSymbols.ShuffleList();
+				
+			// }
+
+		}
+
+		private void PickColourAndShape( int rand )
+		{
+			var randomSymbol = cloneSymbols[ rand ] ;
+			var memorySymbolsScript = randomSymbol.GetComponent<MemorySymbols>();
+			//cloneSymbols.RemoveAt( rand );
+			 	//max--;
+
+			Symbol symbol = new Symbol();
+
+			symbol.Name = "Symbol_" + ( rand + 1 );
+			symbol.BackgroundColor = memorySymbolsScript.BackgroundColor.GetComponent<Image>().color;
+			symbol.Rune = memorySymbolsScript.Rune.GetComponent<Image>();
+
+			memorySymbolsScript.IsCorrect = true;
+
+			memoryPhaseSymbols.Add( symbol );
+			Debug.Log( "<<< " + memoryPhaseSymbols.Count );
+
+			
 		}
 
 		private void ColourSwitchSymbols()
@@ -190,16 +222,6 @@ namespace MemoryMadness
 				 
 			}
 		}
-
-		private void DisableSymbols()
-		{
-			foreach( GameObject symbol in cloneSymbols )
-			{
-				symbol.SetActive( false );	
-			}
-		}
-
-		
 
 	}
 

@@ -30,7 +30,7 @@ namespace MemoryMadness
 
 			StartCoroutine( "DisableTitleScreen" );
 			
-			Debug.Log( "Starting Memory Phase" );
+		
 			//StartCoroutine( LoadPhase() );
 		}
 

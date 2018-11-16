@@ -65,6 +65,7 @@ namespace MemoryMadness
 			else
 			{
 				results.SetActive( true );
+				levelCount = 0;
 			}
 
 		}

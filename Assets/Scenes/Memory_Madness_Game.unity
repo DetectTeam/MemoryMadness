@@ -3721,6 +3721,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf8d27cb5a874c68a82ec9593f64477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomLevelGenerator: {fileID: 0}
+  memoryPhaseScreen: {fileID: 0}
   selectedButtonCount: 0
   delay: 0
   stages:
@@ -6557,6 +6559,7 @@ MonoBehaviour:
   shakeTime: 0.75
   errorImage: {fileID: 1711088474}
   successImage: {fileID: 1346043352}
+  successColor: {fileID: 0}
   backgroundColor: {fileID: 1860777426}
   rune: {fileID: 1452357310}
   button: {fileID: 143109811}
@@ -10771,6 +10774,7 @@ MonoBehaviour:
   shakeTime: 0.75
   errorImage: {fileID: 348482883}
   successImage: {fileID: 446617404}
+  successColor: {fileID: 0}
   backgroundColor: {fileID: 1368168298}
   rune: {fileID: 1742133296}
   button: {fileID: 825752656}
@@ -17310,6 +17314,7 @@ MonoBehaviour:
   shakeTime: 0.75
   errorImage: {fileID: 781946502}
   successImage: {fileID: 701253501}
+  successColor: {fileID: 0}
   backgroundColor: {fileID: 1593607231}
   rune: {fileID: 1568212582}
   button: {fileID: 875986126}
@@ -23754,6 +23759,7 @@ MonoBehaviour:
   shakeTime: 0.75
   errorImage: {fileID: 120689522}
   successImage: {fileID: 228864043}
+  successColor: {fileID: 0}
   backgroundColor: {fileID: 348843598}
   rune: {fileID: 494291629}
   button: {fileID: 124894672}
@@ -28219,6 +28225,7 @@ MonoBehaviour:
   shakeTime: 0.75
   errorImage: {fileID: 342872827}
   successImage: {fileID: 664117837}
+  successColor: {fileID: 0}
   backgroundColor: {fileID: 229696913}
   rune: {fileID: 1062431354}
   button: {fileID: 618853753}
@@ -28633,7 +28640,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 282.43155, y: 1634.4688}
+  m_Target: {x: 225.94524, y: 1264.375}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
@@ -29141,6 +29148,7 @@ MonoBehaviour:
   shakeTime: 0.75
   errorImage: {fileID: 2003845300}
   successImage: {fileID: 1979840365}
+  successColor: {fileID: 0}
   backgroundColor: {fileID: 1412358800}
   rune: {fileID: 1250551326}
   button: {fileID: 1396332864}
@@ -31924,13 +31932,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ea4d78b80234f908f94b20eafe289f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelCount: 0
   levelsPerStage: 9
   numberOfStages: 2
   currentLevel: 0
   currentStage: 0
-  results: {fileID: 1766364037}
-  memoryPhase: {fileID: 2004355213}
   isGameOver: 0
+  memoryPhase: {fileID: 2004355213}
+  results: {fileID: 1766364037}
 --- !u!4 &1718112925
 Transform:
   m_ObjectHideFlags: 0
@@ -32751,6 +32760,7 @@ MonoBehaviour:
   shakeTime: 0.75
   errorImage: {fileID: 949414577}
   successImage: {fileID: 1647803752}
+  successColor: {fileID: 0}
   backgroundColor: {fileID: 44121605}
   rune: {fileID: 909627626}
   button: {fileID: 448272511}
@@ -33751,6 +33761,7 @@ MonoBehaviour:
   shakeTime: 0.75
   errorImage: {fileID: 989569622}
   successImage: {fileID: 1050206598}
+  successColor: {fileID: 0}
   backgroundColor: {fileID: 309867397}
   rune: {fileID: 1931393874}
   button: {fileID: 1971200800}
@@ -34064,6 +34075,7 @@ MonoBehaviour:
   shakeTime: 0.75
   errorImage: {fileID: 1175153216}
   successImage: {fileID: 945730372}
+  successColor: {fileID: 0}
   backgroundColor: {fileID: 1259292656}
   rune: {fileID: 20596364}
   button: {fileID: 2130720106}
@@ -36831,6 +36843,7 @@ MonoBehaviour:
   delay: 0
   results: {fileID: 1766364037}
   game: {fileID: 2089274043}
+  titleScreen: {fileID: 1570466766}
 --- !u!1001 &2007890424
 Prefab:
   m_ObjectHideFlags: 0
@@ -37027,6 +37040,7 @@ MonoBehaviour:
   shakeTime: 0.75
   errorImage: {fileID: 2100438851}
   successImage: {fileID: 1529757097}
+  successColor: {fileID: 0}
   backgroundColor: {fileID: 1971929099}
   rune: {fileID: 585877143}
   button: {fileID: 510069668}
@@ -39499,6 +39513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingPosition: {x: 0, y: 1560, z: 0}
+  levelContainer: {fileID: 0}
 --- !u!114 &2089274047
 MonoBehaviour:
   m_ObjectHideFlags: 0
