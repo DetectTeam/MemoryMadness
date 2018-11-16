@@ -58,9 +58,9 @@ namespace MemoryMadness
 			//1 Setup symbols
 			SetupSymbols();
 			
-			//2. display the memory phase page.
-			if(  memoryPhaseContainer != null )
-				memoryPhaseContainer.SetActive( true );
+			// //2. display the memory phase page.
+			// if(  memoryPhaseContainer != null )
+			// 	memoryPhaseContainer.SetActive( true );
 		
 		}
 
@@ -125,11 +125,14 @@ namespace MemoryMadness
 		{
 			for( int i = 0; i < cloneSymbols.Count; i++ )
 			{
+				
+				var memSymbolsScript = cloneSymbols[i].transform.gameObject.GetComponent<MemorySymbols>();
+				
+				memSymbolsScript.Reset();
+
 				cloneSymbols[i].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = colorPicker.ColourList[ i ];
 				
 				cloneSymbols[i].transform.Find( "Rune" ).GetComponent<Image>().sprite = unamedShapes[i];
-
-				cloneSymbols[i].transform.gameObject.GetComponent<MemorySymbols>().SlotNumber = ( i+1 );
 
 				cloneSymbols[i].SetActive( true );
 
