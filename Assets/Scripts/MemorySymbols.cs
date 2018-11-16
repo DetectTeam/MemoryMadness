@@ -53,6 +53,7 @@ namespace MemoryMadness
 
 		void OnDisable()
 		{
+		
 			Reset();
 		}
 		
@@ -115,6 +116,7 @@ namespace MemoryMadness
 		}
 		private void Reset()
 		{
+			isCorrect = false;
 			successColor.SetActive( false );
 			successImage.SetActive( false ); 
 			errorImage.SetActive( false );

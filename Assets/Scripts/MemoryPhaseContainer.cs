@@ -13,6 +13,10 @@ namespace MemoryMadness
 		[SerializeField] private GameObject results;
 		[SerializeField] private GameObject game;
 
+		[SerializeField] private GameObject titleScreen;
+
+		//[SerializeField] private GameObject randomLevelGenerator;
+ 
 		private void OnEnable()
 		{
 			if( results.activeSelf ) 
@@ -21,9 +25,21 @@ namespace MemoryMadness
 			if( gameObject.activeSelf )
 				game.SetActive( false );
 
+			// if( !randomLevelGenerator.activeSelf )	
+			// 	randomLevelGenerator.SetActive( true );
+
+			StartCoroutine( "DisableTitleScreen" );
 			
 			Debug.Log( "Starting Memory Phase" );
 			//StartCoroutine( LoadPhase() );
+		}
+
+
+		private IEnumerator DisableTitleScreen()
+		{
+			yield return new WaitForSeconds( 1.0f );
+			if( titleScreen.activeSelf )
+				titleScreen.SetActive( false );
 		}
 
 

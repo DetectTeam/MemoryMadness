@@ -127,37 +127,37 @@ namespace MemoryMadness
 			//StartCoroutine( IELoadPhase() );
 		}
 
-		private IEnumerator IELoadPhase()
-		{
-			yield return new WaitForSeconds( delay );
+		// private IEnumerator IELoadPhase()
+		// {
+		// 	yield return new WaitForSeconds( delay );
 
-			//Get current Stage
-			currentStage = PlayerPrefs.GetInt( "CurrentStage" );
+		// 	//Get current Stage
+		// 	currentStage = PlayerPrefs.GetInt( "CurrentStage" );
 
 		
 
-			Debug.Log( "Current Stage " + currentStage );
+		// 	Debug.Log( "Current Stage " + currentStage );
 		
-			//Check the level count
+		// 	//Check the level count
 
-			if( PlayerPrefs.HasKey( "CurrentLevel" ) )
-			{
-				currentPhase = PlayerPrefs.GetInt( "CurrentLevel" );
-			}
-			else
-			{
-				PlayerPrefs.SetInt( "CurrentLevel" , currentPhase );
-			}
+		// 	if( PlayerPrefs.HasKey( "CurrentLevel" ) )
+		// 	{
+		// 		currentPhase = PlayerPrefs.GetInt( "CurrentLevel" );
+		// 	}
+		// 	else
+		// 	{
+		// 		PlayerPrefs.SetInt( "CurrentLevel" , currentPhase );
+		// 	}
 			
 			
-			if( currentStage < stages.Length )
-			{
-				stages[ currentStage ].Level[ currentPhase ].MemoryPhase.SetActive( true );
-			}
+		// 	if( currentStage < stages.Length )
+		// 	{
+		// 		stages[ currentStage ].Level[ currentPhase ].MemoryPhase.SetActive( true );
+		// 	}
 			
-			//phases[ 0 ].SetActive( true );
-			//Based on level count set correct phase to active
-		}
+		// 	//phases[ 0 ].SetActive( true );
+		// 	//Based on level count set correct phase to active
+		// }
 
 		private void LoadLevel()
 		{

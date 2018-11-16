@@ -53,7 +53,7 @@ namespace MemoryMadness
 			Debug.Log( "OnEnable Function Called..." );
 			LoadLists();
 			
-			InitSymbols();
+			//InitSymbols();
 			
 			//1 Setup symbols
 			SetupSymbols();
@@ -133,7 +133,7 @@ namespace MemoryMadness
 
 				cloneSymbols[i].SetActive( true );
 
-				cloneSymbols[i].transform.parent = anchors[ i ].transform.parent;
+				//cloneSymbols[i].transform.parent = anchors[ i ].transform.parent;
 			}
 		}
 

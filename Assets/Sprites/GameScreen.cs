@@ -6,10 +6,15 @@ public class GameScreen : MonoBehaviour {
 
 	[SerializeField] private Vector3 startingPosition;
 	private RectTransform rectTransform;
+
+	[SerializeField] private GameObject levelContainer; 
 	
 	private void OnEnable()
 	{
 		//Messenger.Broadcast( "LoadLevel" );
+		if( !levelContainer.activeSelf )
+			levelContainer.SetActive( true );
+		
 	}
 	private void OnDisable()
 	{
