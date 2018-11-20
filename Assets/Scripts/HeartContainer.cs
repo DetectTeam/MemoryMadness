@@ -45,7 +45,7 @@ namespace MemoryMadness
 				heartCount = 5;
 
 
-			Debug.Log( "Current Number of Hearts To Display is: " + heartCount );
+			//Debug.Log( "Current Number of Hearts To Display is: " + heartCount );
 
 			for( int i = 0; i <= heartCount; i++ )
 			{

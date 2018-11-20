@@ -201,23 +201,23 @@ namespace MemoryMadness
 			
 			if( b && stages[ currentStage ].Level[ levelToLoad ].IsMatch )
 			{
-				Debug.Log( "ITS A WIN !!!" );
+				//Debug.Log( "ITS A WIN !!!" );
 				Success();
 			}
 			else if( b && !stages[ currentStage ].Level[ levelToLoad ].IsMatch )
 			{
-				Debug.Log( "YOU FAILED ...You chose yes but no was required" );
+				//Debug.Log( "YOU FAILED ...You chose yes but no was required" );
 				Failure();
 			}
 			else if( !b && stages[ currentStage ].Level[ levelToLoad ].IsMatch )
 			{
-				Debug.Log( "YOU FAILED ....You chose no when it should have been yes" );
+				//Debug.Log( "YOU FAILED ....You chose no when it should have been yes" );
 				Failure();
 				
 			}
 			else if( !b && !stages[ currentStage ].Level[ levelToLoad ].IsMatch )
 			{
-				Debug.Log( "CORRECT THERE IS NO MATCH" );
+				//Debug.Log( "CORRECT THERE IS NO MATCH" );
 				Success();
 				
 			}
@@ -233,7 +233,7 @@ namespace MemoryMadness
 		public void IncrementButtonCount()
 		{	
 			selectedButtonCount++;
-			Debug.Log( "INCREMENT ::: " + selectedButtonCount );
+			//Debug.Log( "INCREMENT ::: " + selectedButtonCount );
 		}
 
 		private void ResetButtonCount()
@@ -275,7 +275,7 @@ namespace MemoryMadness
 		public void CheckForWinMM( )
 		{
 			
-			Debug.Log( "Check for win : " + selectedButtonCount + " " + stages[ currentStage ].Level[ levelToLoad ].WinCount );
+			//Debug.Log( "Check for win : " + selectedButtonCount + " " + stages[ currentStage ].Level[ levelToLoad ].WinCount );
 			
 			
 			if( selectedButtonCount == stages[ currentStage ].Level[ levelToLoad ].WinCount )

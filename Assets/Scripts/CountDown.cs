@@ -70,7 +70,7 @@ namespace MemoryMadness
 		public void StopTimer()
 		{
 			isFinished = true;
-			Debug.Log( totalTime - timeLeft );
+			//Debug.Log( totalTime - timeLeft );
 		}
 		
 		

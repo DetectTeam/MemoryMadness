@@ -60,7 +60,7 @@ namespace MemoryMadness
 				PlayerPrefs.SetInt( "CurrentLevel" , currentPhase );
 			}
 
-			Debug.Log( "currentPhase " + currentPhase );
+			//Debug.Log( "currentPhase " + currentPhase );
 			
 			//Messenger.Broadcast( "LoadPhase" );
 			//phases[ 0 ].SetActive( true );

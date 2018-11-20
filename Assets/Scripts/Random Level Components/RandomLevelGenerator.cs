@@ -52,7 +52,7 @@ namespace MemoryMadness
 		private void OnEnable()
 		{
 
-			Debug.Log( "Random Level Generator Enabled....." );
+			//Debug.Log( "Random Level Generator Enabled....." );
 			Messenger.Broadcast( "ResetButtonCount" );
 			
 			LoadLists();
@@ -129,7 +129,7 @@ namespace MemoryMadness
 		private void GenerateMemoryPhaseSymbols()
 		{
 			
-			Debug.Log( "Generate Memory Phase Symbols..." );
+			//Debug.Log( "Generate Memory Phase Symbols..." );
 			
 			GameObject randomSymbol;
 			int memPhaseSymbolCount = 3;
@@ -146,12 +146,12 @@ namespace MemoryMadness
 
 			while( count < memPhaseSymbolCount )
 			{
-				Debug.Log( ">>> " + pickedNumberList.Count  );
+				//Debug.Log( ">>> " + pickedNumberList.Count  );
 				int rand = Random.Range( 0,  max );
 				
 				if( pickedNumberList.Count == 0 )
 				{
-				  Debug.Log( "First Pick" );
+				 // Debug.Log( "First Pick" );
 					pickedNumberList.Add( rand );
 					PickColourAndShape( rand );
 					count ++;
@@ -159,7 +159,7 @@ namespace MemoryMadness
 				else if( !pickedNumberList.Contains( rand )  )
 				{
 					
-					Debug.Log( "Pick Colour and Shape... " );
+					//Debug.Log( "Pick Colour and Shape... " );
 					pickedNumberList.Add( rand );
 					PickColourAndShape( rand );
 					count++;
@@ -186,7 +186,7 @@ namespace MemoryMadness
 
 			Symbol symbol = new Symbol();
 
-			Debug.Log( "Pick Colour and Shape: " + memorySymbolsScript.Name );
+			//Debug.Log( "Pick Colour and Shape: " + memorySymbolsScript.Name );
 
 			symbol.Name = memorySymbolsScript.Name;
 			symbol.BackgroundColor = memorySymbolsScript.BackgroundColor.GetComponent<Image>().color;
@@ -207,18 +207,18 @@ namespace MemoryMadness
 			{
 				for( int x = 0; x < memoryPhaseSymbols.Count; x++ )
 				{
-					Debug.Log( "Names : " + memoryPhaseSymbols[i].Name  + " " + memoryPhaseSymbols[x].Name );
+					//Debug.Log( "Names : " + memoryPhaseSymbols[i].Name  + " " + memoryPhaseSymbols[x].Name );
 					if( memoryPhaseSymbols[i].Name != memoryPhaseSymbols[x].Name )
 					{
 						isSelectable = true;
-						Debug.Log( "No Match Found So im going to do my thing...." );
+						//Debug.Log( "No Match Found So im going to do my thing...." );
 						
 						while( isSelectable )
 						{
 
 							//Pick a random symbol from the list.
 							GameObject selectedMemorySymbol = cloneSymbols[ Random.Range( 0, cloneSymbols.Count ) ];
-							Debug.Log( "SELECTED SYMBOL : " + selectedMemorySymbol );
+							//Debug.Log( "SELECTED SYMBOL : " + selectedMemorySymbol );
 							MemorySymbols memorySymbolsScript = selectedMemorySymbol.GetComponent<MemorySymbols>();
 							
 							//If the random symbol isnt a winning symbol 

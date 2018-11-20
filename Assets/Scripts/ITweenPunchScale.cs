@@ -21,7 +21,7 @@ public class ITweenPunchScale : MonoBehaviour , IEffect
 	{
 		if( !target )
 		{
-			Debug.Log( "target not set..." ); 
+			//Debug.Log( "target not set..." ); 
 			return;
 		} 
 	}
