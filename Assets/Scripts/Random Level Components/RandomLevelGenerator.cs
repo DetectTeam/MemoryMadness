@@ -18,6 +18,8 @@ namespace MemoryMadness
 		public Image Rune { get{ return rune; } set{ rune = value; } }
 		
 	}
+
+
 	
 
 	public class RandomLevelGenerator : MonoBehaviour 
@@ -49,6 +51,8 @@ namespace MemoryMadness
 		
 		private void OnEnable()
 		{
+
+			Debug.Log( "Random Level Generator Enabled....." );
 			Messenger.Broadcast( "ResetButtonCount" );
 			
 			LoadLists();
@@ -92,7 +96,7 @@ namespace MemoryMadness
 			{
 				UpdateSymbols();
 				GenerateMemoryPhaseSymbols();
-				//ColourSwitchSymbols();
+				ColourSwitchSymbols();
 			}
 		}
 
@@ -104,6 +108,13 @@ namespace MemoryMadness
 				var memSymbolsScript = cloneSymbols[i].transform.gameObject.GetComponent<MemorySymbols>();
 				
 				memSymbolsScript.Reset();
+
+				memSymbolsScript.Name = "MemorySymbol_" + i;
+
+			    memSymbolsScript.SlotNumber = i+1;
+
+				memSymbolsScript.IsCorrect = false;
+				memSymbolsScript.IsColourSwitched = false;
 
 				cloneSymbols[i].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = colorPicker.ColourList[ i ];
 				
@@ -164,33 +175,6 @@ namespace MemoryMadness
 			count = 0;
 			cloneSymbols.ShuffleList();
 
-
-			// for( int i = 0; i < memPhaseSymbolCount; i++ )
-			// {
-				
-				
-				
-			// 	int rand = Random.Range( 0, max );
-			
-			// 	randomSymbol = cloneSymbols[ rand ] ;
-			// 	var memorySymbolsScript = randomSymbol.GetComponent<MemorySymbols>();
-			// 	//cloneSymbols.RemoveAt( rand );
-			// 	//max--;
-
-			// 	Symbol symbol = new Symbol();
-
-			// 	symbol.Name = "Symbol_" + ( i + 1 );
-			// 	symbol.BackgroundColor = memorySymbolsScript.BackgroundColor.GetComponent<Image>().color;
-			// 	symbol.Rune = memorySymbolsScript.Rune.GetComponent<Image>();
-
-			// 	memorySymbolsScript.IsCorrect = true;
-
-			// 	memoryPhaseSymbols.Add( symbol );
-
-			// 	cloneSymbols.ShuffleList();
-				
-			// }
-
 		}
 
 		private void PickColourAndShape( int rand )
@@ -202,28 +186,62 @@ namespace MemoryMadness
 
 			Symbol symbol = new Symbol();
 
-			symbol.Name = "Symbol_" + ( rand + 1 );
+			Debug.Log( "Pick Colour and Shape: " + memorySymbolsScript.Name );
+
+			symbol.Name = memorySymbolsScript.Name;
 			symbol.BackgroundColor = memorySymbolsScript.BackgroundColor.GetComponent<Image>().color;
 			symbol.Rune = memorySymbolsScript.Rune.GetComponent<Image>();
-
-			memorySymbolsScript.IsCorrect = true;
-
-			memoryPhaseSymbols.Add( symbol );
-			Debug.Log( "<<< " + memoryPhaseSymbols.Count );
-
 			
+			memorySymbolsScript.IsCorrect = true;
+			memorySymbolsScript.IsColourSwitched = true;
+			
+			memoryPhaseSymbols.Add( symbol );
+		
 		}
 
 		private void ColourSwitchSymbols()
-		{
-			Debug.Log( "MPS " + memoryPhaseSymbols.Count );
+		{	
+			bool isSelectable = true;
+		
 			for( int i = 0; i < memoryPhaseSymbols.Count; i++ )
 			{
-				 
+				for( int x = 0; x < memoryPhaseSymbols.Count; x++ )
+				{
+					Debug.Log( "Names : " + memoryPhaseSymbols[i].Name  + " " + memoryPhaseSymbols[x].Name );
+					if( memoryPhaseSymbols[i].Name != memoryPhaseSymbols[x].Name )
+					{
+						isSelectable = true;
+						Debug.Log( "No Match Found So im going to do my thing...." );
+						
+						while( isSelectable )
+						{
+
+							//Pick a random symbol from the list.
+							GameObject selectedMemorySymbol = cloneSymbols[ Random.Range( 0, cloneSymbols.Count ) ];
+							Debug.Log( "SELECTED SYMBOL : " + selectedMemorySymbol );
+							MemorySymbols memorySymbolsScript = selectedMemorySymbol.GetComponent<MemorySymbols>();
+							
+							//If the random symbol isnt a winning symbol 
+							//and it hasnt already been colour switched
+							if( !memorySymbolsScript.IsCorrect && !memorySymbolsScript.IsColourSwitched )
+							{
+								
+								memorySymbolsScript.BackgroundColor.GetComponent<Image>().color = memoryPhaseSymbols[x].BackgroundColor;
+								memorySymbolsScript.Rune.GetComponent<Image>().sprite = memoryPhaseSymbols[i].Rune.sprite;
+								memorySymbolsScript.IsColourSwitched = true;
+								
+								isSelectable = false;
+								
+							}
+					
+						}
+					}
+				}
 			}
 		}
 
 	}
 
 }
+
 

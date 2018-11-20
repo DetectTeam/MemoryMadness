@@ -7,10 +7,15 @@ namespace MemoryMadness
 {
 	public class MemorySymbols : MonoBehaviour 
 	{
+		[SerializeField] private string name;
+		public string Name { get{ return name; } set{ name = value; } }
 
 		//Boolean used to set whether a symbol is correct or not
 		[SerializeField] private bool isCorrect;
 		public bool IsCorrect { get{ return isCorrect; } set{ isCorrect = value; } }
+
+		[SerializeField] private bool isColourSwitched;
+		public bool IsColourSwitched { get{ return isColourSwitched; } set{ isColourSwitched = value; } }
 
 		//ITween shake amount
 		[SerializeField] private Vector3 shakeAmount;

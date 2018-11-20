@@ -3493,6 +3493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrect: 0
+  isColourSwitched: 0
   shakeAmount: {x: 7.5, y: 7.5, z: 7.5}
   shakeTime: 0.75
   errorImage: {fileID: 1711088474}
@@ -5963,6 +5964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrect: 0
+  isColourSwitched: 0
   shakeAmount: {x: 7.5, y: 7.5, z: 7.5}
   shakeTime: 0.75
   errorImage: {fileID: 348482883}
@@ -9736,6 +9738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrect: 0
+  isColourSwitched: 0
   shakeAmount: {x: 7.5, y: 7.5, z: 7.5}
   shakeTime: 0.75
   errorImage: {fileID: 781946502}
@@ -13113,6 +13116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrect: 1
+  isColourSwitched: 0
   shakeAmount: {x: 7.5, y: 7.5, z: 7.5}
   shakeTime: 0.75
   errorImage: {fileID: 120689522}
@@ -15181,6 +15185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrect: 1
+  isColourSwitched: 0
   shakeAmount: {x: 7.5, y: 7.5, z: 7.5}
   shakeTime: 0.75
   errorImage: {fileID: 342872827}
@@ -15584,7 +15589,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 193.55975, y: 976.92126}
+  m_Target: {x: 225.94524, y: 1264.375}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
@@ -16230,6 +16235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrect: 0
+  isColourSwitched: 0
   shakeAmount: {x: 7.5, y: 7.5, z: 7.5}
   shakeTime: 0.75
   errorImage: {fileID: 2003845300}
@@ -18594,7 +18600,7 @@ Prefab:
       objectReference: {fileID: 621291647}
     - target: {fileID: 1795334674235718, guid: 7425c24d9d6dd4ace856e28dcfb43294, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114822312392378942, guid: 7425c24d9d6dd4ace856e28dcfb43294,
         type: 2}
@@ -18891,6 +18897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrect: 0
+  isColourSwitched: 0
   shakeAmount: {x: 7.5, y: 7.5, z: 7.5}
   shakeTime: 0.75
   errorImage: {fileID: 949414577}
@@ -19817,6 +19824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrect: 1
+  isColourSwitched: 0
   shakeAmount: {x: 7.5, y: 7.5, z: 7.5}
   shakeTime: 0.75
   errorImage: {fileID: 989569622}
@@ -20131,6 +20139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrect: 0
+  isColourSwitched: 0
   shakeAmount: {x: 7.5, y: 7.5, z: 7.5}
   shakeTime: 0.75
   errorImage: {fileID: 1175153216}
@@ -20971,6 +20980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrect: 0
+  isColourSwitched: 0
   shakeAmount: {x: 7.5, y: 7.5, z: 7.5}
   shakeTime: 0.75
   errorImage: {fileID: 2100438851}
