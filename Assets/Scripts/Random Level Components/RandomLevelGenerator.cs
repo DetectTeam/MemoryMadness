@@ -96,7 +96,7 @@ namespace MemoryMadness
 			{
 				UpdateSymbols();
 				GenerateMemoryPhaseSymbols();
-				ColourSwitchSymbols();
+				//ColourSwitchSymbols();
 			}
 		}
 
@@ -126,14 +126,16 @@ namespace MemoryMadness
 			}
 		}
 
+		// private void GenerateMemoryPhaseSymbols()
+		// {
+		// 	StartCoroutine( IEGenerateMemoryPhaseSymbols() );
+		// }
+
 		private void GenerateMemoryPhaseSymbols()
 		{
-			
-			//Debug.Log( "Generate Memory Phase Symbols..." );
-			
 			GameObject randomSymbol;
-			int memPhaseSymbolCount = 3;
-			int max = 19;
+			int memPhaseSymbolCount = 5;
+			int max = 24;
 
 			//Randomly select and copy 2 - 5 ( depending on which stage we are on ) symbols from the clone list
 			//ie the list of symbols that will be displayed on the game screen
@@ -146,12 +148,12 @@ namespace MemoryMadness
 
 			while( count < memPhaseSymbolCount )
 			{
-				//Debug.Log( ">>> " + pickedNumberList.Count  );
+				
 				int rand = Random.Range( 0,  max );
 				
 				if( pickedNumberList.Count == 0 )
 				{
-				 // Debug.Log( "First Pick" );
+				 	//Debug.Log( "First Pick" );
 					pickedNumberList.Add( rand );
 					PickColourAndShape( rand );
 					count ++;
@@ -159,7 +161,7 @@ namespace MemoryMadness
 				else if( !pickedNumberList.Contains( rand )  )
 				{
 					
-					//Debug.Log( "Pick Colour and Shape... " );
+					//Debug.Log( "Pick Colour and Shape... " + rand );
 					pickedNumberList.Add( rand );
 					PickColourAndShape( rand );
 					count++;
@@ -168,10 +170,10 @@ namespace MemoryMadness
 				else if( pickedNumberList.Contains( rand )  )
 				{
 					Debug.Log( "Match Found Picking again ...." + rand  );
-				
 				}
-	
+
 			}
+			
 			count = 0;
 			cloneSymbols.ShuffleList();
 
