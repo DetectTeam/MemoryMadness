@@ -19,9 +19,6 @@ namespace MemoryMadness
 		
 	}
 
-
-	
-
 	public class RandomLevelGenerator : MonoBehaviour 
 	{
    
@@ -45,34 +42,16 @@ namespace MemoryMadness
 		[SerializeField] private GameObject memoryPhaseContainer;
 		[SerializeField] private GameObject memorySymbolContainer;
 
-
-
 		// Use this for initialization
 		
 		private void OnEnable()
 		{
-
 			//Debug.Log( "Random Level Generator Enabled....." );
 			Messenger.Broadcast( "ResetButtonCount" );
 			
 			LoadLists();
 			//1 Setup symbols
 			SetupSymbols();
-		}
-
-		private void OnDisable()
-		{
-		
-		}
-		
-		
-		private void Start () 
-		{
-			//Debug.Log( "Start Function Called..." );
-			//LoadLists();
-			//InitSymbols();
-			
-			//SetupSymbols();
 		}
 
 		private void LoadLists()
@@ -96,7 +75,7 @@ namespace MemoryMadness
 			{
 				UpdateSymbols();
 				GenerateMemoryPhaseSymbols();
-				//ColourSwitchSymbols();
+				ColourSwitchSymbols();
 			}
 		}
 
@@ -116,9 +95,12 @@ namespace MemoryMadness
 				memSymbolsScript.IsCorrect = false;
 				memSymbolsScript.IsColourSwitched = false;
 
-				cloneSymbols[i].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = colorPicker.ColourList[ i ];
+				int colourPickerIndex = 0;
+				int shapeIndex = 0;
+
+				cloneSymbols[i].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = ColourPicker( i ); //colorPicker.ColourList[ colourPickerIndex ];
 				
-				cloneSymbols[i].transform.Find( "Rune" ).GetComponent<Image>().sprite = unamedShapes[i];
+				cloneSymbols[i].transform.Find( "Rune" ).GetComponent<Image>().sprite = RandomShapePicker( i , unamedShapes );
 
 				cloneSymbols[i].SetActive( true );
 
@@ -126,16 +108,34 @@ namespace MemoryMadness
 			}
 		}
 
-		// private void GenerateMemoryPhaseSymbols()
-		// {
-		// 	StartCoroutine( IEGenerateMemoryPhaseSymbols() );
-		// }
+		//Returns a colour from a list of colours
+		private Color ColourPicker( int currentIndex )
+		{
+			
+			if( currentIndex >= colorPicker.ColourList.Count )
+			{
+				currentIndex = Random.Range( 0, colorPicker.ColourList.Count - 1 );
+			}
+	
+			return colorPicker.ColourList[ currentIndex ];
+		}
+
+		private Sprite RandomShapePicker( int currentIndex, List<Sprite> shapes )
+		{
+			
+			if( currentIndex >= shapes.Count )
+			{
+				currentIndex = Random.Range( 0, shapes.Count - 1 );
+			}
+
+			return shapes[ currentIndex ];
+		}
 
 		private void GenerateMemoryPhaseSymbols()
 		{
 			GameObject randomSymbol;
-			int memPhaseSymbolCount = 5;
-			int max = 24;
+			int memPhaseSymbolCount = 4;
+		    int currentSymbolCount = 0;
 
 			//Randomly select and copy 2 - 5 ( depending on which stage we are on ) symbols from the clone list
 			//ie the list of symbols that will be displayed on the game screen
@@ -144,13 +144,25 @@ namespace MemoryMadness
 
 			int count = 0;
 
+			//Set our current Symbol Count
+			//between 20 and 25 , 3,4 = 20 , 5 = 25
+
+			if( memPhaseSymbolCount == 5 )
+			{
+				currentSymbolCount = 25;
+			}
+			else if( memPhaseSymbolCount <= 4 )
+			{
+				currentSymbolCount = 20;
+			}
+
 			List<int> pickedNumberList = new List<int>();
 
 			while( count < memPhaseSymbolCount )
 			{
 				
-				int rand = Random.Range( 0,  max );
-				
+				int rand = Random.Range( 0,  currentSymbolCount );
+
 				if( pickedNumberList.Count == 0 )
 				{
 				 	//Debug.Log( "First Pick" );
@@ -159,13 +171,11 @@ namespace MemoryMadness
 					count ++;
 				}
 				else if( !pickedNumberList.Contains( rand )  )
-				{
-					
+				{	
 					//Debug.Log( "Pick Colour and Shape... " + rand );
 					pickedNumberList.Add( rand );
 					PickColourAndShape( rand );
-					count++;
-					
+					count++;	
 				}
 				else if( pickedNumberList.Contains( rand )  )
 				{
@@ -188,7 +198,7 @@ namespace MemoryMadness
 
 			Symbol symbol = new Symbol();
 
-			//Debug.Log( "Pick Colour and Shape: " + memorySymbolsScript.Name );
+			Debug.Log( "Pick Colour and Shape: " + memorySymbolsScript.Name );
 
 			symbol.Name = memorySymbolsScript.Name;
 			symbol.BackgroundColor = memorySymbolsScript.BackgroundColor.GetComponent<Image>().color;
