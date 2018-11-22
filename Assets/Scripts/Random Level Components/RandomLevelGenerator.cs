@@ -94,8 +94,8 @@ namespace MemoryMadness
 			if( cloneSymbols.Count > 0 )
 			{
 				UpdateSymbols();
-				GenerateMemoryPhaseSymbols();
-				ColourSwitchSymbols();
+				//GenerateMemoryPhaseSymbols();
+				//ColourSwitchSymbols();
 			}
 		}
 
