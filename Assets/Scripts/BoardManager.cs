@@ -81,11 +81,10 @@ namespace MemoryMadness
 		{
 			//Messenger.AddListener( "LoadPhase" , LoadPhase );
 			Messenger.AddListener( "LoadLevel" , LoadLevel );
-			Messenger.AddListener( "IncrementButtonCount", IncrementButtonCount );
-			Messenger.AddListener( "ResetButtonCount", ResetButtonCount );
-			Messenger.AddListener( "DecrementLife" , DecrementLifeCount );
-			Messenger.AddListener( "CheckForWin", CheckWinStatus );
-			Messenger.AddListener( "Failure", Failure );
+			
+			//Messenger.AddListener( "DecrementLife" , DecrementLifeCount );
+		//	Messenger.AddListener( "CheckForWin", CheckWinStatus );
+		//	Messenger.AddListener( "Failure", Failure );
 			Messenger.AddListener( "ChangeLevel", ChangeLevel );
 			Messenger.AddListener( "ResetLevelGenerator" , ResetLevelGenerator );
 			//StartCoroutine( LoadLevel() );
@@ -97,11 +96,10 @@ namespace MemoryMadness
 		{
 			//Messenger.RemoveListener( "LoadPhase" , LoadPhase );
 			Messenger.RemoveListener( "LoadLevel" , LoadLevel );
-			Messenger.RemoveListener( "IncrementButtonCount", IncrementButtonCount );
-			Messenger.RemoveListener( "ResetButtonCount", ResetButtonCount );
-			Messenger.RemoveListener( "DecrementLife" , DecrementLifeCount );
-			Messenger.RemoveListener( "CheckForWin", CheckWinStatus );
-			Messenger.RemoveListener( "Failure", Failure );
+		
+			//Messenger.RemoveListener( "DecrementLife" , DecrementLifeCount );
+		//	Messenger.RemoveListener( "CheckForWin", CheckWinStatus );
+		//	Messenger.RemoveListener( "Failure", Failure );
 			Messenger.RemoveListener( "ChangeLevel", ChangeLevel );
 		}
 

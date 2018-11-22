@@ -42,13 +42,17 @@ namespace MemoryMadness
 		[SerializeField] private GameObject memoryPhaseContainer;
 		[SerializeField] private GameObject memorySymbolContainer;
 
+		[SerializeField] private int currentStage = 3;
+		[SerializeField] private int memPhaseSymbolCount;
+
 		// Use this for initialization
 		
 		private void OnEnable()
 		{
-			//Debug.Log( "Random Level Generator Enabled....." );
-			Messenger.Broadcast( "ResetButtonCount" );
+			//Reset the correct button count to zero
+			Messenger.Broadcast( "ResetCorrectButtonCount" );
 			
+			CheckCurrentStage();
 			LoadLists();
 			//1 Setup symbols
 			SetupSymbols();
@@ -66,6 +70,22 @@ namespace MemoryMadness
 				unamedShapes = unamedShapePicker.GetShapeList();
 			else
 				Debug.Log( "UNamed Shape List not set..." );
+
+		}
+
+		private void CheckCurrentStage()
+		{
+			if( currentStage <= 2 )
+				memPhaseSymbolCount = 2;
+			else if( currentStage == 3  )
+				memPhaseSymbolCount = 3;
+			else if( currentStage == 4 )
+				memPhaseSymbolCount = 4;
+			else if( currentStage > 4 )
+				memPhaseSymbolCount = 5;
+
+			//Set the win count value in the game manager
+			Messenger.Broadcast<int>( "SetWinCount" , memPhaseSymbolCount );					
 
 		}
 
@@ -134,7 +154,7 @@ namespace MemoryMadness
 		private void GenerateMemoryPhaseSymbols()
 		{
 			GameObject randomSymbol;
-			int memPhaseSymbolCount = 4;
+			
 		    int currentSymbolCount = 0;
 
 			//Randomly select and copy 2 - 5 ( depending on which stage we are on ) symbols from the clone list

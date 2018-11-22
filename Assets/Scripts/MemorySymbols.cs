@@ -79,9 +79,10 @@ namespace MemoryMadness
 				//rune.SetActive( false );
 				DisableButton();
 
-				Messenger.Broadcast( "IncrementButtonCount" ); //Request to Increment the correct selection count
-				Messenger.Broadcast( "CheckForWin" );  //Request to check for a win 
 				Messenger.Broadcast<int>( "IncreaseScore" , 100 );
+				Messenger.Broadcast( "CorrectButtonClick" ); //Let the game manager know that the correct button was clicked
+				//Messenger.Broadcast( "CheckForWin" );  //Request to check for a win 
+				
 				
 			}
 			else
