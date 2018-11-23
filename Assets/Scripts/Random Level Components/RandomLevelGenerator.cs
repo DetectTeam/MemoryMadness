@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
+
 namespace MemoryMadness
 {
 	
 	[System.Serializable]
-	public class Symbol
+	public class Symbol 
 	{
 		[SerializeField] private string name;
 		public string Name { get{ return name; } set{ name = value; } }
@@ -16,6 +17,7 @@ namespace MemoryMadness
 		public Color BackgroundColor { get{ return backgroundColor; } set{ backgroundColor = value; } }
 		private Image rune;
 		public Image Rune { get{ return rune; } set{ rune = value; } }
+
 		
 	}
 
@@ -44,6 +46,8 @@ namespace MemoryMadness
 
 		[SerializeField] private int currentStage = 3;
 		[SerializeField] private int memPhaseSymbolCount;
+
+		[SerializeField] private List<Color> colourList = new List<Color>();
 
 		// Use this for initialization
 		
@@ -94,8 +98,12 @@ namespace MemoryMadness
 			if( cloneSymbols.Count > 0 )
 			{
 				UpdateSymbols();
-				//GenerateMemoryPhaseSymbols();
-				//ColourSwitchSymbols();
+				GenerateMemoryPhaseSymbols();
+
+				if( memoryPhaseSymbols.Count <= 3 )
+					ColourSwitchSymbols();
+				else
+					ColourSwitchFiveSymbols();	
 			}
 		}
 
@@ -155,7 +163,7 @@ namespace MemoryMadness
 		{
 			GameObject randomSymbol;
 			
-		    int currentSymbolCount = 0;
+		    int currentSymbolCount = 20;
 
 			//Randomly select and copy 2 - 5 ( depending on which stage we are on ) symbols from the clone list
 			//ie the list of symbols that will be displayed on the game screen
@@ -167,14 +175,14 @@ namespace MemoryMadness
 			//Set our current Symbol Count
 			//between 20 and 25 , 3,4 = 20 , 5 = 25
 
-			if( memPhaseSymbolCount == 5 )
-			{
-				currentSymbolCount = 25;
-			}
-			else if( memPhaseSymbolCount <= 4 )
-			{
-				currentSymbolCount = 20;
-			}
+			// if( memPhaseSymbolCount == 5 )
+			// {
+			// 	currentSymbolCount = 25;
+			// }
+			// else if( memPhaseSymbolCount <= 4 )
+			// {
+			// 	currentSymbolCount = 20;
+			// }
 
 			List<int> pickedNumberList = new List<int>();
 
@@ -231,6 +239,72 @@ namespace MemoryMadness
 		
 		}
 
+
+		//Alternative way of colour switching symbols 
+		//when symbol count is greater than 3
+
+		[SerializeField] private List<Symbol> symbolsToSwitch = new List<Symbol>();
+		private void ColourSwitchFiveSymbols()
+		{
+
+				int rand = 0;
+
+				//List<Symbol> symbolsToSwitch = new List<Symbol>();
+
+				Debug.Log( "Colour Switching 4 or 5 symbols" );
+			
+				//Create new list of symbols from the current list of memoryphase symbols
+				//My shitty way of doing a deep copy
+				//Find a better way to do this !!!!!!
+				for( int i = 0; i< memoryPhaseSymbols.Count; i++ )
+				{
+					Symbol symbol =  new Symbol();
+					symbol.Name = memoryPhaseSymbols[i].Name;
+					symbol.BackgroundColor = memoryPhaseSymbols[i].BackgroundColor;
+					symbol.Rune = memoryPhaseSymbols[i].Rune;
+
+				 	symbolsToSwitch.Add( symbol );
+				 }
+
+				//Load List of colours
+				for( int i = 0; i< symbolsToSwitch.Count; i++ )
+				{
+					colourList.Add( symbolsToSwitch[i].BackgroundColor );
+				}
+
+				// colourList.ShuffleList();
+
+				// for( int i = 0; i < symbolsToSwitch.Count; i++ )
+				// {
+				// 	symbolsToSwitch[i].BackgroundColor = colourList[ i ];
+				
+				// }
+
+				//Randomize Colours for the 5 symbols
+				foreach( Symbol symbol in symbolsToSwitch )
+				{
+					Debug.Log( symbol.Name );
+					rand = Random.Range( 0, colourList.Count - 1 );
+					Debug.Log( "Random Num: " + rand );
+					symbol.BackgroundColor = colourList[ rand ];
+				
+
+					colourList.RemoveAt( rand );
+
+				}
+
+
+				//Randomly insert the Symbols into the level.
+			
+				//ColourSwitchSymbols();
+
+				colourList.Clear();
+				//symbolsToSwitch.Clear();
+		}
+
+
+
+		//Switch Colour of symbols when symbol count is 3 or less.
 		private void ColourSwitchSymbols()
 		{	
 			bool isSelectable = true;
@@ -258,8 +332,13 @@ namespace MemoryMadness
 							if( !memorySymbolsScript.IsCorrect && !memorySymbolsScript.IsColourSwitched )
 							{
 								
+								//Set the background colour
 								memorySymbolsScript.BackgroundColor.GetComponent<Image>().color = memoryPhaseSymbols[x].BackgroundColor;
+								
+								//Set the symbol
 								memorySymbolsScript.Rune.GetComponent<Image>().sprite = memoryPhaseSymbols[i].Rune.sprite;
+								
+								//Mark this memory symbol as colour switched
 								memorySymbolsScript.IsColourSwitched = true;
 								
 								isSelectable = false;

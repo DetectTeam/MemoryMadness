@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Security.Cryptography;
+using System.Linq;
+using System;
 
 
 public static class ListExtensionMethods
@@ -21,6 +23,11 @@ public static class ListExtensionMethods
 			list[n] = value;  
 		}  
 	}
+
+	public static List<T> Clone<T>(this List<T> listToClone) where T: ICloneable
+    {
+        return listToClone.Select(item => (T)item.Clone()).ToList();
+    }
 
 }
 
