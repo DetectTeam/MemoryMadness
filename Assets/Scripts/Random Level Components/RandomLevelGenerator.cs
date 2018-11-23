@@ -269,13 +269,14 @@ namespace MemoryMadness
 					symbol.Rune = memoryPhaseSymbols[i].Rune;
 
 				 	symbolsToSwitch.Add( symbol );
+					 colourSwitchList.Add( memoryPhaseSymbols[i].BackgroundColor );
 				 }
 
 				//Load List of colours
-				for( int i = 0; i< symbolsToSwitch.Count; i++ )
-				{
-					colourSwitchList.Add( symbolsToSwitch[i].BackgroundColor );
-				}
+				// for( int i = 0; i< symbolsToSwitch.Count; i++ )
+				// {
+				// 	colourSwitchList.Add( symbolsToSwitch[i].BackgroundColor );
+				// }
 
 				//Randomize Colours for the 5 symbols
 				foreach( Symbol symbol in symbolsToSwitch )
