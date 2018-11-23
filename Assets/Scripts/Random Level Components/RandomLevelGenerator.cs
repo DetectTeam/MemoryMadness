@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 
 
@@ -46,8 +47,6 @@ namespace MemoryMadness
 
 		[SerializeField] private int currentStage = 3;
 		[SerializeField] private int memPhaseSymbolCount;
-
-		[SerializeField] private List<Color> colourList = new List<Color>();
 
 		// Use this for initialization
 		
@@ -244,10 +243,16 @@ namespace MemoryMadness
 		//when symbol count is greater than 3
 
 		[SerializeField] private List<Symbol> symbolsToSwitch = new List<Symbol>();
+		[SerializeField] private Color foundColor;
+
+		[SerializeField] private List<Color> colourSwitchList;
 		private void ColourSwitchFiveSymbols()
 		{
 
 				int rand = 0;
+				Color tmp = Color.clear;
+				bool foundMatch = false;
+				bool isSelectable = false;
 
 				//List<Symbol> symbolsToSwitch = new List<Symbol>();
 
@@ -269,28 +274,82 @@ namespace MemoryMadness
 				//Load List of colours
 				for( int i = 0; i< symbolsToSwitch.Count; i++ )
 				{
-					colourList.Add( symbolsToSwitch[i].BackgroundColor );
+					colourSwitchList.Add( symbolsToSwitch[i].BackgroundColor );
 				}
-
-				// colourList.ShuffleList();
-
-				// for( int i = 0; i < symbolsToSwitch.Count; i++ )
-				// {
-				// 	symbolsToSwitch[i].BackgroundColor = colourList[ i ];
-				
-				// }
 
 				//Randomize Colours for the 5 symbols
 				foreach( Symbol symbol in symbolsToSwitch )
 				{
-					Debug.Log( symbol.Name );
-					rand = Random.Range( 0, colourList.Count - 1 );
-					Debug.Log( "Random Num: " + rand );
-					symbol.BackgroundColor = colourList[ rand ];
+					
+					//Remove the colour that matches the current symbol colour
+					for( int x = 0; x < colourSwitchList.Count; x++ )
+					{
+						if( colourSwitchList.Contains( symbol.BackgroundColor ) )
+						{
+							Debug.Log( "Found Match" );
+							tmp = colourSwitchList[x];
+							colourSwitchList.RemoveAt( x );
+							foundMatch = true;
+						}
+					}
+
+					//Pick a colour from the remaining coloours
 				
+					rand = Random.Range( 0, colourSwitchList.Count - 1 );
 
-					colourList.RemoveAt( rand );
+					Debug.Log( "RAND:: " + colourSwitchList.Count );
+					
+					symbol.BackgroundColor = colourSwitchList[ rand ];
+				
+					//Remove the random Colour
+					colourSwitchList.RemoveAt( rand );
 
+					//Add the Colour that matched the current symbol back into the list
+					if( foundMatch )
+					{
+						colourSwitchList.Add( tmp );
+						foundMatch = false;
+					}
+
+				}
+
+				for( int x = 0; x < symbolsToSwitch.Count; x++ )
+				{
+					//Debug.Log( "Names : " + memoryPhaseSymbols[i].Name  + " " + memoryPhaseSymbols[x].Name );
+					
+					isSelectable = true;
+					//Debug.Log( "No Match Found So im going to do my thing...." );
+
+					Debug.Log( symbolsToSwitch[x].Name + " " + symbolsToSwitch[x].BackgroundColor );
+						
+					while( isSelectable )
+					{
+
+						//Pick a random symbol from the list.
+						GameObject selectedMemorySymbol = cloneSymbols[ Random.Range( 0, cloneSymbols.Count ) ];
+						//Debug.Log( "SELECTED SYMBOL : " + selectedMemorySymbol );
+						MemorySymbols memorySymbolsScript = selectedMemorySymbol.GetComponent<MemorySymbols>();
+							
+						//If the random symbol isnt a winning symbol 
+						//and it hasnt already been colour switched
+						if( !memorySymbolsScript.IsCorrect && !memorySymbolsScript.IsColourSwitched )
+						{
+								
+							//Set the background colour
+							memorySymbolsScript.BackgroundColor.GetComponent<Image>().color =  symbolsToSwitch[x].BackgroundColor;
+								
+							//Set the symbol
+							memorySymbolsScript.Rune.GetComponent<Image>().sprite = symbolsToSwitch[x].Rune.sprite;
+								
+							//Mark this memory symbol as colour switched
+							memorySymbolsScript.IsColourSwitched = true;
+								
+							isSelectable = false;
+								
+						}
+					
+					}
+					
 				}
 
 
@@ -298,8 +357,8 @@ namespace MemoryMadness
 			
 				//ColourSwitchSymbols();
 
-				colourList.Clear();
-				//symbolsToSwitch.Clear();
+				colourSwitchList.Clear();
+				symbolsToSwitch.Clear();
 		}
 
 
