@@ -2961,6 +2961,7 @@ GameObject:
   - component: {fileID: 241129529}
   - component: {fileID: 241129530}
   - component: {fileID: 241129531}
+  - component: {fileID: 241129532}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3181,6 +3182,19 @@ MonoBehaviour:
   successMessage: {fileID: 270616639}
   failureMessage: {fileID: 548647233}
   randomLevelGenerator: {fileID: 1307170610}
+  currentLevel: 0
+--- !u!114 &241129532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 241129526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e532af6305844f38a338bdf83dc41d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stage: 0100000000000000010000000000000003000000020000000300000002000000
 --- !u!224 &241470953 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224036364955188348, guid: dbebd2df5a17f450abd9064d5582d9e1,
@@ -18067,7 +18081,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 168.3872, y: 2004.6462}
+  m_Target: {x: 282.43155, y: 1634.4688}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
@@ -21992,7 +22006,7 @@ Prefab:
     - target: {fileID: 114822312392378942, guid: 7425c24d9d6dd4ace856e28dcfb43294,
         type: 2}
       propertyPath: currentStage
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114470261791749264, guid: 7425c24d9d6dd4ace856e28dcfb43294,
         type: 2}

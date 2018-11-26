@@ -10,6 +10,7 @@ using System.Security.Cryptography;
 		[SerializeField] private List<Color> colourList = new List<Color>();
 		public List<Color> ColourList { get{ return colourList; } } 
 
+
 		private void OnEnable()
 		{
 			GetColourList();
@@ -18,6 +19,11 @@ using System.Security.Cryptography;
 		private void Start()
 		{
 			GetColourList();
+		}
+
+		public Color GetRandomColour()
+		{
+			return colourList[ Random.Range( 0, colourList.Count - 1 ) ]; 
 		}
 	
 		public List<Color> GetColourList()

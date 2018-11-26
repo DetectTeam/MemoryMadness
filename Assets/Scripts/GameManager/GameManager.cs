@@ -77,6 +77,7 @@ namespace MemoryMadness
 			{
 				Debug.Log( "You WIN !!!!!" );
 				Messenger.Broadcast( "StopCountDown" );
+			
 				endLevelBackground.SetActive( true );
 				Success();
 				ResetCorrectButtonClickCount();
@@ -124,6 +125,7 @@ namespace MemoryMadness
 			{
 				
 				Messenger.Broadcast( "StopCountDown" );
+
 				endLevelBackground.SetActive( true );
 				Failure(); //Request failure message
 				ChangeLevel(); //Request level change
@@ -138,6 +140,7 @@ namespace MemoryMadness
 
 		private void ChangeLevel()
 		{
+			Messenger.Broadcast( "IncrementLevel" );
 			StartCoroutine( IEChangeLevel() );
 		}
 

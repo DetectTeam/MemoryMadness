@@ -52,7 +52,6 @@ namespace MemoryMadness
 		// Use this for initialization
 
 		
-		
 		private void OnEnable()
 		{
 			//Reset the correct button count to zero
@@ -108,10 +107,14 @@ namespace MemoryMadness
 				UpdateSymbols();
 				GenerateMemoryPhaseSymbols();
 
-				if( memoryPhaseSymbols.Count <= 3 )
-					ColourSwitchSymbols();
-				else
-					ColourSwitchFiveSymbols();	
+				//Only perform a colour switch on levels with coloured symbols
+				if( StageManager.CurrentLevelType.Equals( LevelType.NameableColour ) || StageManager.CurrentLevelType.Equals( LevelType.UnNameableColour ) )
+				{
+					if( memoryPhaseSymbols.Count <= 3 )
+						ColourSwitchSymbols();
+					else
+						ColourSwitchFiveSymbols();	
+				}
 			}
 		}
 
@@ -120,7 +123,31 @@ namespace MemoryMadness
 		private void UpdateSymbols()
 		{
 
-			Debug.Log( "LevelType: " + StageManager.CurrentLevelType );
+			bool isNoColour = false;
+
+			List<Sprite> levelSprites;
+
+			Debug.Log( StageManager.CurrentLevelType );
+
+			Color bgColor = colorPicker.GetRandomColour();
+
+			if( StageManager.CurrentLevelType.Equals( LevelType.UnNameableNonColour ) || StageManager.CurrentLevelType.Equals( LevelType.NameableNonColour ) )
+			{
+				Debug.Log( "This works fine ...." );
+				isNoColour = true;
+			}
+
+
+			if( StageManager.CurrentLevelType.Equals( LevelType.UnNameableColour ) || StageManager.CurrentLevelType.Equals( LevelType.UnNameableNonColour ) )
+			{
+				Debug.Log( "UNNAMEABLE !!!!" );
+				levelSprites = unamedShapes;
+			}
+			else
+			{
+				Debug.Log( "NAMEABLE !!!!" );
+				levelSprites = namedShapes;
+			}
 
 			for( int i = 0; i < cloneSymbols.Count; i++ )
 			{
@@ -139,14 +166,25 @@ namespace MemoryMadness
 				int colourPickerIndex = 0;
 				int shapeIndex = 0;
 
-				cloneSymbols[i].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = ColourPicker( i ); //colorPicker.ColourList[ colourPickerIndex ];
 				
-				cloneSymbols[i].transform.Find( "Rune" ).GetComponent<Image>().sprite = RandomShapePicker( i , unamedShapes );
+				if( !isNoColour ) 
+				{
+					cloneSymbols[i].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = ColourPicker( i ); //colorPicker.ColourList[ colourPickerIndex ];
+				}
+				else
+				{
+					Debug.Log( "NON COLOURING...." );
+					cloneSymbols[i].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = bgColor; //Pick a single random Colour . Used for noncoloured symbols
+				}
+			
+			
+				cloneSymbols[i].transform.Find( "Rune" ).GetComponent<Image>().sprite = RandomShapePicker( i , levelSprites );
 
 				cloneSymbols[i].SetActive( true );
 
 				//cloneSymbols[i].transform.parent = anchors[ i ].transform.parent;
 			}
+			
 		}
 
 		//Returns a colour from a list of colours

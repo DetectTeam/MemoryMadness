@@ -30,6 +30,7 @@ public class StageManager : MonoBehaviour
 	{
 		LoadStage();
 		RefreshStage();
+		SetCurrentLevelType();
 	}
 
 	private void OnEnable()
@@ -49,17 +50,22 @@ public class StageManager : MonoBehaviour
 		currentLevel ++;
 
 		if( currentLevel > 8 )
-			currentLevel = 1;
+		{
+			Debug.Log( "Level Greater than 8" );
+			currentLevel = 0;
+		}
+		
+		Debug.Log( "CurrentLevel:  >>>>>>>>>> " + currentLevel );
 
-		SetCurrentLevel();	
+		SetCurrentLevelType();	
 	}
 
 	private void IncrementStage()
 	{
 		currentStage ++;
 
-		if( currentStage > 8 )
-			currentStage = 1;
+		if( currentStage >= 7 )
+			currentStage = 0;
 
 
 		RefreshStage();
@@ -83,9 +89,10 @@ public class StageManager : MonoBehaviour
 		}
 	}
 
-	private void SetCurrentLevel()
+	public void SetCurrentLevelType()
 	{
-		currentLevelType = stage[ currentLevel ]; 
+		if( currentLevel < stage.Count - 1  )
+			currentLevelType = stage[ currentLevel ]; 
 	}
 
 	private void RefreshStage()
