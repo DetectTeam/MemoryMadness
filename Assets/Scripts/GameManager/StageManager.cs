@@ -15,7 +15,8 @@ public enum LevelType
 public class StageManager : MonoBehaviour 
 {
 
-	private static int currentStage = 0;
+	[SerializeField] private int maxNumLevelsPerStage = 7;
+	[SerializeField] private static int currentStage = 0;
 	public static int CurrentStage { get{ return currentStage; } set{ currentStage = value; } }
 	private static int currentLevel = 0;
 	public static int CurrentLevel { get{ return currentLevel; } set{ currentLevel = value; } }
@@ -49,11 +50,13 @@ public class StageManager : MonoBehaviour
 	{
 		currentLevel ++;
 
-		if( currentLevel > 7 )
+		if( currentLevel > maxNumLevelsPerStage )
 		{
 			Debug.Log( "Level Greater than 7" );
 			currentLevel = 0;
 		}
+
+		
 		
 		Debug.Log( "CurrentLevel:  >>>>>>>>>> " + currentLevel );
 
@@ -63,9 +66,6 @@ public class StageManager : MonoBehaviour
 	private void IncrementStage()
 	{
 		currentStage ++;
-
-		if( currentStage >= 7 )
-			currentStage = 0;
 
 
 		RefreshStage();
@@ -91,7 +91,7 @@ public class StageManager : MonoBehaviour
 
 	public void SetCurrentLevelType()
 	{
-		if( currentLevel < stage.Count - 1  )
+		if( currentLevel < stage.Count  )
 			currentLevelType = stage[ currentLevel ]; 
 	}
 
