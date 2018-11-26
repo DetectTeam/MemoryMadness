@@ -49,9 +49,9 @@ public class StageManager : MonoBehaviour
 	{
 		currentLevel ++;
 
-		if( currentLevel > 8 )
+		if( currentLevel > 7 )
 		{
-			Debug.Log( "Level Greater than 8" );
+			Debug.Log( "Level Greater than 7" );
 			currentLevel = 0;
 		}
 		
