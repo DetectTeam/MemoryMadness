@@ -108,7 +108,7 @@ namespace MemoryMadness
 				GenerateMemoryPhaseSymbols();
 
 				//Only perform a colour switch on levels with coloured symbols
-				if( StageManager.CurrentLevelType.Equals( LevelType.NameableColour ) || StageManager.CurrentLevelType.Equals( LevelType.UnNameableColour ) )
+				if( StageManager.CurrentLevelType == LevelType.NameableColour  || StageManager.CurrentLevelType == LevelType.UnNameableColour )
 				{
 					if( memoryPhaseSymbols.Count <= 3 )
 						ColourSwitchSymbols();
@@ -131,14 +131,14 @@ namespace MemoryMadness
 
 			Color bgColor = colorPicker.GetRandomColour();
 
-			if( StageManager.CurrentLevelType.Equals( LevelType.UnNameableNonColour ) || StageManager.CurrentLevelType.Equals( LevelType.NameableNonColour ) )
+			if( StageManager.CurrentLevelType == LevelType.UnNameableNonColour  || StageManager.CurrentLevelType == LevelType.NameableNonColour )
 			{
 				Debug.Log( "This works fine ...." );
 				isNoColour = true;
 			}
 
 
-			if( StageManager.CurrentLevelType.Equals( LevelType.UnNameableColour ) || StageManager.CurrentLevelType.Equals( LevelType.UnNameableNonColour ) )
+			if( StageManager.CurrentLevelType == LevelType.UnNameableColour  || StageManager.CurrentLevelType == LevelType.UnNameableNonColour )
 			{
 				Debug.Log( "UNNAMEABLE !!!!" );
 				levelSprites = unamedShapes;
@@ -404,7 +404,6 @@ namespace MemoryMadness
 					}
 					
 				}
-
 
 				//Randomly insert the Symbols into the level.
 			
