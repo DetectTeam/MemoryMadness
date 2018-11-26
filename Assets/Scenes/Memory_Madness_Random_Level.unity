@@ -18067,7 +18067,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 256.44785, y: 1482.8256}
+  m_Target: {x: 168.3872, y: 2004.6462}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
@@ -21992,7 +21992,7 @@ Prefab:
     - target: {fileID: 114822312392378942, guid: 7425c24d9d6dd4ace856e28dcfb43294,
         type: 2}
       propertyPath: currentStage
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114470261791749264, guid: 7425c24d9d6dd4ace856e28dcfb43294,
         type: 2}

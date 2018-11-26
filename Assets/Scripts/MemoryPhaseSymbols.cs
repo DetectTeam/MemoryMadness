@@ -21,11 +21,12 @@ namespace MemoryMadness
 			{
 				symbols = randomLevelGenerator.MemoryPhaseSymbols;
 
-
-
 				Debug.Log( "Symbol Count: " + symbols.Count );
-
-				if( symbols.Count == 3 )
+				if( symbols.Count == 2 )
+				{
+					gameObject.transform.localPosition = new Vector3( 225, 0, 0 );
+				}
+				else if( symbols.Count == 3 )
 				{
 					gameObject.transform.localPosition = new Vector3( 150, 0, 0 );
 				}

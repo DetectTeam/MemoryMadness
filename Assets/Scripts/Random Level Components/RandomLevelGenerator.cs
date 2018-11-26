@@ -19,7 +19,6 @@ namespace MemoryMadness
 		private Image rune;
 		public Image Rune { get{ return rune; } set{ rune = value; } }
 
-		
 	}
 
 	public class RandomLevelGenerator : MonoBehaviour 
@@ -29,12 +28,12 @@ namespace MemoryMadness
 		[SerializeField] private ShapePicker namedShapePicker;
 		[SerializeField] private ShapePicker unamedShapePicker;
 		
+		[SerializeField] private List<LevelType> currentStageLevels;
 		[SerializeField] private List<GameObject> anchors;
 		//[SerializeField] private List<Color> colourList;
 		[SerializeField] private List<Sprite> namedShapes;
 		[SerializeField] private List<Sprite> unamedShapes;
 		[SerializeField] private List<GameObject> cloneSymbols;
-
 		[SerializeField] private List<GameObject> colourSwitchedSymbols;
 
 		[SerializeField] private List<Symbol> memoryPhaseSymbols;
@@ -45,20 +44,27 @@ namespace MemoryMadness
 		[SerializeField] private GameObject memoryPhaseContainer;
 		[SerializeField] private GameObject memorySymbolContainer;
 
-		[SerializeField] private int currentStage = 3;
+		//[SerializeField] private int currentStage = 3;
 		[SerializeField] private int memPhaseSymbolCount;
-
+		
+		[SerializeField] private int currentLevel = 0;
+		
 		// Use this for initialization
+
+		
 		
 		private void OnEnable()
 		{
 			//Reset the correct button count to zero
 			Messenger.Broadcast( "ResetCorrectButtonCount" );
 			
-			CheckCurrentStage();
+			CheckCurrentStage( StageManager.CurrentStage );
+
 			LoadLists();
 			//1 Setup symbols
 			SetupSymbols();
+
+
 		}
 
 		private void LoadLists()
@@ -76,8 +82,11 @@ namespace MemoryMadness
 
 		}
 
-		private void CheckCurrentStage()
+		private void CheckCurrentStage( int currentStage )
 		{
+			Debug.Log( "Current Stage " + currentStage );
+			Debug.Log( "Current Level : " + GameManager.Instance.CurrentLevel );
+			
 			if( currentStage <= 2 )
 				memPhaseSymbolCount = 2;
 			else if( currentStage == 3  )
@@ -106,8 +115,13 @@ namespace MemoryMadness
 			}
 		}
 
+	
+
 		private void UpdateSymbols()
 		{
+
+			Debug.Log( "LevelType: " + StageManager.CurrentLevelType );
+
 			for( int i = 0; i < cloneSymbols.Count; i++ )
 			{
 				

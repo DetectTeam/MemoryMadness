@@ -22,6 +22,8 @@ namespace MemoryMadness
 		[SerializeField] private GameObject successMessage;
 		[SerializeField] private GameObject failureMessage;
 		[SerializeField] private GameObject randomLevelGenerator;
+		[SerializeField] private int currentLevel = 1;
+		public int CurrentLevel { get{ return currentLevel; } set{ currentLevel = value; }  }
 
 		private void Awake()
 		{
