@@ -12,7 +12,7 @@ namespace MemoryMadness
 		[SerializeField] private Image progressBar;
 		[SerializeField] private TextMeshProUGUI percentageText;
 
-		[SerializeField] private BoardManager boardManager;
+		[SerializeField] private GameManager gameManager;
 
 		[SerializeField] private Star star1;
 		[SerializeField] private Star star2;
@@ -24,24 +24,27 @@ namespace MemoryMadness
 
 		private void OnEnable()
 		{		
-			if( boardManager )
-				StartCoroutine( Fill( boardManager.calculateScore() ) );
-	
+			Messenger.AddListener<float>( "Results", Fill );
 		}
 
 		private void OnDisable()
 		{
+			Messenger.RemoveListener<float>( "Results", Fill );
+			
 			if( particleContainer && particleContainer.activeSelf )
 				particleContainer.SetActive( false );
-
 
 				progressBar.fillAmount = 0;
 				percentageText.text = "0%";
 
 		}
 
+		private void Fill( float percentage )
+		{
+			StartCoroutine( IEFill( percentage ) );
+		}
 
-		private IEnumerator Fill( float percentage )
+		private IEnumerator IEFill( float percentage )
 		{
 			float currentValue = 0;
 			progressBar.fillAmount = 0f;

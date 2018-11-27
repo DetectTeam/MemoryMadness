@@ -12,10 +12,11 @@ namespace MemoryMadness
 		private const string currentStageStr = "CurrentStage";
 		[SerializeField] private int heartCount = 0;
 
-		[SerializeField] private int ActiveHearts = 0;
+		[SerializeField] private int activeHearts = 0;
 		private void OnEnable()
 		{
 			Messenger.AddListener( "RemoveHeart", HideHeart );
+			Messenger.AddListener( "ResetHearts", DisplayHearts );
 			//Messenger.AddListener<int>( "DisplayHearts" , DisplayHearts );
 			ResetHearts();
 			DisplayHearts();
@@ -24,45 +25,45 @@ namespace MemoryMadness
 		private void OnDisable()
 		{
 			Messenger.RemoveListener( "RemoveHeart", HideHeart );
+			Messenger.RemoveListener( "ResetHearts", DisplayHearts );
 			//Messenger.RemoveListener<int>( "DisplayHearts" , DisplayHearts );
 		}
-		// Use this for initialization
-		private void Start () 
-		{
-			
-		}
-
+		
+	
 		private void DisplayHearts( )
 		{
-			int currentStage = 1;
+			 int currentStage = 1;
 
 			if( PlayerPrefs.HasKey( currentStageStr ) )
 				currentStage = PlayerPrefs.GetInt( currentStageStr );
 
-			heartCount = currentStage + 1;
-			
-			if( heartCount > 5  )
+
+			if( currentStage <= 2 )
+				heartCount = 2;
+			else if( currentStage > 5 )
 				heartCount = 5;
+			else
+				heartCount = currentStage;
 
+			Debug.Log( "Current Number of Hearts To Display is: " + heartCount );
 
-			//Debug.Log( "Current Number of Hearts To Display is: " + heartCount );
-
-			for( int i = 0; i <= heartCount; i++ )
+			for( int i = 0; i < heartCount; i++ )
 			{
 				hearts[ i ].SetActive( true );
+
 			}
 
-			ActiveHearts =  3; //heartCount;
+			activeHearts = heartCount;
 			
 		}
 
 		private void HideHeart()
 		{
-			hearts[ ActiveHearts - 1 ].SetActive( false );
-			ActiveHearts --;
+			hearts[ activeHearts - 1 ].SetActive( false );
+			activeHearts --;
 
-			if( ActiveHearts < 1 )
-				ActiveHearts = 1;
+			if( activeHearts < 1 )
+				activeHearts = 1;
 		}
 
 		private void ResetHearts()

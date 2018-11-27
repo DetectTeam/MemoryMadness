@@ -253,6 +253,7 @@ namespace MemoryMadness
 				endLevelBackground.SetActive( true );
 				Failure(); //Request failure message
 				ChangeLevel(); //Request level change
+				selectedButtonCount = 0;
 
 			}
 		}

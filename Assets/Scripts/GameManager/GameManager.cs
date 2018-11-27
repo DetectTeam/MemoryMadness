@@ -62,6 +62,7 @@ namespace MemoryMadness
 		void Start () 
 		{
 			//StartCoroutine( "RunGameLoop" );
+			ResetLifeCount();
 		}
 
 		private void SetWinCount( int max)
@@ -75,7 +76,7 @@ namespace MemoryMadness
 		{
 			if( correctButtonCount == winCount )
 			{
-				Debug.Log( "You WIN !!!!!" );
+				
 				Messenger.Broadcast( "StopCountDown" );
 			
 				endLevelBackground.SetActive( true );
@@ -135,7 +136,26 @@ namespace MemoryMadness
 
 		private void ResetLifeCount()
 		{
-			lifeCount = 3;
+			int currentStage = 1;
+
+			if( PlayerPrefs.HasKey( "CurrentStage" ) )
+			{
+				currentStage = PlayerPrefs.GetInt( "CurrentStage" );
+			}
+
+			if( currentStage == 1 )
+			{
+				lifeCount = 2;
+			}
+			else if( currentStage > 5 )
+			{
+				lifeCount = 5;
+			}
+			else
+			{
+				lifeCount = currentStage;
+			}
+		
 		}
 
 		private void ChangeLevel()

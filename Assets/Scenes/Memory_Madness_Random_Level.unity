@@ -3938,7 +3938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progressBar: {fileID: 776127014}
   percentageText: {fileID: 42380278}
-  boardManager: {fileID: 0}
+  gameManager: {fileID: 0}
   star1: {fileID: 575833840}
   star2: {fileID: 1752941635}
   star3: {fileID: 992181641}
@@ -8917,7 +8917,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 395.50006, y: 2741.9968}
+  m_Target: {x: 333.7491, y: 2408.3394}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
@@ -12642,7 +12642,7 @@ MonoBehaviour:
   - {fileID: 1955209037}
   - {fileID: 2048015129}
   heartCount: 0
-  ActiveHearts: 0
+  activeHearts: 0
 --- !u!1 &1042745405
 GameObject:
   m_ObjectHideFlags: 0
@@ -18082,7 +18082,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 282.43155, y: 1634.4688}
+  m_Target: {x: 256.44785, y: 1482.8256}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1

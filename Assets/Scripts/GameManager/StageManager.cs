@@ -48,26 +48,28 @@ public class StageManager : MonoBehaviour
 
 	private void IncrementLevel()
 	{
-		currentLevel ++;
-
+		currentLevel++;
+		
 		if( currentLevel > maxNumLevelsPerStage )
 		{
 			Debug.Log( "Level Greater than 7" );
+			IncrementStage();
 			currentLevel = 0;
 		}
 
-		
-		
 		Debug.Log( "CurrentLevel:  >>>>>>>>>> " + currentLevel );
 
 		SetCurrentLevelType();	
+
+		
 	}
 
 	private void IncrementStage()
 	{
+		Debug.Log( "Incrmenting Stage..." );
 		currentStage ++;
-
-
+		Debug.Log( "Stage is now.. " + currentStage );
+		SaveStage();
 		RefreshStage();
 
 	}

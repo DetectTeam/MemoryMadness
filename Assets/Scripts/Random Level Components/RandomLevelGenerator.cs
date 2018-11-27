@@ -56,7 +56,7 @@ namespace MemoryMadness
 		{
 			//Reset the correct button count to zero
 			Messenger.Broadcast( "ResetCorrectButtonCount" );
-			
+			Debug.Log( "Current Stage : " + StageManager.CurrentStage );
 			CheckCurrentStage( StageManager.CurrentStage );
 
 			LoadLists();
@@ -96,7 +96,8 @@ namespace MemoryMadness
 				memPhaseSymbolCount = 5;
 
 			//Set the win count value in the game manager
-			Messenger.Broadcast<int>( "SetWinCount" , memPhaseSymbolCount );					
+			Messenger.Broadcast<int>( "SetWinCount" , memPhaseSymbolCount );
+			//Messenger.Broadcast( "ResetHearts" );					
 
 		}
 
@@ -133,19 +134,16 @@ namespace MemoryMadness
 
 			if( StageManager.CurrentLevelType == LevelType.UnNameableNonColour  || StageManager.CurrentLevelType == LevelType.NameableNonColour )
 			{
-				Debug.Log( "This works fine ...." );
 				isNoColour = true;
 			}
 
 
 			if( StageManager.CurrentLevelType == LevelType.UnNameableColour  || StageManager.CurrentLevelType == LevelType.UnNameableNonColour )
 			{
-				Debug.Log( "UNNAMEABLE !!!!" );
 				levelSprites = unamedShapes;
 			}
 			else
 			{
-				Debug.Log( "NAMEABLE !!!!" );
 				levelSprites = namedShapes;
 			}
 

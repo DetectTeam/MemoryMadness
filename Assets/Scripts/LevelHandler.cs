@@ -41,30 +41,32 @@ namespace MemoryMadness
 			Messenger.RemoveListener( LoadNextLevelMessage, LoadNextLevel );
 		}
 		
-		public void IncrementStage()
-		{
-			currentStage ++;
+		// public void IncrementStage()
+		// {
+		// 	currentStage ++;
 
-			if( currentStage >= numberOfStages  )
-			{
-				currentStage = 0;
-				PlayerPrefs.SetInt( LoadNextLevelMessage , currentStage );
-			}
-		}
+		// 	if( currentStage >= numberOfStages  )
+		// 	{
+		// 		currentStage = 0;
+		// 		PlayerPrefs.SetInt( LoadNextLevelMessage , currentStage );
+		// 	}
+		// }
 
 		public void LoadNextLevel()
 		{
-			//Request a Reset of the random level generator
-			Messenger.Broadcast( "ResetLevelGenerator" );
 			
-			if( levelCount < 8 )
+			if( levelCount < 7 )
 			{
+				//Request a Reset of the random level generator
+				Messenger.Broadcast( "ResetLevelGenerator" );
 				levelCount ++;
 				memoryPhase.SetActive( true );
 			}
 			else
 			{
 				results.SetActive( true );
+				Messenger.Broadcast( "Results" , 85.0f );
+				Messenger.Broadcast( "ResetLevelGenerator" );
 				levelCount = 0;
 			}
 
