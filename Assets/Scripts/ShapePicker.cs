@@ -26,4 +26,9 @@ public class ShapePicker : MonoBehaviour
 
 			return imageList;
 		}
+
+		public Sprite GetRandomShape()
+		{
+			return imageList[ Random.Range( 0, imageList.Count - 1 ) ];
+		}
 }
