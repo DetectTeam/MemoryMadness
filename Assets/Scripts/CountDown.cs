@@ -16,6 +16,7 @@ namespace MemoryMadness
 		// Use this for initialization
 
 		[SerializeField] private bool isFinished = false;
+		[SerializeField] private bool isLevelTimeOut = false;
 
 
 		private float tmpTime;
@@ -60,7 +61,20 @@ namespace MemoryMadness
 			yield return new WaitForSeconds( 1.0f );
 			
 			if( !isFinished )
-				game.SetActive( true );
+			{
+				
+				if( isLevelTimeOut )
+				{
+					Messenger.Broadcast( "ChangeLevel" );
+				}
+				else
+				{
+					game.SetActive( true );
+				}
+				
+				
+
+			}
 
 			isFinished = false;
 

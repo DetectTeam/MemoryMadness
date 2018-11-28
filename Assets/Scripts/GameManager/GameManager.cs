@@ -186,7 +186,7 @@ namespace MemoryMadness
 		{
 			randomLevelGenerator.SetActive( false );
 			randomLevelGenerator.SetActive( true );
-			lifeCount = 3;
+			//lifeCount = 3;
 		}
 
 		
