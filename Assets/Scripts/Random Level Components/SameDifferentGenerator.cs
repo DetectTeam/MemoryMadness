@@ -42,7 +42,7 @@ namespace MemoryMadness
 				//Display 3 - 5 Symbols
 				numSymbolsToDisplay = numSymbols;
 			
-		
+			RandomizeSymbols();
 			PositionSymbols( numSymbolsToDisplay );
 			DisplaySymbols( numSymbolsToDisplay );
 		}
@@ -56,12 +56,18 @@ namespace MemoryMadness
 			}
 		}
 
+		[SerializeField] private List<Sprite> symbolList;
 		private void RandomizeSymbols()
 		{
-			for ( int x =0; x < topList.Count; x++ )
+			symbolList = new List<Sprite>( namedShapePicker.GetShapeList() );
+			int rand = Random.Range( 0, symbolList.Count );
+			int numSymbols = 2;
+
+			for ( int x = 0; x < numSymbols; x++ )
 			{
 				topList[x].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = Color.red; //colorPicker.ColourList[ colourPickerIndex ];
-				topList[x].transform.Find( "Rune" ).GetComponent<Image>().sprite = namedShapePicker.GetRandomShape();
+				topList[x].transform.Find( "Rune" ).GetComponent<Image>().sprite = symbolList[ rand ];
+				symbolList.RemoveAt( rand );
 			}
 		}
 
