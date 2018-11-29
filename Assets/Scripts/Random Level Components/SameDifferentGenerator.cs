@@ -68,6 +68,8 @@ namespace MemoryMadness
 			int rand = 0;
 			//int numSymbols = 2;
 
+			List<Color> bottomListColours = new List<Color>();
+
 			Color levelColour = colorPicker.ColourList[ Random.Range( 0, colorPicker.ColourList.Count - 1 ) ];
 
 			if( isNamed ) //Named Symbol if true. Un named symbol if false
@@ -84,6 +86,7 @@ namespace MemoryMadness
 				if( isColoured )
 				{
 					topList[x].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = colorPicker.ColourList[ rand ];
+					bottomListColours.Add( colorPicker.ColourList[rand] );
 				}
 				else
 				{
