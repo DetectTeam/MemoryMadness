@@ -32,7 +32,7 @@ namespace MemoryMadness
 	
 		private void DisplayHearts( )
 		{
-			 int currentStage = 1;
+			 int currentStage = 2;
 
 			if( PlayerPrefs.HasKey( currentStageStr ) )
 				currentStage = PlayerPrefs.GetInt( currentStageStr );

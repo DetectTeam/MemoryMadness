@@ -16,7 +16,7 @@ public class StageManager : MonoBehaviour
 {
 
 	[SerializeField] private int maxNumLevelsPerStage = 7;
-	[SerializeField] private static int currentStage = 0;
+	[SerializeField] private static int currentStage = 3;
 	public static int CurrentStage { get{ return currentStage; } set{ currentStage = value; } }
 	private static int currentLevel = 0;
 	public static int CurrentLevel { get{ return currentLevel; } set{ currentLevel = value; } }
@@ -30,7 +30,7 @@ public class StageManager : MonoBehaviour
 	private void Awake()
 	{
 		LoadStage();
-		RefreshStage();
+		//RefreshStage();
 		SetCurrentLevelType();
 	}
 
@@ -66,11 +66,11 @@ public class StageManager : MonoBehaviour
 
 	private void IncrementStage()
 	{
-		Debug.Log( "Incrmenting Stage..." );
+		Debug.Log( "Incrmenting Stage..." + currentStage );
 		currentStage ++;
 		Debug.Log( "Stage is now.. " + currentStage );
 		SaveStage();
-		RefreshStage();
+		//RefreshStage();
 
 	}
 
@@ -87,7 +87,7 @@ public class StageManager : MonoBehaviour
 		}
 		else
 		{
-			currentStage = 0;
+			currentStage = 2;
 		}
 	}
 

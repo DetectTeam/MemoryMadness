@@ -32,7 +32,7 @@ namespace MemoryMadness
 		[SerializeField] private GameObject memoryPhaseContainer;
 		[SerializeField] private GameObject memorySymbolContainer;
 
-		//[SerializeField] private int currentStage = 3;
+		[SerializeField] private int currentStage = 2;
 		[SerializeField] private int memPhaseSymbolCount;
 		
 		[SerializeField] private int currentLevel = 0;
@@ -249,6 +249,7 @@ namespace MemoryMadness
 			}
 			
 			count = 0;
+
 			cloneSymbols.ShuffleList();
 
 		}

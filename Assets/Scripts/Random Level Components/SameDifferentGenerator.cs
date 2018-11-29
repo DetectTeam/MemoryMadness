@@ -12,12 +12,18 @@ namespace MemoryMadness
 		[SerializeField] private GameObject sameDifferentContainer;
 		[SerializeField] private List<GameObject> topList;
 		[SerializeField] private List<GameObject> bottomList;
-		[SerializeField] private bool isCorrect;
-
 		[SerializeField] private ColourPicker colorPicker;
 		[SerializeField] private ShapePicker namedShapePicker;
 		[SerializeField] private ShapePicker unamedShapePicker;
-		private void Start()
+		[SerializeField] private List<Sprite> symbolList;
+		[SerializeField] private bool isNamed = false;
+		[SerializeField] private bool isColoured = false;
+		[SerializeField] private bool isCorrect;
+
+		
+
+
+		private void OnEnable()
 		{
 			if( !sameDifferentContainer )
 			{
@@ -42,8 +48,8 @@ namespace MemoryMadness
 				//Display 3 - 5 Symbols
 				numSymbolsToDisplay = numSymbols;
 			
-			RandomizeSymbols();
-			PositionSymbols( numSymbolsToDisplay );
+			RandomizeSymbols( numSymbolsToDisplay );
+			PositionSymbolContainer( numSymbolsToDisplay );
 			DisplaySymbols( numSymbolsToDisplay );
 		}
 
@@ -56,19 +62,52 @@ namespace MemoryMadness
 			}
 		}
 
-		[SerializeField] private List<Sprite> symbolList;
-		private void RandomizeSymbols()
+		
+		private void RandomizeSymbols( int numSymbols )
 		{
-			symbolList = new List<Sprite>( namedShapePicker.GetShapeList() );
-			int rand = Random.Range( 0, symbolList.Count );
-			int numSymbols = 2;
+			int rand = 0;
+			//int numSymbols = 2;
 
+			Color levelColour = colorPicker.ColourList[ Random.Range( 0, colorPicker.ColourList.Count - 1 ) ];
+
+			if( isNamed ) //Named Symbol if true. Un named symbol if false
+				symbolList = new List<Sprite>( namedShapePicker.GetShapeList() );
+			else
+				symbolList = new List<Sprite>( unamedShapePicker.GetShapeList() ); 
+
+
+			//Build and display Top Row Symbols
 			for ( int x = 0; x < numSymbols; x++ )
 			{
-				topList[x].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = Color.red; //colorPicker.ColourList[ colourPickerIndex ];
+				rand = Random.Range( 0, symbolList.Count );
+
+				if( isColoured )
+				{
+					topList[x].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = colorPicker.ColourList[ rand ];
+				}
+				else
+				{
+					topList[x].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = levelColour;		
+				}
+
 				topList[x].transform.Find( "Rune" ).GetComponent<Image>().sprite = symbolList[ rand ];
+				
+				if( isCorrect )
+				{
+					if( isColoured )
+						bottomList[x].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = colorPicker.ColourList[ rand ];
+					else
+						bottomList[x].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = levelColour;
+
+					bottomList[x].transform.Find( "Rune" ).GetComponent<Image>().sprite = symbolList[ rand ];
+				}
+						
+
 				symbolList.RemoveAt( rand );
 			}
+
+
+				
 		}
 
 		private void DisplaySymbols( int symbolCount )
@@ -80,7 +119,7 @@ namespace MemoryMadness
 			}
 		}
 
-		private void PositionSymbols( int symbolCount )
+		private void PositionSymbolContainer( int symbolCount )
 		{
 			Vector3 pos = Vector3.zero;
 			int x = 0;
@@ -96,6 +135,24 @@ namespace MemoryMadness
 
 			pos = new Vector3( x, -200f, 0f );
 			sameDifferentContainer.transform.localPosition = pos;
+		}
+
+
+		private static System.Random rng = new System.Random();  
+		private void ShuffleListPosition( List<GameObject> list )
+		{
+			int n = list.Count; 
+			
+			while (n > 1) 
+			{  
+				n--;  
+				int k = rng.Next(n + 1);  
+				
+				Vector3 value = list[k].transform.position; 
+				Debug.Log( value ); 
+				list[k].transform.position = list[n].transform.position;  
+				list[n].transform.position = value;
+			}  
 		}
 	}
 }
