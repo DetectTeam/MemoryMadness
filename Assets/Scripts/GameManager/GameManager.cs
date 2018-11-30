@@ -22,6 +22,7 @@ namespace MemoryMadness
 		[SerializeField] private GameObject successMessage;
 		[SerializeField] private GameObject failureMessage;
 		[SerializeField] private GameObject randomLevelGenerator;
+		[SerializeField] private GameObject sameDifferentLevelGenerator;
 		[SerializeField] private int currentLevel = 1;
 		public int CurrentLevel { get{ return currentLevel; } set{ currentLevel = value; }  }
 
@@ -42,7 +43,9 @@ namespace MemoryMadness
 			Messenger.AddListener<int>( "SetWinCount", SetWinCount );
 			Messenger.AddListener( "CorrectButtonClick", IncrementCorrectButtonClickCount );
 			Messenger.AddListener( "ResetCorrectButtonCount", ResetCorrectButtonClickCount );
-			Messenger.AddListener( "ResetLevelGenerator" , ResetLevelGenerator );
+			Messenger.AddListener( "ResetLevelGenerator", ResetRandomLevelGenerator );
+			Messenger.AddListener( "DisableRandomLevelGenerator", DisableRandomLevelGenerator );
+			Messenger.AddListener( "ResetSDGenerator" , ResetSDLevelGenerator );
 			Messenger.AddListener( "DecrementLife" , DecrementLifeCount );
 			Messenger.AddListener( "ChangeLevel", ChangeLevel );
 		}
@@ -52,7 +55,9 @@ namespace MemoryMadness
 			Messenger.RemoveListener<int>( "SetWinCount", SetWinCount );
 			Messenger.RemoveListener( "CorrectButtonClick", IncrementCorrectButtonClickCount );
 			Messenger.RemoveListener( "ResetCorrectButtonCount", ResetCorrectButtonClickCount );
-			Messenger.AddListener( "ResetLevelGenerator" , ResetLevelGenerator );
+			Messenger.RemoveListener( "ResetLevelGenerator" , ResetRandomLevelGenerator );
+			Messenger.RemoveListener( "DisableRandomLevelGenerator", DisableRandomLevelGenerator );
+			Messenger.RemoveListener( "ResetSDGenerator" , ResetSDLevelGenerator );
 			Messenger.RemoveListener( "DecrementLife" , DecrementLifeCount );
 			Messenger.RemoveListener( "ChangeLevel", ChangeLevel );
 		
@@ -182,11 +187,23 @@ namespace MemoryMadness
 		
 		}
 
-		private void ResetLevelGenerator()
+		private void ResetRandomLevelGenerator()
 		{
 			randomLevelGenerator.SetActive( false );
 			randomLevelGenerator.SetActive( true );
 			//lifeCount = 3;
+		}
+
+		//Reset the Same different level Generator
+		private void ResetSDLevelGenerator()
+		{
+			sameDifferentLevelGenerator.SetActive( false );
+			sameDifferentLevelGenerator.SetActive( true );
+		}
+
+		private void DisableRandomLevelGenerator()
+		{
+			randomLevelGenerator.SetActive( false );
 		}
 
 		
