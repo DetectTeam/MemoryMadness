@@ -39,6 +39,9 @@ namespace MemoryMadness
 		private void BuildLevel( int numSymbols )
 		{
 			int numSymbolsToDisplay = 0;
+			
+		
+			
 			ResetSymbols();
 			
 			if( numSymbols <= 2 )
@@ -58,7 +61,15 @@ namespace MemoryMadness
 			for( int x = 0; x < topList.Count; x++ )
 			{
 				topList[x].SetActive( false );
-				bottomList[x].SetActive( false );
+				//bottomList[x].SetActive( false );
+			}
+
+			if( bottomList.Count > 0 )
+			{
+				foreach( GameObject symbol in bottomList )
+				{
+					Destroy( symbol );
+				}
 			}
 		}
 
@@ -92,31 +103,68 @@ namespace MemoryMadness
 
 				topList[x].transform.Find( "Rune" ).GetComponent<Image>().sprite = symbolList[ rand ];
 				
-				if( isCorrect )
-				{
-					if( isColoured )
-						bottomList[x].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = colorPicker.ColourList[ rand ];
-					else
-						bottomList[x].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = levelColour;
+				// if( isCorrect )
+				// {
+				// 	if( isColoured )
+				// 		bottomList[x].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = colorPicker.ColourList[ rand ];
+				// 	else
+				// 		bottomList[x].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = levelColour;
 
-					bottomList[x].transform.Find( "Rune" ).GetComponent<Image>().sprite = symbolList[ rand ];
-				}
+				// 	bottomList[x].transform.Find( "Rune" ).GetComponent<Image>().sprite = symbolList[ rand ];
+				// }
 						
 
 				symbolList.RemoveAt( rand );
 			}
 
+			//Build and Display Bottom Row Symbols
 
+			bottomList.Clear();
+			//Clone the top row and position it 150 below 
+			foreach( GameObject symbol in topList )
+			{
+				var clone = Instantiate( symbol , symbol.transform.position, Quaternion.identity );
 				
+				clone.transform.parent = sameDifferentContainer.transform;
+	
+				Vector3 tmpTransform  = clone.transform.position;
+
+				//Adjust the y position
+				tmpTransform.y = clone.transform.position.y - 150f;
+					
+				clone.transform.position = tmpTransform;
+
+				if( !isCorrect )
+				{
+					clone.transform.Find( "BackgroundColor" ).GetComponent<Image>().color = colorPicker.ColourList[ Random.Range( 0, colorPicker.ColourList.Count ) ];
+				}
+				
+				bottomList.Add( clone );	
+			}
+
+			
+			
+
+			
 		}
 
 		private void DisplaySymbols( int symbolCount )
 		{
+			List<GameObject> tmp = new List<GameObject>();
+
 			for( int x = 0; x < symbolCount; x++ )
 			{
 				topList[ x ].SetActive( true );
-				bottomList[ x ].SetActive( true );
+				//bottomList[ x ].SetActive( true );
+				tmp.Add( bottomList[x]);
+				bottomList[x].SetActive( true );
+
+
 			}
+
+			ShuffleListPosition( tmp );
+
+			tmp.Clear();
 		}
 
 		private void PositionSymbolContainer( int symbolCount )
