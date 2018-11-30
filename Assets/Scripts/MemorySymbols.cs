@@ -75,15 +75,12 @@ namespace MemoryMadness
 				PunchScale();
 				successColor.SetActive( true );
 				successImage.SetActive( true );
-				//backgroundColor.SetActive( false );
-				//rune.SetActive( false );
+			
 				DisableButton();
 
 				Messenger.Broadcast<int>( "IncreaseScore" , 100 );
 				Messenger.Broadcast( "CorrectButtonClick" ); //Let the game manager know that the correct button was clicked
-				//Messenger.Broadcast( "CheckForWin" );  //Request to check for a win 
-				
-				
+				//Messenger.Broadcast( "CheckForWin" );  //Request to check for a win 	
 			}
 			else
 			{
@@ -92,7 +89,6 @@ namespace MemoryMadness
 				DisableButton();
 				Messenger.Broadcast( "DecrementLife" );
 				Messenger.Broadcast<int>( "DecreaseScore" , 100 );
-			
 			}
 
 			Messenger.Broadcast( "TriggerEffect" ); //ITween PunchScale effect . Used on score text
@@ -126,12 +122,12 @@ namespace MemoryMadness
 			successColor.SetActive( false );
 			successImage.SetActive( false ); 
 			errorImage.SetActive( false );
+			
 			backgroundColor.SetActive( true );
 			rune.SetActive( true );
 			EnableButton();
 		}
-		
-		
+	
 	}
 
 }

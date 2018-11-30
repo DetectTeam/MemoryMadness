@@ -21,8 +21,6 @@ namespace MemoryMadness
 		[SerializeField] private bool isCorrect;
 
 		
-
-
 		private void OnEnable()
 		{
 			if( !sameDifferentContainer )
@@ -39,8 +37,6 @@ namespace MemoryMadness
 		private void BuildLevel( int numSymbols )
 		{
 			int numSymbolsToDisplay = 0;
-			
-		
 			
 			ResetSymbols();
 			
@@ -86,7 +82,6 @@ namespace MemoryMadness
 			else
 				symbolList = new List<Sprite>( unamedShapePicker.GetShapeList() ); 
 
-
 			//Build and display Top Row Symbols
 			for ( int x = 0; x < numSymbols; x++ )
 			{
@@ -103,17 +98,6 @@ namespace MemoryMadness
 
 				topList[x].transform.Find( "Rune" ).GetComponent<Image>().sprite = symbolList[ rand ];
 				
-				// if( isCorrect )
-				// {
-				// 	if( isColoured )
-				// 		bottomList[x].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = colorPicker.ColourList[ rand ];
-				// 	else
-				// 		bottomList[x].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = levelColour;
-
-				// 	bottomList[x].transform.Find( "Rune" ).GetComponent<Image>().sprite = symbolList[ rand ];
-				// }
-						
-
 				symbolList.RemoveAt( rand );
 			}
 
@@ -140,12 +124,7 @@ namespace MemoryMadness
 				}
 				
 				bottomList.Add( clone );	
-			}
-
-			
-			
-
-			
+			}	
 		}
 
 		private void DisplaySymbols( int symbolCount )

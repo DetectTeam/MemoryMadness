@@ -60,37 +60,31 @@ namespace MemoryMadness
 			Messenger.RemoveListener( "ResetSDGenerator" , ResetSDLevelGenerator );
 			Messenger.RemoveListener( "DecrementLife" , DecrementLifeCount );
 			Messenger.RemoveListener( "ChangeLevel", ChangeLevel );
-		
 		}
 
 		// Use this for initialization
 		void Start () 
 		{
-			//StartCoroutine( "RunGameLoop" );
 			ResetLifeCount();
 		}
 
 		private void SetWinCount( int max)
 		{
 			winCount = max;
-			Debug.Log( "WINCOUNT : " + winCount );
-			
+			Debug.Log( "WINCOUNT : " + winCount );	
 		}
 
 		private void CheckForWin()
 		{
 			if( correctButtonCount == winCount )
 			{
-				
 				Messenger.Broadcast( "StopCountDown" );
 			
 				endLevelBackground.SetActive( true );
 				Success();
 				ResetCorrectButtonClickCount();
-				ChangeLevel();
-				
-			}
-			
+				ChangeLevel();	
+			}	
 		}
 
 	    private void IncrementCorrectButtonClickCount()
@@ -123,19 +117,16 @@ namespace MemoryMadness
 
 		public void DecrementLifeCount()
 		{
-			
 			lifeCount --;
 			Messenger.Broadcast( "RemoveHeart" );
 
 			if( lifeCount == 0 )
 			{
-				
 				Messenger.Broadcast( "StopCountDown" );
 
 				endLevelBackground.SetActive( true );
-				Failure(); //Request failure message
-				ChangeLevel(); //Request level change
-
+				Failure(); 
+				ChangeLevel(); 
 			}
 		}
 
@@ -160,7 +151,6 @@ namespace MemoryMadness
 			{
 				lifeCount = currentStage;
 			}
-		
 		}
 
 		private void ChangeLevel()
@@ -184,14 +174,12 @@ namespace MemoryMadness
 				failureMessage.SetActive( false );	 
 			
 			 ResetLifeCount();
-		
 		}
 
 		private void ResetRandomLevelGenerator()
 		{
 			randomLevelGenerator.SetActive( false );
 			randomLevelGenerator.SetActive( true );
-			//lifeCount = 3;
 		}
 
 		//Reset the Same different level Generator
@@ -204,44 +192,6 @@ namespace MemoryMadness
 		private void DisableRandomLevelGenerator()
 		{
 			randomLevelGenerator.SetActive( false );
-		}
-
-		
-
-		
-		// private IEnumerator RunGameLoop()
-		// {
-		// 	yield return StartCoroutine( "IntroRoutine" );
-		// 	yield return StartCoroutine( "StartGameRoutine" );
-		// 	yield return StartCoroutine( "PlayGameRoutine" );
-		// 	yield return StartCoroutine( "EndGameRoutine" );
-		// }
-
-		// private IEnumerator IntroRoutine()
-		// {
-		// 	//Activate intro screen
-		// 	yield return null;
-		// }
-
-		// private IEnumerator StartGameRoutine()
-		// {
-		// 	//Start the game loop by triggering the random level generator
-		// 	//then enable the Memory phase.
-		// 	yield return null;
-		// }
-
-		// private IEnumerator PlayGameRoutine()
-		// {
-		// 	yield return null;
-		// }
-
-		// private IEnumerator EndGameRoutine()
-		// {
-		// 	yield return null;
-		// }
-		
-		
-	}
-
-	
+		}	
+	}	
 }

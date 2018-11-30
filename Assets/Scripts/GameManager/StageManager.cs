@@ -18,8 +18,8 @@ public class StageManager : MonoBehaviour
 	[SerializeField] private int levelCount = 0;
 	[SerializeField] private int levelsPerStage = 3;
 	[SerializeField] private int numberOfStages = 4;
-	[SerializeField] private GameObject memoryPhase;
-	[SerializeField] private GameObject results;
+	[SerializeField] private GameObject memoryPhaseScreen;
+	[SerializeField] private GameObject resultsScreen;
 
 	private const string LoadNextLevelMessage = "LoadNextLevel";
 	private const string CurrentStageMessage = "CurrentStage";
@@ -62,25 +62,25 @@ public class StageManager : MonoBehaviour
 		{
 			if( levelCount < 7 )
 			{
-				Debug.Log( "Loding level " + levelCount );
+				
 				//Request a Reset of the random level generator
 				Messenger.Broadcast( "ResetLevelGenerator" );
 				levelCount ++;
-				memoryPhase.SetActive( true );
+				memoryPhaseScreen.SetActive( true );
 			}
 			else if( levelCount >= 7 && levelCount < 9 )
 			{
 				Debug.Log( "READY TO LOAD SD LEVELS ....." );
 				Messenger.Broadcast( "DisableRandomLevelGenerator" );
 				Messenger.Broadcast( "ResetSDGenerator" );
-				memoryPhase.SetActive( true );
+				memoryPhaseScreen.SetActive( true );
 				levelCount ++;
 			}
 			else
 			{
 				Debug.Log( "End of stage..." );
 				IncrementStage();
-				results.SetActive( true );
+				resultsScreen.SetActive( true );
 				Messenger.Broadcast( "Results" , 85.0f );
 				Messenger.Broadcast( "ResetRandomLevelGenerator" );
 				levelCount = 0;
@@ -90,21 +90,12 @@ public class StageManager : MonoBehaviour
 	private void IncrementLevel()
 	{
 		currentLevel++;
-		
-		// if( currentLevel > maxNumLevelsPerStage )
-		// {
-		// 	Debug.Log( "Level Greater than 7" );
-		// 	IncrementStage();
-		// 	currentLevel = 0;
-		// }
-
-		Debug.Log( "CurrentLevel:  >>>>>>>>>> " + currentLevel );
+	
         if( currentLevel < maxNumLevelsPerStage )
 			SetCurrentLevelType();	
 		else
 			currentLevel = 0;
-
-		
+	
 	}
 
 	private void IncrementStage()

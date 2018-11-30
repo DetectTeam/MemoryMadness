@@ -18,19 +18,14 @@ namespace MemoryMadness
 		[SerializeField] private bool isFinished = false;
 		[SerializeField] private bool isLevelTimeOut = false;
 
-
 		private float tmpTime;
 
-
-
-		
 		private void OnEnable()
 		{
 			Messenger.AddListener( "StopCountDown", StopTimer );
 
-			//timeLeft = 4;
 			timer.text = timeLeft.ToString();
-			StartCoroutine( "Sequence" );
+			StartCoroutine( "CountDownSequence" );
 		}
 
 		private void OnDisable()
@@ -41,14 +36,11 @@ namespace MemoryMadness
 
 		private void Start () 
 		{
-			//StartCoroutine( Sequence() );
 			tmpTime = timeLeft;
-		
 		}
 
-		private IEnumerator Sequence()
+		private IEnumerator CountDownSequence()
 		{
-			
 			yield return new WaitForSeconds( 1.0f );
 
 			while( timeLeft > 0 && !isFinished )
@@ -71,23 +63,14 @@ namespace MemoryMadness
 				{
 					game.SetActive( true );
 				}
-				
-				
-
 			}
 
 			isFinished = false;
-
-
 		}
 
 		public void StopTimer()
 		{
 			isFinished = true;
-			//Debug.Log( totalTime - timeLeft );
 		}
-		
-		
 	}
-
 }
