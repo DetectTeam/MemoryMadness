@@ -22,14 +22,16 @@ namespace MemoryMadness
 
 		private void OnEnable()
 		{
+			Messenger.AddListener( "ResetTimer", ResetTimer );
 			Messenger.AddListener( "StopCountDown", StopTimer );
 
 			timer.text = timeLeft.ToString();
-			StartCoroutine( "CountDownSequence" );
+			StartCoroutine( CountDownSequence() );
 		}
 
 		private void OnDisable()
 		{
+			Messenger.RemoveListener( "ResetTimer", ResetTimer );
 			Messenger.RemoveListener( "StopCountDown", StopTimer );
 			timeLeft = tmpTime;
 		}
@@ -41,6 +43,7 @@ namespace MemoryMadness
 
 		private IEnumerator CountDownSequence()
 		{
+			Debug.Log( "Starting Countdown Sequence..." );
 			yield return new WaitForSeconds( 1.0f );
 
 			while( timeLeft > 0 && !isFinished )
@@ -71,6 +74,16 @@ namespace MemoryMadness
 		public void StopTimer()
 		{
 			isFinished = true;
+			StopCoroutine( CountDownSequence() );
+		}
+
+		public void ResetTimer()
+		{
+			Debug.Log( "Resetting Timer" + totalTime );
+			timeLeft = totalTime;
+			timer.text = timeLeft.ToString();
+			StartCoroutine( "CountDownSequence" );
+
 		}
 	}
 }

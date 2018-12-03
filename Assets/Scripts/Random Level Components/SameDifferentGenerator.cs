@@ -37,7 +37,7 @@ namespace MemoryMadness
 		private void BuildLevel( int numSymbols )
 		{
 			int numSymbolsToDisplay = 0;
-			
+
 			ResetSymbols();
 			
 			if( numSymbols <= 2 )
@@ -50,6 +50,8 @@ namespace MemoryMadness
 			RandomizeSymbols( numSymbolsToDisplay );
 			PositionSymbolContainer( numSymbolsToDisplay );
 			DisplaySymbols( numSymbolsToDisplay );
+
+			Messenger.Broadcast( "ResetTimer" );
 		}
 
 		private void ResetSymbols()
@@ -176,7 +178,7 @@ namespace MemoryMadness
 				int k = rng.Next(n + 1);  
 				
 				Vector3 value = list[k].transform.position; 
-				Debug.Log( value ); 
+				//Debug.Log( value ); 
 				list[k].transform.position = list[n].transform.position;  
 				list[n].transform.position = value;
 			}  

@@ -164,7 +164,7 @@ namespace MemoryMadness
 			yield return new WaitForSeconds( 3.0f );
 			
 			Messenger.Broadcast( "LoadNextLevel" );
-		
+			
 			//resultPanel.SetActive( true );
 			
 			 if( successMessage.activeSelf )
@@ -185,6 +185,7 @@ namespace MemoryMadness
 		//Reset the Same different level Generator
 		private void ResetSDLevelGenerator()
 		{
+			Debug.Log( "Resetting SAME DIFFERENT LEVEL GENERATOR" );
 			sameDifferentLevelGenerator.SetActive( false );
 			sameDifferentLevelGenerator.SetActive( true );
 		}

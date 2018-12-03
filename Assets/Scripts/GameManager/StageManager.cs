@@ -18,6 +18,8 @@ public class StageManager : MonoBehaviour
 	[SerializeField] private int levelCount = 0;
 	[SerializeField] private int levelsPerStage = 3;
 	[SerializeField] private int numberOfStages = 4;
+	[SerializeField] private GameObject sameDifferentScreen;
+	[SerializeField] private GameObject randomGameContainer;
 	[SerializeField] private GameObject memoryPhaseScreen;
 	[SerializeField] private GameObject resultsScreen;
 
@@ -73,7 +75,12 @@ public class StageManager : MonoBehaviour
 				Debug.Log( "READY TO LOAD SD LEVELS ....." );
 				Messenger.Broadcast( "DisableRandomLevelGenerator" );
 				Messenger.Broadcast( "ResetSDGenerator" );
-				memoryPhaseScreen.SetActive( true );
+				
+				randomGameContainer.SetActive( false );
+				sameDifferentScreen.SetActive( true );
+				
+			
+				//memoryPhaseScreen.SetActive( true );
 				levelCount ++;
 			}
 			else
@@ -82,7 +89,7 @@ public class StageManager : MonoBehaviour
 				IncrementStage();
 				resultsScreen.SetActive( true );
 				Messenger.Broadcast( "Results" , 85.0f );
-				Messenger.Broadcast( "ResetRandomLevelGenerator" );
+				Messenger.Broadcast( "ResetLevelGenerator" );
 				levelCount = 0;
 			}
 		}
