@@ -52,6 +52,7 @@ namespace MemoryMadness
 				timeLeft --;
 				timer.text = timeLeft.ToString();
 			}
+			
 
 			yield return new WaitForSeconds( 1.0f );
 			
@@ -60,7 +61,10 @@ namespace MemoryMadness
 				
 				if( isLevelTimeOut )
 				{
+					
+					Messenger.Broadcast( "Timeout" );
 					Messenger.Broadcast( "ChangeLevel" );
+						
 				}
 				else
 				{

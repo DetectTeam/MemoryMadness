@@ -21,6 +21,8 @@ namespace MemoryMadness
 		[SerializeField] private bool isCorrect;
 
 		
+
+		
 		private void OnEnable()
 		{
 			if( !sameDifferentContainer )
@@ -29,9 +31,22 @@ namespace MemoryMadness
 			} 
 			else
 			{
+				if( PlayerPrefs.HasKey( "CurrentStage" ) )
+				{
+					stage = PlayerPrefs.GetInt( "CurrentStage" );
+					Debug.Log( "Current Stage is : " + stage );
+				}
+			
+
+			    isNamed = ( Random.value > 0.5f );
+				//isColoured = ( Random.value > 0.5f );
+				isColoured = true;
+				isCorrect = ( Random.value > 0.5f );
+
 				sameDifferentContainer.SetActive( true );
 				BuildLevel( stage );
 			} 
+
 		}
 
 		private void BuildLevel( int numSymbols )
@@ -154,11 +169,11 @@ namespace MemoryMadness
 			int x = 0;
 
 			if( symbolCount <= 2 )
-				x = 240;
+				x = 180;
 			else if( symbolCount == 3 )
-				x = 160;
+				x = 100;
 			else if( symbolCount == 4 )
-				x = 80;
+				x = 50;
 			else if( symbolCount == 5 )
 				x = 0;
 
@@ -182,6 +197,20 @@ namespace MemoryMadness
 				list[k].transform.position = list[n].transform.position;  
 				list[n].transform.position = value;
 			}  
+		}
+
+		public void CheckForWinCondition( bool b )
+		{
+			if( isCorrect == b )
+			{
+				//Enable Correct
+				Messenger.Broadcast( "Success" );
+			}
+			else 
+			{
+				//enable failure
+				Messenger.Broadcast( "Failure" );
+			}
 		}
 	}
 }
