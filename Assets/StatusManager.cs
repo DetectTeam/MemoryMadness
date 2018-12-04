@@ -10,8 +10,11 @@ namespace MemoryMadness
 		[SerializeField] private GameObject success;
 		[SerializeField] private GameObject failure;
 		[SerializeField] private GameObject timeOut;
+		[SerializeField] private GameObject background;
 
 		// Use this for initialization
+
+		[SerializeField] private bool isMessageActive = false;
 		
 		
 		private void OnEnable()
@@ -28,6 +31,7 @@ namespace MemoryMadness
 			Messenger.RemoveListener( "Failure", Failure );
 			Messenger.RemoveListener( "Timeout", TimeOut );
 			Messenger.RemoveListener( "ResetMessage", ResetMessages );
+			
 		}
 		
 		private void Start () {
@@ -46,21 +50,46 @@ namespace MemoryMadness
 			
 			if( timeOut.activeSelf )
 				timeOut.SetActive( false );
+
+			if( background.activeSelf )
+				background.SetActive( false );
+
+			isMessageActive = false;	
 		}
 
 		private void Success()
 		{
-			success.SetActive( true );
+			if( !isMessageActive )
+			{
+				success.SetActive( true );
+				EnableMessageBackground();
+				isMessageActive = true;
+			}
 		}
 
 		private void Failure()
 		{
-			failure.SetActive( true );
+			if( !isMessageActive )
+			{
+				failure.SetActive( true );
+				EnableMessageBackground();
+				isMessageActive = true;
+			}
 		}
 
 		private void TimeOut()
 		{
-			timeOut.SetActive( true );
+			if( !isMessageActive )
+			{
+				timeOut.SetActive( true );
+				EnableMessageBackground();
+				isMessageActive = true;
+			}
+		}
+
+		private void EnableMessageBackground()
+		{
+			background.SetActive( true );
 		}
 		
 		

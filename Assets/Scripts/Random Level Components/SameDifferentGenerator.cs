@@ -56,11 +56,19 @@ namespace MemoryMadness
 			ResetSymbols();
 			
 			if( numSymbols <= 2 )
+			{
 				//Display 2 Symbols
 				numSymbolsToDisplay = 2;
+			}
+			else if( numSymbols > 5 )
+			{
+				numSymbolsToDisplay = 5;
+			}
 			else
+			{
 				//Display 3 - 5 Symbols
 				numSymbolsToDisplay = numSymbols;
+			}
 			
 			RandomizeSymbols( numSymbolsToDisplay );
 			PositionSymbolContainer( numSymbolsToDisplay );
@@ -211,6 +219,8 @@ namespace MemoryMadness
 				//enable failure
 				Messenger.Broadcast( "Failure" );
 			}
+
+			Messenger.Broadcast( "ChangeLevel" );
 		}
 	}
 }

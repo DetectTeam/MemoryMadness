@@ -25,7 +25,7 @@ namespace MemoryMadness
 			Messenger.AddListener( "ResetTimer", ResetTimer );
 			Messenger.AddListener( "StopCountDown", StopTimer );
 
-			timer.text = timeLeft.ToString();
+			timer.text = (timeLeft / 10).ToString();
 			StartCoroutine( CountDownSequence() );
 		}
 
@@ -43,17 +43,24 @@ namespace MemoryMadness
 
 		private IEnumerator CountDownSequence()
 		{
+			int count = 0;
 			Debug.Log( "Starting Countdown Sequence..." );
 			yield return new WaitForSeconds( 1.0f );
+			
 
 			while( timeLeft > 0 && !isFinished )
 			{
-				yield return new WaitForSeconds( 1.0f );
+				yield return new WaitForSeconds( 0.1f );
+				count ++;
 				timeLeft --;
-				timer.text = timeLeft.ToString();
+				
+				if( count == 10 )
+				{
+					timer.text = (timeLeft / 10).ToString();
+					count = 0;
+				}
 			}
 			
-
 			yield return new WaitForSeconds( 1.0f );
 			
 			if( !isFinished )
@@ -61,10 +68,8 @@ namespace MemoryMadness
 				
 				if( isLevelTimeOut )
 				{
-					
 					Messenger.Broadcast( "Timeout" );
-					Messenger.Broadcast( "ChangeLevel" );
-						
+					Messenger.Broadcast( "ChangeLevel" );		
 				}
 				else
 				{
@@ -85,7 +90,7 @@ namespace MemoryMadness
 		{
 			Debug.Log( "Resetting Timer" + totalTime );
 			timeLeft = totalTime;
-			timer.text = timeLeft.ToString();
+			timer.text = ( timeLeft / 10 ).ToString();
 			StartCoroutine( "CountDownSequence" );
 
 		}

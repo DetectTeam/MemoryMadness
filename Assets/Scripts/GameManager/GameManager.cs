@@ -134,8 +134,6 @@ namespace MemoryMadness
 		{
 			int currentStage = 1;
 
-			Debug.Log( "Got this far" );
-
 			if( PlayerPrefs.HasKey( "CurrentStage" ) )
 			{
 				currentStage = PlayerPrefs.GetInt( "CurrentStage" );
@@ -154,7 +152,6 @@ namespace MemoryMadness
 				lifeCount = currentStage;
 			}
 
-			Debug.Log( "Got this far 2" );
 		}
 
 		private void ChangeLevel()
