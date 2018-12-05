@@ -11,5 +11,4 @@ public class Symbol
 	public Color BackgroundColor { get{ return backgroundColor; } set{ backgroundColor = value; } }
 	private Image rune;
 	public Image Rune { get{ return rune; } set{ rune = value; } }
-
 }

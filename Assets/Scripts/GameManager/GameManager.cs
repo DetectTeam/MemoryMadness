@@ -22,6 +22,7 @@ namespace MemoryMadness
 		[SerializeField] private GameObject successMessage;
 		[SerializeField] private GameObject failureMessage;
 		[SerializeField] private GameObject randomLevelGenerator;
+		[SerializeField] private GameObject sameDifferentLevelGenerator;
 		[SerializeField] private int currentLevel = 1;
 		public int CurrentLevel { get{ return currentLevel; } set{ currentLevel = value; }  }
 
@@ -42,7 +43,9 @@ namespace MemoryMadness
 			Messenger.AddListener<int>( "SetWinCount", SetWinCount );
 			Messenger.AddListener( "CorrectButtonClick", IncrementCorrectButtonClickCount );
 			Messenger.AddListener( "ResetCorrectButtonCount", ResetCorrectButtonClickCount );
-			Messenger.AddListener( "ResetLevelGenerator" , ResetLevelGenerator );
+			Messenger.AddListener( "ResetLevelGenerator", ResetRandomLevelGenerator );
+			Messenger.AddListener( "DisableRandomLevelGenerator", DisableRandomLevelGenerator );
+			Messenger.AddListener( "ResetSDGenerator" , ResetSDLevelGenerator );
 			Messenger.AddListener( "DecrementLife" , DecrementLifeCount );
 			Messenger.AddListener( "ChangeLevel", ChangeLevel );
 		}
@@ -52,40 +55,36 @@ namespace MemoryMadness
 			Messenger.RemoveListener<int>( "SetWinCount", SetWinCount );
 			Messenger.RemoveListener( "CorrectButtonClick", IncrementCorrectButtonClickCount );
 			Messenger.RemoveListener( "ResetCorrectButtonCount", ResetCorrectButtonClickCount );
-			Messenger.AddListener( "ResetLevelGenerator" , ResetLevelGenerator );
+			Messenger.RemoveListener( "ResetLevelGenerator" , ResetRandomLevelGenerator );
+			Messenger.RemoveListener( "DisableRandomLevelGenerator", DisableRandomLevelGenerator );
+			Messenger.RemoveListener( "ResetSDGenerator" , ResetSDLevelGenerator );
 			Messenger.RemoveListener( "DecrementLife" , DecrementLifeCount );
 			Messenger.RemoveListener( "ChangeLevel", ChangeLevel );
-		
 		}
 
 		// Use this for initialization
 		void Start () 
 		{
-			//StartCoroutine( "RunGameLoop" );
 			ResetLifeCount();
 		}
 
 		private void SetWinCount( int max)
 		{
 			winCount = max;
-			Debug.Log( "WINCOUNT : " + winCount );
-			
+			Debug.Log( "WINCOUNT : " + winCount );	
 		}
 
 		private void CheckForWin()
 		{
 			if( correctButtonCount == winCount )
 			{
-				
 				Messenger.Broadcast( "StopCountDown" );
 			
 				endLevelBackground.SetActive( true );
 				Success();
 				ResetCorrectButtonClickCount();
-				ChangeLevel();
-				
-			}
-			
+				ChangeLevel();	
+			}	
 		}
 
 	    private void IncrementCorrectButtonClickCount()
@@ -118,19 +117,16 @@ namespace MemoryMadness
 
 		public void DecrementLifeCount()
 		{
-			
 			lifeCount --;
 			Messenger.Broadcast( "RemoveHeart" );
 
 			if( lifeCount == 0 )
 			{
-				
 				Messenger.Broadcast( "StopCountDown" );
 
 				endLevelBackground.SetActive( true );
-				Failure(); //Request failure message
-				ChangeLevel(); //Request level change
-
+				Failure(); 
+				ChangeLevel(); 
 			}
 		}
 
@@ -155,7 +151,7 @@ namespace MemoryMadness
 			{
 				lifeCount = currentStage;
 			}
-		
+
 		}
 
 		private void ChangeLevel()
@@ -169,7 +165,7 @@ namespace MemoryMadness
 			yield return new WaitForSeconds( 3.0f );
 			
 			Messenger.Broadcast( "LoadNextLevel" );
-		
+			Messenger.Broadcast( "ResetMessage" );
 			//resultPanel.SetActive( true );
 			
 			 if( successMessage.activeSelf )
@@ -179,52 +175,25 @@ namespace MemoryMadness
 				failureMessage.SetActive( false );	 
 			
 			 ResetLifeCount();
-		
 		}
 
-		private void ResetLevelGenerator()
+		private void ResetRandomLevelGenerator()
 		{
 			randomLevelGenerator.SetActive( false );
 			randomLevelGenerator.SetActive( true );
-			//lifeCount = 3;
 		}
 
-		
+		//Reset the Same different level Generator
+		private void ResetSDLevelGenerator()
+		{
+			Debug.Log( "Resetting SAME DIFFERENT LEVEL GENERATOR" );
+			sameDifferentLevelGenerator.SetActive( false );
+			sameDifferentLevelGenerator.SetActive( true );
+		}
 
-		
-		// private IEnumerator RunGameLoop()
-		// {
-		// 	yield return StartCoroutine( "IntroRoutine" );
-		// 	yield return StartCoroutine( "StartGameRoutine" );
-		// 	yield return StartCoroutine( "PlayGameRoutine" );
-		// 	yield return StartCoroutine( "EndGameRoutine" );
-		// }
-
-		// private IEnumerator IntroRoutine()
-		// {
-		// 	//Activate intro screen
-		// 	yield return null;
-		// }
-
-		// private IEnumerator StartGameRoutine()
-		// {
-		// 	//Start the game loop by triggering the random level generator
-		// 	//then enable the Memory phase.
-		// 	yield return null;
-		// }
-
-		// private IEnumerator PlayGameRoutine()
-		// {
-		// 	yield return null;
-		// }
-
-		// private IEnumerator EndGameRoutine()
-		// {
-		// 	yield return null;
-		// }
-		
-		
-	}
-
-	
+		private void DisableRandomLevelGenerator()
+		{
+			randomLevelGenerator.SetActive( false );
+		}	
+	}	
 }

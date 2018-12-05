@@ -33,12 +33,12 @@ namespace MemoryMadness
 		
 		private void OnEnable()
 		{
-			Messenger.AddListener( LoadNextLevelMessage, LoadNextLevel );
+			//Messenger.AddListener( LoadNextLevelMessage, LoadNextLevel );
 		}
 
 		private void OnDisable()
 		{
-			Messenger.RemoveListener( LoadNextLevelMessage, LoadNextLevel );
+			//Messenger.RemoveListener( LoadNextLevelMessage, LoadNextLevel );
 		}
 		
 		// public void IncrementStage()
@@ -52,25 +52,31 @@ namespace MemoryMadness
 		// 	}
 		// }
 
-		public void LoadNextLevel()
-		{
+		// public void LoadNextLevel()
+		// {
 			
-			if( levelCount < 7 )
-			{
-				//Request a Reset of the random level generator
-				Messenger.Broadcast( "ResetLevelGenerator" );
-				levelCount ++;
-				memoryPhase.SetActive( true );
-			}
-			else
-			{
-				results.SetActive( true );
-				Messenger.Broadcast( "Results" , 85.0f );
-				Messenger.Broadcast( "ResetLevelGenerator" );
-				levelCount = 0;
-			}
+		// 	if( levelCount < 7 )
+		// 	{
+		// 		//Request a Reset of the random level generator
+		// 		Messenger.Broadcast( "ResetLevelGenerator" );
+		// 		levelCount ++;
+		// 		memoryPhase.SetActive( true );
+		// 	}
+		// 	else if( levelCount >= 7 && levelCount < 9 )
+		// 	{
+		// 		Debug.Log( "READY TO LOAD SD LEVELS ....." );
+		// 		Messenger.Broadcast( "ResetSDGenerator" );
+		// 		levelCount ++;
+		// 	}
+		// 	else
+		// 	{
+		// 		results.SetActive( true );
+		// 		Messenger.Broadcast( "Results" , 85.0f );
+		// 		Messenger.Broadcast( "ResetLevelGenerator" );
+		// 		levelCount = 0;
+		// 	}
 
-		}
+		// }
 	}
 
 }

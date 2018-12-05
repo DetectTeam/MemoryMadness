@@ -22,7 +22,7 @@ namespace MemoryMadness
 
 		
 
-
+		
 		private void OnEnable()
 		{
 			if( !sameDifferentContainer )
@@ -31,26 +31,50 @@ namespace MemoryMadness
 			} 
 			else
 			{
+				if( PlayerPrefs.HasKey( "CurrentStage" ) )
+				{
+					stage = PlayerPrefs.GetInt( "CurrentStage" );
+					Debug.Log( "Current Stage is : " + stage );
+				}
+			
+
+			    isNamed = ( Random.value > 0.5f );
+				//isColoured = ( Random.value > 0.5f );
+				isColoured = true;
+				isCorrect = ( Random.value > 0.5f );
+
 				sameDifferentContainer.SetActive( true );
 				BuildLevel( stage );
 			} 
+
 		}
 
 		private void BuildLevel( int numSymbols )
 		{
 			int numSymbolsToDisplay = 0;
+
 			ResetSymbols();
 			
 			if( numSymbols <= 2 )
+			{
 				//Display 2 Symbols
 				numSymbolsToDisplay = 2;
+			}
+			else if( numSymbols > 5 )
+			{
+				numSymbolsToDisplay = 5;
+			}
 			else
+			{
 				//Display 3 - 5 Symbols
 				numSymbolsToDisplay = numSymbols;
+			}
 			
 			RandomizeSymbols( numSymbolsToDisplay );
 			PositionSymbolContainer( numSymbolsToDisplay );
 			DisplaySymbols( numSymbolsToDisplay );
+
+			Messenger.Broadcast( "ResetTimer" );
 		}
 
 		private void ResetSymbols()
@@ -58,7 +82,15 @@ namespace MemoryMadness
 			for( int x = 0; x < topList.Count; x++ )
 			{
 				topList[x].SetActive( false );
-				bottomList[x].SetActive( false );
+				//bottomList[x].SetActive( false );
+			}
+
+			if( bottomList.Count > 0 )
+			{
+				foreach( GameObject symbol in bottomList )
+				{
+					Destroy( symbol );
+				}
 			}
 		}
 
@@ -77,7 +109,6 @@ namespace MemoryMadness
 			else
 				symbolList = new List<Sprite>( unamedShapePicker.GetShapeList() ); 
 
-
 			//Build and display Top Row Symbols
 			for ( int x = 0; x < numSymbols; x++ )
 			{
@@ -95,31 +126,52 @@ namespace MemoryMadness
 
 				topList[x].transform.Find( "Rune" ).GetComponent<Image>().sprite = symbolList[ rand ];
 				
-				if( isCorrect )
-				{
-					if( isColoured )
-						bottomList[x].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = colorPicker.ColourList[ rand ];
-					else
-						bottomList[x].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = levelColour;
-
-					bottomList[x].transform.Find( "Rune" ).GetComponent<Image>().sprite = symbolList[ rand ];
-				}
-						
-
 				symbolList.RemoveAt( rand );
 			}
 
+			//Build and Display Bottom Row Symbols
 
+			bottomList.Clear();
+			//Clone the top row and position it 150 below 
+			foreach( GameObject symbol in topList )
+			{
+				var clone = Instantiate( symbol , symbol.transform.position, Quaternion.identity );
 				
+				clone.transform.parent = sameDifferentContainer.transform;
+	
+				Vector3 tmpTransform  = clone.transform.position;
+
+				//Adjust the y position
+				tmpTransform.y = clone.transform.position.y - 150f;
+					
+				clone.transform.position = tmpTransform;
+
+				if( !isCorrect )
+				{
+					clone.transform.Find( "BackgroundColor" ).GetComponent<Image>().color = colorPicker.ColourList[ Random.Range( 0, colorPicker.ColourList.Count ) ];
+				}
+				
+				bottomList.Add( clone );	
+			}	
 		}
 
 		private void DisplaySymbols( int symbolCount )
 		{
+			List<GameObject> tmp = new List<GameObject>();
+
 			for( int x = 0; x < symbolCount; x++ )
 			{
 				topList[ x ].SetActive( true );
-				bottomList[ x ].SetActive( true );
+				//bottomList[ x ].SetActive( true );
+				tmp.Add( bottomList[x]);
+				bottomList[x].SetActive( true );
+
+
 			}
+
+			ShuffleListPosition( tmp );
+
+			tmp.Clear();
 		}
 
 		private void PositionSymbolContainer( int symbolCount )
@@ -128,11 +180,11 @@ namespace MemoryMadness
 			int x = 0;
 
 			if( symbolCount <= 2 )
-				x = 240;
+				x = 180;
 			else if( symbolCount == 3 )
-				x = 160;
+				x = 100;
 			else if( symbolCount == 4 )
-				x = 80;
+				x = 50;
 			else if( symbolCount == 5 )
 				x = 0;
 
@@ -152,10 +204,26 @@ namespace MemoryMadness
 				int k = rng.Next(n + 1);  
 				
 				Vector3 value = list[k].transform.position; 
-				Debug.Log( value ); 
+				//Debug.Log( value ); 
 				list[k].transform.position = list[n].transform.position;  
 				list[n].transform.position = value;
 			}  
+		}
+
+		public void CheckForWinCondition( bool b )
+		{
+			if( isCorrect == b )
+			{
+				//Enable Correct
+				Messenger.Broadcast( "Success" );
+			}
+			else 
+			{
+				//enable failure
+				Messenger.Broadcast( "Failure" );
+			}
+
+			Messenger.Broadcast( "ChangeLevel" );
 		}
 	}
 }

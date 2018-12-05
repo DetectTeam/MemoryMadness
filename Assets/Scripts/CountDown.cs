@@ -18,46 +18,49 @@ namespace MemoryMadness
 		[SerializeField] private bool isFinished = false;
 		[SerializeField] private bool isLevelTimeOut = false;
 
-
 		private float tmpTime;
 
-
-
-		
 		private void OnEnable()
 		{
+			Messenger.AddListener( "ResetTimer", ResetTimer );
 			Messenger.AddListener( "StopCountDown", StopTimer );
 
-			//timeLeft = 4;
-			timer.text = timeLeft.ToString();
-			StartCoroutine( "Sequence" );
+			timer.text = (timeLeft / 10).ToString();
+			StartCoroutine( CountDownSequence() );
 		}
 
 		private void OnDisable()
 		{
+			Messenger.RemoveListener( "ResetTimer", ResetTimer );
 			Messenger.RemoveListener( "StopCountDown", StopTimer );
 			timeLeft = tmpTime;
 		}
 
 		private void Start () 
 		{
-			//StartCoroutine( Sequence() );
 			tmpTime = timeLeft;
-		
 		}
 
-		private IEnumerator Sequence()
+		private IEnumerator CountDownSequence()
 		{
-			
+			int count = 0;
+			Debug.Log( "Starting Countdown Sequence..." );
 			yield return new WaitForSeconds( 1.0f );
+			
 
 			while( timeLeft > 0 && !isFinished )
 			{
-				yield return new WaitForSeconds( 1.0f );
+				yield return new WaitForSeconds( 0.1f );
+				count ++;
 				timeLeft --;
-				timer.text = timeLeft.ToString();
+				
+				if( count == 10 )
+				{
+					timer.text = (timeLeft / 10).ToString();
+					count = 0;
+				}
 			}
-
+			
 			yield return new WaitForSeconds( 1.0f );
 			
 			if( !isFinished )
@@ -65,29 +68,31 @@ namespace MemoryMadness
 				
 				if( isLevelTimeOut )
 				{
-					Messenger.Broadcast( "ChangeLevel" );
+					Messenger.Broadcast( "Timeout" );
+					Messenger.Broadcast( "ChangeLevel" );		
 				}
 				else
 				{
 					game.SetActive( true );
 				}
-				
-				
-
 			}
 
 			isFinished = false;
-
-
 		}
 
 		public void StopTimer()
 		{
 			isFinished = true;
-			//Debug.Log( totalTime - timeLeft );
+			StopCoroutine( CountDownSequence() );
 		}
-		
-		
-	}
 
+		public void ResetTimer()
+		{
+			Debug.Log( "Resetting Timer" + totalTime );
+			timeLeft = totalTime;
+			timer.text = ( timeLeft / 10 ).ToString();
+			StartCoroutine( "CountDownSequence" );
+
+		}
+	}
 }
