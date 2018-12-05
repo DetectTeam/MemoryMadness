@@ -142,7 +142,7 @@ namespace MemoryMadness
 				Vector3 tmpTransform  = clone.transform.position;
 
 				//Adjust the y position
-				tmpTransform.y = clone.transform.position.y - 150f;
+				tmpTransform.y = clone.transform.position.y - 200f;
 					
 				clone.transform.position = tmpTransform;
 

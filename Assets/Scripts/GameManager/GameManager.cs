@@ -18,9 +18,6 @@ namespace MemoryMadness
 		[SerializeField] private int lifeCount;
 		[SerializeField] private int winCount;
 		[SerializeField] private int correctButtonCount;
-		[SerializeField] private GameObject endLevelBackground;
-		[SerializeField] private GameObject successMessage;
-		[SerializeField] private GameObject failureMessage;
 		[SerializeField] private GameObject randomLevelGenerator;
 		[SerializeField] private GameObject sameDifferentLevelGenerator;
 		[SerializeField] private int currentLevel = 1;
@@ -80,9 +77,10 @@ namespace MemoryMadness
 			{
 				Messenger.Broadcast( "StopCountDown" );
 			
-				endLevelBackground.SetActive( true );
-				Success();
+				Messenger.Broadcast( "Success" );
+				
 				ResetCorrectButtonClickCount();
+				
 				ChangeLevel();	
 			}	
 		}
@@ -90,7 +88,7 @@ namespace MemoryMadness
 	    private void IncrementCorrectButtonClickCount()
 		{	
 			correctButtonCount++;
-			//Debug.Log( "INCREMENT ::: " + selectedButtonCount );
+		
 			CheckForWin();
 		}
 
@@ -99,21 +97,7 @@ namespace MemoryMadness
 			correctButtonCount = 0;
 		}
 
-		private void Success()
-		{
-			if( successMessage.activeSelf )
-				successMessage.SetActive( false );
-			else
-				successMessage.SetActive( true );
-		}
-
-		private void Failure()
-		{
-			if( failureMessage.activeSelf )
-				failureMessage.SetActive( false );
-			else
-				failureMessage.SetActive( true );
-		}
+		
 
 		public void DecrementLifeCount()
 		{
@@ -123,9 +107,7 @@ namespace MemoryMadness
 			if( lifeCount == 0 )
 			{
 				Messenger.Broadcast( "StopCountDown" );
-
-				endLevelBackground.SetActive( true );
-				Failure(); 
+				Messenger.Broadcast( "Failure" );
 				ChangeLevel(); 
 			}
 		}
@@ -166,15 +148,8 @@ namespace MemoryMadness
 			
 			Messenger.Broadcast( "LoadNextLevel" );
 			Messenger.Broadcast( "ResetMessage" );
-			//resultPanel.SetActive( true );
 			
-			 if( successMessage.activeSelf )
-			 	successMessage.SetActive( false );
-
-			if( failureMessage.activeSelf )
-				failureMessage.SetActive( false );	 
-			
-			 ResetLifeCount();
+			ResetLifeCount();
 		}
 
 		private void ResetRandomLevelGenerator()
