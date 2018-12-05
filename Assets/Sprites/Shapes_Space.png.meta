@@ -244,8 +244,8 @@ TextureImporter:
       name: Shapes_Space_5
       rect:
         serializedVersion: 2
-        x: 1240
-        y: 1781
+        x: 1238
+        y: 1777
         width: 350
         height: 350
       alignment: 0
@@ -524,8 +524,8 @@ TextureImporter:
       name: Shapes_Space_19
       rect:
         serializedVersion: 2
-        x: 2344
-        y: 111
+        x: 2357
+        y: 102
         width: 350
         height: 350
       alignment: 0

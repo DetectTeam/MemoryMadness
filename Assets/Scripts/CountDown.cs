@@ -44,10 +44,9 @@ namespace MemoryMadness
 		private IEnumerator CountDownSequence()
 		{
 			int count = 0;
-			Debug.Log( "Starting Countdown Sequence..." );
+	
 			yield return new WaitForSeconds( 1.0f );
 			
-
 			while( timeLeft > 0 && !isFinished )
 			{
 				yield return new WaitForSeconds( 0.1f );
@@ -65,7 +64,6 @@ namespace MemoryMadness
 			
 			if( !isFinished )
 			{
-				
 				if( isLevelTimeOut )
 				{
 					Messenger.Broadcast( "Timeout" );
@@ -88,11 +86,9 @@ namespace MemoryMadness
 
 		public void ResetTimer()
 		{
-			Debug.Log( "Resetting Timer" + totalTime );
 			timeLeft = totalTime;
 			timer.text = ( timeLeft / 10 ).ToString();
 			StartCoroutine( "CountDownSequence" );
-
 		}
 	}
 }

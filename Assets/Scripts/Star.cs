@@ -22,13 +22,11 @@ namespace MemoryMadness
 		// Use this for initialization
 		private void Start () 
 		{
-			Debug.Log( "Start Called" );
-			
 			starImage = GetComponent<Image>();
 			originalColor = starImage.color;
 			
 			if( !starImage )
-				Debug.Log( "NONE" );
+				Debug.Log( "Star Image not Found..." );
 
 			//Invoke( "Activate" , 5.0f );
 		}

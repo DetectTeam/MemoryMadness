@@ -10,16 +10,13 @@ public class DeviceManager : MonoBehaviour
 	[SerializeField] private string deviceName;
 	[SerializeField] private string deviceModel;
 
-
 	#region Getters Setters
 
 	public string DeviceType { get{  return deviceType;} set{ deviceType = value; } }
 	public string DeviceName { get{  return deviceName; } set{ deviceName = value; } }
 	public string DeviceModel { get{  return deviceModel; } set{ deviceModel = value; } }
 
-
 	#endregion   
-
 
 	// Use this for initialization
 	void Start () 
@@ -28,8 +25,8 @@ public class DeviceManager : MonoBehaviour
 		deviceName = SystemInfo.deviceName.ToString();
 		deviceModel = SystemInfo.deviceModel.ToString();
 
-		Debug.Log( deviceType + " " + deviceName + " " + deviceModel );
-	}
-	
-	
+		Debug.Log( "deviceType " + deviceType );
+		Debug.Log( "deviceName " + deviceName );
+		Debug.Log( "deviceModel " + deviceModel );
+	}	
 }

@@ -21,8 +21,6 @@ namespace MemoryMadness
 		[SerializeField] private bool isCorrect;
 
 		
-
-		
 		private void OnEnable()
 		{
 			if( !sameDifferentContainer )
@@ -34,10 +32,8 @@ namespace MemoryMadness
 				if( PlayerPrefs.HasKey( "CurrentStage" ) )
 				{
 					stage = PlayerPrefs.GetInt( "CurrentStage" );
-					Debug.Log( "Current Stage is : " + stage );
 				}
 			
-
 			    isNamed = ( Random.value > 0.5f );
 				//isColoured = ( Random.value > 0.5f );
 				isColoured = true;
@@ -204,7 +200,7 @@ namespace MemoryMadness
 				int k = rng.Next(n + 1);  
 				
 				Vector3 value = list[k].transform.position; 
-				//Debug.Log( value ); 
+		
 				list[k].transform.position = list[n].transform.position;  
 				list[n].transform.position = value;
 			}  

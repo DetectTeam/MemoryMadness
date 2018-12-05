@@ -21,7 +21,6 @@ namespace MemoryMadness
 			{
 				symbols = randomLevelGenerator.MemoryPhaseSymbols;
 
-				Debug.Log( "Symbol Count: " + symbols.Count );
 				if( symbols.Count == 2 )
 				{
 					gameObject.transform.localPosition = new Vector3( 225, 0, 0 );

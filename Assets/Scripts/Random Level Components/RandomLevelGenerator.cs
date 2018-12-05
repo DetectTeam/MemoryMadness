@@ -44,18 +44,16 @@ namespace MemoryMadness
 		{
 			//Reset the correct button count to zero
 			Messenger.Broadcast( "ResetCorrectButtonCount" );
-			Debug.Log( "Current Stage : " + StageManager.CurrentStage );
+	
 			CheckCurrentStage( StageManager.CurrentStage );
 
 			LoadLists();
 			//1 Setup symbols
 			SetupSymbols();
-
 		}
 
 		private void LoadLists()
 		{
-			
 			if ( namedShapePicker != null )
 				namedShapes = namedShapePicker.GetShapeList();
 			else
@@ -65,14 +63,10 @@ namespace MemoryMadness
 				unamedShapes = unamedShapePicker.GetShapeList();
 			else
 				Debug.Log( "UNamed Shape List not set..." );
-
 		}
 
 		private void CheckCurrentStage( int currentStage )
 		{
-			Debug.Log( "Current Stage " + currentStage );
-			Debug.Log( "Current Level : " + GameManager.Instance.CurrentLevel );
-			
 			if( currentStage <= 2 )
 				memPhaseSymbolCount = 2;
 			else if( currentStage == 3  )
@@ -85,7 +79,6 @@ namespace MemoryMadness
 			//Set the win count value in the game manager
 			Messenger.Broadcast<int>( "SetWinCount" , memPhaseSymbolCount );
 			//Messenger.Broadcast( "ResetHearts" );					
-
 		}
 
 		private void SetupSymbols()
@@ -110,12 +103,9 @@ namespace MemoryMadness
 
 		private void UpdateSymbols()
 		{
-
 			bool isNoColour = false;
 
 			List<Sprite> levelSprites;
-
-			Debug.Log( StageManager.CurrentLevelType );
 
 			Color bgColor = colorPicker.GetRandomColour();
 
@@ -158,7 +148,6 @@ namespace MemoryMadness
 				}
 				else
 				{
-					Debug.Log( "NON COLOURING...." );
 					cloneSymbols[i].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = bgColor; //Pick a single random Colour . Used for noncoloured symbols
 				}
 			
@@ -229,23 +218,16 @@ namespace MemoryMadness
 
 				if( pickedNumberList.Count == 0 )
 				{
-				 	//Debug.Log( "First Pick" );
 					pickedNumberList.Add( rand );
 					PickColourAndShape( rand );
 					count ++;
 				}
 				else if( !pickedNumberList.Contains( rand )  )
 				{	
-					//Debug.Log( "Pick Colour and Shape... " + rand );
 					pickedNumberList.Add( rand );
 					PickColourAndShape( rand );
 					count++;	
 				}
-				else if( pickedNumberList.Contains( rand )  )
-				{
-					Debug.Log( "Match Found Picking again ...." + rand  );
-				}
-
 			}
 			
 			count = 0;
@@ -262,8 +244,6 @@ namespace MemoryMadness
 			 	//max--;
 
 			Symbol symbol = new Symbol();
-
-			Debug.Log( "Pick Colour and Shape: " + memorySymbolsScript.Name );
 
 			symbol.Name = memorySymbolsScript.Name;
 			symbol.BackgroundColor = memorySymbolsScript.BackgroundColor.GetComponent<Image>().color;
@@ -294,7 +274,7 @@ namespace MemoryMadness
 
 				//List<Symbol> symbolsToSwitch = new List<Symbol>();
 
-				Debug.Log( "Colour Switching 4 or 5 symbols" );
+			
 			
 				//Create new list of symbols from the current list of memoryphase symbols
 				//My shitty way of doing a deep copy
@@ -325,7 +305,6 @@ namespace MemoryMadness
 					{
 						if( colourSwitchList.Contains( symbol.BackgroundColor ) )
 						{
-							Debug.Log( "Found Match" );
 							tmp = colourSwitchList[x];
 							colourSwitchList.RemoveAt( x );
 							foundMatch = true;
@@ -333,11 +312,8 @@ namespace MemoryMadness
 					}
 
 					//Pick a colour from the remaining coloours
-				
 					rand = Random.Range( 0, colourSwitchList.Count - 1 );
 
-					Debug.Log( "RAND:: " + colourSwitchList.Count );
-					
 					symbol.BackgroundColor = colourSwitchList[ rand ];
 				
 					//Remove the random Colour
@@ -384,7 +360,7 @@ namespace MemoryMadness
 							memorySymbolsScript.IsColourSwitched = true;
 								
 							isSelectable = false;
-								
+	
 						}
 					
 					}

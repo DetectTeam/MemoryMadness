@@ -14,14 +14,7 @@ public class DropBounce : MonoBehaviour {
 	{
 		StartCoroutine( Drop() );
 	}
-	private void Start () 
-	{
-		Debug.Log( SystemInfo.deviceType );
-		Debug.Log( SystemInfo.deviceName );
-		Debug.Log( SystemInfo.deviceModel );
-		//Drop();
-	}
-
+	
 	private IEnumerator Drop()
 	{
 		yield return null;

@@ -28,12 +28,19 @@ namespace MemoryMadness
 			// if( !randomLevelGenerator.activeSelf )	
 			// 	randomLevelGenerator.SetActive( true );
 
+			//StartCoroutine( "DisableGameContainer" );
 			StartCoroutine( "DisableTitleScreen" );
 			
 		
 			//StartCoroutine( LoadPhase() );
 		}
 
+		private IEnumerator DisableGameContainer()
+		{
+				yield return new WaitForSeconds( 1.0f );
+				if( gameObject.activeSelf )
+				game.SetActive( false );
+		}
 
 		private IEnumerator DisableTitleScreen()
 		{
@@ -60,11 +67,6 @@ namespace MemoryMadness
 				PlayerPrefs.SetInt( "CurrentLevel" , currentPhase );
 			}
 
-			//Debug.Log( "currentPhase " + currentPhase );
-			
-			//Messenger.Broadcast( "LoadPhase" );
-			//phases[ 0 ].SetActive( true );
-			//Based on level count set correct phase to active
 		}
 		
 		

@@ -68,7 +68,6 @@ namespace MemoryMadness
 		private void SetWinCount( int max)
 		{
 			winCount = max;
-			Debug.Log( "WINCOUNT : " + winCount );	
 		}
 
 		private void CheckForWin()
@@ -161,7 +160,6 @@ namespace MemoryMadness
 		//Reset the Same different level Generator
 		private void ResetSDLevelGenerator()
 		{
-			Debug.Log( "Resetting SAME DIFFERENT LEVEL GENERATOR" );
 			sameDifferentLevelGenerator.SetActive( false );
 			sameDifferentLevelGenerator.SetActive( true );
 		}

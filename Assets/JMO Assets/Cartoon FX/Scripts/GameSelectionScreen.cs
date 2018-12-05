@@ -22,7 +22,7 @@ namespace MemoryMadness
 		private void OnDisable()
 		{
 			Messenger.RemoveListener( "Disable" , Disable );
-			//Debug.Log( "Resetting..." );
+		
 			rectTransform.transform.localPosition = new Vector3( 0, 1600, 0 );
 		}
 
@@ -46,7 +46,6 @@ namespace MemoryMadness
 
 		private void Disable()
 		{
-			//Debug.Log( gameObject + " Disabling self" );
 			gameObject.SetActive( false );
 		}
 	}

@@ -72,7 +72,6 @@ public class StageManager : MonoBehaviour
 			}
 			else if( levelCount >= 7 && levelCount < 9 )
 			{
-				Debug.Log( "READY TO LOAD SD LEVELS ....." );
 				Messenger.Broadcast( "DisableRandomLevelGenerator" );
 				Messenger.Broadcast( "ResetSDGenerator" );
 				
@@ -85,7 +84,6 @@ public class StageManager : MonoBehaviour
 			}
 			else
 			{
-				Debug.Log( "End of stage..." );
 				IncrementStage();
 				resultsScreen.SetActive( true );
 				Messenger.Broadcast( "Results" , 85.0f );

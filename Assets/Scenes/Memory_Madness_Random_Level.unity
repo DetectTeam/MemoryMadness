@@ -3034,7 +3034,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 241129527}
-  - component: {fileID: 241129528}
   - component: {fileID: 241129529}
   - component: {fileID: 241129530}
   - component: {fileID: 241129531}
@@ -3059,142 +3058,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &241129528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 241129526}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcf8d27cb5a874c68a82ec9593f64477, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  randomLevelGenerator: {fileID: 1307170610}
-  memoryPhaseScreen: {fileID: 2004355213}
-  selectedButtonCount: 0
-  delay: 0
-  stages:
-  - name: Stage 1
-    level:
-    - name: Level 5
-      gameType: 1
-      winCount: 3
-      memoryPhase: {fileID: 0}
-      level: {fileID: 0}
-      isMatch: 0
-    - name: Level 19
-      gameType: 1
-      winCount: 3
-      memoryPhase: {fileID: 0}
-      level: {fileID: 0}
-      isMatch: 0
-    - name: Level 11 Stage 1
-      gameType: 1
-      winCount: 3
-      memoryPhase: {fileID: 0}
-      level: {fileID: 0}
-      isMatch: 1
-    - name: Level 27
-      gameType: 1
-      winCount: 3
-      memoryPhase: {fileID: 0}
-      level: {fileID: 0}
-      isMatch: 0
-    - name: Level4
-      gameType: 1
-      winCount: 3
-      memoryPhase: {fileID: 0}
-      level: {fileID: 0}
-      isMatch: 0
-    - name: Level 12
-      gameType: 1
-      winCount: 3
-      memoryPhase: {fileID: 0}
-      level: {fileID: 0}
-      isMatch: 0
-    - name: Level 20
-      gameType: 1
-      winCount: 3
-      memoryPhase: {fileID: 0}
-      level: {fileID: 0}
-      isMatch: 1
-    - name: Level 28
-      gameType: 1
-      winCount: 3
-      memoryPhase: {fileID: 0}
-      level: {fileID: 0}
-      isMatch: 1
-    - name: Final Level Stage 1
-      gameType: 0
-      winCount: 0
-      memoryPhase: {fileID: 0}
-      level: {fileID: 877897976}
-      isMatch: 1
-  - name: Stage 2
-    level:
-    - name: Level 18
-      gameType: 1
-      winCount: 3
-      memoryPhase: {fileID: 0}
-      level: {fileID: 0}
-      isMatch: 0
-    - name: Level 22
-      gameType: 1
-      winCount: 5
-      memoryPhase: {fileID: 0}
-      level: {fileID: 0}
-      isMatch: 0
-    - name: Level 26
-      gameType: 1
-      winCount: 3
-      memoryPhase: {fileID: 0}
-      level: {fileID: 0}
-      isMatch: 0
-    - name: Level 30
-      gameType: 1
-      winCount: 5
-      memoryPhase: {fileID: 0}
-      level: {fileID: 0}
-      isMatch: 0
-    - name: Level 2
-      gameType: 1
-      winCount: 3
-      memoryPhase: {fileID: 0}
-      level: {fileID: 0}
-      isMatch: 0
-    - name: Level 10
-      gameType: 1
-      winCount: 4
-      memoryPhase: {fileID: 0}
-      level: {fileID: 0}
-      isMatch: 0
-    - name: Level 9
-      gameType: 1
-      winCount: 2
-      memoryPhase: {fileID: 0}
-      level: {fileID: 0}
-      isMatch: 0
-    - name: Level 13
-      gameType: 1
-      winCount: 4
-      memoryPhase: {fileID: 0}
-      level: {fileID: 0}
-      isMatch: 0
-    - name: Final Level Stage 1
-      gameType: 0
-      winCount: 0
-      memoryPhase: {fileID: 0}
-      level: {fileID: 877897976}
-      isMatch: 1
-  successMessage: {fileID: 0}
-  failureMessage: {fileID: 0}
-  endLevelBackground: {fileID: 1247521995}
-  resultPanel: {fileID: 2004355213}
-  percentage: 65
-  currentPhase: 0
-  winCount: 0
-  lifeCount: 3
 --- !u!114 &241129529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3255,9 +3118,6 @@ MonoBehaviour:
   lifeCount: 3
   winCount: 0
   correctButtonCount: 0
-  endLevelBackground: {fileID: 1247521995}
-  successMessage: {fileID: 1610036947}
-  failureMessage: {fileID: 295692523}
   randomLevelGenerator: {fileID: 1307170610}
   sameDifferentLevelGenerator: {fileID: 844842460}
   currentLevel: 0
@@ -5000,8 +4860,8 @@ RectTransform:
   - {fileID: 1648664524}
   - {fileID: 2089274044}
   - {fileID: 1766364038}
-  - {fileID: 1245139488}
   - {fileID: 1247521996}
+  - {fileID: 1245139488}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15401,7 +15261,7 @@ RectTransform:
   - {fileID: 1610036948}
   - {fileID: 1276939938}
   m_Father: {fileID: 425608680}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15453,7 +15313,7 @@ RectTransform:
   m_LocalScale: {x: 1.1875, y: 1.1750001, z: 1}
   m_Children: []
   m_Father: {fileID: 425608680}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -23162,7 +23022,7 @@ Prefab:
       objectReference: {fileID: 621291647}
     - target: {fileID: 1795334674235718, guid: 7425c24d9d6dd4ace856e28dcfb43294, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114822312392378942, guid: 7425c24d9d6dd4ace856e28dcfb43294,
         type: 2}
