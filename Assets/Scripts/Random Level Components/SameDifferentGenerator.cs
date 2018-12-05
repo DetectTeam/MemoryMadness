@@ -96,9 +96,15 @@ namespace MemoryMadness
 			int rand = 0;
 			//int numSymbols = 2;
 
+			List<Color> allColours = new List<Color>( colorPicker.ColourList );
+
 			List<Color> bottomListColours = new List<Color>();
 
-			Color levelColour = colorPicker.ColourList[ Random.Range( 0, colorPicker.ColourList.Count - 1 ) ];
+			
+			
+			//Color levelColour = colorPicker.ColourList[ rand ];
+
+			
 
 			if( isNamed ) //Named Symbol if true. Un named symbol if false
 				symbolList = new List<Sprite>( namedShapePicker.GetShapeList() );
@@ -112,13 +118,14 @@ namespace MemoryMadness
 
 				if( isColoured )
 				{
-					topList[x].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = colorPicker.ColourList[ rand ];
-					bottomListColours.Add( colorPicker.ColourList[rand] );
+					topList[x].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = allColours[ rand ];
+					bottomListColours.Add( allColours[ rand ] );
+					allColours.RemoveAt( rand );
 				}
-				else
-				{
-					topList[x].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = levelColour;		
-				}
+				// else
+				// {
+				// 	topList[x].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = levelColour;		
+				// }
 
 				topList[x].transform.Find( "Rune" ).GetComponent<Image>().sprite = symbolList[ rand ];
 				
@@ -128,27 +135,59 @@ namespace MemoryMadness
 			//Build and Display Bottom Row Symbols
 
 			bottomList.Clear();
-			//Clone the top row and position it 150 below 
+			
+			//Clone the top row and position it 200 below 
 			foreach( GameObject symbol in topList )
 			{
 				var clone = Instantiate( symbol , symbol.transform.position, Quaternion.identity );
 				
 				clone.transform.parent = sameDifferentContainer.transform;
 	
-				Vector3 tmpTransform  = clone.transform.position;
+				Vector3 tmpTransform = clone.transform.position;
 
 				//Adjust the y position
 				tmpTransform.y = clone.transform.position.y - 200f;
 					
 				clone.transform.position = tmpTransform;
 
-				if( !isCorrect )
-				{
-					clone.transform.Find( "BackgroundColor" ).GetComponent<Image>().color = colorPicker.ColourList[ Random.Range( 0, colorPicker.ColourList.Count ) ];
-				}
+				// if( !isCorrect )
+				// {
+				// 	clone.transform.Find( "BackgroundColor" ).GetComponent<Image>().color = bottomListColours[ Random.Range( 0, bottomListColours.Count ) ];
+				// }
 				
 				bottomList.Add( clone );	
-			}	
+			}
+			
+			//randomize bottomList
+			//Switch 2 colors 
+
+			if( !isCorrect  )
+				SwitchTwoColours();
+		}
+
+		private void SwitchTwoColours()
+		{
+			int rand = Random.Range( 0, bottomList.Count - 1 );
+			Color colourOne, colourTwo = Color.blue;
+			
+			GameObject symbolOne  =  bottomList[ rand ];
+
+			bottomList.RemoveAt( rand );
+
+			rand = Random.Range( 0, bottomList.Count - 1 );
+			GameObject symbolTwo = bottomList[ rand ];
+			bottomList.RemoveAt( rand );
+
+			colourOne = symbolOne.transform.Find( "BackgroundColor" ).GetComponent<Image>().color;
+			colourTwo = symbolTwo.transform.Find( "BackgroundColor" ).GetComponent<Image>().color;
+			
+			symbolOne.transform.Find( "BackgroundColor" ).GetComponent<Image>().color = colourTwo;
+			symbolTwo.transform.Find( "BackgroundColor" ).GetComponent<Image>().color = colourOne;
+
+			bottomList.Add( symbolOne );
+			bottomList.Add( symbolTwo );
+
+			bottomList.ShuffleList();
 		}
 
 		private void DisplaySymbols( int symbolCount )
