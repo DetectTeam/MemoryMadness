@@ -37,6 +37,10 @@ public class ScoreManager : MonoBehaviour
 	private void DecrementScore( int amt )
 	{
 		score = score - amt;
+
+		if( score < 0 )
+			score = 0;
+		
 		UpdateScore( score );	
 	}
 
