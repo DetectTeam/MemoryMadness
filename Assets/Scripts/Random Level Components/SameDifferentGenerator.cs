@@ -100,11 +100,7 @@ namespace MemoryMadness
 
 			List<Color> bottomListColours = new List<Color>();
 
-			
-			
 			//Color levelColour = colorPicker.ColourList[ rand ];
-
-			
 
 			if( isNamed ) //Named Symbol if true. Un named symbol if false
 				symbolList = new List<Sprite>( namedShapePicker.GetShapeList() );
@@ -135,6 +131,8 @@ namespace MemoryMadness
 			//Build and Display Bottom Row Symbols
 
 			bottomList.Clear();
+
+			Debug.Log( topList.Count );
 			
 			//Clone the top row and position it 200 below 
 			foreach( GameObject symbol in topList )
@@ -161,22 +159,21 @@ namespace MemoryMadness
 			//randomize bottomList
 			//Switch 2 colors 
 
-			if( !isCorrect  )
-				SwitchTwoColours();
+			
 		}
 
-		private void SwitchTwoColours()
+		private void SwitchTwoColours( List<GameObject> list  )
 		{
-			int rand = Random.Range( 0, bottomList.Count - 1 );
+			int rand = Random.Range( 0, list.Count - 1 );
 			Color colourOne, colourTwo = Color.blue;
 			
-			GameObject symbolOne  =  bottomList[ rand ];
+			GameObject symbolOne  =  list[ rand ];
 
-			bottomList.RemoveAt( rand );
+			list.RemoveAt( rand );
 
-			rand = Random.Range( 0, bottomList.Count - 1 );
-			GameObject symbolTwo = bottomList[ rand ];
-			bottomList.RemoveAt( rand );
+			rand = Random.Range( 0, list.Count - 1 );
+			GameObject symbolTwo = list[ rand ];
+			list.RemoveAt( rand );
 
 			colourOne = symbolOne.transform.Find( "BackgroundColor" ).GetComponent<Image>().color;
 			colourTwo = symbolTwo.transform.Find( "BackgroundColor" ).GetComponent<Image>().color;
@@ -184,14 +181,16 @@ namespace MemoryMadness
 			symbolOne.transform.Find( "BackgroundColor" ).GetComponent<Image>().color = colourTwo;
 			symbolTwo.transform.Find( "BackgroundColor" ).GetComponent<Image>().color = colourOne;
 
-			bottomList.Add( symbolOne );
-			bottomList.Add( symbolTwo );
+			list.Add( symbolOne );
+			list.Add( symbolTwo );
 
-			bottomList.ShuffleList();
+			list.ShuffleList();
 		}
 
 		private void DisplaySymbols( int symbolCount )
 		{
+			Debug.Log( "DISPLAY SYMBOLS : " + symbolCount );
+			
 			List<GameObject> tmp = new List<GameObject>();
 
 			for( int x = 0; x < symbolCount; x++ )
@@ -200,9 +199,10 @@ namespace MemoryMadness
 				//bottomList[ x ].SetActive( true );
 				tmp.Add( bottomList[x]);
 				bottomList[x].SetActive( true );
-
-
 			}
+
+			if( !isCorrect  )
+				SwitchTwoColours( tmp );
 
 			ShuffleListPosition( tmp );
 
