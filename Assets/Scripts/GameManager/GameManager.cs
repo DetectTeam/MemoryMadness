@@ -96,8 +96,6 @@ namespace MemoryMadness
 			correctButtonCount = 0;
 		}
 
-		
-
 		public void DecrementLifeCount()
 		{
 			lifeCount --;

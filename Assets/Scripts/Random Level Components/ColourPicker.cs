@@ -4,6 +4,12 @@ using UnityEngine;
 using System.Security.Cryptography;
 
 
+	public class Colour
+	{
+		public int colourCode;
+		public Color color;
+	}
+
 	public class ColourPicker : MonoBehaviour
 	{
 

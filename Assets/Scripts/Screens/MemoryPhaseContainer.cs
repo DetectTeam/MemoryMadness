@@ -30,6 +30,8 @@ namespace MemoryMadness
 
 			//StartCoroutine( "DisableGameContainer" );
 			StartCoroutine( "DisableTitleScreen" );
+
+			SessionManager.Instance.CreateSession();
 			
 		
 			//StartCoroutine( LoadPhase() );

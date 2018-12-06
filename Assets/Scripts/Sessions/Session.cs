@@ -5,22 +5,26 @@ using UnityEngine;
 
 namespace MemoryMadness
 {
-  
-
+	[System.Serializable]
 	public class StudyItem 
 	{
 		public string Shape { get; set; }
 		public string Colour{ get; set; }
 	}
 
+	[System.Serializable]
 	public class TestSlot : StudyItem
 	{
 		public string Type { get; set; }
 		public string StudyOrder { get; set; }
 	}
 
+	[System.Serializable]
 	public class Session  
 	{
+		public int SessionID { get; set; }
+		public string SessionName{ get; set; }
+		public string SessionTimeStamp { get; set; }
 		public int Level { get; set; } // level 1 - 8
 		public string UserID { get; set; } 
 		public int Stage { get; set; } // Stage 1 - 4

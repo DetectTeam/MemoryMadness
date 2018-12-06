@@ -22,6 +22,9 @@ namespace MemoryMadness
 		[SerializeField] private List<Sprite> namedShapes;
 		[SerializeField] private List<Sprite> unamedShapes;
 		[SerializeField] private List<GameObject> cloneSymbols;
+
+		public List<GameObject> CurrentLevelSymbols { get{ return cloneSymbols; } }
+		
 		[SerializeField] private List<GameObject> colourSwitchedSymbols;
 
 		[SerializeField] private List<Symbol> memoryPhaseSymbols;
@@ -39,13 +42,22 @@ namespace MemoryMadness
 		
 		// Use this for initialization
 
-		
+		public static RandomLevelGenerator Instance; 
+		private void Awake()
+		{
+			if( Instance == null )
+				Instance = this;
+			else
+				Destroy( gameObject );
+		}
+
+
 		private void OnEnable()
 		{
 			//Reset the correct button count to zero
 			Messenger.Broadcast( "ResetCorrectButtonCount" );
 	
-			CheckCurrentStage( StageManager.CurrentStage );
+			CheckCurrentStage( StageManager.Instance.CurrentStage );
 
 			LoadLists();
 			//1 Setup symbols
@@ -89,7 +101,7 @@ namespace MemoryMadness
 				GenerateMemoryPhaseSymbols();
 
 				//Only perform a colour switch on levels with coloured symbols
-				if( StageManager.CurrentLevelType == LevelType.NameableColour  || StageManager.CurrentLevelType == LevelType.UnNameableColour )
+				if( StageManager.Instance.CurrentLevelType == LevelType.NameableColour  || StageManager.Instance.CurrentLevelType == LevelType.UnNameableColour )
 				{
 					if( memoryPhaseSymbols.Count <= 3 )
 						ColourSwitchSymbols();
@@ -109,13 +121,13 @@ namespace MemoryMadness
 
 			Color bgColor = colorPicker.GetRandomColour();
 
-			if( StageManager.CurrentLevelType == LevelType.UnNameableNonColour  || StageManager.CurrentLevelType == LevelType.NameableNonColour )
+			if( StageManager.Instance.CurrentLevelType == LevelType.UnNameableNonColour  || StageManager.Instance.CurrentLevelType == LevelType.NameableNonColour )
 			{
 				isNoColour = true;
 			}
 
 
-			if( StageManager.CurrentLevelType == LevelType.UnNameableColour  || StageManager.CurrentLevelType == LevelType.UnNameableNonColour )
+			if( StageManager.Instance.CurrentLevelType == LevelType.UnNameableColour  || StageManager.Instance.CurrentLevelType == LevelType.UnNameableNonColour )
 			{
 				levelSprites = unamedShapes;
 			}
@@ -144,7 +156,7 @@ namespace MemoryMadness
 				
 				if( !isNoColour ) 
 				{
-					cloneSymbols[i].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = ColourPicker( i ); //colorPicker.ColourList[ colourPickerIndex ];
+					cloneSymbols[i].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = ColourPicker( i ); //colorPicker.ColourList[ colourPickerIndex ];	
 				}
 				else
 				{
@@ -232,7 +244,7 @@ namespace MemoryMadness
 			
 			count = 0;
 
-			cloneSymbols.ShuffleList();
+			//cloneSymbols.ShuffleList();
 
 		}
 
