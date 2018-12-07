@@ -13,8 +13,8 @@ namespace MemoryMadness
 		[SerializeField] private int colourCode;
 		public int ColourCode { get{ return colourCode; } set{ colourCode = value; } }
 
-		[SerializeField] private string shapeCode;
-		public string ShapeCode { get{ return shapeCode; } set{ shapeCode = value; } }
+		[SerializeField] private int shapeCode;
+		public int ShapeCode { get{ return shapeCode; } set{ shapeCode = value; } }
 
 		//Boolean used to set whether a symbol is correct or not
 		[SerializeField] private bool isCorrect;

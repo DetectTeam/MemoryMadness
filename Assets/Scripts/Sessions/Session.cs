@@ -8,8 +8,8 @@ namespace MemoryMadness
 	[System.Serializable]
 	public class StudyItem 
 	{
-		public string Shape { get; set; }
-		public string Colour{ get; set; }
+		public int ShapeCode { get; set; }
+		public int ColourCode{ get; set; }
 	}
 
 	[System.Serializable]
@@ -43,5 +43,14 @@ namespace MemoryMadness
 		public List<int> AccuracySlots; // List of player decisions for each slot
 		public List<int> OrderSlot;
 		public List<float> TimeSlot;
+
+		public Session()
+		{
+			StudyItems = new List<StudyItem>();
+			TestSlots = new List<TestSlot>();
+			AccuracySlots = new List<int>();
+			OrderSlot = new List<int>();
+			TimeSlot = new List<float>();
+		}
 	}
 }

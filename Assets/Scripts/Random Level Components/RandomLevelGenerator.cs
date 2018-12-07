@@ -158,6 +158,7 @@ namespace MemoryMadness
 				{
 					cloneSymbols[i].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = ColourPicker( i ).Color; //colorPicker.ColourList[ colourPickerIndex ];	
 					memSymbolsScript.ColourCode = ColourPicker( i ).ColourCode;
+					
 				}
 				else
 				{
@@ -165,7 +166,8 @@ namespace MemoryMadness
 					memSymbolsScript.ColourCode = bgColor.ColourCode;
 				}
 			
-				cloneSymbols[i].transform.Find( "Rune" ).GetComponent<Image>().sprite = RandomShapePicker( i , levelSprites );
+				cloneSymbols[i].transform.Find( "Rune" ).GetComponent<Image>().sprite = RandomShapePicker( i , levelSprites ).Image;
+				memSymbolsScript.ShapeCode = RandomShapePicker( i, levelSprites ).ShapeCode;
 
 				cloneSymbols[i].SetActive( true );
 
@@ -185,7 +187,7 @@ namespace MemoryMadness
 			return colorPicker.ColourList[ currentIndex ];
 		}
 
-		private Sprite RandomShapePicker( int currentIndex, List<Shape> shapes )
+		private Shape RandomShapePicker( int currentIndex, List<Shape> shapes )
 		{
 			
 			if( currentIndex >= shapes.Count )
@@ -193,7 +195,7 @@ namespace MemoryMadness
 				currentIndex = Random.Range( 0, shapes.Count - 1 );
 			}
 
-			return shapes[ currentIndex ].Image;
+			return shapes[ currentIndex ];
 		}
 
 		private void GenerateMemoryPhaseSymbols()
@@ -250,6 +252,7 @@ namespace MemoryMadness
 
 			Symbol symbol = new Symbol();
 			Colour c = new Colour();
+			Shape s = new Shape();
 
 			symbol.Name = memorySymbolsScript.Name;
 		
@@ -257,7 +260,10 @@ namespace MemoryMadness
 			c.ColourName = "";
 			c.ColourCode = memorySymbolsScript.ColourCode;
 
+			s.ShapeCode = memorySymbolsScript.ShapeCode;
+
 			symbol.BackgroundColor = c;
+			symbol.CurrentShape = s;
 			symbol.Rune = memorySymbolsScript.Rune.GetComponent<Image>();
 			
 			memorySymbolsScript.IsCorrect = true;

@@ -49,7 +49,7 @@ namespace MemoryMadness
 			session.TrialNumber = trialNumber;
 			session.DistractorCount = levelSize - session.SymbolArraySize;
 
-			SetStudyItems( RandomLevelGenerator.Instance.MemoryPhaseSymbols );
+			SetStudyItems( session, RandomLevelGenerator.Instance.MemoryPhaseSymbols );
 			
 			// if( PlayerPrefs.HasKey( "CurrentStage" ) )
 			// 	session.Stage = PlayerPrefs.GetInt( "CurrentStage" );
@@ -96,22 +96,22 @@ namespace MemoryMadness
 		}
 
 
-		[SerializeField] private StudyItem item;
-		private void SetStudyItems( List<Symbol> source )
+		
+		private void SetStudyItems( Session session, List<Symbol> source )
 		{
 			
 			for( int i = 0; i < source.Count; i++ )
 			{
-				//StudyItem item = new StudyItem(); 
-				// Debug.Log( "COLOR: " + source[i].BackgroundColor.ToString() );
-				// Debug.Log( source[i].Name );
-				// item.Colour = source[i].BackgroundColor.ToString();
-				// item.Shape = source[i].Name;
+				StudyItem item = new StudyItem(); 
+				
+			 	item.ColourCode = source[i].BackgroundColor.ColourCode;
+			 	item.ShapeCode = source[i].CurrentShape.ShapeCode;
 
-				Debug.Log( "Colour Code : " +source[i].BackgroundColor.ColourCode );
+				session.StudyItems.Add( item );
 
-			}
-			
+			}	
+
+			Debug.Log( session.StudyItems.Count );
 		}
 
 
