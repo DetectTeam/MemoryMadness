@@ -136,8 +136,16 @@ namespace MemoryMadness
 		private void SetAccuracySlot( int slot , int slotStatus )
 		{
 			
-		}
+			Debug.Log( ">>>>> " + slot + " >>>>> " + slotStatus  );
+			session.AccuracySlots[ slot - 1 ] = slotStatus;
 
+			if( slotStatus == 1 ) //Correct
+				session.SumAccuracy ++;
+			else if( slotStatus == 2 ) //Lure Error
+				session.LureErrors ++;
+			else  if( slotStatus == 3 ) //Normal Error
+				session.NormalErrors ++;	
+		}
 
 		public void EndSession()
 		{
