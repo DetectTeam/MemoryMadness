@@ -42,7 +42,7 @@ namespace MemoryMadness
 				{
 					anchors[i].SetActive( true );
 					
-					anchors[ i ].GetComponent<MemorySymbols>().BackgroundColor.GetComponent<Image>().color = symbols[i].BackgroundColor;
+					anchors[ i ].GetComponent<MemorySymbols>().BackgroundColor.GetComponent<Image>().color = symbols[i].BackgroundColor.Color;
 					anchors[ i ].GetComponent<MemorySymbols>().Rune.GetComponent<Image>().sprite = symbols[i].Rune.sprite;
 					anchors[ i ].GetComponent<MemorySymbols>().Name = symbols[i].Name;
 

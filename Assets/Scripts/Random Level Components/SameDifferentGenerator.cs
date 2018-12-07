@@ -96,7 +96,7 @@ namespace MemoryMadness
 			int rand = 0;
 			//int numSymbols = 2;
 
-			List<Color> allColours = new List<Color>( colorPicker.ColourList );
+			List<Colour> allColours = new List<Colour>( colorPicker.ColourList );
 
 			List<Color> bottomListColours = new List<Color>();
 
@@ -114,8 +114,8 @@ namespace MemoryMadness
 
 				if( isColoured )
 				{
-					topList[x].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = allColours[ rand ];
-					bottomListColours.Add( allColours[ rand ] );
+					topList[x].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = allColours[ rand ].Color;
+					bottomListColours.Add( allColours[ rand ].Color );
 					allColours.RemoveAt( rand );
 				}
 				// else

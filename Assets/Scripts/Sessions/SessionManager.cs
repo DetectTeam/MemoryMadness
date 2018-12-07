@@ -103,10 +103,13 @@ namespace MemoryMadness
 			for( int i = 0; i < source.Count; i++ )
 			{
 				//StudyItem item = new StudyItem(); 
-				Debug.Log( "COLOR: " + source[i].BackgroundColor.ToString() );
-				Debug.Log( source[i].Name );
-				item.Colour = source[i].BackgroundColor.ToString();
-				item.Shape = source[i].Name;
+				// Debug.Log( "COLOR: " + source[i].BackgroundColor.ToString() );
+				// Debug.Log( source[i].Name );
+				// item.Colour = source[i].BackgroundColor.ToString();
+				// item.Shape = source[i].Name;
+
+				Debug.Log( "Colour Code : " +source[i].BackgroundColor.ColourCode );
+
 			}
 			
 		}

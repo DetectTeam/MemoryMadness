@@ -119,13 +119,13 @@ namespace MemoryMadness
 
 			List<Sprite> levelSprites;
 
-			Color bgColor = colorPicker.GetRandomColour();
+			Colour bgColor = colorPicker.GetRandomColour();
+			 
 
 			if( StageManager.Instance.CurrentLevelType == LevelType.UnNameableNonColour  || StageManager.Instance.CurrentLevelType == LevelType.NameableNonColour )
 			{
 				isNoColour = true;
 			}
-
 
 			if( StageManager.Instance.CurrentLevelType == LevelType.UnNameableColour  || StageManager.Instance.CurrentLevelType == LevelType.UnNameableNonColour )
 			{
@@ -156,13 +156,14 @@ namespace MemoryMadness
 				
 				if( !isNoColour ) 
 				{
-					cloneSymbols[i].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = ColourPicker( i ); //colorPicker.ColourList[ colourPickerIndex ];	
+					cloneSymbols[i].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = ColourPicker( i ).Color; //colorPicker.ColourList[ colourPickerIndex ];	
+					memSymbolsScript.ColourCode = ColourPicker( i ).ColourCode;
 				}
 				else
 				{
-					cloneSymbols[i].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = bgColor; //Pick a single random Colour . Used for noncoloured symbols
+					cloneSymbols[i].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = bgColor.Color; //Pick a single random Colour . Used for noncoloured symbols
+					memSymbolsScript.ColourCode = bgColor.ColourCode;
 				}
-			
 			
 				cloneSymbols[i].transform.Find( "Rune" ).GetComponent<Image>().sprite = RandomShapePicker( i , levelSprites );
 
@@ -170,11 +171,10 @@ namespace MemoryMadness
 
 				//cloneSymbols[i].transform.parent = anchors[ i ].transform.parent;
 			}
-			
 		}
 
 		//Returns a colour from a list of colours
-		private Color ColourPicker( int currentIndex )
+		private Colour ColourPicker( int currentIndex )
 		{
 			
 			if( currentIndex >= colorPicker.ColourList.Count )
@@ -209,18 +209,6 @@ namespace MemoryMadness
 
 			int count = 0;
 
-			//Set our current Symbol Count
-			//between 20 and 25 , 3,4 = 20 , 5 = 25
-
-			// if( memPhaseSymbolCount == 5 )
-			// {
-			// 	currentSymbolCount = 25;
-			// }
-			// else if( memPhaseSymbolCount <= 4 )
-			// {
-			// 	currentSymbolCount = 20;
-			// }
-
 			List<int> pickedNumberList = new List<int>();
 
 			while( count < memPhaseSymbolCount )
@@ -230,6 +218,7 @@ namespace MemoryMadness
 
 				if( pickedNumberList.Count == 0 )
 				{
+					Debug.Log( rand );
 					pickedNumberList.Add( rand );
 					PickColourAndShape( rand );
 					count ++;
@@ -243,9 +232,7 @@ namespace MemoryMadness
 			}
 			
 			count = 0;
-
 			//cloneSymbols.ShuffleList();
-
 		}
 
 		private void PickColourAndShape( int rand )
@@ -254,11 +241,23 @@ namespace MemoryMadness
 			var memorySymbolsScript = randomSymbol.GetComponent<MemorySymbols>();
 			//cloneSymbols.RemoveAt( rand );
 			 	//max--;
+		    if( !memorySymbolsScript )
+				Debug.Log( "BIG PROBLEM >>>>>>" );
+			else
+			{
+				Debug.Log( "Memory Symbol : " + memorySymbolsScript.BackgroundColor.GetComponent<Image>().color );
+			}
 
 			Symbol symbol = new Symbol();
+			Colour c = new Colour();
 
 			symbol.Name = memorySymbolsScript.Name;
-			symbol.BackgroundColor = memorySymbolsScript.BackgroundColor.GetComponent<Image>().color;
+		
+			c.Color = memorySymbolsScript.BackgroundColor.GetComponent<Image>().color;
+			c.ColourName = "";
+			c.ColourCode = memorySymbolsScript.ColourCode;
+
+			symbol.BackgroundColor = c;
 			symbol.Rune = memorySymbolsScript.Rune.GetComponent<Image>();
 			
 			memorySymbolsScript.IsCorrect = true;
@@ -299,7 +298,7 @@ namespace MemoryMadness
 					symbol.Rune = memoryPhaseSymbols[i].Rune;
 
 				 	symbolsToSwitch.Add( symbol );
-					 colourSwitchList.Add( memoryPhaseSymbols[i].BackgroundColor );
+					 colourSwitchList.Add( memoryPhaseSymbols[i].BackgroundColor.Color );
 				 }
 
 				//Load List of colours
@@ -315,7 +314,7 @@ namespace MemoryMadness
 					//Remove the colour that matches the current symbol colour
 					for( int x = 0; x < colourSwitchList.Count; x++ )
 					{
-						if( colourSwitchList.Contains( symbol.BackgroundColor ) )
+						if( colourSwitchList.Contains( symbol.BackgroundColor.Color) )
 						{
 							tmp = colourSwitchList[x];
 							colourSwitchList.RemoveAt( x );
@@ -326,7 +325,7 @@ namespace MemoryMadness
 					//Pick a colour from the remaining coloours
 					rand = Random.Range( 0, colourSwitchList.Count - 1 );
 
-					symbol.BackgroundColor = colourSwitchList[ rand ];
+					symbol.BackgroundColor.Color = colourSwitchList[ rand ];
 				
 					//Remove the random Colour
 					colourSwitchList.RemoveAt( rand );
@@ -363,7 +362,7 @@ namespace MemoryMadness
 						{
 								
 							//Set the background colour
-							memorySymbolsScript.BackgroundColor.GetComponent<Image>().color =  symbolsToSwitch[x].BackgroundColor;
+							memorySymbolsScript.BackgroundColor.GetComponent<Image>().color =  symbolsToSwitch[x].BackgroundColor.Color;
 								
 							//Set the symbol
 							memorySymbolsScript.Rune.GetComponent<Image>().sprite = symbolsToSwitch[x].Rune.sprite;
@@ -418,7 +417,7 @@ namespace MemoryMadness
 							{
 								
 								//Set the background colour
-								memorySymbolsScript.BackgroundColor.GetComponent<Image>().color = memoryPhaseSymbols[x].BackgroundColor;
+								memorySymbolsScript.BackgroundColor.GetComponent<Image>().color = memoryPhaseSymbols[x].BackgroundColor.Color;
 								
 								//Set the symbol
 								memorySymbolsScript.Rune.GetComponent<Image>().sprite = memoryPhaseSymbols[i].Rune.sprite;

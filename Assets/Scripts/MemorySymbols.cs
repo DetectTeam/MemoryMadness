@@ -10,8 +10,8 @@ namespace MemoryMadness
 		[SerializeField] private string name;
 		public string Name { get{ return name; } set{ name = value; } }
 
-		[SerializeField] private string colourCode;
-		public string ColourName { get{ return colourCode; } set{ colourCode = value; } }
+		[SerializeField] private int colourCode;
+		public int ColourCode { get{ return colourCode; } set{ colourCode = value; } }
 
 		[SerializeField] private string shapeCode;
 		public string ShapeCode { get{ return shapeCode; } set{ shapeCode = value; } }
