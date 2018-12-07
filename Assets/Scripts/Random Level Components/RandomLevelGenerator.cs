@@ -19,8 +19,8 @@ namespace MemoryMadness
 		[SerializeField] private List<LevelType> currentStageLevels;
 		[SerializeField] private List<GameObject> anchors;
 		//[SerializeField] private List<Color> colourList;
-		[SerializeField] private List<Sprite> namedShapes;
-		[SerializeField] private List<Sprite> unamedShapes;
+		[SerializeField] private List<Shape> namedShapes;
+		[SerializeField] private List<Shape> unamedShapes;
 		[SerializeField] private List<GameObject> cloneSymbols;
 
 		public List<GameObject> CurrentLevelSymbols { get{ return cloneSymbols; } }
@@ -117,7 +117,7 @@ namespace MemoryMadness
 		{
 			bool isNoColour = false;
 
-			List<Sprite> levelSprites;
+			List<Shape> levelSprites;
 
 			Colour bgColor = colorPicker.GetRandomColour();
 			 
@@ -185,7 +185,7 @@ namespace MemoryMadness
 			return colorPicker.ColourList[ currentIndex ];
 		}
 
-		private Sprite RandomShapePicker( int currentIndex, List<Sprite> shapes )
+		private Sprite RandomShapePicker( int currentIndex, List<Shape> shapes )
 		{
 			
 			if( currentIndex >= shapes.Count )
@@ -193,7 +193,7 @@ namespace MemoryMadness
 				currentIndex = Random.Range( 0, shapes.Count - 1 );
 			}
 
-			return shapes[ currentIndex ];
+			return shapes[ currentIndex ].Image;
 		}
 
 		private void GenerateMemoryPhaseSymbols()

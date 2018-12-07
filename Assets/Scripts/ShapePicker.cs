@@ -3,32 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShapePicker : MonoBehaviour 
+
+namespace MemoryMadness
 {
-
+	[System.Serializable]
+	public class Shape
+	{
+		[SerializeField] private int shapeCode;
+		public int ShapeCode { get{ return shapeCode; } set{ shapeCode = value; } }
 		[SerializeField] private string name;
-		[SerializeField] private List<Sprite> imageList = new List<Sprite>();
-		public List<Sprite> ImageList { get{ return ImageList; } } 
-		private void OnEnable()
-		{
-			GetShapeList();
-		}
+		public string Name { get{ return name;  } set { name = value; } }
+		[SerializeField] private Sprite image;
+		public Sprite Image { get{ return image; } set{ image = value; } }
+	}
 
-		private void Start()
-		{
-			GetShapeList();
-		}
+	public class ShapePicker : MonoBehaviour 
+	{
+			[SerializeField] private string name;
+			[SerializeField] private List<Shape> imageList = new List<Shape>();
+			public List<Shape> ImageList { get{ return ImageList; } } 
+			private void OnEnable()
+			{
+				GetShapeList();
+			}
 
-		public List<Sprite> GetShapeList()
-		{
-			//var tmp = colourList;
-			imageList.ShuffleList();
+			private void Start()
+			{
+				GetShapeList();
+			}
 
-			return imageList;
-		}
+			public List<Shape> GetShapeList()
+			{
+				//var tmp = colourList;
+				imageList.ShuffleList();
 
-		public Sprite GetRandomShape()
-		{
-			return imageList[ Random.Range( 0, imageList.Count - 1 ) ];
-		}
+				return imageList;
+			}
+
+			public Shape GetRandomShape()
+			{
+				return imageList[ Random.Range( 0, imageList.Count - 1 ) ];
+			}
+	}
 }

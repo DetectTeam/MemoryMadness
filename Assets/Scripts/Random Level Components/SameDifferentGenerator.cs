@@ -15,7 +15,7 @@ namespace MemoryMadness
 		[SerializeField] private ColourPicker colorPicker;
 		[SerializeField] private ShapePicker namedShapePicker;
 		[SerializeField] private ShapePicker unamedShapePicker;
-		[SerializeField] private List<Sprite> symbolList;
+		[SerializeField] private List<Shape> symbolList;
 		[SerializeField] private bool isNamed = false;
 		[SerializeField] private bool isColoured = false;
 		[SerializeField] private bool isCorrect;
@@ -103,9 +103,9 @@ namespace MemoryMadness
 			//Color levelColour = colorPicker.ColourList[ rand ];
 
 			if( isNamed ) //Named Symbol if true. Un named symbol if false
-				symbolList = new List<Sprite>( namedShapePicker.GetShapeList() );
+				symbolList = new List<Shape>( namedShapePicker.GetShapeList() );
 			else
-				symbolList = new List<Sprite>( unamedShapePicker.GetShapeList() ); 
+				symbolList = new List<Shape>( unamedShapePicker.GetShapeList() ); 
 
 			//Build and display Top Row Symbols
 			for ( int x = 0; x < numSymbols; x++ )
@@ -123,7 +123,7 @@ namespace MemoryMadness
 				// 	topList[x].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = levelColour;		
 				// }
 
-				topList[x].transform.Find( "Rune" ).GetComponent<Image>().sprite = symbolList[ rand ];
+				topList[x].transform.Find( "Rune" ).GetComponent<Image>().sprite = symbolList[ rand ].Image;
 				
 				symbolList.RemoveAt( rand );
 			}
