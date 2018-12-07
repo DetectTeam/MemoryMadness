@@ -15,7 +15,7 @@ namespace MemoryMadness
 	[System.Serializable]
 	public class TestSlot : StudyItem
 	{
-		public string Type { get; set; }
+		public int Type { get; set; }
 		public string StudyOrder { get; set; }
 	}
 

@@ -6,16 +6,12 @@ using UnityEngine.UI;
 
 namespace MemoryMadness
 {
-
-
 	public class SessionManager : MonoBehaviour 
 	{
 		public static int SessionID;
 		public static SessionManager Instance = null;
-
 		[SerializeField] private int trialNumber = 0;
 		[SerializeField] private int levelSize = 20;
-
 		[SerializeField] private Session session;
 	
 		private void Awake()
@@ -35,9 +31,7 @@ namespace MemoryMadness
 			SessionID ++;
 			trialNumber ++;
 			Debug.Log( "Starting new Session...." + SessionID );
-			
-			Debug.Log(  System.DateTime.Now.ToString( "yyyy_MM_dd_hh_mm_ss" ) );
-			
+				
 			session = new Session();
 
 			session.UserID = "DummyID0001";
@@ -50,18 +44,8 @@ namespace MemoryMadness
 			session.DistractorCount = levelSize - session.SymbolArraySize;
 
 			SetStudyItems( session, RandomLevelGenerator.Instance.MemoryPhaseSymbols );
+			SetTestSlotItems();
 			
-			// if( PlayerPrefs.HasKey( "CurrentStage" ) )
-			// 	session.Stage = PlayerPrefs.GetInt( "CurrentStage" );
-			// else
-			// 	session.Stage = 1;
-
-			Debug.Log( "Current Stage: " +  session.Stage );
-			Debug.Log( "Current Level: " +  session.Level );
-			Debug.Log( "Symbol Array Size: " + session.SymbolArraySize );
-			Debug.Log( "Trial Number: " + session.TrialNumber );
-			
-
 			if( StageManager.Instance.CurrentLevelType == LevelType.NameableColour ||
 				StageManager.Instance.CurrentLevelType == LevelType.UnNameableColour )
 			{ session.Condition = "Binding"; }
@@ -94,12 +78,9 @@ namespace MemoryMadness
 			
 			return res;
 		}
-
-
-		
+	
 		private void SetStudyItems( Session session, List<Symbol> source )
 		{
-			
 			for( int i = 0; i < source.Count; i++ )
 			{
 				StudyItem item = new StudyItem(); 
@@ -108,10 +89,37 @@ namespace MemoryMadness
 			 	item.ShapeCode = source[i].CurrentShape.ShapeCode;
 
 				session.StudyItems.Add( item );
-
 			}	
 
 			Debug.Log( session.StudyItems.Count );
+		}
+
+		private void SetTestSlotItems()
+		{
+			List<GameObject> symbolList = RandomLevelGenerator.Instance.CurrentLevelSymbols;
+
+			for( int i = 0; i < symbolList.Count; i++ )
+			{
+				MemorySymbols memSymbolsScript = symbolList[i].GetComponent<MemorySymbols>();
+				TestSlot slot = new TestSlot();
+				slot.ColourCode = memSymbolsScript.ColourCode;
+				slot.ShapeCode = memSymbolsScript.ShapeCode;
+				
+				if( memSymbolsScript.IsCorrect )
+					slot.Type = 1;
+				else if( memSymbolsScript.IsColourSwitched )
+					slot.Type = 2;
+				else
+					slot.Type = 2;
+			
+				slot.StudyOrder = "";
+
+				Debug.Log( "Slot Colour Code: " + slot.ColourCode );
+				Debug.Log( "Slot Shape Code: " + slot.ShapeCode );
+				Debug.Log( "Slot type : " + slot.Type );
+
+				session.TestSlots.Add( slot );
+			}
 		}
 
 

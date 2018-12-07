@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 namespace MemoryMadness
 {
-
 	[System.Serializable]
 	public class Symbol 
 	{
