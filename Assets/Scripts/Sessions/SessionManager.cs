@@ -26,6 +26,16 @@ namespace MemoryMadness
 			}
 		}
 
+		private void OnEnable()
+		{
+			Messenger.AddListener<int , int>( "AccuracyUpdate" , SetAccuracySlot );
+		}
+
+		private void OnDisable()
+		{
+			Messenger.RemoveListener<int , int>( "AccuracyUpdate" , SetAccuracySlot );
+		}
+
 		public void CreateSession()
 		{
 			SessionID ++;
@@ -45,6 +55,7 @@ namespace MemoryMadness
 
 			SetStudyItems( session, RandomLevelGenerator.Instance.MemoryPhaseSymbols );
 			SetTestSlotItems();
+			
 			
 			if( StageManager.Instance.CurrentLevelType == LevelType.NameableColour ||
 				StageManager.Instance.CurrentLevelType == LevelType.UnNameableColour )
@@ -120,6 +131,11 @@ namespace MemoryMadness
 
 				session.TestSlots.Add( slot );
 			}
+		}
+
+		private void SetAccuracySlot( int slot , int slotStatus )
+		{
+			
 		}
 
 

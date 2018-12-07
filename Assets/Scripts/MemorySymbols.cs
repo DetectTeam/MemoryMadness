@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 namespace MemoryMadness
 {
+
+
 	public class MemorySymbols : MonoBehaviour 
 	{
 		[SerializeField] private string name;
@@ -86,7 +88,10 @@ namespace MemoryMadness
 
 				Messenger.Broadcast<int>( "IncreaseScore" , 100 );
 				Messenger.Broadcast( "CorrectButtonClick" ); //Let the game manager know that the correct button was clicked
-				//Messenger.Broadcast( "CheckForWin" );  //Request to check for a win 	
+				//Messenger.Broadcast( "CheckForWin" );  //Request to check for a win 
+				Messenger.Broadcast<int , int>( "AccuracyUpdate" , slotNumber , 1 );
+
+				
 			}
 			else
 			{
@@ -95,6 +100,11 @@ namespace MemoryMadness
 				DisableButton();
 				Messenger.Broadcast( "DecrementLife" );
 				Messenger.Broadcast<int>( "DecreaseScore" , 100 );
+
+				if( isColourSwitched )
+					Messenger.Broadcast<int , int>( "AccuracyUpdate" , slotNumber , 2 ); //Binding Error
+				else
+					Messenger.Broadcast<int , int>( "AccuracyUpdate" , slotNumber , 3 ); //Normal Error
 			}
 
 			Messenger.Broadcast( "TriggerEffect" ); //ITween PunchScale effect . Used on score text

@@ -24,6 +24,19 @@ public static class ListExtensionMethods
 		}  
 	}
 
+	public static void Resize<T>( this List<T> list, int newCount ) 
+	{
+     	if (newCount <= 0) 
+		{
+         	list.Clear();
+     	} 
+		else 
+		{
+        	while ( list.Count > newCount ) list.RemoveAt( list.Count-1 );
+         	while ( list.Count < newCount ) list.Add(default( T ) );
+     	}
+ 	}
+
 	
 	public static List<T> Clone<T>(this List<T> listToClone) where T: ICloneable
     {

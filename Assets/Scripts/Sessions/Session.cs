@@ -40,7 +40,7 @@ namespace MemoryMadness
 		public int LivesLost { get; set; }
 		public List<StudyItem> StudyItems; //Items in MemoryPhase
 		public List<TestSlot> TestSlots; //Record of items in the test phase
-		public List<int> AccuracySlots; // List of player decisions for each slot
+		public int[] AccuracySlots; // List of player decisions for each slot
 		public List<int> OrderSlot;
 		public List<float> TimeSlot;
 
@@ -48,7 +48,7 @@ namespace MemoryMadness
 		{
 			StudyItems = new List<StudyItem>();
 			TestSlots = new List<TestSlot>();
-			AccuracySlots = new List<int>();
+			AccuracySlots = new int[ 20 ];
 			OrderSlot = new List<int>();
 			TimeSlot = new List<float>();
 		}
