@@ -41,16 +41,16 @@ namespace MemoryMadness
 		public List<StudyItem> StudyItems; //Items in MemoryPhase
 		public List<TestSlot> TestSlots; //Record of items in the test phase
 		public int[] AccuracySlots; // List of player decisions for each slot
-		public List<int> OrderSlot;
-		public List<float> TimeSlot;
+		public int[] OrderSlot;
+		public float[] TimeSlot;
 
 		public Session()
 		{
 			StudyItems = new List<StudyItem>();
 			TestSlots = new List<TestSlot>();
 			AccuracySlots = new int[ 20 ];
-			OrderSlot = new List<int>();
-			TimeSlot = new List<float>();
+			OrderSlot = new int[ 20 ];
+			TimeSlot = new float[ 20 ];
 		}
 	}
 }

@@ -29,12 +29,18 @@ namespace MemoryMadness
 		private void OnEnable()
 		{
 			Messenger.AddListener<int , int>( "AccuracyUpdate" , SetAccuracySlot );
+			Messenger.AddListener< int >( "SetSelectionOrder", SetOrderSlot );
+			Messenger.AddListener< int , float >( "RecordTime", SetTimeSlot );
 		}
 
 		private void OnDisable()
 		{
 			Messenger.RemoveListener<int , int>( "AccuracyUpdate" , SetAccuracySlot );
+			Messenger.RemoveListener< int >( "SetSelectionOrder", SetOrderSlot );
+			Messenger.RemoveListener< int , float >( "RecordTime", SetTimeSlot );
 		}
+
+		
 
 		public void CreateSession()
 		{
@@ -55,6 +61,10 @@ namespace MemoryMadness
 
 			SetStudyItems( session, RandomLevelGenerator.Instance.MemoryPhaseSymbols );
 			SetTestSlotItems();
+
+			PrepOrderSlot();
+
+			
 			
 			
 			if( StageManager.Instance.CurrentLevelType == LevelType.NameableColour ||
@@ -135,8 +145,6 @@ namespace MemoryMadness
 
 		private void SetAccuracySlot( int slot , int slotStatus )
 		{
-			
-			Debug.Log( ">>>>> " + slot + " >>>>> " + slotStatus  );
 			session.AccuracySlots[ slot - 1 ] = slotStatus;
 
 			if( slotStatus == 1 ) //Correct
@@ -145,6 +153,35 @@ namespace MemoryMadness
 				session.LureErrors ++;
 			else  if( slotStatus == 3 ) //Normal Error
 				session.NormalErrors ++;	
+		}
+
+         private int orderCount = 1;
+
+		 private void PrepOrderSlot()
+		 {
+			 for( int x = 0; x < session.OrderSlot.Length; x++ )
+			 {
+				 session.OrderSlot[ x ] = 0;
+			 }
+		 }
+		private void SetOrderSlot( int slot )
+		{
+			if( orderCount <= 5 )
+			{
+				session.OrderSlot[ slot - 1 ] = orderCount;
+				orderCount ++;
+			}
+			else
+			{
+				orderCount = 0;
+			} 
+		}
+
+		private void SetTimeSlot( int slot, float time )
+		{
+			Debug.Log( "SetTimeSlot" + time );
+			session.TimeSlot[ slot - 1 ] = time;
+
 		}
 
 		public void EndSession()

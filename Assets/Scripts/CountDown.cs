@@ -10,6 +10,9 @@ namespace MemoryMadness
 	{
 		[SerializeField] private float totalTime = 30;
 		[SerializeField] private float timeLeft;
+		public float TimeLeft { get{ return timeLeft; } }
+
+
 		[SerializeField] private TextMeshProUGUI timer;
 
 		[SerializeField] private GameObject game;
@@ -18,13 +21,17 @@ namespace MemoryMadness
 		[SerializeField] private bool isFinished = false;
 		[SerializeField] private bool isLevelTimeOut = false;
 
+		private float previousTime;
+
 		private float tmpTime;
+
+		
 
 		private void OnEnable()
 		{
 			Messenger.AddListener( "ResetTimer", ResetTimer );
 			Messenger.AddListener( "StopCountDown", StopTimer );
-
+			previousTime = timeLeft /10;
 			timer.text = (timeLeft / 10).ToString();
 			StartCoroutine( CountDownSequence() );
 		}
@@ -34,6 +41,12 @@ namespace MemoryMadness
 			Messenger.RemoveListener( "ResetTimer", ResetTimer );
 			Messenger.RemoveListener( "StopCountDown", StopTimer );
 			timeLeft = tmpTime;
+		}
+
+
+		private void Awake()
+		{
+			
 		}
 
 		private void Start () 
@@ -89,6 +102,18 @@ namespace MemoryMadness
 			timeLeft = totalTime;
 			timer.text = ( timeLeft / 10 ).ToString();
 			StartCoroutine( "CountDownSequence" );
+		}
+
+		public float CalculateTimeElapsed()
+		{
+			float currentTime = timeLeft / 10;
+
+			Debug.Log( "Previous Time: " + previousTime );
+			Debug.Log( "Current Time: " + currentTime  );
+			float timeElapsed = previousTime - currentTime;
+			previousTime = ( timeLeft / 10 );
+
+			return timeElapsed;
 		}
 	}
 }

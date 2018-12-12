@@ -55,19 +55,37 @@ namespace MemoryMadness
 		[SerializeField] private GameObject button;
 		public GameObject Button { get{ return button; } set{ button = value; } }
 
+		[SerializeField] private GameObject timer;
+
+
 		//The symbols position on the game grid . A value between 1 - 20 usually
 		[SerializeField] private int slotNumber;
 		public int SlotNumber{ get{ return slotNumber; } set{ slotNumber = value; } }
 
+		private float previousTime = 0;
+
 		void OnEnable()
 		{
 			transform.localScale = new Vector3( 0.01f, 0.01f, 0.01f );
+
+			timer = GameObject.Find( "Timer" );
+
+			if( timer )
+			{
+				
+				Debug.Log( "Timer Found...." );
+			}
+			else
+			{
+				Debug.Log( "Timer Game Object Not Found" );
+			}
+				
 		}
 
 		void OnDisable()
 		{
-		
 			//Reset();
+			previousTime = 0;
 		}
 		
 		void Start () 
@@ -107,6 +125,10 @@ namespace MemoryMadness
 					Messenger.Broadcast<int , int>( "AccuracyUpdate" , slotNumber , 3 ); //Normal Error
 			}
 
+			Messenger.Broadcast<int>( "SetSelectionOrder" , slotNumber );
+				
+			Messenger.Broadcast< int, float  >( "RecordTime", slotNumber , RecordTimeBetweenButtonPress() );
+
 			Messenger.Broadcast( "TriggerEffect" ); //ITween PunchScale effect . Used on score text
 		}
 
@@ -118,6 +140,12 @@ namespace MemoryMadness
 				"time", 1.0f
 			));
 		}
+
+		private float RecordTimeBetweenButtonPress()
+		{	
+			return timer.GetComponent<CountDown>().CalculateTimeElapsed();
+		}
+
 
 		private void ShakePosition()
 		{
