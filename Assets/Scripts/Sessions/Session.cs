@@ -37,7 +37,7 @@ namespace MemoryMadness
 		public int NormalErrors { get; set; } 
 		public int LureErrors { get; set; }
 		public int TotalLives { get; set; } //2 - 5 based on stage
-		public int LivesLost { get; set; }
+		public int LivesLost { get; set; } 
 		public List<StudyItem> StudyItems; //Items in MemoryPhase
 		public List<TestSlot> TestSlots; //Record of items in the test phase
 		public int[] AccuracySlots; // List of player decisions for each slot

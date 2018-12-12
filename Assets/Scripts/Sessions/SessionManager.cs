@@ -49,17 +49,22 @@ namespace MemoryMadness
 			SessionID ++;
 			trialNumber ++;
 			Debug.Log( "Starting new Session...." + SessionID );
-				
+
+			
+			
+
+
 			session = new Session();
 
 			session.UserID = "DummyID0001";
-			session.SessionName = "Session Name";
+			session.SessionName = "Session_Name";
 			session.SessionTimeStamp =  System.DateTime.Now.ToString( "yyyy_MM_dd_hh_mm_ss" );
 			session.Stage = StageManager.Instance.CurrentStage;
 			session.Level = StageManager.Instance.CurrentLevel + 1;
 			session.SymbolArraySize = CalculateSymbolArraySize( StageManager.Instance.CurrentStage );
 			session.TrialNumber = trialNumber;
 			session.DistractorCount = levelSize - session.SymbolArraySize;
+			session.LivesLost = 0;
 
 			SetStudyItems( session, RandomLevelGenerator.Instance.MemoryPhaseSymbols );
 			SetTestSlotItems();
@@ -82,6 +87,11 @@ namespace MemoryMadness
 			Debug.Log( "Condition: " + session.Condition );
 			Debug.Log( "Shape Type: " + session.ShapeType );
 			Debug.Log( "Num of Distractors" + session.DistractorCount );
+
+			PersistenceManager.Instance.Test();
+
+			PersistenceManager.Instance.FileName = session.SessionName + ".dat";
+			//session.FileName = session.SessionName + ".dat";
 		}
 
 
@@ -188,7 +198,10 @@ namespace MemoryMadness
 
 		public void EndSession()
 		{
-			Debug.Log( "Ending Session....." + SessionID );
+			Debug.Log( "Ending Session....." + session.LivesLost );
+
+			PersistenceManager.Instance.Save( session );
+
 			if( trialNumber >= 32 )
 				trialNumber = 0;
 		}	
@@ -196,8 +209,8 @@ namespace MemoryMadness
 
 		public void UpdateLifeCount()
 		{
+			Debug.Log( "UPDATE LIFE COUNT CALLED" );
 			session.LivesLost ++;
-			Debug.Log( "SESSION LIFE LOST COUNT " + session.LivesLost );
 		}
 	}
 }

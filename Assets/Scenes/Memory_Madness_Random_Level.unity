@@ -3038,6 +3038,7 @@ GameObject:
   - component: {fileID: 241129530}
   - component: {fileID: 241129531}
   - component: {fileID: 241129532}
+  - component: {fileID: 241129528}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3058,6 +3059,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &241129528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 241129526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3462d366fb71f4b53896935e72e40c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &241129529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4475,7 +4487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   colourCode: 0
-  shapeCode: 
+  shapeCode: 0
   isCorrect: 0
   isColourSwitched: 0
   shakeAmount: {x: 7.5, y: 7.5, z: 7.5}
@@ -4486,6 +4498,7 @@ MonoBehaviour:
   backgroundColor: {fileID: 1860777426}
   rune: {fileID: 1452357310}
   button: {fileID: 143109811}
+  timer: {fileID: 0}
   slotNumber: 7
 --- !u!114 &375309599
 MonoBehaviour:
@@ -7645,7 +7658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   colourCode: 0
-  shapeCode: 
+  shapeCode: 0
   isCorrect: 0
   isColourSwitched: 0
   shakeAmount: {x: 7.5, y: 7.5, z: 7.5}
@@ -7656,6 +7669,7 @@ MonoBehaviour:
   backgroundColor: {fileID: 1368168298}
   rune: {fileID: 1742133296}
   button: {fileID: 825752656}
+  timer: {fileID: 0}
   slotNumber: 3
 --- !u!114 &601497373
 MonoBehaviour:
@@ -12140,7 +12154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   colourCode: 0
-  shapeCode: 
+  shapeCode: 0
   isCorrect: 0
   isColourSwitched: 0
   shakeAmount: {x: 7.5, y: 7.5, z: 7.5}
@@ -12151,6 +12165,7 @@ MonoBehaviour:
   backgroundColor: {fileID: 1593607231}
   rune: {fileID: 1568212582}
   button: {fileID: 875986126}
+  timer: {fileID: 0}
   slotNumber: 5
 --- !u!114 &948060598
 MonoBehaviour:
@@ -16209,7 +16224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   colourCode: 0
-  shapeCode: 
+  shapeCode: 0
   isCorrect: 1
   isColourSwitched: 0
   shakeAmount: {x: 7.5, y: 7.5, z: 7.5}
@@ -16220,6 +16235,7 @@ MonoBehaviour:
   backgroundColor: {fileID: 348843598}
   rune: {fileID: 494291629}
   button: {fileID: 124894672}
+  timer: {fileID: 0}
   slotNumber: 8
 --- !u!114 &1290686594
 MonoBehaviour:
@@ -19015,7 +19031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   colourCode: 0
-  shapeCode: 
+  shapeCode: 0
   isCorrect: 1
   isColourSwitched: 0
   shakeAmount: {x: 7.5, y: 7.5, z: 7.5}
@@ -19026,6 +19042,7 @@ MonoBehaviour:
   backgroundColor: {fileID: 229696913}
   rune: {fileID: 1062431354}
   button: {fileID: 618853753}
+  timer: {fileID: 0}
   slotNumber: 4
 --- !u!114 &1514283879
 MonoBehaviour:
@@ -19421,7 +19438,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 261.34332, y: 1512.0338}
+  m_Target: {x: 247.41003, y: 1431.2107}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
@@ -20122,7 +20139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   colourCode: 0
-  shapeCode: 
+  shapeCode: 0
   isCorrect: 0
   isColourSwitched: 0
   shakeAmount: {x: 7.5, y: 7.5, z: 7.5}
@@ -20133,6 +20150,7 @@ MonoBehaviour:
   backgroundColor: {fileID: 1190842066}
   rune: {fileID: 72011237}
   button: {fileID: 3828177}
+  timer: {fileID: 0}
   slotNumber: 0
 --- !u!114 &1550288109
 MonoBehaviour:
@@ -20348,7 +20366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   colourCode: 0
-  shapeCode: 
+  shapeCode: 0
   isCorrect: 0
   isColourSwitched: 0
   shakeAmount: {x: 7.5, y: 7.5, z: 7.5}
@@ -20359,6 +20377,7 @@ MonoBehaviour:
   backgroundColor: {fileID: 541476270}
   rune: {fileID: 826976972}
   button: {fileID: 1002627181}
+  timer: {fileID: 0}
   slotNumber: 0
 --- !u!114 &1553402944
 MonoBehaviour:
@@ -20519,7 +20538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   colourCode: 0
-  shapeCode: 
+  shapeCode: 0
   isCorrect: 0
   isColourSwitched: 0
   shakeAmount: {x: 7.5, y: 7.5, z: 7.5}
@@ -20530,6 +20549,7 @@ MonoBehaviour:
   backgroundColor: {fileID: 1412358800}
   rune: {fileID: 1250551326}
   button: {fileID: 1396332864}
+  timer: {fileID: 0}
   slotNumber: 1
 --- !u!114 &1570113642
 MonoBehaviour:
@@ -25028,7 +25048,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   colourCode: 0
-  shapeCode: 
+  shapeCode: 0
   isCorrect: 0
   isColourSwitched: 0
   shakeAmount: {x: 7.5, y: 7.5, z: 7.5}
@@ -25039,6 +25059,7 @@ MonoBehaviour:
   backgroundColor: {fileID: 44121605}
   rune: {fileID: 909627626}
   button: {fileID: 448272511}
+  timer: {fileID: 0}
   slotNumber: 6
 --- !u!114 &1841157996
 MonoBehaviour:
@@ -26045,7 +26066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   colourCode: 0
-  shapeCode: 
+  shapeCode: 0
   isCorrect: 1
   isColourSwitched: 0
   shakeAmount: {x: 7.5, y: 7.5, z: 7.5}
@@ -26056,6 +26077,7 @@ MonoBehaviour:
   backgroundColor: {fileID: 309867397}
   rune: {fileID: 1931393874}
   button: {fileID: 1971200800}
+  timer: {fileID: 0}
   slotNumber: 9
 --- !u!114 &1911362394
 MonoBehaviour:
@@ -26515,7 +26537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   colourCode: 0
-  shapeCode: 
+  shapeCode: 0
   isCorrect: 0
   isColourSwitched: 0
   shakeAmount: {x: 7.5, y: 7.5, z: 7.5}
@@ -26526,6 +26548,7 @@ MonoBehaviour:
   backgroundColor: {fileID: 1259292656}
   rune: {fileID: 20596364}
   button: {fileID: 2130720106}
+  timer: {fileID: 0}
   slotNumber: 2
 --- !u!114 &1956299501
 MonoBehaviour:
@@ -27361,7 +27384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   colourCode: 0
-  shapeCode: 
+  shapeCode: 0
   isCorrect: 0
   isColourSwitched: 0
   shakeAmount: {x: 7.5, y: 7.5, z: 7.5}
@@ -27372,6 +27395,7 @@ MonoBehaviour:
   backgroundColor: {fileID: 1971929099}
   rune: {fileID: 585877143}
   button: {fileID: 510069668}
+  timer: {fileID: 0}
   slotNumber: 10
 --- !u!114 &2016054467
 MonoBehaviour:
