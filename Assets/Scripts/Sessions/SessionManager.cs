@@ -31,6 +31,7 @@ namespace MemoryMadness
 			Messenger.AddListener<int , int>( "AccuracyUpdate" , SetAccuracySlot );
 			Messenger.AddListener< int >( "SetSelectionOrder", SetOrderSlot );
 			Messenger.AddListener< int , float >( "RecordTime", SetTimeSlot );
+			Messenger.AddListener(  "DecrementLife", UpdateLifeCount );
 		}
 
 		private void OnDisable()
@@ -38,6 +39,7 @@ namespace MemoryMadness
 			Messenger.RemoveListener<int , int>( "AccuracyUpdate" , SetAccuracySlot );
 			Messenger.RemoveListener< int >( "SetSelectionOrder", SetOrderSlot );
 			Messenger.RemoveListener< int , float >( "RecordTime", SetTimeSlot );
+			Messenger.RemoveListener(  "DecrementLife", UpdateLifeCount );
 		}
 
 		
@@ -65,8 +67,6 @@ namespace MemoryMadness
 			PrepOrderSlot();
 
 			
-			
-			
 			if( StageManager.Instance.CurrentLevelType == LevelType.NameableColour ||
 				StageManager.Instance.CurrentLevelType == LevelType.UnNameableColour )
 			{ session.Condition = "Binding"; }
@@ -83,6 +83,8 @@ namespace MemoryMadness
 			Debug.Log( "Shape Type: " + session.ShapeType );
 			Debug.Log( "Num of Distractors" + session.DistractorCount );
 		}
+
+
 
 		private int CalculateSymbolArraySize( int stage )
 		{
@@ -190,5 +192,12 @@ namespace MemoryMadness
 			if( trialNumber >= 32 )
 				trialNumber = 0;
 		}	
+
+
+		public void UpdateLifeCount()
+		{
+			session.LivesLost ++;
+			Debug.Log( "SESSION LIFE LOST COUNT " + session.LivesLost );
+		}
 	}
 }

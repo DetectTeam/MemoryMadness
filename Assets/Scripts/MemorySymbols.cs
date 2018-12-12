@@ -118,6 +118,7 @@ namespace MemoryMadness
 				DisableButton();
 				Messenger.Broadcast( "DecrementLife" );
 				Messenger.Broadcast<int>( "DecreaseScore" , 100 );
+			
 
 				if( isColourSwitched )
 					Messenger.Broadcast<int , int>( "AccuracyUpdate" , slotNumber , 2 ); //Binding Error
