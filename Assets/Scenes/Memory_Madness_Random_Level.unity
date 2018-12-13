@@ -3039,6 +3039,7 @@ GameObject:
   - component: {fileID: 241129531}
   - component: {fileID: 241129532}
   - component: {fileID: 241129528}
+  - component: {fileID: 241129533}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3153,6 +3154,17 @@ MonoBehaviour:
   resultsScreen: {fileID: 1766364037}
   maxNumLevelsPerStage: 9
   stage: 0100000000000000010000000000000003000000020000000300000002000000
+--- !u!114 &241129533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 241129526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d01cf92d33d074ffea15924d1bc81e36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &241470953 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224036364955188348, guid: dbebd2df5a17f450abd9064d5582d9e1,
@@ -19438,7 +19450,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 247.41003, y: 1431.2107}
+  m_Target: {x: 282.43155, y: 1634.4688}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1

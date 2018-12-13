@@ -69,16 +69,6 @@ namespace MemoryMadness
 			transform.localScale = new Vector3( 0.01f, 0.01f, 0.01f );
 
 			timer = GameObject.Find( "Timer" );
-
-			if( timer )
-			{
-				
-				Debug.Log( "Timer Found...." );
-			}
-			else
-			{
-				Debug.Log( "Timer Game Object Not Found" );
-			}
 				
 		}
 

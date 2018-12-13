@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Newtonsoft.Json; //Json Library
 
 
 namespace MemoryMadness
@@ -13,6 +14,7 @@ namespace MemoryMadness
 		[SerializeField] private int trialNumber = 0;
 		[SerializeField] private int levelSize = 20;
 		[SerializeField] private Session session;
+		private int orderCount = 1;
 	
 		private void Awake()
 		{
@@ -48,13 +50,12 @@ namespace MemoryMadness
 		{
 			SessionID ++;
 			trialNumber ++;
+			
 			Debug.Log( "Starting new Session...." + SessionID );
 
-			
-			
-
-
 			session = new Session();
+
+			orderCount = 1;
 
 			session.UserID = "DummyID0001";
 			session.SessionName = "Session_Name";
@@ -64,14 +65,19 @@ namespace MemoryMadness
 			session.SymbolArraySize = CalculateSymbolArraySize( StageManager.Instance.CurrentStage );
 			session.TrialNumber = trialNumber;
 			session.DistractorCount = levelSize - session.SymbolArraySize;
+			
+			if( !PlayerPrefs.HasKey( "CurrentStage" ) )
+				session.TotalLives = 2;
+			else 
+				session.TotalLives = PlayerPrefs.GetInt( "CurrentStage" );
+			
 			session.LivesLost = 0;
 
 			SetStudyItems( session, RandomLevelGenerator.Instance.MemoryPhaseSymbols );
 			SetTestSlotItems();
 
-			PrepOrderSlot();
+			//PrepOrderSlot();
 
-			
 			if( StageManager.Instance.CurrentLevelType == LevelType.NameableColour ||
 				StageManager.Instance.CurrentLevelType == LevelType.UnNameableColour )
 			{ session.Condition = "Binding"; }
@@ -88,7 +94,7 @@ namespace MemoryMadness
 			Debug.Log( "Shape Type: " + session.ShapeType );
 			Debug.Log( "Num of Distractors" + session.DistractorCount );
 
-			PersistenceManager.Instance.Test();
+			//PersistenceManager.Instance.Test();
 
 			PersistenceManager.Instance.FileName = session.SessionName + ".dat";
 			//session.FileName = session.SessionName + ".dat";
@@ -147,9 +153,9 @@ namespace MemoryMadness
 			
 				slot.StudyOrder = "";
 
-				Debug.Log( "Slot Colour Code: " + slot.ColourCode );
-				Debug.Log( "Slot Shape Code: " + slot.ShapeCode );
-				Debug.Log( "Slot type : " + slot.Type );
+				//Debug.Log( "Slot Colour Code: " + slot.ColourCode );
+				//Debug.Log( "Slot Shape Code: " + slot.ShapeCode );
+				//Debug.Log( "Slot type : " + slot.Type );
 
 				session.TestSlots.Add( slot );
 			}
@@ -167,7 +173,7 @@ namespace MemoryMadness
 				session.NormalErrors ++;	
 		}
 
-         private int orderCount = 1;
+        
 
 		 private void PrepOrderSlot()
 		 {
@@ -200,7 +206,13 @@ namespace MemoryMadness
 		{
 			Debug.Log( "Ending Session....." + session.LivesLost );
 
-			PersistenceManager.Instance.Save( session );
+
+			string jsonString = JsonConvert.SerializeObject( session );
+
+			//Debug.Log( "Session: " + jsonString );
+
+			Messenger.Broadcast<string>( "PUT" , jsonString );
+			//PersistenceManager.Instance.Save( session );
 
 			if( trialNumber >= 32 )
 				trialNumber = 0;

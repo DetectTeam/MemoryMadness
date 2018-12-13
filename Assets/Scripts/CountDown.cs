@@ -108,8 +108,8 @@ namespace MemoryMadness
 		{
 			float currentTime = timeLeft / 10;
 
-			Debug.Log( "Previous Time: " + previousTime );
-			Debug.Log( "Current Time: " + currentTime  );
+			//Debug.Log( "Previous Time: " + previousTime );
+			//Debug.Log( "Current Time: " + currentTime  );
 			float timeElapsed = previousTime - currentTime;
 			previousTime = ( timeLeft / 10 );
 
