@@ -39,6 +39,9 @@ namespace MemoryMadness
 				progressBar.fillAmount = 0;
 				percentageText.text = "0%";
 
+				if( buttonContainer )
+					buttonContainer.SetActive( false );
+
 		}
 
 		private void Fill( float percentage )
