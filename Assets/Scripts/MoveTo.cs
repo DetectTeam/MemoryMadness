@@ -19,7 +19,7 @@ public class MoveTo : MonoBehaviour
 
 	private void OnDisable()
 	{
-		transform.position = startPosition;
+		transform.localPosition = startPosition;
 	}
 
 
