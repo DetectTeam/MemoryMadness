@@ -166,5 +166,20 @@ namespace MemoryMadness
 		{
 			randomLevelGenerator.SetActive( false );
 		}	
+
+		private void OnApplicationPause( bool pauseStatus )
+    	{
+			Debug.Log( "The game is paused ?! " + pauseStatus );
+   		}
+
+		private void OnApplicationFocus(bool hasFocus)
+    	{
+			Debug.Log( "Game has focus !! " + hasFocus );
+    	}
+
+		private void OnApplicationQuit()
+    	{
+        	Debug.Log("Application ending after " + Time.time + " seconds");
+    	}
 	}	
 }

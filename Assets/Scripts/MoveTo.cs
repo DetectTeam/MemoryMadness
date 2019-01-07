@@ -22,16 +22,13 @@ public class MoveTo : MonoBehaviour
 		transform.localPosition = startPosition;
 	}
 
-
 	private void Start () 
 	{
 		
 	}
 
-
 	private IEnumerator Move()
 	{
-		
 		yield return null;
 		
 		iTween.MoveTo( gameObject,iTween.Hash( 

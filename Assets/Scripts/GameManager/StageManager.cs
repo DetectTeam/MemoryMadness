@@ -15,8 +15,6 @@ namespace MemoryMadness
 		NameableNonColour
 	}
 
-	
-
 	public class StageManager : MonoBehaviour 
 	{
 		[SerializeField] private int levelCount = 0;
@@ -149,6 +147,13 @@ namespace MemoryMadness
 			}
 		}
 
+
+		private void SaveLevel()
+		{
+			PlayerPrefs.SetInt( "CurrentStage", currentLevel );
+		}
+
+	
 		public void SetCurrentLevelType()
 		{
 			if( currentLevel < stage.Count  )

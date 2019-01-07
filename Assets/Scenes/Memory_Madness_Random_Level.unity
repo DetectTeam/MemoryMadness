@@ -3217,7 +3217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9334e35bd8d6545b9ab86c40362a28cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: {x: 0, y: 0, z: 0}
+  startPosition: {x: -952, y: -413, z: 0}
   target: {x: 0, y: -413, z: 0}
   delay: 1
 --- !u!1 &255070680
@@ -19451,7 +19451,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 118.77051, y: 2165.6973}
+  m_Target: {x: 282.43155, y: 1634.4688}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
