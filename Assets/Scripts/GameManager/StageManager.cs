@@ -21,8 +21,8 @@ namespace MemoryMadness
 	{
 		[SerializeField] private int levelCount = 0;
 		public int LevelCount { get{ return levelCount; } }
-		[SerializeField] private int levelsPerStage = 3;
-		[SerializeField] private int numberOfStages = 4;
+		[SerializeField] private int levelsPerStage;
+		[SerializeField] private int numberOfStages;
 		[SerializeField] private GameObject sameDifferentScreen;
 		[SerializeField] private GameObject randomGameContainer;
 		[SerializeField] private GameObject memoryPhaseScreen;
@@ -81,7 +81,7 @@ namespace MemoryMadness
 				//End The Session for this level
 				SessionManager.Instance.EndSession();
 				
-				if( levelCount < 7 )
+				if( levelCount < levelsPerStage )
 				{
 					
 					//Request a Reset of the random level generator
@@ -89,7 +89,7 @@ namespace MemoryMadness
 					levelCount ++;
 					memoryPhaseScreen.SetActive( true );
 				}
-				else if( levelCount >= 7 && levelCount < 9 )
+				else if( levelCount >= levelsPerStage && levelCount < maxNumLevelsPerStage )
 				{
 					Messenger.Broadcast( "DisableRandomLevelGenerator" );
 					Messenger.Broadcast( "ResetSDGenerator" );

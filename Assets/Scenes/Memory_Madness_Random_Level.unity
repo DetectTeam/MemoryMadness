@@ -3145,14 +3145,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e532af6305844f38a338bdf83dc41d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelCount: 0
-  levelsPerStage: 7
+  levelCount: 1
+  levelsPerStage: 2
   numberOfStages: 4
   sameDifferentScreen: {fileID: 1648664523}
   randomGameContainer: {fileID: 2089274043}
   memoryPhaseScreen: {fileID: 2004355213}
   resultsScreen: {fileID: 1766364037}
-  maxNumLevelsPerStage: 9
+  maxNumLevelsPerStage: 4
   stage: 0100000000000000010000000000000003000000020000000300000002000000
 --- !u!114 &241129533
 MonoBehaviour:
@@ -19450,7 +19450,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 282.43155, y: 1634.4688}
+  m_Target: {x: 247.62581, y: 1747.445}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
@@ -22608,7 +22608,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1718112924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22621,7 +22621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelCount: 0
-  levelsPerStage: 9
+  levelsPerStage: 1
   numberOfStages: 2
   currentLevel: 0
   currentStage: 0
