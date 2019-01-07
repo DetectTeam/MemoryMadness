@@ -107,7 +107,7 @@ namespace MemoryMadness
 					resultsScreen.SetActive( true );
 					Messenger.Broadcast( "Results" , 85.0f );
 					Messenger.Broadcast( "ResetLevelGenerator" );
-					levelCount = 0;
+					levelCount = 1;
 				}
 			}
 
