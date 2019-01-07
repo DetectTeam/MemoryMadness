@@ -96,7 +96,7 @@ namespace MemoryMadness
 			Debug.Log( "Shape Type: " + session.ShapeType );
 			Debug.Log( "Num of Distractors" + session.DistractorCount );
 
-			//PersistenceManager.Instance.Test();
+			PersistenceManager.Instance.Test();
 
 			PersistenceManager.Instance.FileName = session.SessionName + ".dat";
 			//session.FileName = session.SessionName + ".dat";
@@ -202,6 +202,9 @@ namespace MemoryMadness
 			session.RelativeTime = session.RelativeTime + time;
 			session.ReactionTime = time;
 
+			Debug.Log( "Relative Time: " + session.RelativeTime );
+			Debug.Log( "Reaction Time: " + session.ReactionTime );
+
 		}
 
 		public void EndSession()
@@ -214,7 +217,7 @@ namespace MemoryMadness
 			//Debug.Log( "Session: " + jsonString );
 
 			Messenger.Broadcast<string>( "PUT" , jsonString );
-			//PersistenceManager.Instance.Save( session );
+			PersistenceManager.Instance.Save( session );
 
 			if( trialNumber >= 32 )
 				trialNumber = 0;
