@@ -32,7 +32,7 @@ namespace MemoryMadness
 		{
 			Messenger.AddListener<int , int>( "AccuracyUpdate" , SetAccuracySlot );
 			Messenger.AddListener< int >( "SetSelectionOrder", SetOrderSlot );
-			Messenger.AddListener< int , float >( "RecordTime", SetTimeSlot );
+			Messenger.AddListener< float >( "RecordTime", SetTimeSlot );
 			Messenger.AddListener(  "DecrementLife", UpdateLifeCount );
 		}
 
@@ -40,7 +40,7 @@ namespace MemoryMadness
 		{
 			Messenger.RemoveListener<int , int>( "AccuracyUpdate" , SetAccuracySlot );
 			Messenger.RemoveListener< int >( "SetSelectionOrder", SetOrderSlot );
-			Messenger.RemoveListener< int , float >( "RecordTime", SetTimeSlot );
+			Messenger.RemoveListener< float >( "RecordTime", SetTimeSlot );
 			Messenger.RemoveListener(  "DecrementLife", UpdateLifeCount );
 		}
 
@@ -59,6 +59,8 @@ namespace MemoryMadness
 
 			session.UserID = "DummyID0001";
 			session.SessionName = "Session_Name";
+			session.Date = System.DateTime.Now.ToString( "dd_MM_yyyy" );
+			session.AbsoluteTimeOfResponse = System.DateTime.Now.ToString( "hh_mm" );
 			session.SessionTimeStamp =  System.DateTime.Now.ToString( "yyyy_MM_dd_hh_mm_ss" );
 			session.Stage = StageManager.Instance.CurrentStage;
 			session.Level = StageManager.Instance.CurrentLevel + 1;
@@ -99,8 +101,6 @@ namespace MemoryMadness
 			PersistenceManager.Instance.FileName = session.SessionName + ".dat";
 			//session.FileName = session.SessionName + ".dat";
 		}
-
-
 
 		private int CalculateSymbolArraySize( int stage )
 		{
@@ -195,10 +195,12 @@ namespace MemoryMadness
 			} 
 		}
 
-		private void SetTimeSlot( int slot, float time )
+		private void SetTimeSlot( float time )
 		{
 			Debug.Log( "SetTimeSlot" + time );
-			session.TimeSlot[ slot - 1 ] = time;
+			//session.TimeSlot[ slot - 1 ] = time;
+			session.RelativeTime = session.RelativeTime + time;
+			session.ReactionTime = time;
 
 		}
 

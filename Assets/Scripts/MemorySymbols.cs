@@ -118,7 +118,7 @@ namespace MemoryMadness
 
 			Messenger.Broadcast<int>( "SetSelectionOrder" , slotNumber );
 				
-			Messenger.Broadcast< int, float  >( "RecordTime", slotNumber , RecordTimeBetweenButtonPress() );
+			Messenger.Broadcast< float >( "RecordTime", RecordTimeBetweenButtonPress() );
 
 			Messenger.Broadcast( "TriggerEffect" ); //ITween PunchScale effect . Used on score text
 		}
