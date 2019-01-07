@@ -141,12 +141,12 @@ namespace MemoryMadness
 				
 				clone.transform.parent = sameDifferentContainer.transform;
 	
-				Vector3 tmpTransform = clone.transform.position;
+				Vector3 tmpTransform = clone.transform.localPosition;
 
 				//Adjust the y position
-				tmpTransform.y = clone.transform.position.y - 200f;
+				tmpTransform.y = clone.transform.localPosition.y - 200f;
 					
-				clone.transform.position = tmpTransform;
+				clone.transform.localPosition = tmpTransform;
 
 				// if( !isCorrect )
 				// {

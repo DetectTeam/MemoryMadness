@@ -83,10 +83,10 @@ namespace MemoryMadness
 				memPhaseSymbolCount = 2;
 			else if( currentStage == 3  )
 				memPhaseSymbolCount = 3;
-			else if( currentStage == 4 )
+			else if( currentStage >=  4 )
 				memPhaseSymbolCount = 4;
-			else if( currentStage > 4 )
-				memPhaseSymbolCount = 5;
+			//else if( currentStage > 4 )
+				//memPhaseSymbolCount = 5;
 
 			//Set the win count value in the game manager
 			Messenger.Broadcast<int>( "SetWinCount" , memPhaseSymbolCount );

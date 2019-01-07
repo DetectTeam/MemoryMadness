@@ -32,7 +32,7 @@ public class MoveTo : MonoBehaviour
 	private IEnumerator Move()
 	{
 		
-		yield return new WaitForSeconds( delay );
+		yield return null;
 		
 		iTween.MoveTo( gameObject,iTween.Hash( 
 			"position", target,

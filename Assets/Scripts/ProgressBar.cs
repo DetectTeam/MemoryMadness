@@ -20,6 +20,8 @@ namespace MemoryMadness
 
 		[SerializeField] private GameObject particleContainer;
 
+		[SerializeField] private GameObject buttonContainer;
+
 		private int speed = 1;
 
 		private void OnEnable()
@@ -69,7 +71,10 @@ namespace MemoryMadness
 
 			}
 
-			yield return new WaitForSeconds( 1.5f );
+			//yield return new WaitForSeconds( 0.5f );
+
+			if( buttonContainer )
+				buttonContainer.SetActive( true );
 
 			//particleContainer.SetActive( true );
 		}	
