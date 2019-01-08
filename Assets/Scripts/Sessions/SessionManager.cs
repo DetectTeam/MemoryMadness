@@ -274,7 +274,7 @@ namespace MemoryMadness
 
 		public void EndSession()
 		{
-			Debug.Log( "Ending Session....."  );
+			//Debug.Log( "Ending Session....."  );
 			
             PadSelections( session.SymbolArraySize, selectionCount );
 
