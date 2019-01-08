@@ -221,9 +221,11 @@ namespace MemoryMadness
 
 		}
 
+		private int selectionCount = 0;
 		private void SetPlayerSelection( int selection )
 		{
-			
+			selectionCount ++;
+			playerSelection.Selection = selectionCount;
 			Debug.Log( "Players Current Selection " + playerSelection.Selection );
 
 			CheckSelectionCorrect( selection );
@@ -273,7 +275,11 @@ namespace MemoryMadness
 		public void EndSession()
 		{
 			Debug.Log( "Ending Session....."  );
+			
+            PadSelections( session.SymbolArraySize, selectionCount );
+
 			relativeTime = 0;
+			selectionCount = 0;
 
 
 			string jsonString = JsonConvert.SerializeObject( session );
@@ -285,6 +291,43 @@ namespace MemoryMadness
 
 			if( trialNumber >= 32 )
 				trialNumber = 0;
+		}
+
+		private void PadSelections( int symbolCount, int selectionCount )
+		{
+			int maxCount = 0;
+			int paddingCount = 0;
+
+			if( symbolCount ==  2 )
+				maxCount = 3;
+			else if( symbolCount == 3 )
+				maxCount = 5;
+			else if( symbolCount == 4 )
+				maxCount = 7;
+			
+			paddingCount = maxCount - selectionCount;
+
+			for( int x = 0; x < paddingCount; x++ )
+			{
+				playerSelection = new PlayerSelection();
+
+				playerSelection.RelativeTime = 999999999;
+				playerSelection.ReactionTime = 999999999;
+				playerSelection.Selection = 9999;
+				playerSelection.Repeat = 9999;
+				playerSelection.Interrupt = 9999;
+				playerSelection.Lure = 9999;
+				playerSelection.OtherMiss = 9999;
+				playerSelection.Correct = 9999;
+				playerSelection.CorrectPosition = 9999;
+				playerSelection.SelectedTestCellColour = 9999;
+				playerSelection.SelectedTestCellPosition = 9999;
+				playerSelection.SelectedTestCellShape = 9999;
+
+				session.playerSelections.Add( playerSelection );
+
+			}
+
 		}
 
 		private void SaveSession( )
