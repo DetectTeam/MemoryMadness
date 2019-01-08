@@ -86,6 +86,9 @@ namespace MemoryMadness
 		[ SerializeField ] private int currentPlayerSelection;
 		public void ButtonCheck()
 		{
+			Messenger.Broadcast( "CreatePlayerSelection" );
+			Messenger.Broadcast< float >( "RecordTime", RecordTimeBetweenButtonPress() );
+			
 			if( isCorrect )
 			{
 				PunchScale();
@@ -97,11 +100,10 @@ namespace MemoryMadness
 				Messenger.Broadcast<int>( "IncreaseScore" , 100 );
 				Messenger.Broadcast( "CorrectButtonClick" ); //Let the game manager know that the correct button was clicked
 				//Messenger.Broadcast( "CheckForWin" );  //Request to check for a win 
-				//Messenger.Broadcast<int , int>( "AccuracyUpdate" , slotNumber , 1 );
-
-				currentPlayerSelection = 1;
-
+				Messenger.Broadcast<int>( "CorrectSlotPosition" , slotNumber  );
 				
+
+				currentPlayerSelection = 1;	
 			}
 			else
 			{
@@ -118,11 +120,11 @@ namespace MemoryMadness
 					currentPlayerSelection = 3; //Normal Error
 			}
 
-			Messenger.Broadcast<int>( "SetSelectionOrder" , slotNumber );
+			//Messenger.Broadcast<int>( "SetSelectionOrder" , slotNumber );
+			
+			Messenger.Broadcast< int, int, int >( "SelectedShapeDetails" , shapeCode, colourCode, slotNumber );
 				
 			Messenger.Broadcast< int >( "PlayerSelection" , currentPlayerSelection );	
-			Messenger.Broadcast< float >( "RecordTime", RecordTimeBetweenButtonPress() );
-
 			Messenger.Broadcast( "TriggerEffect" ); //ITween PunchScale effect . Used on score text
 		}
 

@@ -31,23 +31,25 @@ namespace MemoryMadness
 
 		private void OnEnable()
 		{
-			Messenger.AddListener<int , int>( "AccuracyUpdate" , SetAccuracySlot );
-			Messenger.AddListener< int >( "SetSelectionOrder", SetOrderSlot );
+			Messenger.AddListener( "CreatePlayerSelection" , CreatePlayerSelection );
+			Messenger.AddListener< int >( "CorrectSlotPosition" , SetCorrectSlot );
+			//Messenger.AddListener< int >( "SetSelectionOrder", SetOrderSlot );
 			Messenger.AddListener< int >( "PlayerSelection", SetPlayerSelection );
 			Messenger.AddListener< float >( "RecordTime", SetPlayerSelectionTime );
-			Messenger.AddListener(  "DecrementLife", UpdateLifeCount );
+			Messenger.AddListener< int , int ,int  >( "SelectedShapeDetails" , SetSelectedShapeDetails );
+			//Messenger.AddListener(  "DecrementLife", UpdateLifeCount );
 		}
 
 		private void OnDisable()
 		{
-			Messenger.RemoveListener<int , int>( "AccuracyUpdate" , SetAccuracySlot );
-			Messenger.RemoveListener< int >( "SetSelectionOrder", SetOrderSlot );
+			Messenger.RemoveListener( "CreatePlayerSelection" , CreatePlayerSelection );
+			Messenger.RemoveListener< int >( "CorrectSlotPosition" , SetCorrectSlot );
+			//Messenger.RemoveListener< int >( "SetSelectionOrder", SetOrderSlot );
 			Messenger.RemoveListener< float >( "RecordTime", SetPlayerSelectionTime );
-			Messenger.AddListener< int >( "PlayerSelection", SetPlayerSelection );
-			Messenger.RemoveListener(  "DecrementLife", UpdateLifeCount );
+			Messenger.RemoveListener< int >( "PlayerSelection", SetPlayerSelection );
+			Messenger.RemoveListener< int , int ,int  >( "SelectedShapeDetails" , SetSelectedShapeDetails );
+			//Messenger.RemoveListener(  "DecrementLife", UpdateLifeCount );
 		}
-
-		
 
 		public void CreateSession()
 		{
@@ -57,7 +59,7 @@ namespace MemoryMadness
 			Debug.Log( "Starting new Session...." + SessionID );
 
 			session = new Session();
-			playerSelection = new PlayerSelection();
+			
 
 			orderCount = 1;
 
@@ -69,20 +71,16 @@ namespace MemoryMadness
 			session.Stage = StageManager.Instance.CurrentStage;
 			session.Level = StageManager.Instance.CurrentLevel + 1;
 			session.SymbolArraySize = CalculateSymbolArraySize( StageManager.Instance.CurrentStage );
-			session.StudyCellSize = CalculateSymbolArraySize( StageManager.Instance.CurrentStage );
-
-
-			
-			
+			session.StudyCellSize = CalculateSymbolArraySize( StageManager.Instance.CurrentStage );			
 			session.TrialNumber = trialNumber;
-			session.DistractorCount = levelSize - session.SymbolArraySize;
+			//session.DistractorCount = levelSize - session.SymbolArraySize;
 			
-			if( !PlayerPrefs.HasKey( "CurrentStage" ) )
-				session.TotalLives = 2;
-			else 
-				session.TotalLives = PlayerPrefs.GetInt( "CurrentStage" );
+			// if( !PlayerPrefs.HasKey( "CurrentStage" ) )
+			// 	session.TotalLives = 2;
+			// else 
+			// 	session.TotalLives = PlayerPrefs.GetInt( "CurrentStage" );
 			
-			session.LivesLost = 0;
+			// session.LivesLost = 0;
 
 			SetStudyItems( session, RandomLevelGenerator.Instance.MemoryPhaseSymbols );
 			SetTestSlotItems();
@@ -91,23 +89,35 @@ namespace MemoryMadness
 
 			if( StageManager.Instance.CurrentLevelType == LevelType.NameableColour ||
 				StageManager.Instance.CurrentLevelType == LevelType.UnNameableColour )
-			{ session.Condition = "Binding"; }
+			{ 
+				session.Condition = "Binding"; 
+				//playerSelection.Condition = "Binding";
+			}
 			else
-			{ session.Condition = "Shape"; }
+			{ 
+				session.Condition = "Shape"; 
+				//playerSelection.Condition = "Shape";
+			}
 
 			if( StageManager.Instance.CurrentLevelType == LevelType.UnNameableColour ||
 				StageManager.Instance.CurrentLevelType == LevelType.UnNameableNonColour )
-			{ session.ShapeType = "Abstract"; }
+			{ 
+				session.Nameability = "Abstract"; 
+				//playerSelection.Nameability = "Abstract";
+			}
 			else
-			{ session.ShapeType = "Nameable"; }	
+			{ 
+				session.Nameability = "Nameable"; 
+				//playerSelection.Nameability = "Nameable";
+			}	
 
 			Debug.Log( "Condition: " + session.Condition );
-			Debug.Log( "Shape Type: " + session.ShapeType );
-			Debug.Log( "Num of Distractors" + session.DistractorCount );
+			Debug.Log( "Shape Type: " + session.Nameability );
+			//Debug.Log( "Num of Distractors" + session.DistractorCount );
 
-			PersistenceManager.Instance.Test();
+			//PersistenceManager.Instance.Test();
 
-			PersistenceManager.Instance.FileName = session.SessionName + ".dat";
+			PersistenceManager.Instance.FileName = session.SessionName + "_" + session.Date + "_" + session.AbsoluteTimeOfResponse + ".dat";
 			//session.FileName = session.SessionName + ".dat";
 		}
 
@@ -152,15 +162,17 @@ namespace MemoryMadness
 				TestSlot slot = new TestSlot();
 				slot.ColourCode = memSymbolsScript.ColourCode;
 				slot.ShapeCode = memSymbolsScript.ShapeCode;
+
+				slot.CellNumber = i+1;
 				
-				if( memSymbolsScript.IsCorrect )
-					slot.Type = 1;
-				else if( memSymbolsScript.IsColourSwitched )
-					slot.Type = 2;
-				else
-					slot.Type = 2;
+				// if( memSymbolsScript.IsCorrect )
+				// 	slot.Type = 1;
+				// else if( memSymbolsScript.IsColourSwitched )
+				// 	slot.Type = 2;
+				// else
+				// 	slot.Type = 2;
 			
-				slot.StudyOrder = "";
+				//slot.StudyOrder = "";
 
 				//Debug.Log( "Slot Colour Code: " + slot.ColourCode );
 				//Debug.Log( "Slot Shape Code: " + slot.ShapeCode );
@@ -170,49 +182,57 @@ namespace MemoryMadness
 			}
 		}
 
-		private void SetAccuracySlot( int slot , int slotStatus )
+		private void CreatePlayerSelection()
 		{
-			session.AccuracySlots[ slot - 1 ] = slotStatus;
+			playerSelection = new PlayerSelection();
+		}
 
-			if( slotStatus == 1 ) //Correct
-				session.SumAccuracy ++;
-			else if( slotStatus == 2 ) //Lure Error
-				session.LureErrors ++;
-			else  if( slotStatus == 3 ) //Normal Error
-				session.NormalErrors ++;	
+		private void SetCorrectSlot( int slot  )
+		{
+			playerSelection.CorrectPosition = slot;
+			Debug.Log( "Correct Slot Position: " + playerSelection.CorrectPosition );
 		}
 
         
 
-		 private void PrepOrderSlot()
-		 {
-			 for( int x = 0; x < session.OrderSlot.Length; x++ )
-			 {
-				 session.OrderSlot[ x ] = 0;
-			 }
-		 }
-		private void SetOrderSlot( int slot )
-		{
-			if( orderCount <= 5 )
-			{
-				session.OrderSlot[ slot - 1 ] = orderCount;
-				orderCount ++;
-			}
-			else
-			{
-				orderCount = 0;
-			} 
-		}
+		//  private void PrepOrderSlot()
+		//  {
+		// 	 for( int x = 0; x < session.OrderSlot.Length; x++ )
+		// 	 {
+		// 		 session.OrderSlot[ x ] = 0;
+		// 	 }
+		//  }
+		// private void SetOrderSlot( int slot )
+		// {
+		// 	if( orderCount <= 5 )
+		// 	{
+		// 		session.OrderSlot[ slot - 1 ] = orderCount;
+		// 		orderCount ++;
+		// 	}
+		// 	else
+		// 	{
+		// 		orderCount = 0;
+		// 	} 
+		// }
 
+
+		private float relativeTime = 0;
 		private void SetPlayerSelectionTime( float time )
 		{
-			time = time * 1000; //Milliseconds
+			time = (float)System.Math.Round (time * 1000 ); //Milliseconds
+
+			relativeTime = relativeTime + time;
 		
-			playerSelection.RelativeTime = playerSelection.RelativeTime + time;
+			playerSelection.RelativeTime = relativeTime;
 			playerSelection.ReactionTime = time;
 
 			Debug.Log( "Relative Time: " + playerSelection.RelativeTime.ToString( "F0" ) );
 			Debug.Log( "Reaction Time: " + playerSelection.ReactionTime.ToString( "F0" ) );
+
+
+			session.playerSelections.Add( playerSelection );
+			SaveSession(  );
+
 		}
 
 		private void SetPlayerSelection( int selection )
@@ -221,7 +241,10 @@ namespace MemoryMadness
 			Debug.Log( "Players Current Selection " + playerSelection.Selection );
 
 			CheckSelectionCorrect( selection );
+			SetPlayerSelectionLure( selection );
+			SetPlayerSelectionOtherMiss( selection );
 		}
+
 
 		private void CheckSelectionCorrect( int selection )
 		{
@@ -233,27 +256,63 @@ namespace MemoryMadness
 			Debug.Log( "Player Selection Correct : " + playerSelection.Correct );
 		}
 
+		private void SetPlayerSelectionLure( int selection )
+		{
+			if( selection == 2 )
+				playerSelection.Lure = 1;
+			else
+				playerSelection.Lure = 0; 
+		}
+
+		private void SetPlayerSelectionOtherMiss( int selection )
+		{
+			if( selection == 3 )
+				playerSelection.OtherMiss = 1;
+			else
+				playerSelection.OtherMiss = 0;
+		}
+
+		private void SetPlayerSelectionCorrectPosition( int position )
+		{
+			playerSelection.CorrectPosition = position;
+		}
+
+		private void SetSelectedShapeDetails( int shape, int colour, int position )
+		{
+			playerSelection.SelectedTestCellShape = shape;
+			playerSelection.SelectedTestCellColour = colour;
+			playerSelection.SelectedTestCellPosition = position;
+		}
+
 		public void EndSession()
 		{
-			Debug.Log( "Ending Session....." + session.LivesLost );
+			Debug.Log( "Ending Session....."  );
+			relativeTime = 0;
 
 
 			string jsonString = JsonConvert.SerializeObject( session );
 
-			//Debug.Log( "Session: " + jsonString );
+			Debug.Log( "Session: " + jsonString );
 
-			Messenger.Broadcast<string>( "PUT" , jsonString );
+			//Messenger.Broadcast<string>( "PUT" , jsonString );
 			PersistenceManager.Instance.Save( session );
 
 			if( trialNumber >= 32 )
 				trialNumber = 0;
+		}
+
+		private void SaveSession( )
+		{
+			//PersistenceManager.Instance.Save( session );
+			string jsonString = JsonConvert.SerializeObject( session );
+			Debug.Log( ">>>>>>> " + jsonString + " <<<<<<<<<<" );
 		}	
 
 
-		public void UpdateLifeCount()
-		{
-			Debug.Log( "UPDATE LIFE COUNT CALLED" );
-			session.LivesLost ++;
-		}
+		// public void UpdateLifeCount()
+		// {
+		// 	Debug.Log( "UPDATE LIFE COUNT CALLED" );
+		// 	session.LivesLost ++;
+		// }
 	}
 }

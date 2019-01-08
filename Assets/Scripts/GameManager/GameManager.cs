@@ -172,10 +172,6 @@ namespace MemoryMadness
 			Debug.Log( "The game is paused ?! " + pauseStatus );
    		}
 
-		private void OnApplicationFocus(bool hasFocus)
-    	{
-			Debug.Log( "Game has focus !! " + hasFocus );
-    	}
 
 		private void OnApplicationQuit()
     	{
