@@ -164,20 +164,6 @@ namespace MemoryMadness
 				slot.ShapeCode = memSymbolsScript.ShapeCode;
 
 				slot.CellNumber = i+1;
-				
-				// if( memSymbolsScript.IsCorrect )
-				// 	slot.Type = 1;
-				// else if( memSymbolsScript.IsColourSwitched )
-				// 	slot.Type = 2;
-				// else
-				// 	slot.Type = 2;
-			
-				//slot.StudyOrder = "";
-
-				//Debug.Log( "Slot Colour Code: " + slot.ColourCode );
-				//Debug.Log( "Slot Shape Code: " + slot.ShapeCode );
-				//Debug.Log( "Slot type : " + slot.Type );
-
 				session.TestSlots.Add( slot );
 			}
 		}
@@ -237,7 +223,7 @@ namespace MemoryMadness
 
 		private void SetPlayerSelection( int selection )
 		{
-			playerSelection.Selection = selection;
+			
 			Debug.Log( "Players Current Selection " + playerSelection.Selection );
 
 			CheckSelectionCorrect( selection );
