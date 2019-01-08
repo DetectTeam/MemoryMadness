@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace MemoryMadness
 {
 
-
+	
 	public class MemorySymbols : MonoBehaviour 
 	{
 		[SerializeField] private string name;
@@ -83,7 +83,7 @@ namespace MemoryMadness
 			transform.localScale = new Vector3( 0.01f, 0.01f, 0.01f );
 		}
 
-
+		[ SerializeField ] private int currentPlayerSelection;
 		public void ButtonCheck()
 		{
 			if( isCorrect )
@@ -97,7 +97,9 @@ namespace MemoryMadness
 				Messenger.Broadcast<int>( "IncreaseScore" , 100 );
 				Messenger.Broadcast( "CorrectButtonClick" ); //Let the game manager know that the correct button was clicked
 				//Messenger.Broadcast( "CheckForWin" );  //Request to check for a win 
-				Messenger.Broadcast<int , int>( "AccuracyUpdate" , slotNumber , 1 );
+				//Messenger.Broadcast<int , int>( "AccuracyUpdate" , slotNumber , 1 );
+
+				currentPlayerSelection = 1;
 
 				
 			}
@@ -111,13 +113,14 @@ namespace MemoryMadness
 			
 
 				if( isColourSwitched )
-					Messenger.Broadcast<int , int>( "AccuracyUpdate" , slotNumber , 2 ); //Binding Error
+					currentPlayerSelection = 2; //Binding Error
 				else
-					Messenger.Broadcast<int , int>( "AccuracyUpdate" , slotNumber , 3 ); //Normal Error
+					currentPlayerSelection = 3; //Normal Error
 			}
 
 			Messenger.Broadcast<int>( "SetSelectionOrder" , slotNumber );
 				
+			Messenger.Broadcast< int >( "PlayerSelection" , currentPlayerSelection );	
 			Messenger.Broadcast< float >( "RecordTime", RecordTimeBetweenButtonPress() );
 
 			Messenger.Broadcast( "TriggerEffect" ); //ITween PunchScale effect . Used on score text

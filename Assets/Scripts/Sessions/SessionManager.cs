@@ -14,6 +14,7 @@ namespace MemoryMadness
 		[SerializeField] private int trialNumber = 0;
 		[SerializeField] private int levelSize = 20;
 		[SerializeField] private Session session;
+		[SerializeField] private PlayerSelection playerSelection;
 		private int orderCount = 1;
 	
 		private void Awake()
@@ -32,7 +33,8 @@ namespace MemoryMadness
 		{
 			Messenger.AddListener<int , int>( "AccuracyUpdate" , SetAccuracySlot );
 			Messenger.AddListener< int >( "SetSelectionOrder", SetOrderSlot );
-			Messenger.AddListener< float >( "RecordTime", SetTimeSlot );
+			Messenger.AddListener< int >( "PlayerSelection", SetPlayerSelection );
+			Messenger.AddListener< float >( "RecordTime", SetPlayerSelectionTime );
 			Messenger.AddListener(  "DecrementLife", UpdateLifeCount );
 		}
 
@@ -40,7 +42,8 @@ namespace MemoryMadness
 		{
 			Messenger.RemoveListener<int , int>( "AccuracyUpdate" , SetAccuracySlot );
 			Messenger.RemoveListener< int >( "SetSelectionOrder", SetOrderSlot );
-			Messenger.RemoveListener< float >( "RecordTime", SetTimeSlot );
+			Messenger.RemoveListener< float >( "RecordTime", SetPlayerSelectionTime );
+			Messenger.AddListener< int >( "PlayerSelection", SetPlayerSelection );
 			Messenger.RemoveListener(  "DecrementLife", UpdateLifeCount );
 		}
 
@@ -48,12 +51,13 @@ namespace MemoryMadness
 
 		public void CreateSession()
 		{
-			SessionID ++;
+			session.SessionID ++;
 			trialNumber ++;
 			
 			Debug.Log( "Starting new Session...." + SessionID );
 
 			session = new Session();
+			playerSelection = new PlayerSelection();
 
 			orderCount = 1;
 
@@ -65,6 +69,11 @@ namespace MemoryMadness
 			session.Stage = StageManager.Instance.CurrentStage;
 			session.Level = StageManager.Instance.CurrentLevel + 1;
 			session.SymbolArraySize = CalculateSymbolArraySize( StageManager.Instance.CurrentStage );
+			session.StudyCellSize = CalculateSymbolArraySize( StageManager.Instance.CurrentStage );
+
+
+			
+			
 			session.TrialNumber = trialNumber;
 			session.DistractorCount = levelSize - session.SymbolArraySize;
 			
@@ -195,16 +204,33 @@ namespace MemoryMadness
 			} 
 		}
 
-		private void SetTimeSlot( float time )
+		private void SetPlayerSelectionTime( float time )
 		{
-			Debug.Log( "SetTimeSlot" + time );
-			//session.TimeSlot[ slot - 1 ] = time;
-			session.RelativeTime = session.RelativeTime + time;
-			session.ReactionTime = time;
+			time = time * 1000; //Milliseconds
+		
+			playerSelection.RelativeTime = playerSelection.RelativeTime + time;
+			playerSelection.ReactionTime = time;
 
-			Debug.Log( "Relative Time: " + session.RelativeTime );
-			Debug.Log( "Reaction Time: " + session.ReactionTime );
+			Debug.Log( "Relative Time: " + playerSelection.RelativeTime.ToString( "F0" ) );
+			Debug.Log( "Reaction Time: " + playerSelection.ReactionTime.ToString( "F0" ) );
+		}
 
+		private void SetPlayerSelection( int selection )
+		{
+			playerSelection.Selection = selection;
+			Debug.Log( "Players Current Selection " + playerSelection.Selection );
+
+			CheckSelectionCorrect( selection );
+		}
+
+		private void CheckSelectionCorrect( int selection )
+		{
+			if( selection == 1 )
+				playerSelection.Correct = 1;
+			else
+				playerSelection.Correct = 0;
+			
+			Debug.Log( "Player Selection Correct : " + playerSelection.Correct );
 		}
 
 		public void EndSession()

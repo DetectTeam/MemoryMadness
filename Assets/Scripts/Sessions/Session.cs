@@ -48,6 +48,8 @@ namespace MemoryMadness
 		public List<StudyItem> StudyItems; //Items in MemoryPhase
 		public List<TestSlot> TestSlots; //Record of items in the test phase
 
+		public List<PlayerSelection> playerSelections;
+
 		
 		
 		public int SymbolArraySize{ get; set; } //Num of symbols to memorize 2 - 5
@@ -70,6 +72,7 @@ namespace MemoryMadness
 		{
 			StudyItems = new List<StudyItem>();
 			TestSlots = new List<TestSlot>();
+			playerSelections = new List<PlayerSelection>();
 			AccuracySlots = new int[ 20 ];
 			OrderSlot = new int[ 20 ];
 			TimeSlot = new float[ 20 ];
