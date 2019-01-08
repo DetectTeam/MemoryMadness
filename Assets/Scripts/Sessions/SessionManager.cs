@@ -117,7 +117,7 @@ namespace MemoryMadness
 
 			//PersistenceManager.Instance.Test();
 
-			PersistenceManager.Instance.FileName = session.SessionName + "_" + session.Date + "_" + session.AbsoluteTimeOfResponse + ".dat";
+			PersistenceManager.Instance.FileName = session.SessionName + "_" + session.SessionTimeStamp  + ".dat";
 			//session.FileName = session.SessionName + ".dat";
 		}
 
@@ -307,6 +307,9 @@ namespace MemoryMadness
 			
 			paddingCount = maxCount - selectionCount;
 
+			Debug.Log( maxCount + " - " + selectionCount );
+			Debug.Log( "Padding Count: " + paddingCount );
+
 			for( int x = 0; x < paddingCount; x++ )
 			{
 				playerSelection = new PlayerSelection();
@@ -332,7 +335,7 @@ namespace MemoryMadness
 
 		private void SaveSession( )
 		{
-			//PersistenceManager.Instance.Save( session );
+			PersistenceManager.Instance.Save( session );
 			string jsonString = JsonConvert.SerializeObject( session );
 			Debug.Log( ">>>>>>> " + jsonString + " <<<<<<<<<<" );
 		}	
