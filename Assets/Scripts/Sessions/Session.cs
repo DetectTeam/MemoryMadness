@@ -16,13 +16,13 @@ namespace MemoryMadness
 	[System.Serializable]
 	public class StudyItem : ShapeInfo
 	{
-		public int CellNumber { get; set; }
+		public int StudyCellNumber { get; set; }
 	}
 
 	[System.Serializable]
 	public class TestSlot : ShapeInfo
 	{
-		pubic int StudyCellNumber { get; set; }
+		public int CellNumber { get; set; }
 		//public string StudyOrder { get; set; }
 	}
 

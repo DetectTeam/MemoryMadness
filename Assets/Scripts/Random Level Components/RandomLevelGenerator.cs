@@ -111,8 +111,6 @@ namespace MemoryMadness
 			}
 		}
 
-	
-
 		private void UpdateSymbols()
 		{
 			bool isNoColour = false;
@@ -222,13 +220,13 @@ namespace MemoryMadness
 				{
 					Debug.Log( rand );
 					pickedNumberList.Add( rand );
-					PickColourAndShape( rand );
+					PickColourAndShape( rand, count );
 					count ++;
 				}
 				else if( !pickedNumberList.Contains( rand )  )
 				{	
 					pickedNumberList.Add( rand );
-					PickColourAndShape( rand );
+					PickColourAndShape( rand, count );
 					count++;	
 				}
 			}
@@ -237,7 +235,7 @@ namespace MemoryMadness
 			//cloneSymbols.ShuffleList();
 		}
 
-		private void PickColourAndShape( int rand )
+		private void PickColourAndShape( int rand,  int index )
 		{
 			var randomSymbol = cloneSymbols[ rand ] ;
 			var memorySymbolsScript = randomSymbol.GetComponent<MemorySymbols>();
@@ -254,6 +252,7 @@ namespace MemoryMadness
 			Colour c = new Colour();
 			Shape s = new Shape();
 
+			symbol.Index = index;
 			symbol.Name = memorySymbolsScript.Name;
 		
 			c.Color = memorySymbolsScript.BackgroundColor.GetComponent<Image>().color;
@@ -304,7 +303,7 @@ namespace MemoryMadness
 					symbol.Rune = memoryPhaseSymbols[i].Rune;
 
 				 	symbolsToSwitch.Add( symbol );
-					 colourSwitchList.Add( memoryPhaseSymbols[i].BackgroundColor.Color );
+					colourSwitchList.Add( memoryPhaseSymbols[i].BackgroundColor.Color );
 				 }
 
 				//Load List of colours

@@ -143,6 +143,7 @@ namespace MemoryMadness
 			{
 				StudyItem item = new StudyItem(); 
 				
+				item.StudyCellNumber = source[i].Index;
 			 	item.ColourCode = source[i].BackgroundColor.ColourCode;
 			 	item.ShapeCode = source[i].CurrentShape.ShapeCode;
 

@@ -6,6 +6,7 @@ namespace MemoryMadness
 	[System.Serializable]
 	public class Symbol 
 	{
+		public int Index { get; set; }
 		[SerializeField] private string name;
 		public string Name { get{ return name; } set{ name = value; } }
 		[SerializeField] private Colour backgroundColor;

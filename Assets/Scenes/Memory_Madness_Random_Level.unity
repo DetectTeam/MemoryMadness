@@ -4547,6 +4547,7 @@ MonoBehaviour:
   button: {fileID: 143109811}
   timer: {fileID: 0}
   slotNumber: 7
+  currentPlayerSelection: 0
 --- !u!114 &375309599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6388,22 +6389,22 @@ Prefab:
     - target: {fileID: 224013994914925902, guid: 6046ba73f7db1482f865804ce1ced740,
         type: 2}
       propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 224031323265031350, guid: 6046ba73f7db1482f865804ce1ced740,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 224023612238708050, guid: 6046ba73f7db1482f865804ce1ced740,
-        type: 2}
-      propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224031323265031350, guid: 6046ba73f7db1482f865804ce1ced740,
         type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 224023612238708050, guid: 6046ba73f7db1482f865804ce1ced740,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224031323265031350, guid: 6046ba73f7db1482f865804ce1ced740,
+        type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 1897470891042104, guid: 6046ba73f7db1482f865804ce1ced740, type: 2}
       propertyPath: m_IsActive
@@ -6415,6 +6416,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1687189238409390, guid: 6046ba73f7db1482f865804ce1ced740, type: 2}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224013994914925902, guid: 6046ba73f7db1482f865804ce1ced740,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -150
+      objectReference: {fileID: 0}
+    - target: {fileID: 224023612238708050, guid: 6046ba73f7db1482f865804ce1ced740,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -7582,6 +7593,7 @@ MonoBehaviour:
   button: {fileID: 825752656}
   timer: {fileID: 0}
   slotNumber: 3
+  currentPlayerSelection: 0
 --- !u!114 &601497373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11678,9 +11690,7 @@ MonoBehaviour:
   session:
     StudyItems: []
     TestSlots: []
-    AccuracySlots: 
-    OrderSlot: 
-    TimeSlot: []
+    playerSelections: []
 --- !u!4 &877307159
 Transform:
   m_ObjectHideFlags: 0
@@ -12242,6 +12252,7 @@ MonoBehaviour:
   button: {fileID: 875986126}
   timer: {fileID: 0}
   slotNumber: 5
+  currentPlayerSelection: 0
 --- !u!114 &948060598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16467,6 +16478,7 @@ MonoBehaviour:
   button: {fileID: 124894672}
   timer: {fileID: 0}
   slotNumber: 8
+  currentPlayerSelection: 0
 --- !u!114 &1290686594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17002,7 +17014,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -19153,6 +19165,7 @@ MonoBehaviour:
   button: {fileID: 618853753}
   timer: {fileID: 0}
   slotNumber: 4
+  currentPlayerSelection: 0
 --- !u!114 &1514283879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20261,6 +20274,7 @@ MonoBehaviour:
   button: {fileID: 3828177}
   timer: {fileID: 0}
   slotNumber: 0
+  currentPlayerSelection: 0
 --- !u!114 &1550288109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20488,6 +20502,7 @@ MonoBehaviour:
   button: {fileID: 1002627181}
   timer: {fileID: 0}
   slotNumber: 0
+  currentPlayerSelection: 0
 --- !u!114 &1553402944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20660,6 +20675,7 @@ MonoBehaviour:
   button: {fileID: 1396332864}
   timer: {fileID: 0}
   slotNumber: 1
+  currentPlayerSelection: 0
 --- !u!114 &1570113642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25184,6 +25200,7 @@ MonoBehaviour:
   button: {fileID: 448272511}
   timer: {fileID: 0}
   slotNumber: 6
+  currentPlayerSelection: 0
 --- !u!114 &1841157996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26202,6 +26219,7 @@ MonoBehaviour:
   button: {fileID: 1971200800}
   timer: {fileID: 0}
   slotNumber: 9
+  currentPlayerSelection: 0
 --- !u!114 &1911362394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26673,6 +26691,7 @@ MonoBehaviour:
   button: {fileID: 2130720106}
   timer: {fileID: 0}
   slotNumber: 2
+  currentPlayerSelection: 0
 --- !u!114 &1956299501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27520,6 +27539,7 @@ MonoBehaviour:
   button: {fileID: 510069668}
   timer: {fileID: 0}
   slotNumber: 10
+  currentPlayerSelection: 0
 --- !u!114 &2016054467
 MonoBehaviour:
   m_ObjectHideFlags: 0
