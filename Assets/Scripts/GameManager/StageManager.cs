@@ -56,6 +56,7 @@ namespace MemoryMadness
 			}
 			
 			LoadStage();
+			levelCount = LoadLevel();
 			RefreshStage();
 			SetCurrentLevelType();
 		}
@@ -74,56 +75,64 @@ namespace MemoryMadness
 			Messenger.RemoveListener( LoadNextLevelMessage, LoadNextLevel );
 		}
 
-			public void LoadNextLevel()
+		public void LoadNextLevel()
+		{
+			//End The Session for this level
+			SessionManager.Instance.EndSession();
+				
+			if( levelCount < levelsPerStage )
 			{
-				//End The Session for this level
-				SessionManager.Instance.EndSession();
-				
-				if( levelCount < levelsPerStage )
-				{
-					
-					//Request a Reset of the random level generator
-					Messenger.Broadcast( "ResetLevelGenerator" );
-					levelCount ++;
-					memoryPhaseScreen.SetActive( true );
-				}
-				else if( levelCount >= levelsPerStage && levelCount < maxNumLevelsPerStage )
-				{
-					Messenger.Broadcast( "DisableRandomLevelGenerator" );
-					Messenger.Broadcast( "ResetSDGenerator" );
-					
-					randomGameContainer.SetActive( false );
-					sameDifferentScreen.SetActive( true );
-					
-				
-					//memoryPhaseScreen.SetActive( true );
-					levelCount ++;
-				}
-				else
-				{
-					IncrementStage();
-					resultsScreen.SetActive( true );
-					Messenger.Broadcast( "Results" , 85.0f );
-					Messenger.Broadcast( "ResetLevelGenerator" );
-					levelCount = 1;
-				}
+				//Request a Reset of the random level generator
+				Messenger.Broadcast( "ResetLevelGenerator" );
+				levelCount ++;
+				memoryPhaseScreen.SetActive( true );
 			}
+			else if( levelCount >= levelsPerStage && levelCount < maxNumLevelsPerStage )
+			{
+				Messenger.Broadcast( "DisableRandomLevelGenerator" );
+				Messenger.Broadcast( "ResetSDGenerator" );
+					
+				randomGameContainer.SetActive( false );
+				sameDifferentScreen.SetActive( true );
+					
+				//memoryPhaseScreen.SetActive( true );
+				levelCount ++;
+			}
+			else
+			{
+				IncrementStage();
+				resultsScreen.SetActive( true );
+				Messenger.Broadcast( "Results" , 85.0f );
+				Messenger.Broadcast( "ResetLevelGenerator" );
+				levelCount = 1;
+			}
+
+			SaveLevel();
+		}
 
 		private void IncrementLevel()
 		{
+			Debug.Log( "Increment Level Called......." );
+			
 			currentLevel++;
 		
 			if( currentLevel < maxNumLevelsPerStage )
 				SetCurrentLevelType();	
 			else
 				currentLevel = 0;
-		
+
+			//SaveLevel();
+
 		}
 
 		private void IncrementStage()
 		{
 			Debug.Log( "Incrmenting Stage..." + currentStage );
 			currentStage ++;
+
+			// if( currentStage > numberOfStages )
+			// 	numberOfStages = numberOfStages;
+
 			Debug.Log( "Stage is now.. " + currentStage );
 			SaveStage();
 			RefreshStage();
@@ -147,13 +156,21 @@ namespace MemoryMadness
 			}
 		}
 
-
 		private void SaveLevel()
 		{
-			PlayerPrefs.SetInt( "CurrentStage", currentLevel );
+			PlayerPrefs.SetInt( "CurrentLevel", levelCount );
 		}
 
-	
+		private int LoadLevel()
+		{
+			int level = 1;
+			
+			if( PlayerPrefs.HasKey( "CurrentLevel" ) )
+				level = PlayerPrefs.GetInt( "CurrentLevel" );
+
+			return level;	
+		}
+
 		public void SetCurrentLevelType()
 		{
 			if( currentLevel < stage.Count  )
