@@ -40,8 +40,8 @@ namespace MemoryMadness
 
 			if( currentStage <= 2 )
 				heartCount = 2;
-			else if( currentStage > 5 )
-				heartCount = 5;
+			else if( currentStage >= 4 )
+				heartCount = 4;
 			else
 				heartCount = currentStage;
 

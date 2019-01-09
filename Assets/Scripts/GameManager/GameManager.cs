@@ -122,9 +122,9 @@ namespace MemoryMadness
 			{
 				lifeCount = 2;
 			}
-			else if( currentStage > 5 )
+			else if( currentStage >= 4 )
 			{
-				lifeCount = 5;
+				lifeCount = 4;
 			}
 			else
 			{

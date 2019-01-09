@@ -53,12 +53,17 @@ namespace MemoryMadness
 
 		public void CreateSession()
 		{
-			session.SessionID ++;
-			trialNumber ++;
 			
-			Debug.Log( "Starting new Session...." + SessionID );
+			if( PlayerPrefs.HasKey( "SessionID" ) )
+				trialNumber = PlayerPrefs.GetInt( "SessionID" );
 
 			session = new Session();
+
+			trialNumber ++;
+
+			session.SessionID = trialNumber;
+
+			PlayerPrefs.SetInt( "SessionID" , trialNumber );
 			
 
 			orderCount = 1;
@@ -85,8 +90,7 @@ namespace MemoryMadness
 			SetStudyItems( session, RandomLevelGenerator.Instance.MemoryPhaseSymbols );
 			SetTestSlotItems();
 
-			//PrepOrderSlot();
-
+	
 			if( StageManager.Instance.CurrentLevelType == LevelType.NameableColour ||
 				StageManager.Instance.CurrentLevelType == LevelType.UnNameableColour )
 			{ 
@@ -179,28 +183,6 @@ namespace MemoryMadness
 			playerSelection.CorrectPosition = slot.ToString();
 			Debug.Log( "Correct Slot Position: " + playerSelection.CorrectPosition );
 		}
-
-        
-
-		//  private void PrepOrderSlot()
-		//  {
-		// 	 for( int x = 0; x < session.OrderSlot.Length; x++ )
-		// 	 {
-		// 		 session.OrderSlot[ x ] = 0;
-		// 	 }
-		//  }
-		// private void SetOrderSlot( int slot )
-		// {
-		// 	if( orderCount <= 5 )
-		// 	{
-		// 		session.OrderSlot[ slot - 1 ] = orderCount;
-		// 		orderCount ++;
-		// 	}
-		// 	else
-		// 	{
-		// 		orderCount = 0;
-		// 	} 
-		// }
 
 
 		private float relativeTime = 0;
@@ -304,8 +286,10 @@ namespace MemoryMadness
 				maxCount = 3;
 			else if( symbolCount == 3 )
 				maxCount = 5;
-			else if( symbolCount == 4 )
+			else if( symbolCount >= 4 )
 				maxCount = 7;
+			
+			Debug.Log( "Symbol Count: " + symbolCount );
 			
 			paddingCount = maxCount - selectionCount;
 
@@ -341,11 +325,5 @@ namespace MemoryMadness
 			Debug.Log( ">>>>>>> " + jsonString + " <<<<<<<<<<" );
 		}	
 
-
-		// public void UpdateLifeCount()
-		// {
-		// 	Debug.Log( "UPDATE LIFE COUNT CALLED" );
-		// 	session.LivesLost ++;
-		// }
 	}
 }

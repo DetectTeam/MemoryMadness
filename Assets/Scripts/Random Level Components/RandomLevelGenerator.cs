@@ -290,8 +290,6 @@ namespace MemoryMadness
 
 				//List<Symbol> symbolsToSwitch = new List<Symbol>();
 
-			
-			
 				//Create new list of symbols from the current list of memoryphase symbols
 				//My shitty way of doing a deep copy
 				//Find a better way to do this !!!!!!
@@ -315,7 +313,6 @@ namespace MemoryMadness
 				//Randomize Colours for the 5 symbols
 				foreach( Symbol symbol in symbolsToSwitch )
 				{
-					
 					//Remove the colour that matches the current symbol colour
 					for( int x = 0; x < colourSwitchList.Count; x++ )
 					{
