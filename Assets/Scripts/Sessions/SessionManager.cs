@@ -199,7 +199,7 @@ namespace MemoryMadness
 			Debug.Log( "Reaction Time: " + playerSelection.ReactionTime );
 
 
-			session.playerSelections.Add( playerSelection );
+			session.PlayerSelections.Add( playerSelection );
 			SaveSession(  );
 
 		}
@@ -269,7 +269,7 @@ namespace MemoryMadness
 
 			Debug.Log( "Session: " + jsonString );
 
-			//Messenger.Broadcast<string>( "PUT" , jsonString );
+			Messenger.Broadcast<string>( "PUT" , jsonString );
 			PersistenceManager.Instance.Save( session );
 
 			if( trialNumber >= 32 )
@@ -300,6 +300,8 @@ namespace MemoryMadness
 			{
 				playerSelection = new PlayerSelection();
 
+		
+
 				playerSelection.RelativeTime = notAvailable;
 				playerSelection.ReactionTime = notAvailable;
 				playerSelection.Selection = (selectionCount + 1).ToString();
@@ -313,7 +315,7 @@ namespace MemoryMadness
 				playerSelection.SelectedTestCellPosition = notAvailable;
 				playerSelection.SelectedTestCellShape = notAvailable;
 
-				session.playerSelections.Add( playerSelection );
+				session.PlayerSelections.Add( playerSelection );
 			}
 
 		}
