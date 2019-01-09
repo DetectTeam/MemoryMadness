@@ -5,18 +5,24 @@ using UnityEngine;
 
 namespace MemoryMadness
 {
+	
 	[System.Serializable]
-	public class StudyItem 
+	public class ShapeInfo
 	{
-		public int CellNumber { get; set; }
 		public int ShapeCode { get; set; }
 		public int ColourCode{ get; set; }
 	}
+	
+	[System.Serializable]
+	public class StudyItem : ShapeInfo
+	{
+		public int CellNumber { get; set; }
+	}
 
 	[System.Serializable]
-	public class TestSlot : StudyItem
+	public class TestSlot : ShapeInfo
 	{
-	
+		pubic int StudyCellNumber { get; set; }
 		//public string StudyOrder { get; set; }
 	}
 

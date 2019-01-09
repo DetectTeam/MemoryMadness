@@ -175,7 +175,7 @@ namespace MemoryMadness
 
 		private void SetCorrectSlot( int slot  )
 		{
-			playerSelection.CorrectPosition = slot;
+			playerSelection.CorrectPosition = slot.ToString();
 			Debug.Log( "Correct Slot Position: " + playerSelection.CorrectPosition );
 		}
 
@@ -209,11 +209,11 @@ namespace MemoryMadness
 
 			relativeTime = relativeTime + time;
 		
-			playerSelection.RelativeTime = relativeTime;
-			playerSelection.ReactionTime = time;
+			playerSelection.RelativeTime = relativeTime.ToString();
+			playerSelection.ReactionTime = time.ToString();
 
-			Debug.Log( "Relative Time: " + playerSelection.RelativeTime.ToString( "F0" ) );
-			Debug.Log( "Reaction Time: " + playerSelection.ReactionTime.ToString( "F0" ) );
+			Debug.Log( "Relative Time: " + playerSelection.RelativeTime );
+			Debug.Log( "Reaction Time: " + playerSelection.ReactionTime );
 
 
 			session.playerSelections.Add( playerSelection );
@@ -225,7 +225,7 @@ namespace MemoryMadness
 		private void SetPlayerSelection( int selection )
 		{
 			selectionCount ++;
-			playerSelection.Selection = selectionCount;
+			playerSelection.Selection = selectionCount.ToString();
 			Debug.Log( "Players Current Selection " + playerSelection.Selection );
 
 			CheckSelectionCorrect( selection );
@@ -237,9 +237,9 @@ namespace MemoryMadness
 		private void CheckSelectionCorrect( int selection )
 		{
 			if( selection == 1 )
-				playerSelection.Correct = 1;
+				playerSelection.Correct = "1";
 			else
-				playerSelection.Correct = 0;
+				playerSelection.Correct = "0";
 			
 			Debug.Log( "Player Selection Correct : " + playerSelection.Correct );
 		}
@@ -247,29 +247,29 @@ namespace MemoryMadness
 		private void SetPlayerSelectionLure( int selection )
 		{
 			if( selection == 2 )
-				playerSelection.Lure = 1;
+				playerSelection.Lure = "1";
 			else
-				playerSelection.Lure = 0; 
+				playerSelection.Lure = "0"; 
 		}
 
 		private void SetPlayerSelectionOtherMiss( int selection )
 		{
 			if( selection == 3 )
-				playerSelection.OtherMiss = 1;
+				playerSelection.OtherMiss = "1";
 			else
-				playerSelection.OtherMiss = 0;
+				playerSelection.OtherMiss = "0";
 		}
 
 		private void SetPlayerSelectionCorrectPosition( int position )
 		{
-			playerSelection.CorrectPosition = position;
+			playerSelection.CorrectPosition = position.ToString();
 		}
 
 		private void SetSelectedShapeDetails( int shape, int colour, int position )
 		{
-			playerSelection.SelectedTestCellShape = shape;
-			playerSelection.SelectedTestCellColour = colour;
-			playerSelection.SelectedTestCellPosition = position;
+			playerSelection.SelectedTestCellShape = shape.ToString();
+			playerSelection.SelectedTestCellColour = colour.ToString();
+			playerSelection.SelectedTestCellPosition = position.ToString();
 		}
 
 		public void EndSession()
@@ -297,6 +297,7 @@ namespace MemoryMadness
 		{
 			int maxCount = 0;
 			int paddingCount = 0;
+			string notAvailable = "N/A";
 
 			if( symbolCount ==  2 )
 				maxCount = 3;
@@ -314,21 +315,20 @@ namespace MemoryMadness
 			{
 				playerSelection = new PlayerSelection();
 
-				playerSelection.RelativeTime = 999999999;
-				playerSelection.ReactionTime = 999999999;
-				playerSelection.Selection = 9999;
-				playerSelection.Repeat = 9999;
-				playerSelection.Interrupt = 9999;
-				playerSelection.Lure = 9999;
-				playerSelection.OtherMiss = 9999;
-				playerSelection.Correct = 9999;
-				playerSelection.CorrectPosition = 9999;
-				playerSelection.SelectedTestCellColour = 9999;
-				playerSelection.SelectedTestCellPosition = 9999;
-				playerSelection.SelectedTestCellShape = 9999;
+				playerSelection.RelativeTime = notAvailable;
+				playerSelection.ReactionTime = notAvailable;
+				playerSelection.Selection = (selectionCount + 1).ToString();
+				playerSelection.Repeat = notAvailable;
+				playerSelection.Interrupt = notAvailable;
+				playerSelection.Lure = notAvailable;
+				playerSelection.OtherMiss = notAvailable;
+				playerSelection.Correct = notAvailable;
+				playerSelection.CorrectPosition = notAvailable;
+				playerSelection.SelectedTestCellColour = notAvailable;
+				playerSelection.SelectedTestCellPosition = notAvailable;
+				playerSelection.SelectedTestCellShape = notAvailable;
 
 				session.playerSelections.Add( playerSelection );
-
 			}
 
 		}
