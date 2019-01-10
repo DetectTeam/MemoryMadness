@@ -255,7 +255,7 @@ namespace MemoryMadness
 			playerSelection.SelectedTestCellPosition = position.ToString();
 		}
 
-		public void EndSession()
+		public void EndSession( int levelCount , int levelsPerStage )
 		{
 			//Debug.Log( "Ending Session....."  );
 			
@@ -269,8 +269,12 @@ namespace MemoryMadness
 
 			Debug.Log( "Session: " + jsonString );
 
-			Messenger.Broadcast<string>( "PUT" , jsonString );
-			PersistenceManager.Instance.Save( session );
+
+			if( levelCount <= levelsPerStage )
+			{
+				Messenger.Broadcast<string>( "PUT" , jsonString );
+				PersistenceManager.Instance.Save( session );
+			}
 
 			if( trialNumber >= 32 )
 				trialNumber = 0;

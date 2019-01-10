@@ -63,14 +63,13 @@ public class FileUploadHandler : MonoBehaviour
 
 			//Move Uploaded Files to sent directory
 			//Only if they were successfully uploaded..
-			File.Move( path + f.Name, destinationPath + f.Name );
+			//File.Move( path + f.Name, destinationPath + f.Name );
 		}			
 	}
 
 	public void PUT( string jsonStr )
 	{
-		var res =  StartCoroutine( IEPUT( jsonStr ) );
-		Debug.Log( res );
+		StartCoroutine( IEPUT( jsonStr ) );
 	}
 
 

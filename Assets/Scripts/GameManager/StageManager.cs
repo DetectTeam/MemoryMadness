@@ -78,7 +78,7 @@ namespace MemoryMadness
 		public void LoadNextLevel()
 		{
 			//End The Session for this level
-			SessionManager.Instance.EndSession();
+			SessionManager.Instance.EndSession( levelCount , levelsPerStage );
 				
 			if( levelCount < levelsPerStage )
 			{
@@ -107,7 +107,7 @@ namespace MemoryMadness
 				levelCount = 1;
 			}
 
-			SaveLevel();
+			//SaveLevel();
 		}
 
 		private void IncrementLevel()
