@@ -37,6 +37,7 @@ namespace MemoryMadness
 			Messenger.AddListener< int >( "PlayerSelection", SetPlayerSelection );
 			Messenger.AddListener< float >( "RecordTime", SetPlayerSelectionTime );
 			Messenger.AddListener< int , int ,int  >( "SelectedShapeDetails" , SetSelectedShapeDetails );
+			Messenger.AddListener( "QuittingApplication" , ApplicationQuit );
 			//Messenger.AddListener(  "DecrementLife", UpdateLifeCount );
 		}
 
@@ -48,6 +49,7 @@ namespace MemoryMadness
 			Messenger.RemoveListener< float >( "RecordTime", SetPlayerSelectionTime );
 			Messenger.RemoveListener< int >( "PlayerSelection", SetPlayerSelection );
 			Messenger.RemoveListener< int , int ,int  >( "SelectedShapeDetails" , SetSelectedShapeDetails );
+			Messenger.RemoveListener( "QuittingApplication" , ApplicationQuit );
 			//Messenger.RemoveListener(  "DecrementLife", UpdateLifeCount );
 		}
 
@@ -314,6 +316,11 @@ namespace MemoryMadness
 
 				session.PlayerSelections.Add( playerSelection );
 			}
+		}
+
+		private void ApplicationQuit()
+		{
+			session.ApplicationQuit = "1";
 		}
 
 		private void SaveSession( )

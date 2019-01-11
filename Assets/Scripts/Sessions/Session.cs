@@ -44,6 +44,7 @@ namespace MemoryMadness
 		public int TrialNumber { get; set; } // a total of 32 trials
 		public string Condition { get; set; } //Binding or Shape
 		public string Nameability { get; set; } //Abstract or Nameable
+		public string ApplicationQuit { get; set; } //Set when user quits app
 	
 		public Session()
 		{

@@ -3180,13 +3180,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelCount: 1
-  levelsPerStage: 2
+  levelsPerStage: 6
   numberOfStages: 4
   sameDifferentScreen: {fileID: 1648664523}
   randomGameContainer: {fileID: 2089274043}
   memoryPhaseScreen: {fileID: 2004355213}
   resultsScreen: {fileID: 1766364037}
-  maxNumLevelsPerStage: 4
+  maxNumLevelsPerStage: 8
   stage: 0100000000000000010000000000000003000000020000000300000002000000
 --- !u!114 &241129533
 MonoBehaviour:
@@ -11524,12 +11524,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 866987693}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 406e89c9bb9f54d718bb078488acc817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearPlayerPrefs: 0
+  clearPlayerPrefs: 1
 --- !u!4 &866987695
 Transform:
   m_ObjectHideFlags: 0
@@ -11702,7 +11702,7 @@ MonoBehaviour:
   session:
     StudyItems: []
     TestSlots: []
-    playerSelections: []
+    PlayerSelections: []
 --- !u!4 &877307159
 Transform:
   m_ObjectHideFlags: 0
@@ -19572,7 +19572,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 282.43155, y: 1634.4688}
+  m_Target: {x: 342.6836, y: 1982.5687}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1

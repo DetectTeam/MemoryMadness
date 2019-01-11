@@ -12,8 +12,8 @@ public class FileUploadHandler : MonoBehaviour
 
 	private string jsonString;
 
-	//private static readonly string PutSessionURL = "https://murmuring-fortress-76588.herokuapp.com/memorymadness/session";
-	private static readonly string PutSessionURL = "http://localhost:5000/memorymadness/session";
+	private static readonly string PutSessionURL = "https://murmuring-fortress-76588.herokuapp.com/memorymadness/session";
+	//private static readonly string PutSessionURL = "http://localhost:5000/memorymadness/session";
 
 	private void OnEnable()
 	{
@@ -69,7 +69,7 @@ public class FileUploadHandler : MonoBehaviour
 
 	public void PUT( string jsonStr )
 	{
-		StartCoroutine( IEPUT( jsonStr ) );
+		//StartCoroutine( IEPUT( jsonStr ) );
 	}
 
 
@@ -77,6 +77,8 @@ public class FileUploadHandler : MonoBehaviour
 	//Send the session data as a json string.
 	private IEnumerator IEPUT( string jsonStr )
 	{
+
+		Debug.Log( "Uploading...Data" );
 		Debug.Log( jsonStr);
 
 		if( jsonStr.Length <= 0 )
@@ -126,7 +128,7 @@ public class FileUploadHandler : MonoBehaviour
 
 	private void CheckDirectoryExists( string path )
 	{
-			 //check if directory doesn't exit
+		//check if directory doesn't exit
  		if(!Directory.Exists(path))
  		{    
      		//if it doesn't, create it
@@ -138,8 +140,4 @@ public class FileUploadHandler : MonoBehaviour
 			Debug.Log( "Directory exists . We are good to go :)" );
 		}
 	}
-
-
-
-
 }

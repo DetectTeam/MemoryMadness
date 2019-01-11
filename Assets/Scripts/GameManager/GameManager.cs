@@ -179,7 +179,13 @@ namespace MemoryMadness
 
 		private void OnApplicationQuit()
     	{
-        	Debug.Log("Application ending after " + Time.time + " seconds");
+        	Debug.Log("Application ended after " + Time.time + " seconds");
+			
+			//Set Application Ended Field 
+
+			//Save  Session 
+
+
     	}
 	}	
 }

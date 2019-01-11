@@ -218,7 +218,7 @@ namespace MemoryMadness
 
 				if( pickedNumberList.Count == 0 )
 				{
-					Debug.Log( rand );
+					//Debug.Log( rand );
 					pickedNumberList.Add( rand );
 					PickColourAndShape( rand, count );
 					count ++;
@@ -241,12 +241,10 @@ namespace MemoryMadness
 			var memorySymbolsScript = randomSymbol.GetComponent<MemorySymbols>();
 			//cloneSymbols.RemoveAt( rand );
 			 	//max--;
-		    if( !memorySymbolsScript )
-				Debug.Log( "BIG PROBLEM >>>>>>" );
-			else
-			{
-				Debug.Log( "Memory Symbol : " + memorySymbolsScript.BackgroundColor.GetComponent<Image>().color );
-			}
+		    // if( memorySymbolsScript )
+			// {
+			// 	Debug.Log( "Memory Symbol : " + memorySymbolsScript.BackgroundColor.GetComponent<Image>().color );
+			// }
 
 			Symbol symbol = new Symbol();
 			Colour c = new Colour();
