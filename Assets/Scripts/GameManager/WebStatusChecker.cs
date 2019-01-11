@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WebStatusChecker : MonoBehaviour 
+public class WebStatusChecker : Singleton<WebStatusChecker>
 {
+	
 	private void Start()
 	{
 		StartCoroutine( "WebCheck" );

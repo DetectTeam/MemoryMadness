@@ -13,10 +13,10 @@ namespace MemoryMadness
 		Ended	
 	}
 		
-	public class SessionManager : MonoBehaviour 
+	public class SessionManager : Singleton<SessionManager>
 	{
 		public static int SessionID;
-		public static SessionManager Instance = null;
+		//public static SessionManager Instance = null;
 		
 		private int orderCount = 1;
 		[SerializeField] private int trialNumber = 0;
@@ -26,19 +26,19 @@ namespace MemoryMadness
 		
 		private SessionState sessionState; 
 	
-		private void Awake()
-		{
-			sessionState = SessionState.Ended;
+		// private void Awake()
+		// {
+		// 	sessionState = SessionState.Ended;
 			
-			if( Instance == null )
-			{
-				Instance = this;
-			}
-			else
-			{
-				Destroy( gameObject );
-			}
-		}
+		// 	if( Instance == null )
+		// 	{
+		// 		Instance = this;
+		// 	}
+		// 	else
+		// 	{
+		// 		Destroy( gameObject );
+		// 	}
+		// }
 
 		private void OnEnable()
 		{

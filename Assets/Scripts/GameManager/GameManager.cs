@@ -7,9 +7,9 @@ using UnityEngine.Events;
 namespace MemoryMadness
 {
 	
-	public class GameManager : MonoBehaviour 
+	public class GameManager : Singleton<GameManager>
 	{
-		public static GameManager Instance = null;
+		//public static GameManager Instance = null;
 		public UnityEvent setupEvent;
 		public UnityEvent startGameEvent;
 		public UnityEvent playingGameEvent;
@@ -23,17 +23,17 @@ namespace MemoryMadness
 		[SerializeField] private int currentLevel = 1;
 		public int CurrentLevel { get{ return currentLevel; } set{ currentLevel = value; }  }
 
-		private void Awake()
-		{
-			if( Instance == null )
-			{
-				Instance = this;
-			}
-			else
-			{
-				Destroy( gameObject );
-			}
-		}
+		// private void Awake()
+		// {
+		// 	if( Instance == null )
+		// 	{
+		// 		Instance = this;
+		// 	}
+		// 	else
+		// 	{
+		// 		Destroy( gameObject );
+		// 	}
+		// }
 
 		private void OnEnable()
 		{
