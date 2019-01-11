@@ -5,6 +5,8 @@ using UnityEngine;
 public class WebStatusChecker : Singleton<WebStatusChecker>
 {
 	
+	private bool webAccessStatus = false;
+
 	private void Start()
 	{
 		StartCoroutine( "WebCheck" );
@@ -26,18 +28,19 @@ public class WebStatusChecker : Singleton<WebStatusChecker>
 		 //Check if the device cannot reach the internet
         if (Application.internetReachability == NetworkReachability.NotReachable)
         {
-            //Change the Text
-            Debug.Log( "Not Reachable." );
+            webAccessStatus = false;
         }
         //Check if the device can reach the internet via a carrier data network
         else if (Application.internetReachability == NetworkReachability.ReachableViaCarrierDataNetwork)
         {
-            Debug.Log( "Reachable via carrier data network." );
+			webAccessStatus = true;
         }
         //Check if the device can reach the internet via a LAN
         else if (Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork)
         {
-            Debug.Log( "Reachable via Local Area Network." );
+            webAccessStatus = true;
         }
+
+		Messenger.Broadcast<bool>( "WebAccessStatus", webAccessStatus );
 	}
 }

@@ -12,26 +12,39 @@ public class FileUploadHandler : MonoBehaviour
 
 	private string jsonString;
 
+	private bool webAccessStatus;
+
+
 	private static readonly string PutSessionURL = "https://murmuring-fortress-76588.herokuapp.com/memorymadness/session";
 	//private static readonly string PutSessionURL = "http://localhost:5000/memorymadness/session";
 
 	private void OnEnable()
 	{
 		Messenger.AddListener<string>( "PUT" , PUT  );
+		Messenger.AddListener<bool>( "WebAccessStatus" , WebAccessStatus );
 	}
 
 	private void OnDisable()
 	{
 		Messenger.RemoveListener<string>( "PUT" , PUT  );
+		Messenger.RemoveListener<bool>( "WebAccessStatus" , WebAccessStatus );
 	}
 
-	private void Start()
+	private IEnumerator Start()
 	{
 		path = GetPath() + "upload/";
 		destinationPath = GetPath() + "sent/";
 		Debug.Log( path );
 
-		CheckDirectoryExists( path );		
+		CheckDirectoryExists( path );	
+
+		yield return new WaitForSeconds( 1.0f );
+
+		if( webAccessStatus )
+		{
+			Debug.Log( "Uploading Files left in upload directory...." );
+			UploadFile();
+		}	
 	}
 
 	//Upload Current Session File to Server
@@ -41,6 +54,13 @@ public class FileUploadHandler : MonoBehaviour
 		DirectoryInfo dir = new DirectoryInfo( path );
 		FileInfo[] info = dir.GetFiles( "*.dat" );
 
+		if( info.Length <= 0 )
+		{
+			Debug.Log( "No files found...." );
+			return;
+		}
+
+		Debug.Log( "Shouldnt see me >:)" );
 		//Find all .dat files in the upload directory
 		foreach( FileInfo f in info )
 		{
@@ -54,11 +74,9 @@ public class FileUploadHandler : MonoBehaviour
 			//jsonString = JsonUtility.ToJson( obj );
 
 			//Display the file
-			Debug.Log( jsonString );
+			//Debug.Log( jsonString );
 
 			PUT( jsonString );
-			
-
 			//TODO
 
 			//Move Uploaded Files to sent directory
@@ -92,6 +110,8 @@ public class FileUploadHandler : MonoBehaviour
 		yield return www.SendWebRequest();
 
 		Debug.Log( "Got this far...." + www.downloadHandler.text );
+
+		//Move Uploaded File
 	}
 
 
@@ -139,5 +159,10 @@ public class FileUploadHandler : MonoBehaviour
 		{
 			Debug.Log( "Directory exists . We are good to go :)" );
 		}
+	}
+
+	private void WebAccessStatus( bool b )
+	{
+		webAccessStatus = b;
 	}
 }

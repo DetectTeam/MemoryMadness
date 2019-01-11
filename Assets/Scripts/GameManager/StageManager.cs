@@ -15,7 +15,7 @@ namespace MemoryMadness
 		NameableNonColour
 	}
 
-	public class StageManager : MonoBehaviour 
+	public class StageManager : Singleton<StageManager>
 	{
 		[SerializeField] private int levelCount = 0;
 		public int LevelCount { get{ return levelCount; } }
@@ -44,18 +44,18 @@ namespace MemoryMadness
 		[SerializeField] private static LevelType currentLevelType;	
 		public LevelType CurrentLevelType { get{ return currentLevelType; } }
 
-		public static StageManager Instance = null;
+		//public static StageManager Instance = null;
 
 		private void Awake()
 		{
-			if( Instance == null )
-			{
-				Instance = this;
-			}
-			else
-			{
-				Destroy( gameObject );
-			}
+			// if( Instance == null )
+			// {
+			// 	Instance = this;
+			// }
+			// else
+			// {
+			// 	Destroy( gameObject );
+			// }
 			
 			LoadStage();
 			levelCount = LoadLevel();

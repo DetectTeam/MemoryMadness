@@ -333,7 +333,9 @@ namespace MemoryMadness
 				//jsonString = JsonConvert.SerializeObject( session );
 				//SaveSession();
 
-				EndSession( StageManager.Instance.LevelCount , StageManager.Instance.LevelsPerStage );
+				#if !UNITY_EDITOR
+					EndSession( StageManager.Instance.LevelCount , StageManager.Instance.LevelsPerStage );
+				#endif
 			}
 
 			Debug.Log( "Clean Up Complete......." );

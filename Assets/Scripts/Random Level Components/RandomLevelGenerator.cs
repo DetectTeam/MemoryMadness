@@ -9,7 +9,7 @@ using System.Linq;
 namespace MemoryMadness
 {
 	
-	public class RandomLevelGenerator : MonoBehaviour 
+	public class RandomLevelGenerator : Singleton<RandomLevelGenerator>
 	{
    
 		[SerializeField] private ColourPicker colorPicker;
@@ -42,13 +42,13 @@ namespace MemoryMadness
 		
 		// Use this for initialization
 
-		public static RandomLevelGenerator Instance; 
+		//public static RandomLevelGenerator Instance; 
 		private void Awake()
 		{
-			if( Instance == null )
-				Instance = this;
-			else
-				Destroy( gameObject );
+			// if( Instance == null )
+			// 	Instance = this;
+			// else
+			// 	Destroy( gameObject );
 		}
 
 
