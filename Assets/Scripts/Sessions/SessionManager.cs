@@ -7,18 +7,29 @@ using Newtonsoft.Json; //Json Library
 
 namespace MemoryMadness
 {
+	public enum SessionState
+	{
+		Started,
+		Ended	
+	}
+		
 	public class SessionManager : MonoBehaviour 
 	{
 		public static int SessionID;
 		public static SessionManager Instance = null;
+		
+		private int orderCount = 1;
 		[SerializeField] private int trialNumber = 0;
 		[SerializeField] private int levelSize = 20;
 		[SerializeField] private Session session;
 		[SerializeField] private PlayerSelection playerSelection;
-		private int orderCount = 1;
+		
+		private SessionState sessionState; 
 	
 		private void Awake()
 		{
+			sessionState = SessionState.Ended;
+			
 			if( Instance == null )
 			{
 				Instance = this;
@@ -37,7 +48,7 @@ namespace MemoryMadness
 			Messenger.AddListener< int >( "PlayerSelection", SetPlayerSelection );
 			Messenger.AddListener< float >( "RecordTime", SetPlayerSelectionTime );
 			Messenger.AddListener< int , int ,int  >( "SelectedShapeDetails" , SetSelectedShapeDetails );
-			Messenger.AddListener( "QuittingApplication" , ApplicationQuit );
+			Messenger.AddListener< int, int >( "EndSession", EndSession );
 			//Messenger.AddListener(  "DecrementLife", UpdateLifeCount );
 		}
 
@@ -49,7 +60,7 @@ namespace MemoryMadness
 			Messenger.RemoveListener< float >( "RecordTime", SetPlayerSelectionTime );
 			Messenger.RemoveListener< int >( "PlayerSelection", SetPlayerSelection );
 			Messenger.RemoveListener< int , int ,int  >( "SelectedShapeDetails" , SetSelectedShapeDetails );
-			Messenger.RemoveListener( "QuittingApplication" , ApplicationQuit );
+			Messenger.RemoveListener< int, int >( "EndSession", EndSession );
 			//Messenger.RemoveListener(  "DecrementLife", UpdateLifeCount );
 		}
 
@@ -68,6 +79,8 @@ namespace MemoryMadness
 			
 			orderCount = 1;
 
+			sessionState = SessionState.Started;
+
 			session.UserID = "DummyID0001";
 			session.SessionName = "Session_Name";
 			session.Date = System.DateTime.Now.ToString( "dd_MM_yyyy" );
@@ -78,51 +91,35 @@ namespace MemoryMadness
 			session.SymbolArraySize = CalculateSymbolArraySize( StageManager.Instance.CurrentStage );
 			session.StudyCellSize = CalculateSymbolArraySize( StageManager.Instance.CurrentStage );			
 			session.TrialNumber = trialNumber;
-			//session.DistractorCount = levelSize - session.SymbolArraySize;
-			
-			// if( !PlayerPrefs.HasKey( "CurrentStage" ) )
-			// 	session.TotalLives = 2;
-			// else 
-			// 	session.TotalLives = PlayerPrefs.GetInt( "CurrentStage" );
-			
-			// session.LivesLost = 0;
-
+			session.ApplicationQuit = "0";
+		
 			SetStudyItems( session, RandomLevelGenerator.Instance.MemoryPhaseSymbols );
 			SetTestSlotItems();
 
-	
 			if( StageManager.Instance.CurrentLevelType == LevelType.NameableColour ||
 				StageManager.Instance.CurrentLevelType == LevelType.UnNameableColour )
 			{ 
 				session.Condition = "Binding"; 
-				//playerSelection.Condition = "Binding";
 			}
 			else
 			{ 
 				session.Condition = "Shape"; 
-				//playerSelection.Condition = "Shape";
 			}
 
 			if( StageManager.Instance.CurrentLevelType == LevelType.UnNameableColour ||
 				StageManager.Instance.CurrentLevelType == LevelType.UnNameableNonColour )
 			{ 
 				session.Nameability = "Abstract"; 
-				//playerSelection.Nameability = "Abstract";
 			}
 			else
 			{ 
 				session.Nameability = "Nameable"; 
-				//playerSelection.Nameability = "Nameable";
 			}	
 
 			Debug.Log( "Condition: " + session.Condition );
 			Debug.Log( "Shape Type: " + session.Nameability );
-			//Debug.Log( "Num of Distractors" + session.DistractorCount );
-
-			//PersistenceManager.Instance.Test();
 
 			PersistenceManager.Instance.FileName = session.SessionName + "_" + session.SessionTimeStamp  + ".dat";
-			//session.FileName = session.SessionName + ".dat";
 		}
 
 		private int CalculateSymbolArraySize( int stage )
@@ -153,8 +150,6 @@ namespace MemoryMadness
 
 				session.StudyItems.Add( item );
 			}	
-
-			Debug.Log( session.StudyItems.Count );
 		}
 
 		private void SetTestSlotItems()
@@ -253,30 +248,6 @@ namespace MemoryMadness
 			playerSelection.SelectedTestCellPosition = position.ToString();
 		}
 
-		
-		//Fix This !!
-		public void EndSession( int levelCount , int levelsPerStage )
-		{
-			string jsonString = "";
-		
-            PadSelections( session.SymbolArraySize, selectionCount );
-
-			relativeTime = 0;
-			selectionCount = 0;
-
-			jsonString = JsonConvert.SerializeObject( session );
-
-			if( levelCount <= levelsPerStage )
-			{
-				Messenger.Broadcast<string>( "PUT" , jsonString );
-				PersistenceManager.Instance.Save( session );
-			}
-
-			if( trialNumber >= 32 )
-				trialNumber = 0;
-		}
-
-
 		private void PadSelections( int symbolCount, int selectionCount )
 		{
 			int maxCount = 0;
@@ -303,7 +274,7 @@ namespace MemoryMadness
 
 				playerSelection.RelativeTime = notAvailable;
 				playerSelection.ReactionTime = notAvailable;
-				playerSelection.Selection = (selectionCount + 1).ToString();
+				playerSelection.Selection = ( selectionCount++ ).ToString();
 				playerSelection.Repeat = notAvailable;
 				playerSelection.Interrupt = notAvailable;
 				playerSelection.Lure = notAvailable;
@@ -318,17 +289,56 @@ namespace MemoryMadness
 			}
 		}
 
-		private void ApplicationQuit()
-		{
-			session.ApplicationQuit = "1";
-		}
-
 		private void SaveSession( )
 		{
+			Debug.Log( "Saving Session" );
 			PersistenceManager.Instance.Save( session );
 			string jsonString = JsonConvert.SerializeObject( session );
 			Debug.Log( ">>>>>>> " + jsonString + " <<<<<<<<<<" );
 		}	
+
+		//Fix This !!
+		public void EndSession( int levelCount , int levelsPerStage )
+		{
+			Debug.Log( "Ending Session...." );
+			
+			string jsonString = "";
+		
+            PadSelections( session.SymbolArraySize, selectionCount );
+
+			relativeTime = 0;
+			selectionCount = 0;
+
+			jsonString = JsonConvert.SerializeObject( session );
+
+			if( levelCount <= levelsPerStage )
+			{
+				Messenger.Broadcast<string>( "PUT" , jsonString );
+				SaveSession();
+			}
+
+			if( trialNumber >= 32 )
+				trialNumber = 0;
+
+			sessionState = SessionState.Ended;
+		}
+
+		private void OnApplicationQuit()
+		{
+			Debug.Log( "QUITTING APPLICATION ......." );
+
+			if( sessionState == SessionState.Started )
+			{
+				session.ApplicationQuit = "1";
+				//jsonString = JsonConvert.SerializeObject( session );
+				//SaveSession();
+
+				EndSession( StageManager.Instance.LevelCount , StageManager.Instance.LevelsPerStage );
+			}
+
+			Debug.Log( "Clean Up Complete......." );
+			
+		}
 
 	}
 }

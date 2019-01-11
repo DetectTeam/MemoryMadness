@@ -20,6 +20,8 @@ namespace MemoryMadness
 		[SerializeField] private int levelCount = 0;
 		public int LevelCount { get{ return levelCount; } }
 		[SerializeField] private int levelsPerStage;
+		public int LevelsPerStage { get{ return levelsPerStage; } }
+		
 		[SerializeField] private int numberOfStages;
 		[SerializeField] private GameObject sameDifferentScreen;
 		[SerializeField] private GameObject randomGameContainer;
@@ -78,7 +80,8 @@ namespace MemoryMadness
 		public void LoadNextLevel()
 		{
 			//End The Session for this level
-			SessionManager.Instance.EndSession( levelCount , levelsPerStage );
+			Messenger.Broadcast<int, int>( "EndSession", levelCount , levelsPerStage );
+			//SessionManager.Instance.EndSession( levelCount , levelsPerStage );
 				
 			if( levelCount < levelsPerStage )
 			{
@@ -181,5 +184,7 @@ namespace MemoryMadness
 		{
 			stage.ShuffleList();
 		}
+
+		
 	}
 }

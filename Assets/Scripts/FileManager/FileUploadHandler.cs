@@ -69,7 +69,7 @@ public class FileUploadHandler : MonoBehaviour
 
 	public void PUT( string jsonStr )
 	{
-		//StartCoroutine( IEPUT( jsonStr ) );
+		StartCoroutine( IEPUT( jsonStr ) );
 	}
 
 

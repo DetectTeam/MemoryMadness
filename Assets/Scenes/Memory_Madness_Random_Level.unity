@@ -3074,6 +3074,7 @@ GameObject:
   - component: {fileID: 241129532}
   - component: {fileID: 241129528}
   - component: {fileID: 241129533}
+  - component: {fileID: 241129534}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3197,6 +3198,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d01cf92d33d074ffea15924d1bc81e36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &241129534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 241129526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f2dd08e6215e47c2b8b9179dfe639e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &241470953 stripped
@@ -19572,7 +19584,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 342.6836, y: 1982.5687}
+  m_Target: {x: 282.43155, y: 1634.4688}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
