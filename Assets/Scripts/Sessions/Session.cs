@@ -23,7 +23,6 @@ namespace MemoryMadness
 	public class TestSlot : ShapeInfo
 	{
 		public int CellNumber { get; set; }
-		//public string StudyOrder { get; set; }
 	}
 
 	[System.Serializable]
@@ -45,24 +44,12 @@ namespace MemoryMadness
 		public int TrialNumber { get; set; } // a total of 32 trials
 		public string Condition { get; set; } //Binding or Shape
 		public string Nameability { get; set; } //Abstract or Nameable
-		//public int DistractorCount { get; set; } //18 - 15 
-		//public int SumAccuracy { get; set; }
-		//public int NormalErrors { get; set; } 
-		//public int LureErrors { get; set; }
-		//public int TotalLives { get; set; } //2 - 5 based on stage
-		//public int LivesLost { get; set; } 
-		//public int[] AccuracySlots; // List of player decisions for each slot
-		//public int[] OrderSlot;
-		//public float[] TimeSlot;
-
+	
 		public Session()
 		{
 			StudyItems = new List<StudyItem>();
 			TestSlots = new List<TestSlot>();
-			PlayerSelections = new List<PlayerSelection>();
-			//AccuracySlots = new int[ 20 ];
-			//OrderSlot = new int[ 20 ];
-			//TimeSlot = new float[ 20 ];
+			PlayerSelections = new List<PlayerSelection>();	
 		}
 	}
 }

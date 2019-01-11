@@ -53,7 +53,6 @@ namespace MemoryMadness
 
 		public void CreateSession()
 		{
-			
 			if( PlayerPrefs.HasKey( "SessionID" ) )
 				trialNumber = PlayerPrefs.GetInt( "SessionID" );
 
@@ -65,7 +64,6 @@ namespace MemoryMadness
 
 			PlayerPrefs.SetInt( "SessionID" , trialNumber );
 			
-
 			orderCount = 1;
 
 			session.UserID = "DummyID0001";
@@ -198,10 +196,8 @@ namespace MemoryMadness
 			Debug.Log( "Relative Time: " + playerSelection.RelativeTime );
 			Debug.Log( "Reaction Time: " + playerSelection.ReactionTime );
 
-
 			session.PlayerSelections.Add( playerSelection );
 			SaveSession(  );
-
 		}
 
 		private int selectionCount = 0;
@@ -255,20 +251,18 @@ namespace MemoryMadness
 			playerSelection.SelectedTestCellPosition = position.ToString();
 		}
 
+		
+		//Fix This !!
 		public void EndSession( int levelCount , int levelsPerStage )
 		{
-			//Debug.Log( "Ending Session....."  );
-			
+			string jsonString = "";
+		
             PadSelections( session.SymbolArraySize, selectionCount );
 
 			relativeTime = 0;
 			selectionCount = 0;
 
-
-			string jsonString = JsonConvert.SerializeObject( session );
-
-			Debug.Log( "Session: " + jsonString );
-
+			jsonString = JsonConvert.SerializeObject( session );
 
 			if( levelCount <= levelsPerStage )
 			{
@@ -279,6 +273,7 @@ namespace MemoryMadness
 			if( trialNumber >= 32 )
 				trialNumber = 0;
 		}
+
 
 		private void PadSelections( int symbolCount, int selectionCount )
 		{
@@ -293,12 +288,12 @@ namespace MemoryMadness
 			else if( symbolCount >= 4 )
 				maxCount = 7;
 			
-			Debug.Log( "Symbol Count: " + symbolCount );
+			//Debug.Log( "Symbol Count: " + symbolCount );
 			
 			paddingCount = maxCount - selectionCount;
 
-			Debug.Log( maxCount + " - " + selectionCount );
-			Debug.Log( "Padding Count: " + paddingCount );
+			//Debug.Log( maxCount + " - " + selectionCount );
+			//Debug.Log( "Padding Count: " + paddingCount );
 
 			for( int x = 0; x < paddingCount; x++ )
 			{
@@ -319,7 +314,6 @@ namespace MemoryMadness
 
 				session.PlayerSelections.Add( playerSelection );
 			}
-
 		}
 
 		private void SaveSession( )

@@ -68,8 +68,7 @@ namespace MemoryMadness
 		{
 			transform.localScale = new Vector3( 0.01f, 0.01f, 0.01f );
 
-			timer = GameObject.Find( "Timer" );
-				
+			timer = GameObject.Find( "Timer" );	
 		}
 
 		void OnDisable()
