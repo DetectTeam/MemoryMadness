@@ -32,7 +32,7 @@ namespace MemoryMadness
 		private void OnEnable()
 		{
 			Messenger.AddListener( "CreatePlayerSelection" , CreatePlayerSelection );
-			Messenger.AddListener< int >( "CorrectSlotPosition" , SetCorrectSlot );
+			Messenger.AddListener< string >( "CorrectSlotPosition" , SetCorrectSlot );
 			//Messenger.AddListener< int >( "SetSelectionOrder", SetOrderSlot );
 			Messenger.AddListener< int >( "PlayerSelection", SetPlayerSelection );
 			Messenger.AddListener< float >( "RecordTime", SetPlayerSelectionTime );
@@ -43,7 +43,7 @@ namespace MemoryMadness
 		private void OnDisable()
 		{
 			Messenger.RemoveListener( "CreatePlayerSelection" , CreatePlayerSelection );
-			Messenger.RemoveListener< int >( "CorrectSlotPosition" , SetCorrectSlot );
+			Messenger.RemoveListener< string >( "CorrectSlotPosition" , SetCorrectSlot );
 			//Messenger.RemoveListener< int >( "SetSelectionOrder", SetOrderSlot );
 			Messenger.RemoveListener< float >( "RecordTime", SetPlayerSelectionTime );
 			Messenger.RemoveListener< int >( "PlayerSelection", SetPlayerSelection );
@@ -178,9 +178,9 @@ namespace MemoryMadness
 			playerSelection = new PlayerSelection();
 		}
 
-		private void SetCorrectSlot( int slot  )
+		private void SetCorrectSlot( string slot  )
 		{
-			playerSelection.CorrectPosition = slot.ToString();
+			playerSelection.CorrectPosition = slot;
 			Debug.Log( "Correct Slot Position: " + playerSelection.CorrectPosition );
 		}
 
@@ -303,8 +303,6 @@ namespace MemoryMadness
 			for( int x = 0; x < paddingCount; x++ )
 			{
 				playerSelection = new PlayerSelection();
-
-		
 
 				playerSelection.RelativeTime = notAvailable;
 				playerSelection.ReactionTime = notAvailable;

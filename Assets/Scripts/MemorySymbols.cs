@@ -100,9 +100,8 @@ namespace MemoryMadness
 				Messenger.Broadcast<int>( "IncreaseScore" , 100 );
 				Messenger.Broadcast( "CorrectButtonClick" ); //Let the game manager know that the correct button was clicked
 				//Messenger.Broadcast( "CheckForWin" );  //Request to check for a win 
-				Messenger.Broadcast<int>( "CorrectSlotPosition" , slotNumber  );
+				Messenger.Broadcast<string>( "CorrectSlotPosition" , slotNumber.ToString()  );
 				
-
 				currentPlayerSelection = 1;	
 			}
 			else
@@ -113,6 +112,7 @@ namespace MemoryMadness
 				Messenger.Broadcast( "DecrementLife" );
 				Messenger.Broadcast<int>( "DecreaseScore" , 100 );
 			
+				Messenger.Broadcast<string>( "CorrectSlotPosition" , "N/A"  );
 
 				if( isColourSwitched )
 					currentPlayerSelection = 2; //Binding Error
