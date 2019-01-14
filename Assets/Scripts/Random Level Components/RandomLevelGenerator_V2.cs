@@ -11,15 +11,16 @@ namespace  MemoryMadness
 {
 	
 	public class RandomLevelGenerator_V2 : Singleton<RandomLevelGenerator_V2>
-	{
-
-		 
+	{ 
 		[SerializeField] private ColourPicker colorPicker;  //List of colours used in the level
 		[SerializeField] private ShapePicker namedShapePicker; //nameable sprites 
 		[SerializeField] private ShapePicker unamedShapePicker; //unanameable sprites
 		[SerializeField] private List<Shape> namedShapes; //List of nameable shapes
 		[SerializeField] private List<Shape> unamedShapes; //List of unameable shapes
+		
 		[SerializeField] private List<GameObject> levelSymbols; //List of the symbols displayed in the level
+		public List<GameObject> CurrentLevelSymbols { get{ return levelSymbols; } }
+		
 		[SerializeField] private List<Color>levelBackGroundColors = new List<Color>();
 		[SerializeField] private List<Colour> backgroundColours = new List<Colour>();
 		[SerializeField] private GameObject symbolPrefab;
@@ -28,8 +29,6 @@ namespace  MemoryMadness
 		[SerializeField] private List<Symbol> memoryPhaseSymbols;
 			public List<Symbol> MemoryPhaseSymbols { get{ return memoryPhaseSymbols; } }
 
-		
-		
 		private void OnEnable()
 		{
 			//Reset the correct button count to zero
@@ -148,9 +147,15 @@ namespace  MemoryMadness
 				int shapeIndex = 0;
 					
 				if( !isNoColour  )
+				{
 					levelSymbols[i].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = levelBackGroundColors[i];
+					memSymbolsScript.ColourCode = levelBackGroundColors[i].ColourCode;
+				}
 				else
+				{
 					levelSymbols[i].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = backgroundColours[0].Color;
+					memSymbolsScript.ColourCode = backgroundColours[0].ColourCode;
+				}
 	
 				
 				levelSymbols[i].transform.Find( "Rune" ).GetComponent<Image>().sprite = RandomShapePicker( i , levelSprites ).Image;
@@ -178,6 +183,7 @@ namespace  MemoryMadness
 				memorySymbol = sameColourSymbols[ Random.Range( 0, sameColourSymbols.Count - 1 ) ];
 
 				var memorySymbolsScript = memorySymbol.GetComponent<MemorySymbols>();
+				Debug.Log( "COLOR CODE : " + memorySymbolsScript.ColourCode );
 		
 				Symbol symbol = new Symbol();
 				Colour c = new Colour();

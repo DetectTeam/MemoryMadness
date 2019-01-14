@@ -26,7 +26,7 @@ namespace MemoryMadness
 		{
 			float delay = 0;
 			float x, y, z = 0;
-			float r, g, b, a = 0;
+			//float r, g, b, a = 0;
 			
 			yield return null;
 

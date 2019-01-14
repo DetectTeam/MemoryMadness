@@ -154,7 +154,7 @@ namespace MemoryMadness
 
 		private void SetTestSlotItems()
 		{
-			List<GameObject> symbolList = RandomLevelGenerator.Instance.CurrentLevelSymbols;
+			List<GameObject> symbolList = RandomLevelGenerator_V2.Instance.CurrentLevelSymbols;
 
 			for( int i = 0; i < symbolList.Count; i++ )
 			{
