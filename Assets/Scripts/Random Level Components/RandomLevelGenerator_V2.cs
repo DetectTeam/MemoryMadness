@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
 
 /// <summary>
 /// Randomly Generates a game level consisting of 20 selectable symbols 
 /// </summary>
 namespace  MemoryMadness
 {
-	
 	public class RandomLevelGenerator_V2 : Singleton<RandomLevelGenerator_V2>
 	{ 
 		[SerializeField] private ColourPicker colorPicker;  //List of colours used in the level
@@ -17,17 +15,17 @@ namespace  MemoryMadness
 		[SerializeField] private ShapePicker unamedShapePicker; //unanameable sprites
 		[SerializeField] private List<Shape> namedShapes; //List of nameable shapes
 		[SerializeField] private List<Shape> unamedShapes; //List of unameable shapes
-		
-		[SerializeField] private List<GameObject> levelSymbols; //List of the symbols displayed in the level
-		public List<GameObject> CurrentLevelSymbols { get{ return levelSymbols; } }
-		
 		[SerializeField] private List<Colour>levelBackGroundColors = new List<Colour>();
 		[SerializeField] private List<Colour> backgroundColours = new List<Colour>();
 		[SerializeField] private GameObject symbolPrefab;
 		[SerializeField] private int currentStage = 2;
 		[SerializeField] private int memPhaseSymbolCount;
+		
+		[SerializeField] private List<GameObject> levelSymbols; //List of the symbols displayed in the level
+		public List<GameObject> CurrentLevelSymbols { get{ return levelSymbols; } }
+		
 		[SerializeField] private List<Symbol> memoryPhaseSymbols;
-			public List<Symbol> MemoryPhaseSymbols { get{ return memoryPhaseSymbols; } }
+		public List<Symbol> MemoryPhaseSymbols { get{ return memoryPhaseSymbols; } }
 
 		private void OnEnable()
 		{
@@ -35,11 +33,8 @@ namespace  MemoryMadness
 			Messenger.Broadcast( "ResetCorrectButtonCount" );
 
 			CheckCurrentStage( StageManager.Instance.CurrentStage );
-
 			LoadLists();
-
 			SetBackgroundColours();
-			
 			SetupSymbols();
 		}
 
@@ -59,7 +54,7 @@ namespace  MemoryMadness
 		}
 
 	
-		//Select the symbol backgroudn colours for current level
+		//Select the symbol background colours for current level
 		private void SetBackgroundColours()
 		{
 			List<Colour> tmpList = colorPicker.GetColourList();
@@ -100,8 +95,6 @@ namespace  MemoryMadness
 			}
 		}
 
-
-		
 		//Create the symbols for the level , Assigns colour and sprites...
 		private void CreateSymbols( bool isNoColour )
 		{
@@ -121,7 +114,7 @@ namespace  MemoryMadness
 
 			levelBackGroundColors.ShuffleList();
 	
-			if( isNoColour )
+			if( StageManager.Instance.CurrentLevelType == LevelType.UnNameableNonColour || StageManager.Instance.CurrentLevelType == LevelType.UnNameableColour )
 			{
 				levelSprites = unamedShapes;
 			}
@@ -289,7 +282,6 @@ namespace  MemoryMadness
 			return shapes[ currentIndex ];
 		}
 
-	
 
 		private void CheckCurrentStage( int currentStage )
 		{
@@ -299,9 +291,7 @@ namespace  MemoryMadness
 				memPhaseSymbolCount = 3;
 			else if( currentStage >=  4 )
 				memPhaseSymbolCount = 4;
-			//else if( currentStage > 4 )
-				//memPhaseSymbolCount = 5;
-
+	
 			//Set the win count value in the game manager
 			Messenger.Broadcast<int>( "SetWinCount" , memPhaseSymbolCount );
 			//Messenger.Broadcast( "ResetHearts" );					
