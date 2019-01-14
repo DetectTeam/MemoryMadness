@@ -3188,7 +3188,7 @@ MonoBehaviour:
   memoryPhaseScreen: {fileID: 2004355213}
   resultsScreen: {fileID: 1766364037}
   maxNumLevelsPerStage: 8
-  stage: 0100000000000000010000000000000003000000020000000300000002000000
+  stage: 0200000002000000000000000000000001000000010000000300000003000000
 --- !u!114 &241129533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16670,12 +16670,51 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1816495065}
   m_Script: {fileID: 11500000, guid: 6f1ca9c0aee894fb78d76e2439791135, type: 3}
---- !u!114 &1307170614 stripped
+--- !u!114 &1307170615
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114822312392378942, guid: 7425c24d9d6dd4ace856e28dcfb43294,
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1307170610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e05842bbb60b7491f839b3d253ef7b0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorPicker: {fileID: 1307170613}
+  namedShapePicker: {fileID: 1307170611}
+  unamedShapePicker: {fileID: 1307170612}
+  namedShapes: []
+  unamedShapes: []
+  cloneSymbols:
+  - {fileID: 93256761}
+  - {fileID: 1524777737}
+  - {fileID: 1543782323}
+  - {fileID: 1877587504}
+  - {fileID: 432590717}
+  - {fileID: 1855786931}
+  - {fileID: 1267665450}
+  - {fileID: 469611859}
+  - {fileID: 425578472}
+  - {fileID: 1286415189}
+  - {fileID: 1121078794}
+  - {fileID: 1094218585}
+  - {fileID: 1663488114}
+  - {fileID: 655703191}
+  - {fileID: 1141435446}
+  - {fileID: 371626834}
+  - {fileID: 512450458}
+  - {fileID: 399410712}
+  - {fileID: 1588697523}
+  - {fileID: 464679669}
+  memoryPhaseSymbols: []
+  symbolPrefab: {fileID: 1945153130042186, guid: 0714dffddbe2c4015b263d6107e3804d,
     type: 2}
-  m_PrefabInternal: {fileID: 1816495065}
-  m_Script: {fileID: 11500000, guid: 5905517b040e349bf964ddafc1b4f7c3, type: 3}
+  currentStage: 2
+  memPhaseSymbolCount: 0
+  levelBackGroundColors: []
+  backgroundColours: []
+  sameColourSymbols: []
 --- !u!1 &1317813059
 GameObject:
   m_ObjectHideFlags: 0
@@ -23491,7 +23530,7 @@ Prefab:
       objectReference: {fileID: 621291647}
     - target: {fileID: 1795334674235718, guid: 7425c24d9d6dd4ace856e28dcfb43294, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114822312392378942, guid: 7425c24d9d6dd4ace856e28dcfb43294,
         type: 2}
@@ -24031,7 +24070,7 @@ Prefab:
     - target: {fileID: 114822312392378942, guid: 7425c24d9d6dd4ace856e28dcfb43294,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114470261791749264, guid: 7425c24d9d6dd4ace856e28dcfb43294,
         type: 2}
@@ -27231,7 +27270,7 @@ MonoBehaviour:
   - {fileID: 1560220048}
   - {fileID: 1553402941}
   symbols: []
-  randomLevelGenerator: {fileID: 1307170614}
+  randomLevelGenerator: {fileID: 1307170615}
 --- !u!1 &1979840365
 GameObject:
   m_ObjectHideFlags: 0

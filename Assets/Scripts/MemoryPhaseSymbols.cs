@@ -12,7 +12,7 @@ namespace MemoryMadness
 		[SerializeField] private List<GameObject> anchors;
 		[SerializeField] private List<Symbol> symbols;
 
-		[SerializeField] private RandomLevelGenerator randomLevelGenerator;
+		[SerializeField] private RandomLevelGenerator_V2 randomLevelGenerator;
 
 		private void OnEnable()
 		{

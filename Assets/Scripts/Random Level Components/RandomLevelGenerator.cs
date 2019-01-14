@@ -104,9 +104,11 @@ namespace MemoryMadness
 				if( StageManager.Instance.CurrentLevelType == LevelType.NameableColour  || StageManager.Instance.CurrentLevelType == LevelType.UnNameableColour )
 				{
 					if( memoryPhaseSymbols.Count <= 3 )
+						
 						ColourSwitchSymbols();
 					else
-						ColourSwitchFiveSymbols();	
+						ColourSwitchFiveSymbols();
+							
 				}
 			}
 		}
@@ -373,9 +375,7 @@ namespace MemoryMadness
 							isSelectable = false;
 	
 						}
-					
 					}
-					
 				}
 
 				//Randomly insert the Symbols into the level.
@@ -385,8 +385,6 @@ namespace MemoryMadness
 				colourSwitchList.Clear();
 				symbolsToSwitch.Clear();
 		}
-
-
 
 		//Switch Colour of symbols when symbol count is 3 or less.
 		private void ColourSwitchSymbols()
@@ -405,20 +403,17 @@ namespace MemoryMadness
 						
 						while( isSelectable )
 						{
-
 							//Pick a random symbol from the list.
 							GameObject selectedMemorySymbol = cloneSymbols[ Random.Range( 0, cloneSymbols.Count ) ];
 							//Debug.Log( "SELECTED SYMBOL : " + selectedMemorySymbol );
 							MemorySymbols memorySymbolsScript = selectedMemorySymbol.GetComponent<MemorySymbols>();
-							
 							//If the random symbol isnt a winning symbol 
 							//and it hasnt already been colour switched
 							if( !memorySymbolsScript.IsCorrect && !memorySymbolsScript.IsColourSwitched )
 							{
-								
 								//Set the background colour
 								memorySymbolsScript.BackgroundColor.GetComponent<Image>().color = memoryPhaseSymbols[x].BackgroundColor.Color;
-								
+	
 								//Set the symbol
 								memorySymbolsScript.Rune.GetComponent<Image>().sprite = memoryPhaseSymbols[i].Rune.sprite;
 								
@@ -426,9 +421,7 @@ namespace MemoryMadness
 								memorySymbolsScript.IsColourSwitched = true;
 								
 								isSelectable = false;
-								
 							}
-					
 						}
 					}
 				}
