@@ -21,7 +21,7 @@ namespace  MemoryMadness
 		[SerializeField] private List<GameObject> levelSymbols; //List of the symbols displayed in the level
 		public List<GameObject> CurrentLevelSymbols { get{ return levelSymbols; } }
 		
-		[SerializeField] private List<Color>levelBackGroundColors = new List<Color>();
+		[SerializeField] private List<Colour>levelBackGroundColors = new List<Colour>();
 		[SerializeField] private List<Colour> backgroundColours = new List<Colour>();
 		[SerializeField] private GameObject symbolPrefab;
 		[SerializeField] private int currentStage = 2;
@@ -114,9 +114,9 @@ namespace  MemoryMadness
 			for( int i = 0; i < 20; i++ )
 			{
 				if( i >= 0 && i <= 9  )
-					levelBackGroundColors.Add( 	backgroundColours[0].Color );
+					levelBackGroundColors.Add( 	backgroundColours[0] );
 				else
-					levelBackGroundColors.Add( backgroundColours[1].Color );
+					levelBackGroundColors.Add( backgroundColours[1] );
 			}
 
 			levelBackGroundColors.ShuffleList();
@@ -148,7 +148,7 @@ namespace  MemoryMadness
 					
 				if( !isNoColour  )
 				{
-					levelSymbols[i].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = levelBackGroundColors[i];
+					levelSymbols[i].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = levelBackGroundColors[i].Color;
 					memSymbolsScript.ColourCode = levelBackGroundColors[i].ColourCode;
 				}
 				else
@@ -159,7 +159,7 @@ namespace  MemoryMadness
 	
 				
 				levelSymbols[i].transform.Find( "Rune" ).GetComponent<Image>().sprite = RandomShapePicker( i , levelSprites ).Image;
-				//memSymbolsScript.ShapeCode = RandomShapePicker( i, levelSprites ).ShapeCode;
+				memSymbolsScript.ShapeCode = RandomShapePicker( i, levelSprites ).ShapeCode;
 
 				levelSymbols[i].SetActive( true );
 			}
