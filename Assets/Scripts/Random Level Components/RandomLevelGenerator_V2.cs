@@ -425,10 +425,8 @@ namespace  MemoryMadness
 				tmpColoursShuffled[3] = tmp;
 			}
     
-			Debug.Log( "MPC " + memoryPhaseSymbols.Count );
 			for( int i = 0; i < memoryPhaseSymbols.Count; i++ )
 			{
-	
 			    //Find all symbols with matching colour
 				List<GameObject> symbols = 	levelSymbols.FindAll( x => x.GetComponent<MemorySymbols>().BackgroundColor.GetComponent<Image>().color == tmpColoursShuffled[ i ] );
 							
@@ -444,8 +442,7 @@ namespace  MemoryMadness
 
 						break;
 					}
-				}	
-								
+				}						
 			}
 		 }	
 
