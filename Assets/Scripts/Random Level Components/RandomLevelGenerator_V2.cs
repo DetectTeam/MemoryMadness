@@ -92,7 +92,7 @@ namespace  MemoryMadness
 				//Only perform a colour switch on levels with coloured symbols
 				if( StageManager.Instance.CurrentLevelType == LevelType.NameableColour || StageManager.Instance.CurrentLevelType == LevelType.UnNameableColour )
 				{
-					if( memoryPhaseSymbols.Count <= 3 )
+					if( memoryPhaseSymbols.Count <= 4 )
 						ColourSwitchSymbols();
 				}
 			}
@@ -326,7 +326,7 @@ namespace  MemoryMadness
 
 		private void CheckCurrentStage( int currentStage )
 		{
-			currentStage = 1;
+			currentStage = 4;
 			
 			if( currentStage <= 2 )
 				memPhaseSymbolCount = 2;
@@ -413,8 +413,18 @@ namespace  MemoryMadness
 					
 			}
 
-		
-		    
+			if( memoryPhaseSymbols.Count == 4 )
+			{
+				var tmp = tmpColoursShuffled[ 0 ];
+				tmpColoursShuffled[ 0 ] = tmpColoursShuffled[ 2 ];
+				tmpColoursShuffled[2] = tmp;
+
+				tmp = tmpColoursShuffled[1];
+				tmpColoursShuffled[1] = tmpColoursShuffled[3];
+
+				tmpColoursShuffled[3] = tmp;
+			}
+    
 			Debug.Log( "MPC " + memoryPhaseSymbols.Count );
 			for( int i = 0; i < memoryPhaseSymbols.Count; i++ )
 			{

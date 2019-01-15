@@ -16690,7 +16690,7 @@ MonoBehaviour:
   backgroundColours: []
   symbolPrefab: {fileID: 1945153130042186, guid: 0714dffddbe2c4015b263d6107e3804d,
     type: 2}
-  currentStage: 2
+  currentStage: 4
   memPhaseSymbolCount: 0
   numOfSymbolsPerLevel: 20
   levelSymbols:
@@ -16717,6 +16717,7 @@ MonoBehaviour:
   memoryPhaseSymbols: []
   sameColourSymbols: []
   tmpColours: []
+  tmpColoursShuffled: []
 --- !u!1 &1317813059
 GameObject:
   m_ObjectHideFlags: 0
