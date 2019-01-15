@@ -20,6 +20,8 @@ namespace  MemoryMadness
 		[SerializeField] private GameObject symbolPrefab;
 		[SerializeField] private int currentStage = 2;
 		[SerializeField] private int memPhaseSymbolCount;
+
+		[SerializeField] private int numOfSymbolsPerLevel = 20;
 		
 		[SerializeField] private List<GameObject> levelSymbols; //List of the symbols displayed in the level
 		public List<GameObject> CurrentLevelSymbols { get{ return levelSymbols; } }
@@ -95,6 +97,53 @@ namespace  MemoryMadness
 			}
 		}
 
+		//Colour the 20 symbols based on current stage
+		//Stage one and two  ratio is 10 of one colour  10 of another colour
+		//Stage three 6  7  7
+		//Stage four  5 * 4
+		private void ColourSymbols()
+		{
+			for( int i = 0; i <  numOfSymbolsPerLevel; i++ )
+			{
+				
+				if( currentStage <= 2 ) 
+				{
+					if( i <= 9  )
+						levelBackGroundColors.Add( 	backgroundColours[0] );
+					else
+						levelBackGroundColors.Add( backgroundColours[1] );
+				}
+				else if( currentStage == 3 )
+				{
+					if( i <= 6 )
+					{
+						levelBackGroundColors.Add( 	backgroundColours[0] );
+					}
+					else if( i >= 6 && i < 14 )
+					{
+						levelBackGroundColors.Add( 	backgroundColours[1] );
+					}
+					else
+					{
+						levelBackGroundColors.Add( 	backgroundColours[2] );
+					}
+				}
+				else if( currentStage > 3 )
+				{
+					if( i < 5 )
+						levelBackGroundColors.Add( 	backgroundColours[0] );
+					else if( i >= 5 && i < 10 )
+						levelBackGroundColors.Add( 	backgroundColours[1] );
+					else if( i >= 10 && i < 15 )
+						levelBackGroundColors.Add( 	backgroundColours[2] );
+					else
+						levelBackGroundColors.Add( 	backgroundColours[3] );
+				}
+
+				levelBackGroundColors.ShuffleList();
+			}
+		}
+
 		//Create the symbols for the level , Assigns colour and sprites...
 		private void CreateSymbols( bool isNoColour )
 		{
@@ -103,17 +152,8 @@ namespace  MemoryMadness
 			if( levelBackGroundColors.Count > 0 )
 				levelBackGroundColors.Clear();
 
-			//Create a list of size 20 with 10 of each background colour
-			for( int i = 0; i < 20; i++ )
-			{
-				if( i >= 0 && i <= 9  )
-					levelBackGroundColors.Add( 	backgroundColours[0] );
-				else
-					levelBackGroundColors.Add( backgroundColours[1] );
-			}
-
-			levelBackGroundColors.ShuffleList();
-	
+			ColourSymbols();
+		
 			if( StageManager.Instance.CurrentLevelType == LevelType.UnNameableNonColour || StageManager.Instance.CurrentLevelType == LevelType.UnNameableColour )
 			{
 				levelSprites = unamedShapes;
