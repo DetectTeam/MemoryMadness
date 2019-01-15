@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 /// <summary>
 /// Randomly Generates a game level consisting of 20 selectable symbols 
@@ -18,7 +19,7 @@ namespace  MemoryMadness
 		[SerializeField] private List<Colour>levelBackGroundColors = new List<Colour>();
 		[SerializeField] private List<Colour> backgroundColours = new List<Colour>();
 		[SerializeField] private GameObject symbolPrefab;
-		[SerializeField] private int currentStage = 2;
+		[SerializeField] private int currentStage = 3;
 		[SerializeField] private int memPhaseSymbolCount;
 
 		[SerializeField] private int numOfSymbolsPerLevel = 20;
@@ -283,7 +284,7 @@ namespace  MemoryMadness
 			//levelSymbols.ShuffleList();
 		}
 
-			private void PickColourAndShape( int rand,  int index )
+		private void PickColourAndShape( int rand,  int index )
 		{
 			var randomSymbol = levelSymbols[ rand ] ;
 			var memorySymbolsScript = randomSymbol.GetComponent<MemorySymbols>();
@@ -325,6 +326,8 @@ namespace  MemoryMadness
 
 		private void CheckCurrentStage( int currentStage )
 		{
+			currentStage = 1;
+			
 			if( currentStage <= 2 )
 				memPhaseSymbolCount = 2;
 			else if( currentStage == 3  )
@@ -351,46 +354,90 @@ namespace  MemoryMadness
 			return list;
 		}
 
+
+		private bool CheckColourInColourList( Color color , List<Color> colourList ) 
+		{
+			bool b = false;
+			
+			Color colourInList = colourList.Find( x => x == color );
+
+			if( colourInList != null )
+				b = true;
+			
+			return b;
+		}
+
+        [SerializeField] private List<Color> tmpColours;
+		[SerializeField] private List<Color> tmpColoursShuffled;
 		private void ColourSwitchSymbols()
 		{
 			Debug.Log( "Colour Switching Symbols...." );
 			
 			bool  isSelectable = false;
+
+
+			if( tmpColours.Count > 0 )
+				tmpColours.Clear();
 			
+			if( tmpColoursShuffled.Count > 0 )
+				tmpColoursShuffled.Clear();
+
+			//List<Colour> tmpColours = backgroundColours;
+
+			for( int x = 0; x < memoryPhaseSymbols.Count; x++ )
+			{
+				
+				tmpColours.Add( memoryPhaseSymbols[x].BackgroundColor.Color );
+			}
+
+			tmpColoursShuffled = new List<Color>(tmpColours);
+
+			//tmpColoursShuffled.ShuffleList();
+
+			if( memoryPhaseSymbols.Count <= 2 )
+			{
+				var tmp = tmpColoursShuffled[0];
+				tmpColoursShuffled[0] = tmpColoursShuffled[1];
+				tmpColoursShuffled[1] = tmp;
+			}
+
+			if( memoryPhaseSymbols.Count == 3 )
+			{
+				var tmp = tmpColoursShuffled[ 0 ];
+				tmpColoursShuffled[ 0 ] = tmpColoursShuffled[ 2 ];
+				tmpColoursShuffled[ 2 ] = tmp; 
+				
+				tmp = tmpColoursShuffled [ 1 ];
+				tmpColoursShuffled[ 1 ] = tmpColoursShuffled[ 2 ];
+				tmpColoursShuffled[ 2 ] = tmp;
+					
+			}
+
+		
+		    
+			Debug.Log( "MPC " + memoryPhaseSymbols.Count );
 			for( int i = 0; i < memoryPhaseSymbols.Count; i++ )
 			{
-				for( int x = 0; x < memoryPhaseSymbols.Count; x++ )
-				{
-					if( memoryPhaseSymbols[i].Name != memoryPhaseSymbols[x].Name )
-					{
-						isSelectable = true;
-						
-						while( isSelectable )
-						{
-							//Pick a random symbol from the list.
-							GameObject selectedMemorySymbol = levelSymbols[ Random.Range( 0, levelSymbols.Count ) ];
-							//Debug.Log( "SELECTED SYMBOL : " + selectedMemorySymbol );
-							MemorySymbols memorySymbolScript = selectedMemorySymbol.GetComponent<MemorySymbols>();
+	
+			    //Find all symbols with matching colour
+				List<GameObject> symbols = 	levelSymbols.FindAll( x => x.GetComponent<MemorySymbols>().BackgroundColor.GetComponent<Image>().color == tmpColoursShuffled[ i ] );
 							
-							//If the random symbol isnt a winning symbol 
-							//and it hasnt already been colour switched
-							//And the background colours of each symbol are different.
-							if( !memorySymbolScript.IsCorrect 
-								&& !memorySymbolScript.IsColourSwitched 
-								&& memoryPhaseSymbols[i].BackgroundColor.Color != memorySymbolScript.BackgroundColor.GetComponent<Image>().color )
-							{
-								//Set the symbol
-								memorySymbolScript.Rune.GetComponent<Image>().sprite = memoryPhaseSymbols[i].Rune.sprite;
-								
-								//Mark this memory symbol as colour switched
-								memorySymbolScript.IsColourSwitched = true;
-								
-								isSelectable = false;
-							}		
-						}
+				for( int x = 0; x < symbols.Count; x++ )
+				{
+					MemorySymbols memorySymbolScript = symbols[x].GetComponent<MemorySymbols>();
+
+					if( !memorySymbolScript.IsCorrect && !memorySymbolScript.IsColourSwitched )
+					{
+						//Set the symbol
+					    memorySymbolScript.Rune.GetComponent<Image>().sprite = memoryPhaseSymbols[i].Rune.sprite;
+						memorySymbolScript.IsColourSwitched = true;
+
+						break;
 					}
-				}
+				}	
+								
 			}
-		}	
+		 }	
+
 	}
 }

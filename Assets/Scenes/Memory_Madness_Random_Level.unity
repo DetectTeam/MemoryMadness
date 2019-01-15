@@ -16686,7 +16686,14 @@ MonoBehaviour:
   unamedShapePicker: {fileID: 1307170612}
   namedShapes: []
   unamedShapes: []
-  cloneSymbols:
+  levelBackGroundColors: []
+  backgroundColours: []
+  symbolPrefab: {fileID: 1945153130042186, guid: 0714dffddbe2c4015b263d6107e3804d,
+    type: 2}
+  currentStage: 2
+  memPhaseSymbolCount: 0
+  numOfSymbolsPerLevel: 20
+  levelSymbols:
   - {fileID: 93256761}
   - {fileID: 1524777737}
   - {fileID: 1543782323}
@@ -16708,13 +16715,8 @@ MonoBehaviour:
   - {fileID: 1588697523}
   - {fileID: 464679669}
   memoryPhaseSymbols: []
-  symbolPrefab: {fileID: 1945153130042186, guid: 0714dffddbe2c4015b263d6107e3804d,
-    type: 2}
-  currentStage: 2
-  memPhaseSymbolCount: 0
-  levelBackGroundColors: []
-  backgroundColours: []
   sameColourSymbols: []
+  tmpColours: []
 --- !u!1 &1317813059
 GameObject:
   m_ObjectHideFlags: 0
@@ -19623,7 +19625,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 282.43155, y: 1634.4688}
+  m_Target: {x: 241.00824, y: 1392.4}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
