@@ -120,8 +120,7 @@ namespace MemoryMadness
 			List<Shape> levelSprites;
 
 			Colour bgColor = colorPicker.GetRandomColour();
-			 
-
+			
 			if( StageManager.Instance.CurrentLevelType == LevelType.UnNameableNonColour  || StageManager.Instance.CurrentLevelType == LevelType.NameableNonColour )
 			{
 				isNoColour = true;

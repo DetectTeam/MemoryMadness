@@ -90,20 +90,25 @@ namespace MemoryMadness
 				levelCount ++;
 				memoryPhaseScreen.SetActive( true );
 			}
-			else if( levelCount >= levelsPerStage && levelCount < maxNumLevelsPerStage )
-			{
-				Messenger.Broadcast( "DisableRandomLevelGenerator" );
-				Messenger.Broadcast( "ResetSDGenerator" );
+			//else if( levelCount >= levelsPerStage && levelCount < maxNumLevelsPerStage )
+			//{
+				//Messenger.Broadcast( "DisableRandomLevelGenerator" );
+				//Messenger.Broadcast( "ResetSDGenerator" );
 					
-				randomGameContainer.SetActive( false );
-				sameDifferentScreen.SetActive( true );
+				//randomGameContainer.SetActive( false );
+				//sameDifferentScreen.SetActive( true );
 					
 				//memoryPhaseScreen.SetActive( true );
-				levelCount ++;
-			}
+				//levelCount ++;
+			//}
 			else
 			{
+				
+				
 				IncrementStage();
+				Messenger.Broadcast( "DisableRandomLevelGenerator" );
+				randomGameContainer.SetActive( false );
+			
 				resultsScreen.SetActive( true );
 				Messenger.Broadcast( "Results" , 85.0f );
 				Messenger.Broadcast( "ResetLevelGenerator" );
@@ -115,23 +120,14 @@ namespace MemoryMadness
 
 		private void IncrementLevel()
 		{
-			Debug.Log( "Increment Level Called......." );
-			
-			currentLevel++;
-		
-			if( currentLevel < maxNumLevelsPerStage )
-				SetCurrentLevelType();	
-			else
-				currentLevel = 0;
-
-			//SaveLevel();
-
+			SetCurrentLevelType();	
 		}
 
 		private void IncrementStage()
 		{
 			Debug.Log( "Incrmenting Stage..." + currentStage );
 			currentStage ++;
+			currentLevel = 0;
 
 			// if( currentStage > numberOfStages )
 			// 	numberOfStages = numberOfStages;
@@ -176,8 +172,14 @@ namespace MemoryMadness
 
 		public void SetCurrentLevelType()
 		{
+			Debug.Log( "Setting Current Level Type " + currentLevel + " " + stage.Count );
+			
 			if( currentLevel < stage.Count  )
+			{
 				currentLevelType = stage[ currentLevel ]; 
+				currentLevel ++;
+			
+			}
 		}
 
 		private void RefreshStage()

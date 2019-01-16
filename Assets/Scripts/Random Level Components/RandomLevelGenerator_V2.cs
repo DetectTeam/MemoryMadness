@@ -32,6 +32,8 @@ namespace  MemoryMadness
 
 		private void OnEnable()
 		{
+			
+			Debug.Log( "I was Reset ....." );
 			//Reset the correct button count to zero
 			Messenger.Broadcast( "ResetCorrectButtonCount" );
 
@@ -42,6 +44,22 @@ namespace  MemoryMadness
 		}
 
 		
+		private void CheckCurrentStage( int currentStage )
+		{
+			Debug.Log( "CheckCurrentStage " + currentStage );
+			
+			if( currentStage <= 2 )
+				memPhaseSymbolCount = 2;
+			else if( currentStage == 3  )
+				memPhaseSymbolCount = 3;
+			else if( currentStage >=  4 )
+				memPhaseSymbolCount = 4;
+	
+			//Set the win count value in the game manager
+			Messenger.Broadcast<int>( "SetWinCount" , memPhaseSymbolCount );
+			//Messenger.Broadcast( "ResetHearts" );					
+		}
+
 		//Load all colour and shape lists
 		private void LoadLists()
 		{
@@ -104,17 +122,19 @@ namespace  MemoryMadness
 		//Stage four  5 * 4
 		private void ColourSymbols()
 		{
+			Debug.Log( "COLOUR SYMBOLS: " + memPhaseSymbolCount );
+			
 			for( int i = 0; i <  numOfSymbolsPerLevel; i++ )
 			{
 				
-				if( currentStage <= 2 ) 
+				if( memPhaseSymbolCount <= 2 ) 
 				{
 					if( i <= 9  )
 						levelBackGroundColors.Add( 	backgroundColours[0] );
 					else
 						levelBackGroundColors.Add( backgroundColours[1] );
 				}
-				else if( currentStage == 3 )
+				else if( memPhaseSymbolCount == 3 )
 				{
 					if( i <= 6 )
 					{
@@ -129,7 +149,7 @@ namespace  MemoryMadness
 						levelBackGroundColors.Add( 	backgroundColours[2] );
 					}
 				}
-				else if( currentStage > 3 )
+				else if( memPhaseSymbolCount == 4 )
 				{
 					if( i < 5 )
 						levelBackGroundColors.Add( 	backgroundColours[0] );
@@ -197,6 +217,7 @@ namespace  MemoryMadness
 
 				levelSymbols[i].SetActive( true );
 			}
+
 		}
 
 
@@ -212,12 +233,10 @@ namespace  MemoryMadness
 			//Pick symbol of different colour from symbol list.
 			for( int x = 0; x <  memPhaseSymbolCount; x++ )
 			{
-
 				sameColourSymbols = SearchByColour( backgroundColours[x].Color );
 				memorySymbol = sameColourSymbols[ Random.Range( 0, sameColourSymbols.Count - 1 ) ];
 
 				var memorySymbolsScript = memorySymbol.GetComponent<MemorySymbols>();
-				Debug.Log( "COLOR CODE : " + memorySymbolsScript.ColourCode );
 		
 				Symbol symbol = new Symbol();
 				Colour c = new Colour();
@@ -324,21 +343,6 @@ namespace  MemoryMadness
 		}
 
 
-		private void CheckCurrentStage( int currentStage )
-		{
-			currentStage = 4;
-			
-			if( currentStage <= 2 )
-				memPhaseSymbolCount = 2;
-			else if( currentStage == 3  )
-				memPhaseSymbolCount = 3;
-			else if( currentStage >=  4 )
-				memPhaseSymbolCount = 4;
-	
-			//Set the win count value in the game manager
-			Messenger.Broadcast<int>( "SetWinCount" , memPhaseSymbolCount );
-			//Messenger.Broadcast( "ResetHearts" );					
-		}
 
 		private List<GameObject> SearchByColour( Color color )
 		{
@@ -346,7 +350,6 @@ namespace  MemoryMadness
 			
 			foreach( GameObject obj in levelSymbols )
 			{
-				
 				if( color == obj.transform.Find( "BackgroundColor" ).GetComponent<Image>().color )
 					list.Add( obj );
 			}

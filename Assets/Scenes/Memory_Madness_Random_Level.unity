@@ -3181,13 +3181,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelCount: 1
-  levelsPerStage: 6
+  levelsPerStage: 2
   numberOfStages: 4
   sameDifferentScreen: {fileID: 1648664523}
   randomGameContainer: {fileID: 2089274043}
   memoryPhaseScreen: {fileID: 2004355213}
   resultsScreen: {fileID: 1766364037}
-  maxNumLevelsPerStage: 8
+  maxNumLevelsPerStage: 2
   stage: 0200000002000000000000000000000001000000010000000300000003000000
 --- !u!114 &241129533
 MonoBehaviour:
@@ -16690,7 +16690,7 @@ MonoBehaviour:
   backgroundColours: []
   symbolPrefab: {fileID: 1945153130042186, guid: 0714dffddbe2c4015b263d6107e3804d,
     type: 2}
-  currentStage: 4
+  currentStage: 1
   memPhaseSymbolCount: 0
   numOfSymbolsPerLevel: 20
   levelSymbols:
@@ -19626,7 +19626,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 241.00824, y: 1392.4}
+  m_Target: {x: 282.43155, y: 1634.4688}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
