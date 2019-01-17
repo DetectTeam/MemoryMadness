@@ -60,6 +60,6 @@ public class DialogueManager : Singleton<DialogueManager>
 	private void EndDialogue()
 	{
 		Debug.Log( "Ending Dialogue" );
-		animator.SetBool( "IsOpen", false );
+		//animator.SetBool( "IsOpen", false );
 	}
 }
