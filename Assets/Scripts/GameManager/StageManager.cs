@@ -21,6 +21,12 @@ namespace MemoryMadness
 		public int LevelCount { get{ return levelCount; } }
 		[SerializeField] private int levelsPerStage;
 		public int LevelsPerStage { get{ return levelsPerStage; } }
+		[SerializeField] private int currentLevelTypeCount;
+		[SerializeField] private int maxNumLevelsPerStage = 7;
+		[SerializeField] private static int currentStage;
+		public int CurrentStage { get{ return currentStage; } set{ currentStage = value; } }
+		[SerializeField] private  int currentLevel = 0;
+		public int CurrentLevel { get{ return currentLevel; } set{ currentLevel = value; } }
 		
 		[SerializeField] private int numberOfStages;
 		[SerializeField] private GameObject sameDifferentScreen;
@@ -32,11 +38,6 @@ namespace MemoryMadness
 		private const string CurrentStageMessage = "CurrentStage";
 		private const string CurrentLevelPrefs = "CurrentLevel";
 
-		[SerializeField] private int maxNumLevelsPerStage = 7;
-		[SerializeField] private static int currentStage;
-		public int CurrentStage { get{ return currentStage; } set{ currentStage = value; } }
-		private  int currentLevel = 0;
-		public int CurrentLevel { get{ return currentLevel; } set{ currentLevel = value; } }
 
 		[SerializeField] private List<LevelType> stage;
 		public List<LevelType> Stage { get{ return stage; } }
@@ -48,15 +49,6 @@ namespace MemoryMadness
 
 		private void Awake()
 		{
-			// if( Instance == null )
-			// {
-			// 	Instance = this;
-			// }
-			// else
-			// {
-			// 	Destroy( gameObject );
-			// }
-			
 			LoadStage();
 			levelCount = LoadLevel();
 			RefreshStage();
@@ -102,9 +94,7 @@ namespace MemoryMadness
 				//levelCount ++;
 			//}
 			else
-			{
-				
-				
+			{	
 				IncrementStage();
 				Messenger.Broadcast( "DisableRandomLevelGenerator" );
 				randomGameContainer.SetActive( false );
@@ -125,17 +115,13 @@ namespace MemoryMadness
 
 		private void IncrementStage()
 		{
-			Debug.Log( "Incrmenting Stage..." + currentStage );
 			currentStage ++;
 			currentLevel = 0;
-
-			// if( currentStage > numberOfStages )
-			// 	numberOfStages = numberOfStages;
-
-			Debug.Log( "Stage is now.. " + currentStage );
+			currentLevelTypeCount = 0;
+		
 			SaveStage();
 			RefreshStage();
-
+			SetCurrentLevelType();
 		}
 
 		private void SaveStage( )
@@ -170,15 +156,15 @@ namespace MemoryMadness
 			return level;	
 		}
 
+	
 		public void SetCurrentLevelType()
 		{
-			Debug.Log( "Setting Current Level Type " + currentLevel + " " + stage.Count );
+			Debug.Log( "Setting Current Level Type " + currentLevelTypeCount + " " + stage.Count );
 			
-			if( currentLevel < stage.Count  )
+			if( currentLevelTypeCount < stage.Count  )
 			{
-				currentLevelType = stage[ currentLevel ]; 
-				currentLevel ++;
-			
+				currentLevelType = stage[ currentLevelTypeCount ]; 
+				currentLevelTypeCount ++;
 			}
 		}
 

@@ -26,20 +26,6 @@ namespace MemoryMadness
 		
 		private SessionState sessionState; 
 	
-		// private void Awake()
-		// {
-		// 	sessionState = SessionState.Ended;
-			
-		// 	if( Instance == null )
-		// 	{
-		// 		Instance = this;
-		// 	}
-		// 	else
-		// 	{
-		// 		Destroy( gameObject );
-		// 	}
-		// }
-
 		private void OnEnable()
 		{
 			Messenger.AddListener( "CreatePlayerSelection" , CreatePlayerSelection );
@@ -116,8 +102,8 @@ namespace MemoryMadness
 				session.Nameability = "Nameable"; 
 			}	
 
-			Debug.Log( "Condition: " + session.Condition );
-			Debug.Log( "Shape Type: " + session.Nameability );
+			//Debug.Log( "Condition: " + session.Condition );
+			//Debug.Log( "Shape Type: " + session.Nameability );
 
 			PersistenceManager.Instance.FileName = session.SessionName + "_" + session.SessionTimeStamp  + ".dat";
 		}
@@ -176,7 +162,6 @@ namespace MemoryMadness
 		private void SetCorrectSlot( string slot  )
 		{
 			playerSelection.CorrectPosition = slot;
-			Debug.Log( "Correct Slot Position: " + playerSelection.CorrectPosition );
 		}
 
 
@@ -190,9 +175,6 @@ namespace MemoryMadness
 			playerSelection.RelativeTime = relativeTime.ToString();
 			playerSelection.ReactionTime = time.ToString();
 
-			Debug.Log( "Relative Time: " + playerSelection.RelativeTime );
-			Debug.Log( "Reaction Time: " + playerSelection.ReactionTime );
-
 			session.PlayerSelections.Add( playerSelection );
 			SaveSession(  );
 		}
@@ -202,8 +184,7 @@ namespace MemoryMadness
 		{
 			selectionCount ++;
 			playerSelection.Selection = selectionCount.ToString();
-			Debug.Log( "Players Current Selection " + playerSelection.Selection );
-
+			
 			CheckSelectionCorrect( selection );
 			SetPlayerSelectionLure( selection );
 			SetPlayerSelectionOtherMiss( selection );
@@ -260,13 +241,8 @@ namespace MemoryMadness
 				maxCount = 5;
 			else if( symbolCount >= 4 )
 				maxCount = 7;
-			
-			//Debug.Log( "Symbol Count: " + symbolCount );
-			
+				
 			paddingCount = maxCount - selectionCount;
-
-			//Debug.Log( maxCount + " - " + selectionCount );
-			//Debug.Log( "Padding Count: " + paddingCount );
 
 			for( int x = 0; x < paddingCount; x++ )
 			{
@@ -291,17 +267,13 @@ namespace MemoryMadness
 
 		private void SaveSession( )
 		{
-			Debug.Log( "Saving Session" );
 			PersistenceManager.Instance.Save( session );
-			string jsonString = JsonConvert.SerializeObject( session );
-			Debug.Log( ">>>>>>> " + jsonString + " <<<<<<<<<<" );
+			string jsonString = JsonConvert.SerializeObject( session );	
 		}	
 
 		//Fix This !!
 		public void EndSession( int levelCount , int levelsPerStage )
 		{
-			Debug.Log( "Ending Session...." );
-			
 			string jsonString = "";
 		
             PadSelections( session.SymbolArraySize, selectionCount );
@@ -325,8 +297,6 @@ namespace MemoryMadness
 
 		private void OnApplicationQuit()
 		{
-			Debug.Log( "QUITTING APPLICATION ......." );
-
 			if( sessionState == SessionState.Started )
 			{
 				session.ApplicationQuit = "1";
@@ -336,10 +306,7 @@ namespace MemoryMadness
 				#if !UNITY_EDITOR
 					EndSession( StageManager.Instance.LevelCount , StageManager.Instance.LevelsPerStage );
 				#endif
-			}
-
-			Debug.Log( "Clean Up Complete......." );
-			
+			}			
 		}
 
 	}

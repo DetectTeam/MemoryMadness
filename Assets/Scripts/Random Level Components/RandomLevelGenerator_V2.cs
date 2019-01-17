@@ -32,8 +32,6 @@ namespace  MemoryMadness
 
 		private void OnEnable()
 		{
-			
-			Debug.Log( "I was Reset ....." );
 			//Reset the correct button count to zero
 			Messenger.Broadcast( "ResetCorrectButtonCount" );
 
@@ -46,8 +44,6 @@ namespace  MemoryMadness
 		
 		private void CheckCurrentStage( int currentStage )
 		{
-			Debug.Log( "CheckCurrentStage " + currentStage );
-			
 			if( currentStage <= 2 )
 				memPhaseSymbolCount = 2;
 			else if( currentStage == 3  )
@@ -122,8 +118,6 @@ namespace  MemoryMadness
 		//Stage four  5 * 4
 		private void ColourSymbols()
 		{
-			Debug.Log( "COLOUR SYMBOLS: " + memPhaseSymbolCount );
-			
 			for( int i = 0; i <  numOfSymbolsPerLevel; i++ )
 			{
 				
@@ -210,14 +204,12 @@ namespace  MemoryMadness
 					levelSymbols[i].transform.Find( "BackgroundColor" ).GetComponent<Image>().color = backgroundColours[0].Color;
 					memSymbolsScript.ColourCode = backgroundColours[0].ColourCode;
 				}
-	
-				
+			
 				levelSymbols[i].transform.Find( "Rune" ).GetComponent<Image>().sprite = RandomShapePicker( i , levelSprites ).Image;
 				memSymbolsScript.ShapeCode = RandomShapePicker( i, levelSprites ).ShapeCode;
 
 				levelSymbols[i].SetActive( true );
 			}
-
 		}
 
 
@@ -329,7 +321,6 @@ namespace  MemoryMadness
 			memorySymbolsScript.IsColourSwitched = true;
 			
 			memoryPhaseSymbols.Add( symbol );
-		
 		}
 
 		private Shape RandomShapePicker( int currentIndex, List<Shape> shapes )
@@ -341,8 +332,6 @@ namespace  MemoryMadness
 
 			return shapes[ currentIndex ];
 		}
-
-
 
 		private List<GameObject> SearchByColour( Color color )
 		{
@@ -373,11 +362,8 @@ namespace  MemoryMadness
         [SerializeField] private List<Color> tmpColours;
 		[SerializeField] private List<Color> tmpColoursShuffled;
 		private void ColourSwitchSymbols()
-		{
-			Debug.Log( "Colour Switching Symbols...." );
-			
+		{		
 			bool  isSelectable = false;
-
 
 			if( tmpColours.Count > 0 )
 				tmpColours.Clear();
@@ -389,7 +375,6 @@ namespace  MemoryMadness
 
 			for( int x = 0; x < memoryPhaseSymbols.Count; x++ )
 			{
-				
 				tmpColours.Add( memoryPhaseSymbols[x].BackgroundColor.Color );
 			}
 
@@ -412,8 +397,7 @@ namespace  MemoryMadness
 				
 				tmp = tmpColoursShuffled [ 1 ];
 				tmpColoursShuffled[ 1 ] = tmpColoursShuffled[ 2 ];
-				tmpColoursShuffled[ 2 ] = tmp;
-					
+				tmpColoursShuffled[ 2 ] = tmp;		
 			}
 
 			if( memoryPhaseSymbols.Count == 4 )
@@ -448,6 +432,5 @@ namespace  MemoryMadness
 				}						
 			}
 		 }	
-
 	}
 }
