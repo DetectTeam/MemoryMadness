@@ -6,7 +6,7 @@ using TMPro;
 
 public class DialogueManager : Singleton<DialogueManager> 
 {
-	[SerializeField] private TextMeshProUGUI nameText;
+	//[SerializeField] private TextMeshProUGUI nameText;
 	[SerializeField] private TextMeshProUGUI dialogueText;
 	[SerializeField] private Queue<string> sentences; 
 	[SerializeField] private Animator animator;
@@ -19,7 +19,7 @@ public class DialogueManager : Singleton<DialogueManager>
 	public void StartDialogue( Dialogue dialogue )
 	{
 		Debug.Log( "Starting Dialogue..." );
-		nameText.text = dialogue.name;
+		//nameText.text = dialogue.name;
 
 		sentences.Clear();
 

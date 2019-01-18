@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 namespace MemoryMadness
 {
-
-	
 	public class MemorySymbols : MonoBehaviour 
 	{
 		[SerializeField] private string name;
@@ -166,7 +164,5 @@ namespace MemoryMadness
 			rune.SetActive( true );
 			EnableButton();
 		}
-	
 	}
-
 }
