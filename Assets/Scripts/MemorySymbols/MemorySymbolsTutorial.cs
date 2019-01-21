@@ -38,6 +38,8 @@ namespace  MemoryMadness
 		[SerializeField] private GameObject button;
 		public GameObject Button { get{ return button; } set{ button = value; } }
 
+		[SerializeField] private bool interactive = true;
+
 
 		private void Start () 
 		{
@@ -46,6 +48,11 @@ namespace  MemoryMadness
 	
 		public void ButtonCheck()
 		{	
+			
+			if( !interactive )
+				return;
+			
+			
 			if( isCorrect )
 			{
 				PunchScale();
