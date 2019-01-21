@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class CoRoutineSlave : Singleton<CoRoutineSlave>
 {
-
-	public void ExecCoroutine( IEnumerator coRoutine )
+	public IEnumerator ExecCoroutine( IEnumerator coRoutine )
 	{
 		StartCoroutine( coRoutine );
+
+		return coRoutine;
 	}
 }

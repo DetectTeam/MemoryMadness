@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScalePop : MonoBehaviour 
 {
 	[SerializeField] private Vector3 target;
+	[SerializeField] private float delay = 1.0f;
 	// Use this for initialization
 	
 	
@@ -20,7 +21,7 @@ public class ScalePop : MonoBehaviour
 
 	private IEnumerator Sequence()
 	{
-		yield return new WaitForSeconds( 1.0f );
+		yield return new WaitForSeconds( delay);
 		ScaleP();
 	}
 

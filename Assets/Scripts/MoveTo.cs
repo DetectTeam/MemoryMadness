@@ -5,16 +5,19 @@ using UnityEngine;
 public class MoveTo : MonoBehaviour 
 {
 	[SerializeField] private Vector3 startPosition;
+	public Vector3 StartPosition { get{ return startPosition; } set{ startPosition = value; } }
+
 	[SerializeField] private Vector3 target;
+	public Vector3 Target { get{ return target; } set{ target = value; } }
 
-
-	[SerializeField] private float delay;
+	[SerializeField] private float delay = 0.3f;
+	public float Delay { get{ return delay; } set{ delay = value; } }
 
 	// Use this for initialization
 	
 	private void OnEnable()
 	{
-		StartCoroutine( Move() );
+		StartCoroutine( IEMove() );
 	}
 
 	private void OnDisable()
@@ -22,12 +25,12 @@ public class MoveTo : MonoBehaviour
 		transform.localPosition = startPosition;
 	}
 
-	private void Start () 
+	public void Move()
 	{
-		
+		StartCoroutine( IEMove() );
 	}
 
-	private IEnumerator Move()
+	private IEnumerator IEMove()
 	{
 		yield return null;
 		
@@ -35,7 +38,7 @@ public class MoveTo : MonoBehaviour
 			"position", target,
 			"islocal" , true,
 			"easetype",iTween.EaseType.easeInOutSine,
-			"time", 0.3f ));    
+			"time", delay ));    
 	}
 	
 	

@@ -10,6 +10,7 @@ public class DialogueManager : Singleton<DialogueManager>
 	[SerializeField] private TextMeshProUGUI dialogueText;
 	[SerializeField] private Queue<string> sentences; 
 	[SerializeField] private Animator animator;
+	[SerializeField] private Button btnContinue;
 
 	private void Start () 
 	{
@@ -31,6 +32,7 @@ public class DialogueManager : Singleton<DialogueManager>
 		DisplayNextSentence();
 	}
 
+	private int count = 0;
 	public void DisplayNextSentence()
 	{
 		Debug.Log( sentences.Count );
@@ -55,11 +57,14 @@ public class DialogueManager : Singleton<DialogueManager>
 			dialogueText.text += letter;
 			yield return null;
 		}
+
+		btnContinue.gameObject.SetActive( true );
 	}
 
 	private void EndDialogue()
 	{
 		Debug.Log( "Ending Dialogue" );
+		Messenger.Broadcast( "SectionOver" );
 		//animator.SetBool( "IsOpen", false );
 	}
 }

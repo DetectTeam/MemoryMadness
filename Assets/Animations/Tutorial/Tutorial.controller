@@ -13,7 +13,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 1
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -27,7 +27,7 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!114 &114613340923066516
+--- !u!114 &114677691706611474
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -35,11 +35,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8dec062359824c19b6d8ff5255220d2, type: 3}
+  m_Script: {fileID: 11500000, guid: a6174642b684b48bb923e8d227fe25ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 3
+  delay: 10
   anim: {fileID: 0}
+  symbolContainer: {fileID: 0}
+  dialogues:
+  - name: 
+    sentences:
+    - Welcome ...............
+    - Memorize the above symbols.....
+    - Click continue when you are ready  to proceed......
+  - name: 
+    sentences:
+    - Game Dialogue yay !!!!
+    - Explain the fundamentals
+    - Tell user to select the correct symbols....
+  dialogueBox: {fileID: 0}
+  gameContainer: {fileID: 0}
 --- !u!114 &114709967953630808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -53,6 +67,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 10
   anim: {fileID: 0}
+  symbolContainer: {fileID: 0}
+  dialogues: []
+  dialogueBox: {fileID: 0}
+  gameContainer: {fileID: 0}
+--- !u!114 &114959745503403134
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 039209e2a8fd548259441218769f3985, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 10
+  anim: {fileID: 0}
+  symbolContainer: {fileID: 0}
 --- !u!1101 &1101023242303322940
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -306,7 +338,7 @@ AnimatorState:
   - {fileID: 1101762454643856036}
   - {fileID: 1101508443369646840}
   m_StateMachineBehaviours:
-  - {fileID: 114709967953630808}
+  - {fileID: 114677691706611474}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -335,7 +367,7 @@ AnimatorState:
   - {fileID: 1101575908040975896}
   - {fileID: 1101607385178360180}
   m_StateMachineBehaviours:
-  - {fileID: 114613340923066516}
+  - {fileID: 114959745503403134}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -440,7 +472,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102444169746567154}
-    m_Position: {x: 420, y: -36, z: 0}
+    m_Position: {x: 300, y: -48, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102678212262054424}
     m_Position: {x: 420, y: 60, z: 0}

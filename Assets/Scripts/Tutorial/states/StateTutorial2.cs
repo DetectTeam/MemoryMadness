@@ -2,30 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateStartTutorial1 : StateMachineBehaviour 
+public class StateTutorial2 : StateMachineBehaviour 
 {
-
 	[SerializeField] private float delay = 3.0f;
+
 	[SerializeField] private Animator anim;
+    [SerializeField] private GameObject symbolContainer;
 
 	public override void OnStateEnter( Animator animator, AnimatorStateInfo stateInfo, int layerIndex )
 	{
 		anim = animator;
-		
-		IEnumerator coRoutine = Tutorial1();
-		
-		CoRoutineSlave.Instance.ExecCoroutine( coRoutine );
-
-		
+		CoRoutineSlave.Instance.ExecCoroutine( Sequence() );
 	}
 
-	private IEnumerator Tutorial1(  )
+
+	//Tutorial 2	
+	private IEnumerator Sequence()
 	{
+		Debug.Log( "Starting Tutorial 2" );
+	
 		yield return new WaitForSeconds( delay );
-		Debug.Log( "Finished Tutorial One" );
 
-		anim.SetInteger( "Tutorial" , 2 );
-
+		anim.SetInteger( "Tutorial" , 3 );
+		Debug.Log( "Im done here..." );
 	}
-
 }
