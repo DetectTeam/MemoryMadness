@@ -54,10 +54,10 @@ MonoBehaviour:
 
 '
     - Good Job on finding the first symbol.....Now try for the second one....
-    - ' Good Job ... You have successfully completed your first level.
-
-      Click continue to proceed to the second tutorial'
+    - ' Good Job ... You have successfully completed your first level. Click continue
+      to proceed to the second tutorial'
   dialogueBox: {fileID: 0}
+  gameOuterContainer: {fileID: 0}
   gameContainer: {fileID: 0}
   symbolHighlights:
   - {fileID: 0}
@@ -79,6 +79,7 @@ MonoBehaviour:
   symbolContainer: {fileID: 0}
   dialogues: []
   dialogueBox: {fileID: 0}
+  gameOuterContainer: {fileID: 0}
   gameContainer: {fileID: 0}
   symbolHighlights: []
   buttonCount: 0
@@ -96,6 +97,17 @@ MonoBehaviour:
   delay: 10
   anim: {fileID: 0}
   symbolContainer: {fileID: 0}
+  dialogues:
+  - name: 
+    sentences:
+    - 'In this tutorial we will learn the consequences of failure '
+    - Memorize the symbols and click continue when you are ready
+  dialogueBox: {fileID: 0}
+  gameContainer: {fileID: 0}
+  memoryPhaseOuterContainer: {fileID: 0}
+  memoryPhaseContainer: {fileID: 0}
+  symbolHighlights: []
+  buttonCount: 0
 --- !u!1101 &1101023242303322940
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

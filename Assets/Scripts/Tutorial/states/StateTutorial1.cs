@@ -9,11 +9,15 @@ public class StateTutorial1 : StateMachineBehaviour
 	[SerializeField] private GameObject symbolContainer;
 	[SerializeField] private List<Dialogue> dialogues;
 	[SerializeField] private GameObject dialogueBox;
+	
+	[SerializeField] private GameObject gameOuterContainer;
 	[SerializeField] private GameObject gameContainer;
 
 	[SerializeField] private GameObject[] symbolHighlights;
 
 	[SerializeField] private int buttonCount;
+
+	private MoveTo moveDialog;
 
 	private bool isSectionComplete = false;
 	public bool IsSectionComplete { get{ return isSectionComplete; } set{ isSectionComplete = value; } }
@@ -35,9 +39,23 @@ public class StateTutorial1 : StateMachineBehaviour
 		dialogueBox = GameObject.Find( "DialogueBox" );
 		
 		if( !dialogueBox )
+		{
 			Debug.Log( "DialogueBox Not Found" );
+			return;
+		}
 
-		gameContainer = (GameObject)GameObject.Find( "GameOuterContainer" ).transform.Find( "GameContainer" ).gameObject;
+		moveDialog = dialogueBox.GetComponent<MoveTo>();
+
+		if( !moveDialog )
+		{
+			Debug.Log( "Dialog Script MoveTo Not Found" );
+			return;
+		}
+
+
+		
+		gameOuterContainer = (GameObject)GameObject.Find( "GameOuterContainer" );
+		gameContainer = gameOuterContainer.transform.Find( "GameContainer" ).gameObject;
 
 		if( !gameContainer )
 			Debug.Log( "GameContainer Not Found" );
@@ -69,17 +87,20 @@ public class StateTutorial1 : StateMachineBehaviour
 		Debug.Log( "Transitioning to Game Phase" );
 	
 		//Hide Dialogue Box
-		MoveDialogueBox( new Vector3( 0f, -350f, 0f ) , new Vector3( 0f, -1000f, 0f ) );
+		dialogueBox.transform.SetSiblingIndex( 2 );
+		
+		moveDialog.Move( 0.3f , new Vector3( 0f, -350f, 0f ) , new Vector3( 0f, -1000f, 0f ) );
 		
 		yield return new WaitForSeconds( 1.5f );
 
 		//Activate the Game Container
+		gameOuterContainer.transform.SetSiblingIndex( 1 );
 		gameContainer.SetActive( true );
 
 		yield return new WaitForSeconds( 1f );
 
 		//Display DialogueBox on Game Screen
-		MoveDialogueBox( new Vector3( 0f, -1000f, 0f ) , new Vector3( 0f, -350f, 0f ) );
+		moveDialog.Move( 0.3f, new Vector3( 0f, -1000f, 0f ) , new Vector3( 0f, -350f, 0f ) );
 		
 		//Start Second Dialogue
 		DialogueManager.Instance.StartDialogue( dialogues[1] );
@@ -88,6 +109,10 @@ public class StateTutorial1 : StateMachineBehaviour
 		while( !isSectionComplete )
 			yield return null;
 
+		//Hide Dialogue Box
+		moveDialog.Move( 0.3f, new Vector3( 0f, -350f, 0f ) , new Vector3( 0f, -1000f, 0f ) );
+		
+		yield return new WaitForSeconds( 1.5f );
 
 		Debug.Log( "On to Tutorial 2" );
 

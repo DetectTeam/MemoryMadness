@@ -30,6 +30,14 @@ public class MoveTo : MonoBehaviour
 		StartCoroutine( IEMove() );
 	}
 
+	public void Move( float delay, Vector3 startPosition, Vector3 target  )
+	{
+		this.delay = delay;
+		this.startPosition = startPosition;
+		this.target = target;
+
+		StartCoroutine( IEMove() );
+	}
 	private IEnumerator IEMove()
 	{
 		yield return null;
