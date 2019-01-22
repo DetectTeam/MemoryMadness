@@ -13,6 +13,8 @@ public class StateTutorial1 : StateMachineBehaviour
 	[SerializeField] private GameObject gameOuterContainer;
 	[SerializeField] private GameObject gameContainer;
 
+	[SerializeField] private GameObject memorySymbolContainer;
+
 	[SerializeField] private GameObject[] symbolHighlights;
 
 	[SerializeField] private int buttonCount;
@@ -51,9 +53,7 @@ public class StateTutorial1 : StateMachineBehaviour
 			Debug.Log( "Dialog Script MoveTo Not Found" );
 			return;
 		}
-
-
-		
+	
 		gameOuterContainer = (GameObject)GameObject.Find( "GameOuterContainer" );
 		gameContainer = gameOuterContainer.transform.Find( "GameContainer" ).gameObject;
 
@@ -114,7 +114,7 @@ public class StateTutorial1 : StateMachineBehaviour
 
 		//Clear Dialogue Box
 
-		
+
 		
 		yield return new WaitForSeconds( 1.5f );
 

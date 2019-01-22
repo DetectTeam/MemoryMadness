@@ -13,7 +13,7 @@ public class StateTutorial2 : StateMachineBehaviour
 	[SerializeField] private GameObject gameContainer;
 	[SerializeField] private GameObject memoryPhaseOuterContainer;
 	[SerializeField] private GameObject memoryPhaseContainer;
-
+	[SerializeField] private GameObject memoryPhaseSymbols;
 	[SerializeField] private GameObject[] symbolHighlights;
 
 	private MoveTo moveDialog;
@@ -43,11 +43,39 @@ public class StateTutorial2 : StateMachineBehaviour
 		memoryPhaseOuterContainer = GameObject.Find( "MemoryPhaseOuterContainer" );
 		memoryPhaseContainer = memoryPhaseOuterContainer.transform.Find( "MemoryPhaseContainer" ).gameObject;
 
+		//Swtich Memory Symbols
+		var previousMemorySymbols = memoryPhaseContainer.transform.Find( "MemoryPhaseSymbols1" ).gameObject;
+		var currentMemorySymbols = memoryPhaseContainer.transform.Find( "MemoryPhaseSymbols2" ).gameObject;
+
+		if( !previousMemorySymbols  || !currentMemorySymbols)
+		{
+			Debug.Log( "Memory Symbols Not Found" );
+			return;
+		}
+
+		previousMemorySymbols.SetActive( false );
+		currentMemorySymbols.SetActive( true );
+
 		gameOuterContainer = (GameObject)GameObject.Find( "GameOuterContainer" );
 		gameContainer = gameOuterContainer.transform.Find( "GameContainer" ).gameObject;
+		
+		var randomGameContainer = gameContainer.transform.Find( "RandomLevelContainer" ).gameObject;
 
 		if( !gameContainer )
 			Debug.Log( "GameContainer Not Found" );
+
+		//Switch Game Symbols
+		var previousGameSymbols = randomGameContainer.transform.Find( "SymbolContainer1" ).gameObject;
+		var currentGameSymbols = randomGameContainer.transform.Find( "SymbolContainer2" ).gameObject;
+
+		if( !previousGameSymbols  || !currentGameSymbols)
+		{
+			Debug.Log( "Memory Symbols Not Found" );
+			return;
+		}
+
+		previousGameSymbols.SetActive( false );
+		currentGameSymbols.SetActive( true );
 
 		dialogueBox = GameObject.Find( "DialogueBox" );
 		
