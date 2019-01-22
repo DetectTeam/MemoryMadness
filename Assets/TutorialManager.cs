@@ -15,6 +15,10 @@ namespace MemoryMadness
 
 		[SerializeField] private GameObject continueButton;
 
+		[SerializeField] private GameObject[] memorySymbolsSets;
+
+		[SerializeField] private GameObject[] gameSymbolsSets;
+
 		private bool isButtonNeeded = true;
 		public bool IsButtonNeeded { get{ return isButtonNeeded; } set{ isButtonNeeded = value; } }
 		
@@ -88,6 +92,23 @@ namespace MemoryMadness
 			
 			continueButton.SetActive( false );
 		}
-	
+
+		public void EnableMemorySymbols( int index  )
+		{
+			memorySymbolsSets[index].SetActive( true );
+		}
+		public void DisableMemorySymbols( int index )
+		{
+			memorySymbolsSets[index].SetActive( false );
+		}
+
+		public void EnableGameSymbols( int index  )
+		{
+			gameSymbolsSets[ index ].SetActive( true );
+		}
+		public void DisableGameSymbols( int index )
+		{
+			gameSymbolsSets[ index ].SetActive( false );
+		}
 	}
 }

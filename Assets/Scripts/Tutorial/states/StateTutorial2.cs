@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MemoryMadness;
 
 public class StateTutorial2 : StateMachineBehaviour 
 {
@@ -39,22 +40,16 @@ public class StateTutorial2 : StateMachineBehaviour
 		anim = animator;
 		isSectionComplete = false;
 
+		//Hide the previous Game Symbols
+		TutorialManager.Instance.DisableMemorySymbols( 0 );
+		TutorialManager.Instance.EnableMemorySymbols( 1 );
+
+		TutorialManager.Instance.DisableGameSymbols( 0 );
+		TutorialManager.Instance.EnableGameSymbols( 1 );
+
 		//Get the memory Phase Container
 		memoryPhaseOuterContainer = GameObject.Find( "MemoryPhaseOuterContainer" );
 		memoryPhaseContainer = memoryPhaseOuterContainer.transform.Find( "MemoryPhaseContainer" ).gameObject;
-
-		//Swtich Memory Symbols
-		var previousMemorySymbols = memoryPhaseContainer.transform.Find( "MemoryPhaseSymbols1" ).gameObject;
-		var currentMemorySymbols = memoryPhaseContainer.transform.Find( "MemoryPhaseSymbols2" ).gameObject;
-
-		if( !previousMemorySymbols  || !currentMemorySymbols)
-		{
-			Debug.Log( "Memory Symbols Not Found" );
-			return;
-		}
-
-		previousMemorySymbols.SetActive( false );
-		currentMemorySymbols.SetActive( true );
 
 		gameOuterContainer = (GameObject)GameObject.Find( "GameOuterContainer" );
 		gameContainer = gameOuterContainer.transform.Find( "GameContainer" ).gameObject;
@@ -64,18 +59,6 @@ public class StateTutorial2 : StateMachineBehaviour
 		if( !gameContainer )
 			Debug.Log( "GameContainer Not Found" );
 
-		//Switch Game Symbols
-		var previousGameSymbols = randomGameContainer.transform.Find( "SymbolContainer1" ).gameObject;
-		var currentGameSymbols = randomGameContainer.transform.Find( "SymbolContainer2" ).gameObject;
-
-		if( !previousGameSymbols  || !currentGameSymbols)
-		{
-			Debug.Log( "Memory Symbols Not Found" );
-			return;
-		}
-
-		previousGameSymbols.SetActive( false );
-		currentGameSymbols.SetActive( true );
 
 		dialogueBox = GameObject.Find( "DialogueBox" );
 		
@@ -129,7 +112,6 @@ public class StateTutorial2 : StateMachineBehaviour
 
 		yield return new WaitForSeconds( 1.0f );
 
-
 		//Activate the Game Container
 		gameOuterContainer.transform.SetSiblingIndex( 1 );
 		gameContainer.SetActive( true );
@@ -147,7 +129,6 @@ public class StateTutorial2 : StateMachineBehaviour
 		//Wait for user to exhaust dialogue
 		while( !isSectionComplete )
 			yield return null;
-
 
 		Debug.Log( "Done !!!!" );
 
