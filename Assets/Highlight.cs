@@ -26,34 +26,50 @@ public class Highlight : MonoBehaviour
 		mag2 = targetScale.magnitude; 
 		//StartCoroutine( DisplayHighLight() );
 		isScaling = true;
+
+		Messenger.AddListener( "ToggleHighLight" , ToggleHighlight );
+
 	}
 
-	private void Update()
+	private void OnDisable()
 	{
-		if( isScaling )
-		{
-			 transform.localScale = Vector3.Lerp ( transform.localScale, targetScale, speed * Time.deltaTime );
-			 mag = transform.localScale.magnitude;
-
-			float dist = Vector3.Distance( transform.localScale, targetScale);
-
-			if( dist < 1.0f )
-				FadeOut( speed );
-
-			 if( dist < 0.6f )
-			 { 
-				 isScaling = false;
-				 Debug.Log( "Finished Scaling..." );
-				
-				// FadeOut( speed - 0.5f );
-			 }	
-		}
-		else
-		{
-			Reset();
-			isScaling = true;
-		}
+		Messenger.RemoveListener( "ToggleHighLight" , ToggleHighlight );
 	}
+
+	private void ToggleHighlight()
+	{
+		if( color.a == 1.0f )
+			color.a = 0.0f;
+		else
+			color.a = 1.0f;
+	}
+
+	// private void Update()
+	// {
+	// 	if( isScaling )
+	// 	{
+	// 		 transform.localScale = Vector3.Lerp ( transform.localScale, targetScale, speed * Time.deltaTime );
+	// 		 mag = transform.localScale.magnitude;
+
+	// 		float dist = Vector3.Distance( transform.localScale, targetScale);
+
+	// 		if( dist < 1.0f )
+	// 			FadeOut( speed );
+
+	// 		 if( dist < 0.6f )
+	// 		 { 
+	// 			 isScaling = false;
+	// 			 Debug.Log( "Finished Scaling..." );
+				
+	// 			// FadeOut( speed - 0.5f );
+	// 		 }	
+	// 	}
+	// 	else
+	// 	{
+	// 		Reset();
+	// 		isScaling = true;
+	// 	}
+	// }
 
 	private float alpha = 1.0f;
 	[SerializeField] private float fadeSpeed;

@@ -40,6 +40,8 @@ namespace  MemoryMadness
 
 		[SerializeField] private bool interactive = true;
 
+		[SerializeField] private GameObject symbolHighlight;
+
 
 		private void Start () 
 		{
@@ -58,9 +60,13 @@ namespace  MemoryMadness
 				PunchScale();
 				successColor.SetActive( true );
 				successImage.SetActive( true );
+
+				symbolHighlight.SetActive( false );
 			
 				DisableButton();
 
+				Messenger.Broadcast( "DisplayNextSentence" );
+				//Messenger.Broadcast( "IncrementDialogCount" );
 				Messenger.Broadcast<int>( "IncreaseScore" , 100 );
 			}
 			else
@@ -95,6 +101,14 @@ namespace  MemoryMadness
 		public void DisableButton()
 		{
 			button.SetActive( false );
+		}
+
+		public void ToggleHighlight()
+		{
+			if( symbolHighlight.activeSelf )
+				symbolHighlight.SetActive( false );
+			else
+				symbolHighlight.SetActive( true );
 		}
 	}
 }

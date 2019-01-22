@@ -11,6 +11,10 @@ public class StateTutorial1 : StateMachineBehaviour
 	[SerializeField] private GameObject dialogueBox;
 	[SerializeField] private GameObject gameContainer;
 
+	[SerializeField] private GameObject[] symbolHighlights;
+
+	[SerializeField] private int buttonCount;
+
 	private bool isSectionComplete = false;
 	public bool IsSectionComplete { get{ return isSectionComplete; } set{ isSectionComplete = value; } }
 
@@ -39,10 +43,8 @@ public class StateTutorial1 : StateMachineBehaviour
 			Debug.Log( "GameContainer Not Found" );
 	
 		CoRoutineSlave.Instance.ExecCoroutine( Sequence() );
-	
 	}
 	
-
 	private void SectionOver()
 	{
 		isSectionComplete = true;
@@ -62,7 +64,10 @@ public class StateTutorial1 : StateMachineBehaviour
 		//Wait for user to exhaust dialogue
 		while( !isSectionComplete )
 			yield return null;
-
+	
+		isSectionComplete = false;
+		Debug.Log( "Transitioning to Game Phase" );
+	
 		//Hide Dialogue Box
 		MoveDialogueBox( new Vector3( 0f, -350f, 0f ) , new Vector3( 0f, -1000f, 0f ) );
 		
@@ -73,15 +78,20 @@ public class StateTutorial1 : StateMachineBehaviour
 
 		yield return new WaitForSeconds( 1f );
 
-		
 		//Display DialogueBox on Game Screen
 		MoveDialogueBox( new Vector3( 0f, -1000f, 0f ) , new Vector3( 0f, -350f, 0f ) );
 		
 		//Start Second Dialogue
 		DialogueManager.Instance.StartDialogue( dialogues[1] );
 
-		isSectionComplete = false;
-		Debug.Log( "Transitioning to Game Phase" );
+		//Wait for user to exhaust dialogue
+		while( !isSectionComplete )
+			yield return null;
+
+
+		Debug.Log( "On to Tutorial 2" );
+
+		anim.SetInteger( "Tutorial" , 2 );
 	}
 
 	private void MoveDialogueBox( Vector3 startPosition, Vector3 endPosition )

@@ -50,13 +50,19 @@ MonoBehaviour:
   - name: 
     sentences:
     - This is the main game screen. this is where all the magic happens
-    - Symbols .........
-    - Prompt user to find symbols....
-    - Good Job on finding the first symbol....
-    - Now try for the second one....
-    - Good Job...
+    - 'Prompt user to find symbols...
+
+'
+    - Good Job on finding the first symbol.....Now try for the second one....
+    - ' Good Job ... You have successfully completed your first level.
+
+      Click continue to proceed to the second tutorial'
   dialogueBox: {fileID: 0}
   gameContainer: {fileID: 0}
+  symbolHighlights:
+  - {fileID: 0}
+  - {fileID: 0}
+  buttonCount: 0
 --- !u!114 &114709967953630808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -74,6 +80,8 @@ MonoBehaviour:
   dialogues: []
   dialogueBox: {fileID: 0}
   gameContainer: {fileID: 0}
+  symbolHighlights: []
+  buttonCount: 0
 --- !u!114 &114959745503403134
 MonoBehaviour:
   m_ObjectHideFlags: 1
