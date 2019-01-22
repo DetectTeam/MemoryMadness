@@ -42,6 +42,15 @@ namespace  MemoryMadness
 
 		[SerializeField] private GameObject symbolHighlight;
 
+		//Symbols rune or symbol
+		[SerializeField] private GameObject rune;
+		public GameObject Rune { get{ return rune; } set{ rune = value; } }
+
+
+		private void OnDisable()
+		{
+			Reset();
+		}
 
 		private void Start () 
 		{
@@ -109,6 +118,18 @@ namespace  MemoryMadness
 				symbolHighlight.SetActive( false );
 			else
 				symbolHighlight.SetActive( true );
+		}
+
+		public void Reset()
+		{
+			//isCorrect = false;
+			successColor.SetActive( false );
+			successImage.SetActive( false ); 
+			errorImage.SetActive( false );
+			
+			backgroundColor.SetActive( true );
+			rune.SetActive( true );
+			//EnableButton();
 		}
 	}
 }

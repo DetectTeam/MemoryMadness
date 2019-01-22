@@ -316,6 +316,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: ToggleSymbolHighlights
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114383848547964142
@@ -351,7 +362,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1535678556612742}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d73bbfb08db1942ee85bdaebf29d776d, type: 3}
   m_Name: 
@@ -425,6 +436,7 @@ MonoBehaviour:
   button: {fileID: 1224073952743726}
   interactive: 1
   symbolHighlight: {fileID: 1535678556612742}
+  rune: {fileID: 1951823544492016}
 --- !u!114 &114835054079706078
 MonoBehaviour:
   m_ObjectHideFlags: 1
