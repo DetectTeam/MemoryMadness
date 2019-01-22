@@ -9,8 +9,8 @@ public class StateTutorial2 : StateMachineBehaviour
 	[SerializeField] private GameObject symbolContainer;
 	[SerializeField] private List<Dialogue> dialogues;
 	[SerializeField] private GameObject dialogueBox;
+	[SerializeField] private GameObject gameOuterContainer;
 	[SerializeField] private GameObject gameContainer;
-
 	[SerializeField] private GameObject memoryPhaseOuterContainer;
 	[SerializeField] private GameObject memoryPhaseContainer;
 
@@ -23,13 +23,31 @@ public class StateTutorial2 : StateMachineBehaviour
 	private bool isSectionComplete = false;
 	public bool IsSectionComplete { get{ return isSectionComplete; } set{ isSectionComplete = value; } }
 
+
+	public void OnEnable()
+	{
+		Messenger.AddListener( "SectionOver" , SectionOver );
+	}
+
+	public void OnDisable()
+	{
+		Messenger.RemoveListener( "SectionOver" , SectionOver );
+	}
+
 	public override void OnStateEnter( Animator animator, AnimatorStateInfo stateInfo, int layerIndex )
 	{
 		anim = animator;
+		isSectionComplete = false;
 
-			//Get the memory Phase Container
+		//Get the memory Phase Container
 		memoryPhaseOuterContainer = GameObject.Find( "MemoryPhaseOuterContainer" );
 		memoryPhaseContainer = memoryPhaseOuterContainer.transform.Find( "MemoryPhaseContainer" ).gameObject;
+
+		gameOuterContainer = (GameObject)GameObject.Find( "GameOuterContainer" );
+		gameContainer = gameOuterContainer.transform.Find( "GameContainer" ).gameObject;
+
+		if( !gameContainer )
+			Debug.Log( "GameContainer Not Found" );
 
 		dialogueBox = GameObject.Find( "DialogueBox" );
 		
@@ -52,10 +70,10 @@ public class StateTutorial2 : StateMachineBehaviour
 
 	}
 
-
 	//Tutorial 2	
 	private IEnumerator Sequence()
 	{
+		
 		Debug.Log( "Starting Tutorial 2" );
 	
 		//Display MemoryPhase Screen
@@ -63,6 +81,8 @@ public class StateTutorial2 : StateMachineBehaviour
 		memoryPhaseContainer.SetActive( true );
 		yield return new WaitForSeconds( delay );
 
+		
+		//Play Dialog
 		dialogueBox.transform.SetSiblingIndex( 2 );
 		moveDialog.Move( 0.3f, new Vector3( 0f, -1000f, 0f ) , new Vector3( 0f, -350f, 0  ) );
 
@@ -71,9 +91,44 @@ public class StateTutorial2 : StateMachineBehaviour
 		//Display first Dialogue. 
 		DialogueManager.Instance.StartDialogue( dialogues[0] );
 
+		//Wait for user to exhaust dialogue
+		while( !isSectionComplete )
+			yield return null;
+
+
+		//Hide dialog box
+		moveDialog.Move( 0.3f, new Vector3( 0f, -350f, 0f ) , new Vector3( 0f, -1000f, 0  ) );
+
+		yield return new WaitForSeconds( 1.0f );
+
+
+		//Activate the Game Container
+		gameOuterContainer.transform.SetSiblingIndex( 1 );
+		gameContainer.SetActive( true );
+
+		yield return new WaitForSeconds( 1.0f );
+
+		//Show dialog Box
+		moveDialog.Move( 0.3f, new Vector3( 0f, -1000f, 0f ) , new Vector3( 0f, -350f, 0  ) );
+
+		yield return new WaitForSeconds( 1.0f );
+
+		//Display first Dialogue. 
+		DialogueManager.Instance.StartDialogue( dialogues[1] );
 		
+		//Wait for user to exhaust dialogue
+		while( !isSectionComplete )
+			yield return null;
+
+
+		Debug.Log( "Done !!!!" );
 
 		//anim.SetInteger( "Tutorial" , 3 );
 		//Debug.Log( "Im done here..." );
+	}
+
+	private void SectionOver()
+	{
+		isSectionComplete = true;
 	}
 }

@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039209e2a8fd548259441218769f3985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 10
+  delay: 1
   anim: {fileID: 0}
   symbolContainer: {fileID: 0}
   dialogues:
@@ -102,7 +102,12 @@ MonoBehaviour:
     sentences:
     - 'In this tutorial we will learn the consequences of failure '
     - Memorize the symbols and click continue when you are ready
+  - name: 
+    sentences:
+    - Next Tutorials
+    - AAAAAAAAAGGGGHH!!!
   dialogueBox: {fileID: 0}
+  gameOuterContainer: {fileID: 0}
   gameContainer: {fileID: 0}
   memoryPhaseOuterContainer: {fileID: 0}
   memoryPhaseContainer: {fileID: 0}

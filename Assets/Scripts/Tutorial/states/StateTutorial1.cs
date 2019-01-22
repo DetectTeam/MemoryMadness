@@ -111,6 +111,10 @@ public class StateTutorial1 : StateMachineBehaviour
 
 		//Hide Dialogue Box
 		moveDialog.Move( 0.3f, new Vector3( 0f, -350f, 0f ) , new Vector3( 0f, -1000f, 0f ) );
+
+		//Clear Dialogue Box
+
+		
 		
 		yield return new WaitForSeconds( 1.5f );
 

@@ -59,6 +59,7 @@ using TMPro;
 			}
 
 			string sentence = sentences.Dequeue();
+			dialogueText.text = "";
 			StopCoroutine( TypeSentence( "" ) );
 			StartCoroutine( TypeSentence( sentence ) );
 		}
@@ -82,7 +83,9 @@ using TMPro;
 		{
 			Debug.Log( "Ending Dialogue" );
 			Messenger.Broadcast( "SectionOver" );
+			dialogueText.text = "";
 			//animator.SetBool( "IsOpen", false );
+			MemoryMadness.TutorialManager.Instance.DisableContinueButton();
 		}
 	}
 
