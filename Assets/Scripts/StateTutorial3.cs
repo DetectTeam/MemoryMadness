@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MemoryMadness;
 
 public class StateTutorial3 : StateMachineBehaviour 
 {
@@ -9,11 +10,11 @@ public class StateTutorial3 : StateMachineBehaviour
 
 	[SerializeField] private GameObject memoryPhaseOuterContainer;
 	[SerializeField] private GameObject memoryPhaseContainer;
-	
+
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) 
 	{
-			//Get the memory Phase Container
+		//Get the memory Phase Container
 		memoryPhaseOuterContainer = GameObject.Find( "MemoryPhaseOuterContainer" );
 		memoryPhaseContainer = memoryPhaseOuterContainer.transform.Find( "MemoryPhaseContainer" ).gameObject;
 
@@ -24,13 +25,13 @@ public class StateTutorial3 : StateMachineBehaviour
 	private IEnumerator Sequence()
 	{
 		Debug.Log( "Starting Tutorial 3" );
+
+		TutorialManager.Instance.BuildTutorialLevel( 0 );
 	
 		//Display MemoryPhase Screen
 		memoryPhaseOuterContainer.transform.SetSiblingIndex( 1 );
 		memoryPhaseContainer.SetActive( true );
 		yield return new WaitForSeconds( delay );
-
-		
 	}
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

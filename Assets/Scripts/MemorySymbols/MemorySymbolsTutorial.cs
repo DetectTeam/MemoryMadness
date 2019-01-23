@@ -8,6 +8,8 @@ namespace  MemoryMadness
 {
 	public class MemorySymbolsTutorial : MonoBehaviour 
 	{
+		[SerializeField] private bool isTutorial;
+		
 		//Boolean used to set whether a symbol is correct or not
 		[SerializeField] private bool isCorrect;
 		public bool IsCorrect { get{ return isCorrect; } set{ isCorrect = value; } }
@@ -60,7 +62,6 @@ namespace  MemoryMadness
 	
 		public void ButtonCheck()
 		{	
-			Debug.Log( "Interactive: " + interactive );
 			if( isCorrect && interactive )
 			{
 				PunchScale();
@@ -73,7 +74,8 @@ namespace  MemoryMadness
 
 				//Messenger.Broadcast( "DisplayNextSentence" );
 				//Messenger.Broadcast( "IncrementDialogCount" );
-				Messenger.Broadcast<int>( "IncreaseScore" , 100 );
+				if( !isTutorial )
+					Messenger.Broadcast<int>( "IncreaseScore" , 100 );
 			}
 			else if( !isCorrect && interactive )
 			{
@@ -81,12 +83,15 @@ namespace  MemoryMadness
 				errorImage.SetActive( true );
 				DisableButton();
 
-				//Messenger.Broadcast( "RemoveHeart" );
-
-				//Messenger.Broadcast<int>( "DecreaseScore" , 100 );
+				if( !isTutorial )
+				{
+					Messenger.Broadcast( "RemoveHeart" );
+					Messenger.Broadcast<int>( "DecreaseScore" , 100 );
+				}
 			}
 		}
 
+		
 		private void PunchScale()
 		{
 			iTween.PunchScale ( gameObject, iTween.Hash (

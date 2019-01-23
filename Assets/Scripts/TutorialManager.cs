@@ -26,7 +26,7 @@ namespace MemoryMadness
 
 		[SerializeField] private GameObject score;
 		[SerializeField] private GameObject heart;
-
+	
 		private bool isButtonNeeded = true;
 		public bool IsButtonNeeded { get{ return isButtonNeeded; } set{ isButtonNeeded = value; } }
 		
@@ -76,7 +76,6 @@ namespace MemoryMadness
 			
 			IncrementDialogCount();
 	
-			isButtonNeeded = false;
 			continueButton.SetActive( false );
 				//highlights[ index ].SetActive( true );
 			   
@@ -138,7 +137,10 @@ namespace MemoryMadness
 			Debug.Log( "Continue Button Clicked " + btnClickCount + " times." );
 
 			if( btnClickCount == 4 )
+			{
+				isButtonNeeded = false;
 				ToggleSymbolHighlights( 0 );
+			}
 
 			if( btnClickCount == 7 )
 				ToggleSymbolHighlights( 2 );
@@ -173,9 +175,25 @@ namespace MemoryMadness
 		{
 			iTween.ScaleTo( target, iTween.Hash( 
 			"scale", new Vector3( 1.15f, 1.15f, 1.15f ),
-			"time", 1.0f,
+			"time", 0.5f,
 			"loopType", "pingPong"
 			 ));   
+		}
+
+		public void StopScaleTo( GameObject target )
+		{
+			Debug.Log( "Stopping .... " + target.name );
+			iTween.Stop( target );
+			target.transform.localScale = new Vector3( 1f,1f,1f );
+		}
+
+		public void IncreaseScore()
+		{
+			Messenger.Broadcast<int>( "IncreaseScore" , 100 );
+		}
+
+		public void BuildTutorialLevel( int index )
+		{
 
 		}
 

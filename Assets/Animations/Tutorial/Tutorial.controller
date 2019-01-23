@@ -53,7 +53,8 @@ MonoBehaviour:
     - 'Prompt user to find symbols...
 
 '
-    - Good Job on finding the first symbol.....Now try for the second one....
+    - Good Job you found the first Symbol ( with a little help ) and you got some
+      points too . Now select the second symbol.
     - ' Good Job ... You have successfully completed your first level. Click continue
       to proceed to the second tutorial'
   dialogueBox: {fileID: 0}
