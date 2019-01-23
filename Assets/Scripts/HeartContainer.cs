@@ -7,6 +7,8 @@ namespace MemoryMadness
 	public class HeartContainer : MonoBehaviour 
 	{
 
+
+		[SerializeField] private bool isTutorial;
 		[SerializeField] private GameObject[] hearts;
 
 		private const string currentStageStr = "CurrentStage";
@@ -37,6 +39,9 @@ namespace MemoryMadness
 			if( PlayerPrefs.HasKey( currentStageStr ) )
 				currentStage = PlayerPrefs.GetInt( currentStageStr );
 
+			if( isTutorial )
+				currentStage = 2;
+
 
 			if( currentStage <= 2 )
 				heartCount = 2;
@@ -52,6 +57,8 @@ namespace MemoryMadness
 			}
 
 			activeHearts = heartCount;
+
+		
 			
 		}
 

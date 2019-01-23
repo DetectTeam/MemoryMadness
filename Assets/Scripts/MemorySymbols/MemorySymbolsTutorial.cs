@@ -39,6 +39,7 @@ namespace  MemoryMadness
 		public GameObject Button { get{ return button; } set{ button = value; } }
 
 		[SerializeField] private bool interactive = true;
+		public bool Interactive { get{ return interactive; } set{ interactive = value; }  }
 
 		[SerializeField] private GameObject symbolHighlight;
 
@@ -59,12 +60,8 @@ namespace  MemoryMadness
 	
 		public void ButtonCheck()
 		{	
-			
-			if( !interactive )
-				return;
-			
-			
-			if( isCorrect )
+			Debug.Log( "Interactive: " + interactive );
+			if( isCorrect && interactive )
 			{
 				PunchScale();
 				successColor.SetActive( true );
@@ -74,19 +71,19 @@ namespace  MemoryMadness
 			
 				DisableButton();
 
-				Messenger.Broadcast( "DisplayNextSentence" );
+				//Messenger.Broadcast( "DisplayNextSentence" );
 				//Messenger.Broadcast( "IncrementDialogCount" );
 				Messenger.Broadcast<int>( "IncreaseScore" , 100 );
 			}
-			else
+			else if( !isCorrect && interactive )
 			{
 				ShakePosition();
 				errorImage.SetActive( true );
 				DisableButton();
 
-				Messenger.Broadcast( "RemoveHeart" );
+				//Messenger.Broadcast( "RemoveHeart" );
 
-				Messenger.Broadcast<int>( "DecreaseScore" , 100 );
+				//Messenger.Broadcast<int>( "DecreaseScore" , 100 );
 			}
 		}
 

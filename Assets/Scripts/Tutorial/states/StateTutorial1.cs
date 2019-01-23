@@ -114,7 +114,7 @@ public class StateTutorial1 : StateMachineBehaviour
 
 		//Clear Dialogue Box
 		
-		yield return new WaitForSeconds( 1.5f );
+		yield return new WaitForSeconds( 0.6f );
 
 		Debug.Log( "On to Tutorial 2" );
 

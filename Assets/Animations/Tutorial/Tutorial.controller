@@ -59,6 +59,7 @@ MonoBehaviour:
   dialogueBox: {fileID: 0}
   gameOuterContainer: {fileID: 0}
   gameContainer: {fileID: 0}
+  memorySymbolContainer: {fileID: 0}
   symbolHighlights:
   - {fileID: 0}
   - {fileID: 0}
@@ -81,6 +82,7 @@ MonoBehaviour:
   dialogueBox: {fileID: 0}
   gameOuterContainer: {fileID: 0}
   gameContainer: {fileID: 0}
+  memorySymbolContainer: {fileID: 0}
   symbolHighlights: []
   buttonCount: 0
 --- !u!114 &114959745503403134
@@ -100,17 +102,22 @@ MonoBehaviour:
   dialogues:
   - name: 
     sentences:
-    - 'In this tutorial we will learn the consequences of failure '
     - Memorize the symbols and click continue when you are ready
   - name: 
     sentences:
-    - Next Tutorials
-    - AAAAAAAAAGGGGHH!!!
+    - In this tutorial you wil learn the consequneces for failure...
+    - Prompt first selection
+    - You have chosen incorrectly. You lose some points...
+    - Life Decreases
+    - Choose Second Symbol
+    - You have failed the level message
+    - Thats it for this Tutorial ...on to the next
   dialogueBox: {fileID: 0}
   gameOuterContainer: {fileID: 0}
   gameContainer: {fileID: 0}
   memoryPhaseOuterContainer: {fileID: 0}
   memoryPhaseContainer: {fileID: 0}
+  memoryPhaseSymbols: {fileID: 0}
   symbolHighlights: []
   buttonCount: 0
 --- !u!1101 &1101023242303322940
@@ -500,10 +507,10 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102444169746567154}
-    m_Position: {x: 300, y: -48, z: 0}
+    m_Position: {x: 240, y: -60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102678212262054424}
-    m_Position: {x: 420, y: 60, z: 0}
+    m_Position: {x: 264, y: 48, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102897335265044130}
     m_Position: {x: 420, y: 132, z: 0}
