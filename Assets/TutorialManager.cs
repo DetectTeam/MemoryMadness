@@ -81,6 +81,10 @@ namespace MemoryMadness
 				//highlights[ index ].SetActive( true );
 			   
 			tutSymbols[index].GetComponent<MemorySymbolsTutorial>().Interactive = true;
+		
+			var button = tutSymbols[index].transform.Find( "button" ).gameObject;
+
+			button.GetComponent<Button>().interactable = true;;
 			   
 			var highLight = tutSymbols[index].transform.Find( "HighLight" ).gameObject;
 			highLight.SetActive( true );

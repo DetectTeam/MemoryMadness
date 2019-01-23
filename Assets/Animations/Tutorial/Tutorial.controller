@@ -85,6 +85,20 @@ MonoBehaviour:
   memorySymbolContainer: {fileID: 0}
   symbolHighlights: []
   buttonCount: 0
+--- !u!114 &114891730638992132
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af2fcf3a005454f0fb70dca78f3eae0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 1
+  memoryPhaseOuterContainer: {fileID: 0}
+  memoryPhaseContainer: {fileID: 0}
 --- !u!114 &114959745503403134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -482,7 +496,8 @@ AnimatorState:
   - {fileID: 1101983285629097030}
   - {fileID: 1101371469604374516}
   - {fileID: 1101108828176454474}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114891730638992132}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

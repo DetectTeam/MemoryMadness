@@ -106,7 +106,6 @@ public class StateTutorial2 : StateMachineBehaviour
 		while( !isSectionComplete )
 			yield return null;
 
-
 		//Hide dialog box
 		moveDialog.Move( 0.3f, new Vector3( 0f, -350f, 0f ) , new Vector3( 0f, -1000f, 0  ) );
 
@@ -126,14 +125,21 @@ public class StateTutorial2 : StateMachineBehaviour
 		//Display first Dialogue. 
 		DialogueManager.Instance.StartDialogue( dialogues[1] );
 		
+		isSectionComplete = false;
+		
 		//Wait for user to exhaust dialogue
 		while( !isSectionComplete )
 			yield return null;
 
+		//Show dialog Box
+		moveDialog.Move( 0.3f, new Vector3( 0f, -350f, 0f ) , new Vector3( 0f, -1000f, 0  ) );
+
+		yield return new WaitForSeconds( 1.0f );
+
 		Debug.Log( "Done !!!!" );
 
-		//anim.SetInteger( "Tutorial" , 3 );
-		//Debug.Log( "Im done here..." );
+		anim.SetInteger( "Tutorial" , 3 );
+		Debug.Log( "State Tut 2 Im done here..." );
 	}
 
 	private void SectionOver()
