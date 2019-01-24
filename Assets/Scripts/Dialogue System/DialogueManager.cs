@@ -88,5 +88,13 @@ using TMPro;
 			//animator.SetBool( "IsOpen", false );
 			MemoryMadness.TutorialManager.Instance.DisableContinueButton();
 		}
+
+		public void Reset()
+		{
+			if( sentences.Count > 0 )
+			{
+				sentences.Clear();
+			}
+		}
 	}
 

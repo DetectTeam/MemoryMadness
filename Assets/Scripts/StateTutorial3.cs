@@ -31,6 +31,9 @@ public class StateTutorial3 : StateMachineBehaviour
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) 
 	{
 		anim = animator;
+
+		DialogueManager.Instance.Reset();
+
 		TutorialManager.Instance.CurrentLevel = 3;
 		//Reset Error and Correct Counts
 		Debug.Log( "Tutorial 3" );

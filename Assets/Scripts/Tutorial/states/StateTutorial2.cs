@@ -40,6 +40,8 @@ public class StateTutorial2 : StateMachineBehaviour
 		anim = animator;
 		isSectionComplete = false;
 
+		DialogueManager.Instance.Reset();
+
 		TutorialManager.Instance.CurrentLevel = 2;
 
 		//Reset Error and Correct Counts
