@@ -4947,6 +4947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {x: 1.5, y: 1.5, z: 1.5}
+  delay: 1
 --- !u!222 &375309600
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8005,6 +8006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {x: 1.5, y: 1.5, z: 1.5}
+  delay: 1
 --- !u!222 &601497374
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12674,6 +12676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {x: 1.5, y: 1.5, z: 1.5}
+  delay: 1
 --- !u!222 &948060599
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13669,6 +13672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba2416938662a4f3997258be09733030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTutorial: 0
   hearts:
   - {fileID: 1230648063}
   - {fileID: 2032617556}
@@ -16900,6 +16904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {x: 1.5, y: 1.5, z: 1.5}
+  delay: 1
 --- !u!222 &1290686595
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19922,6 +19927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {x: 1.5, y: 1.5, z: 1.5}
+  delay: 1
 --- !u!222 &1514283880
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21031,6 +21037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {x: 1.5, y: 1.5, z: 1.5}
+  delay: 1
 --- !u!222 &1550288110
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21259,6 +21266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {x: 1.5, y: 1.5, z: 1.5}
+  delay: 1
 --- !u!222 &1553402945
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21432,6 +21440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {x: 1.5, y: 1.5, z: 1.5}
+  delay: 1
 --- !u!222 &1570113643
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26102,6 +26111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {x: 1.5, y: 1.5, z: 1.5}
+  delay: 1
 --- !u!222 &1841157997
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27154,6 +27164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {x: 1.5, y: 1.5, z: 1.5}
+  delay: 1
 --- !u!222 &1911362395
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27626,6 +27637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {x: 1.5, y: 1.5, z: 1.5}
+  delay: 1
 --- !u!222 &1956299502
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28479,6 +28491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {x: 1.5, y: 1.5, z: 1.5}
+  delay: 1
 --- !u!222 &2016054468
 CanvasRenderer:
   m_ObjectHideFlags: 0

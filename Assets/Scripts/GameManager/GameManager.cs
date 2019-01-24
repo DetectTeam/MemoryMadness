@@ -37,6 +37,8 @@ namespace MemoryMadness
 
 		private void OnEnable()
 		{
+			Messenger.Cleanup();
+			
 			Messenger.AddListener<int>( "SetWinCount", SetWinCount );
 			Messenger.AddListener( "CorrectButtonClick", IncrementCorrectButtonClickCount );
 			Messenger.AddListener( "ResetCorrectButtonCount", ResetCorrectButtonClickCount );
@@ -57,6 +59,11 @@ namespace MemoryMadness
 			Messenger.RemoveListener( "ResetSDGenerator" , ResetSDLevelGenerator );
 			Messenger.RemoveListener( "DecrementLife" , DecrementLifeCount );
 			Messenger.RemoveListener( "ChangeLevel", ChangeLevel );
+		}
+
+		private void Awake()
+		{
+			//DontDestroyOnLoad(gameObject);
 		}
 
 		// Use this for initialization

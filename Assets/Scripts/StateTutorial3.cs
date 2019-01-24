@@ -20,17 +20,19 @@ public class StateTutorial3 : StateMachineBehaviour
 
 	public void OnEnable()
 	{
-		Messenger.AddListener( "SectionOver" , SectionOver );
+		//Messenger.AddListener( "SectionOver" , SectionOver );
 	}
 
 	public void OnDisable()
 	{
-		Messenger.RemoveListener( "SectionOver" , SectionOver );
+		//Messenger.RemoveListener( "SectionOver" , SectionOver );
 	}
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) 
 	{
 		anim = animator;
+
+		DialogueManager.Instance.IsSectionComplete = false;
 
 		DialogueManager.Instance.Reset();
 
@@ -94,10 +96,10 @@ public class StateTutorial3 : StateMachineBehaviour
 		//Start Second Dialogue
 		DialogueManager.Instance.StartDialogue( dialogues[0] );
 
-		isSectionComplete = false;
+		DialogueManager.Instance.IsSectionComplete = false;
 
 		//Wait for user to exhaust dialogue
-		while( !isSectionComplete )
+		while( !DialogueManager.Instance.IsSectionComplete )
 		{
 			yield return null;
 		}
@@ -113,9 +115,9 @@ public class StateTutorial3 : StateMachineBehaviour
 		gameOuterContainer.transform.SetSiblingIndex( 1 );
 		gameContainer.SetActive( true );
 
-		isSectionComplete = false;
+		DialogueManager.Instance.IsSectionComplete = false;
 
-		while( !isSectionComplete )
+		while( !DialogueManager.Instance.IsSectionComplete )
 		{
 			yield return null;
 		}

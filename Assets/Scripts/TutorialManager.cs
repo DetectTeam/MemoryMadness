@@ -48,7 +48,12 @@ namespace MemoryMadness
 			Messenger.AddListener( "IncorrectSelection" , UpdateErrorCount );
 			Messenger.AddListener( "CorrectSelection" , UpdateCorrectCount );
 			Messenger.AddListener( "ToggleGameSymbols", ToggleGameSymbols );
-			Messenger.AddListener( "IncrementDialogCount", IncrementDialogCount );	
+			Messenger.AddListener( "IncrementDialogCount", IncrementDialogCount );
+
+			Messenger.MarkAsPermanent( "IncorrectSelection" );
+			Messenger.MarkAsPermanent( "CorrectSelection" );	
+			Messenger.MarkAsPermanent( "ToggleGameSymbols" );	
+			Messenger.MarkAsPermanent(  "IncrementDialogCount" );	
 
 			btnContinue.onClick.AddListener( TaskOnClick );
 			tutOneButtonOne.onClick.AddListener( TutOneButtonOneClick );
@@ -56,7 +61,7 @@ namespace MemoryMadness
 
 		private void OnDisable()
 		{
-			Messenger.AddListener( "IncorrectSelection" , UpdateErrorCount );
+			Messenger.RemoveListener( "IncorrectSelection" , UpdateErrorCount );
 			Messenger.RemoveListener( "CorrectSelection" , UpdateCorrectCount );
 			Messenger.RemoveListener( "ToggleGameSymbols", ToggleGameSymbols );	
 			Messenger.RemoveListener( "IncrementDialogCount", IncrementDialogCount );
@@ -278,7 +283,7 @@ namespace MemoryMadness
 			endLevelCover.SetActive( true );
 			
 			if( currentLevel >= 3 )
-				Messenger.Broadcast( "SectionOver" );
+				DialogueManager.Instance.IsSectionComplete = true;
 		}
 
 		public void DisableBackground()

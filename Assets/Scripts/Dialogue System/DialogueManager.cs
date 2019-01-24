@@ -14,15 +14,21 @@ using TMPro;
 		[SerializeField] private Animator animator;
 		[SerializeField] private Button btnContinue;
 
+		private bool isSectionComplete;
+
+		public bool IsSectionComplete { get{ return isSectionComplete; } set{ isSectionComplete = value; } }
+
 
 		private void OnEnable()
 		{
 			Messenger.AddListener( "DisplayNextSentence" , DisplayNextSentence );
+			Messenger.MarkAsPermanent( "DisplayNextSentence" );
 		}
 
 		private void OnDisable()
 		{
 			Messenger.RemoveListener( "DisplayNextSentence" , DisplayNextSentence );
+			
 		}
 
 		private void Start () 
@@ -83,7 +89,8 @@ using TMPro;
 		private void EndDialogue()
 		{
 			Debug.Log( "Ending Dialogue" );
-			Messenger.Broadcast( "SectionOver" );
+			//Messenger.Broadcast( "SectionOver" );
+			isSectionComplete = true;
 			dialogueText.text = "";
 			//animator.SetBool( "IsOpen", false );
 			MemoryMadness.TutorialManager.Instance.DisableContinueButton();

@@ -27,18 +27,18 @@ public class StateTutorial2 : StateMachineBehaviour
 
 	public void OnEnable()
 	{
-		Messenger.AddListener( "SectionOver" , SectionOver );
+		//Messenger.AddListener( "SectionOver" , SectionOver );
 	}
 
 	public void OnDisable()
 	{
-		Messenger.RemoveListener( "SectionOver" , SectionOver );
+		//Messenger.RemoveListener( "SectionOver" , SectionOver );
 	}
 
 	public override void OnStateEnter( Animator animator, AnimatorStateInfo stateInfo, int layerIndex )
 	{
 		anim = animator;
-		isSectionComplete = false;
+		DialogueManager.Instance.IsSectionComplete = false;
 
 		DialogueManager.Instance.Reset();
 
@@ -114,7 +114,7 @@ public class StateTutorial2 : StateMachineBehaviour
 		DialogueManager.Instance.StartDialogue( dialogues[0] );
 
 		//Wait for user to exhaust dialogue
-		while( !isSectionComplete )
+		while( !DialogueManager.Instance.IsSectionComplete)
 			yield return null;
 
 		//Hide dialog box
@@ -136,10 +136,10 @@ public class StateTutorial2 : StateMachineBehaviour
 		//Display first Dialogue. 
 		DialogueManager.Instance.StartDialogue( dialogues[1] );
 		
-		isSectionComplete = false;
+		DialogueManager.Instance.IsSectionComplete = false;
 		
 		//Wait for user to exhaust dialogue
-		while( !isSectionComplete )
+		while( !DialogueManager.Instance.IsSectionComplete )
 			yield return null;
 
 		//Show dialog Box

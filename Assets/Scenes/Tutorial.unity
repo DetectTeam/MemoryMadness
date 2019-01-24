@@ -469,6 +469,11 @@ Prefab:
       propertyPath: isCorrect
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114287186726360998, guid: ff28619e33ca1430ca39a9df983850fe,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff28619e33ca1430ca39a9df983850fe, type: 2}
   m_IsPrefabAsset: 0
@@ -1842,6 +1847,11 @@ Prefab:
       value: 
       objectReference: {fileID: 21300020, guid: 6b8c4e5afa7a5424486588b175182509,
         type: 3}
+    - target: {fileID: 114287186726360998, guid: ff28619e33ca1430ca39a9df983850fe,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff28619e33ca1430ca39a9df983850fe, type: 2}
   m_IsPrefabAsset: 0
@@ -2637,6 +2647,11 @@ Prefab:
     - target: {fileID: 114815453730890612, guid: ff28619e33ca1430ca39a9df983850fe,
         type: 2}
       propertyPath: interactive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114287186726360998, guid: ff28619e33ca1430ca39a9df983850fe,
+        type: 2}
+      propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5048,6 +5063,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 114287186726360998, guid: ff28619e33ca1430ca39a9df983850fe,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff28619e33ca1430ca39a9df983850fe, type: 2}
   m_IsPrefabAsset: 0
@@ -7123,6 +7143,11 @@ Prefab:
     - target: {fileID: 114815453730890612, guid: ff28619e33ca1430ca39a9df983850fe,
         type: 2}
       propertyPath: isCorrect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114287186726360998, guid: ff28619e33ca1430ca39a9df983850fe,
+        type: 2}
+      propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -11920,6 +11945,11 @@ Prefab:
       propertyPath: isCorrect
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114287186726360998, guid: ff28619e33ca1430ca39a9df983850fe,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff28619e33ca1430ca39a9df983850fe, type: 2}
   m_IsPrefabAsset: 0
@@ -12727,6 +12757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31aa867a211eb411f99e73fbdd3fc6fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevel: 0
   errorCount: 0
   correctCount: 0
   dialogCount: 0
@@ -12751,7 +12782,7 @@ MonoBehaviour:
   - {fileID: 334556259}
   - {fileID: 1518716278}
   - {fileID: 540520362}
-  endLevelCover: {fileID: 0}
+  endLevelCover: {fileID: 1423075982}
   btnContinue: {fileID: 357666254}
   tutOneButtonOne: {fileID: 1228071031}
 --- !u!1 &1333703839
@@ -13059,6 +13090,11 @@ Prefab:
     - target: {fileID: 114815453730890612, guid: ff28619e33ca1430ca39a9df983850fe,
         type: 2}
       propertyPath: interactive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114287186726360998, guid: ff28619e33ca1430ca39a9df983850fe,
+        type: 2}
+      propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -17479,6 +17515,11 @@ Prefab:
       propertyPath: interactive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114287186726360998, guid: ff28619e33ca1430ca39a9df983850fe,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff28619e33ca1430ca39a9df983850fe, type: 2}
   m_IsPrefabAsset: 0
@@ -20360,7 +20401,7 @@ Prefab:
     - target: {fileID: 114815453730890612, guid: ff28619e33ca1430ca39a9df983850fe,
         type: 2}
       propertyPath: interactive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114287186726360998, guid: ff28619e33ca1430ca39a9df983850fe,
         type: 2}
@@ -20794,6 +20835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2123099580}
   - component: {fileID: 2123099579}
+  - component: {fileID: 2123099581}
   m_Layer: 0
   m_Name: TutorialMachine
   m_TagString: Untagged
@@ -20832,6 +20874,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2123099581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2123099578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b319ef5a12f44bf9a5841d4b02fcf34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2128928648
 GameObject:
   m_ObjectHideFlags: 0

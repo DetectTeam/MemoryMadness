@@ -25,14 +25,22 @@ public class StateTutorial1 : StateMachineBehaviour
 	private bool isSectionComplete = false;
 	public bool IsSectionComplete { get{ return isSectionComplete; } set{ isSectionComplete = value; } }
 
+	public void Awake()
+	{
+		Debug.Log( "State Tut 1 awake" );
+		//Messenger.AddListener( "SectionOver" , SectionOver );
+	}
+	
+
 	public void OnEnable()
 	{
-		Messenger.AddListener( "SectionOver" , SectionOver );
+		Debug.Log( "State Tutorial 1" );
+		//Messenger.AddListener( "SectionOver" , SectionOver );
 	}
 
 	public void OnDisable()
 	{
-		Messenger.RemoveListener( "SectionOver" , SectionOver );
+		//Messenger.RemoveListener( "SectionOver" , SectionOver );
 	}
 
 	public override void OnStateEnter( Animator animator, AnimatorStateInfo stateInfo, int layerIndex )
@@ -86,10 +94,10 @@ public class StateTutorial1 : StateMachineBehaviour
 		DialogueManager.Instance.StartDialogue( dialogues[0] );
 
 		//Wait for user to exhaust dialogue
-		while( !isSectionComplete )
+		while( !DialogueManager.Instance.IsSectionComplete )
 			yield return null;
 	
-		isSectionComplete = false;
+		DialogueManager.Instance.IsSectionComplete = false;
 		Debug.Log( "Transitioning to Game Phase" );
 	
 		//Hide Dialogue Box
@@ -112,7 +120,7 @@ public class StateTutorial1 : StateMachineBehaviour
 		DialogueManager.Instance.StartDialogue( dialogues[1] );
 
 		//Wait for user to exhaust dialogue
-		while( !isSectionComplete )
+		while( !DialogueManager.Instance.IsSectionComplete )
 			yield return null;
 
 		//Hide Dialogue Box

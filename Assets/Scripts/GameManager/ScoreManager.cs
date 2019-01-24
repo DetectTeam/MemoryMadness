@@ -11,12 +11,19 @@ public class ScoreManager : MonoBehaviour
 	[SerializeField] private int score;
 
 	 List<float> listOfLevelTimes = new List<float>();
-	
+	void Awake()
+	{
+		
+	}
 	private void OnEnable()
 	{
 		Messenger.AddListener<int>( "IncreaseScore" , IncrementScore );
 		Messenger.AddListener<int>( "DecreaseScore" , DecrementScore );
 		Messenger.AddListener<float>( "RecordLevelTime", AddLevelTime );
+
+		Messenger.MarkAsPermanent( "IncreaseScore" );
+		Messenger.MarkAsPermanent( "DecreaseScore" );
+		Messenger.MarkAsPermanent( "RecordLevelTime" );
 		
 	}
 
