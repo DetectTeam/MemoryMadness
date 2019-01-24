@@ -13,6 +13,7 @@ public class StateTutorial3 : StateMachineBehaviour
 	[SerializeField] private GameObject gameContainer;
 	[SerializeField] private List<Dialogue> dialogues;
 	[SerializeField] private GameObject dialogueBox;
+	private Animator anim;
 	private MoveTo moveDialog;
 	private bool isSectionComplete = false;
 	public bool IsSectionComplete { get{ return isSectionComplete; } set{ isSectionComplete = value; } }
@@ -29,7 +30,8 @@ public class StateTutorial3 : StateMachineBehaviour
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) 
 	{
-		
+		anim = animator;
+		TutorialManager.Instance.CurrentLevel = 3;
 		//Reset Error and Correct Counts
 		Debug.Log( "Tutorial 3" );
 		TutorialManager.Instance.ResetCounts();
@@ -115,7 +117,10 @@ public class StateTutorial3 : StateMachineBehaviour
 			yield return null;
 		}
 
+		yield return new WaitForSeconds( 2.0f );
 		Debug.Log( "Finished Level" );
+
+		anim.SetInteger( "Tutorial" , 4 );
 	}
 
 	private void SectionOver()

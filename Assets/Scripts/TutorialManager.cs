@@ -9,6 +9,9 @@ namespace MemoryMadness
 	public class TutorialManager : Singleton<TutorialManager> 
 	{
 		//ints
+
+		[SerializeField] private int currentLevel = 0;
+		public int CurrentLevel { get { return currentLevel; } set{ currentLevel = value; } }
 		[SerializeField] private int errorCount = 0;
 		public int ErrorCount { get{ return errorCount; } set{ errorCount = value; } }
 		[SerializeField] private int correctCount = 0;
@@ -273,6 +276,9 @@ namespace MemoryMadness
 		{
 			endLevelCover.transform.SetSiblingIndex( 2 );
 			endLevelCover.SetActive( true );
+			
+			if( currentLevel >= 3 )
+				Messenger.Broadcast( "SectionOver" );
 		}
 
 		public void DisableBackground()
