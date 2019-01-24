@@ -143,7 +143,10 @@ namespace MemoryMadness
 			}
 
 			if( btnClickCount == 7 )
+			{
 				ToggleSymbolHighlights( 2 );
+				isButtonNeeded = false;
+			}
 			
 			if( btnClickCount == 8 )
 			{
@@ -157,11 +160,12 @@ namespace MemoryMadness
 			if( btnClickCount == 9 )
 			{
 				iTween.Stop();
-				heart.transform.localScale = new Vector3( 1.0f, 1.0f, 1.0f );
+				heart.transform.localScale = new Vector3( 0.5f, 0.5f, 0.5f );
 
 				Messenger.Broadcast( "RemoveHeart" );
 
 				ToggleSymbolHighlights( 3 );
+				isButtonNeeded = false;
 			}
 
 		}
@@ -194,7 +198,16 @@ namespace MemoryMadness
 
 		public void BuildTutorialLevel( int index )
 		{
+			Debug.Log( index );
 
+			//Disable All Game Symbol Sets
+			for( int x = 0; x < gameSymbolsSets.Length; x ++ )
+			{
+				gameSymbolsSets[ x ].SetActive( false );
+			} 
+
+			//Set the level needed to true
+			gameSymbolsSets[ index ].SetActive( true );
 		}
 
 	

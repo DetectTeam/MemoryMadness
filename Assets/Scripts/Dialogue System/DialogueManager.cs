@@ -30,8 +30,6 @@ using TMPro;
 			sentences = new Queue<string>();
 		}
 
-
-		
 		public void StartDialogue( Dialogue dialogue )
 		{
 			Debug.Log( "Starting Dialogue..." );
@@ -50,10 +48,11 @@ using TMPro;
 		private int count = 0;
 		public void DisplayNextSentence()
 		{
-			Debug.Log( sentences.Count );
+			Debug.Log( "Display next sentence: " + sentences.Count );
 			
 			if( sentences.Count == 0 )
 			{
+				Debug.Log( "No More Sentences..." );
 				EndDialogue();
 				return;
 			}
@@ -67,6 +66,8 @@ using TMPro;
 		private IEnumerator TypeSentence( string sentence )
 		{
 			dialogueText.text = "";
+
+			MemoryMadness.TutorialManager.Instance.DisableContinueButton();
 
 			foreach( char letter in sentence.ToCharArray() )
 			{

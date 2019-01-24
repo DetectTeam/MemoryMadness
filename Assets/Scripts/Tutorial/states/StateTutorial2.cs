@@ -57,7 +57,10 @@ public class StateTutorial2 : StateMachineBehaviour
 		var randomGameContainer = gameContainer.transform.Find( "RandomLevelContainer" ).gameObject;
 
 		if( !gameContainer )
+		{
 			Debug.Log( "GameContainer Not Found" );
+			return;
+		}
 
 
 		dialogueBox = GameObject.Find( "DialogueBox" );
