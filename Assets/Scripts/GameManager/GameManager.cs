@@ -37,7 +37,7 @@ namespace MemoryMadness
 
 		private void OnEnable()
 		{
-			Messenger.Cleanup();
+			
 			
 			Messenger.AddListener<int>( "SetWinCount", SetWinCount );
 			Messenger.AddListener( "CorrectButtonClick", IncrementCorrectButtonClickCount );

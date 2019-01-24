@@ -28,12 +28,13 @@ public class TextEffectsHandler : MonoBehaviour
 
 	private void OnEnable()
 	{
-		//Messenger.AddListener( "TriggerEffect", TriggerEffect );
+		Messenger.AddListener( "TriggerEffect", TriggerEffect );
+		Messenger.MarkAsPermanent( "TriggerEffect" );
 	}
 
 	private void OnDisable()
 	{
-		//Messenger.RemoveListener( "TriggerEffect",  TriggerEffect );
+		Messenger.RemoveListener( "TriggerEffect",  TriggerEffect );
 	}
 
 	private void TriggerEffect()

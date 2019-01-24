@@ -8909,6 +8909,11 @@ Prefab:
       propertyPath: interactive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114287186726360998, guid: ff28619e33ca1430ca39a9df983850fe,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff28619e33ca1430ca39a9df983850fe, type: 2}
   m_IsPrefabAsset: 0
@@ -9176,6 +9181,11 @@ Prefab:
     - target: {fileID: 114815453730890612, guid: ff28619e33ca1430ca39a9df983850fe,
         type: 2}
       propertyPath: interactive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114287186726360998, guid: ff28619e33ca1430ca39a9df983850fe,
+        type: 2}
+      propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -10023,6 +10033,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114287186726360998, guid: ff28619e33ca1430ca39a9df983850fe,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff28619e33ca1430ca39a9df983850fe, type: 2}
   m_IsPrefabAsset: 0
@@ -10867,6 +10882,11 @@ Prefab:
       propertyPath: isCorrect
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114287186726360998, guid: ff28619e33ca1430ca39a9df983850fe,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff28619e33ca1430ca39a9df983850fe, type: 2}
   m_IsPrefabAsset: 0
@@ -11041,6 +11061,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114287186726360998, guid: ff28619e33ca1430ca39a9df983850fe,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff28619e33ca1430ca39a9df983850fe, type: 2}
@@ -13974,6 +13999,11 @@ Prefab:
       propertyPath: isCorrect
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114287186726360998, guid: ff28619e33ca1430ca39a9df983850fe,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff28619e33ca1430ca39a9df983850fe, type: 2}
   m_IsPrefabAsset: 0
@@ -14162,6 +14192,11 @@ Prefab:
     - target: {fileID: 114815453730890612, guid: ff28619e33ca1430ca39a9df983850fe,
         type: 2}
       propertyPath: interactive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114287186726360998, guid: ff28619e33ca1430ca39a9df983850fe,
+        type: 2}
+      propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
