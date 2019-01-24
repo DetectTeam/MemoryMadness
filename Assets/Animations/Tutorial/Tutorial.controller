@@ -100,10 +100,13 @@ MonoBehaviour:
   delay: 1
   memoryPhaseOuterContainer: {fileID: 0}
   memoryPhaseContainer: {fileID: 0}
+  gameOuterContainer: {fileID: 0}
+  gameContainer: {fileID: 0}
   dialogues:
   - name: 
     sentences:
     - Free Play Level
+  dialogueBox: {fileID: 0}
 --- !u!114 &114959745503403134
 MonoBehaviour:
   m_ObjectHideFlags: 1

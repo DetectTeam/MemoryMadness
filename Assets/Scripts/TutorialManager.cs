@@ -8,30 +8,42 @@ namespace MemoryMadness
 {
 	public class TutorialManager : Singleton<TutorialManager> 
 	{
-		[SerializeField] private GameObject gameSymbolContainer;
-
-		[SerializeField] private GameObject[] highlights;
-		[SerializeField] private GameObject[] tutSymbols;
-
+		//ints
+		[SerializeField] private int errorCount = 0;
+		public int ErrorCount { get{ return errorCount; } set{ errorCount = value; } }
+		[SerializeField] private int correctCount = 0;
+		public int CorrectCount { get{ return correctCount; } set{ correctCount = value; } }
 		[SerializeField] private int dialogCount = 0;
+		[SerializeField] private int btnClickCount = 0;
+		//End ints
 
-		[SerializeField] private GameObject continueButton;
-
-		[SerializeField] private GameObject[] memorySymbolsSets;
-
-		[SerializeField] private GameObject[] gameSymbolsSets;
-
-		[SerializeField] private Button btnContinue;
-		[SerializeField] private Button tutOneButtonOne;
-
-		[SerializeField] private GameObject score;
-		[SerializeField] private GameObject heart;
-	
+		//bools
 		private bool isButtonNeeded = true;
 		public bool IsButtonNeeded { get{ return isButtonNeeded; } set{ isButtonNeeded = value; } }
+		//End bools
 		
+		//GameObjects
+		[SerializeField] private GameObject score;
+		[SerializeField] private GameObject heart;
+		[SerializeField] private GameObject gameSymbolContainer;
+		[SerializeField] private GameObject[] highlights;
+		[SerializeField] private GameObject[] tutSymbols;
+		[SerializeField] private GameObject continueButton;
+		[SerializeField] private GameObject[] memorySymbolsSets;
+		[SerializeField] private GameObject[] gameSymbolsSets;
+
+		[SerializeField] private GameObject endLevelCover;
+		//Gameobjects End
+
+		//Bools
+		[SerializeField] private Button btnContinue;
+		[SerializeField] private Button tutOneButtonOne;
+		//Bools End
+	
 		private void OnEnable()
 		{
+			Messenger.AddListener( "IncorrectSelection" , UpdateErrorCount );
+			Messenger.AddListener( "CorrectSelection" , UpdateCorrectCount );
 			Messenger.AddListener( "ToggleGameSymbols", ToggleGameSymbols );
 			Messenger.AddListener( "IncrementDialogCount", IncrementDialogCount );	
 
@@ -41,10 +53,13 @@ namespace MemoryMadness
 
 		private void OnDisable()
 		{
+			Messenger.AddListener( "IncorrectSelection" , UpdateErrorCount );
+			Messenger.RemoveListener( "CorrectSelection" , UpdateCorrectCount );
 			Messenger.RemoveListener( "ToggleGameSymbols", ToggleGameSymbols );	
 			Messenger.RemoveListener( "IncrementDialogCount", IncrementDialogCount );
 
 			btnContinue.onClick.RemoveListener( TaskOnClick );
+			tutOneButtonOne.onClick.RemoveListener( TutOneButtonOneClick );
 		}
 
 		private void Start()
@@ -130,7 +145,6 @@ namespace MemoryMadness
 			gameSymbolsSets[ index ].SetActive( false );
 		}
 
-		[SerializeField] private int btnClickCount = 0;
 		private void TaskOnClick()
 		{
 			btnClickCount++;
@@ -163,6 +177,7 @@ namespace MemoryMadness
 				heart.transform.localScale = new Vector3( 0.5f, 0.5f, 0.5f );
 
 				Messenger.Broadcast( "RemoveHeart" );
+				
 
 				ToggleSymbolHighlights( 3 );
 				isButtonNeeded = false;
@@ -196,6 +211,11 @@ namespace MemoryMadness
 			Messenger.Broadcast<int>( "IncreaseScore" , 100 );
 		}
 
+		public void DecreaseScore()
+		{
+			Messenger.Broadcast<int>( "DecreaseScore" , 100 );
+		}
+
 		public void BuildTutorialLevel( int index )
 		{
 			Debug.Log( index );
@@ -204,12 +224,66 @@ namespace MemoryMadness
 			for( int x = 0; x < gameSymbolsSets.Length; x ++ )
 			{
 				gameSymbolsSets[ x ].SetActive( false );
+				memorySymbolsSets[ x ].SetActive( false );
 			} 
 
 			//Set the level needed to true
 			gameSymbolsSets[ index ].SetActive( true );
+			memorySymbolsSets[ index ].SetActive( true );
 		}
 
-	
+		private void CheckCorrectCount()
+		{
+			if( correctCount == 2 )
+			{
+				Debug.Log( "Trigger Success" );
+				EnableBackground();
+			}
+		}
+
+		private void CheckErrorCount()
+		{	
+			if( errorCount == 2 )
+			{
+				Debug.Log( "You Lose" );
+				EnableBackground();
+			
+			}
+		}
+
+		public void UpdateCorrectCount()
+		{
+			correctCount ++;
+			CheckCorrectCount();
+		}
+
+		public void UpdateErrorCount()
+		{
+			errorCount ++;
+			Debug.Log( "Update Error count Called... " + errorCount );
+			CheckErrorCount();
+		}
+
+		public void RemoveHeart()
+		{
+			Messenger.Broadcast( "RemoveHeart" );
+		}
+
+		public void EnableBackground()
+		{
+			endLevelCover.transform.SetSiblingIndex( 2 );
+			endLevelCover.SetActive( true );
+		}
+
+		public void DisableBackground()
+		{
+			endLevelCover.SetActive( false );
+		}
+
+		public void ResetCounts()
+		{
+			errorCount = 0;
+			correctCount = 0;
+		}
 	}
 }

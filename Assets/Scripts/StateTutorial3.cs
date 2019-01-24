@@ -29,6 +29,11 @@ public class StateTutorial3 : StateMachineBehaviour
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) 
 	{
+		
+		//Reset Error and Correct Counts
+		Debug.Log( "Tutorial 3" );
+		TutorialManager.Instance.ResetCounts();
+		
 		//Get the memory Phase Container
 		memoryPhaseOuterContainer = GameObject.Find( "MemoryPhaseOuterContainer" );
 		memoryPhaseContainer = memoryPhaseOuterContainer.transform.Find( "MemoryPhaseContainer" ).gameObject;
@@ -68,7 +73,9 @@ public class StateTutorial3 : StateMachineBehaviour
 	{
 		Debug.Log( "Starting Tutorial 3" );
 
-		TutorialManager.Instance.BuildTutorialLevel( 0 );
+		TutorialManager.Instance.DisableBackground();
+
+		TutorialManager.Instance.BuildTutorialLevel( 2 );
 	
 		//Display MemoryPhase Screen
 		memoryPhaseOuterContainer.transform.SetSiblingIndex( 1 );
@@ -76,7 +83,7 @@ public class StateTutorial3 : StateMachineBehaviour
 		yield return new WaitForSeconds( delay );
 
 		//Play Dialog
-		dialogueBox.transform.SetSiblingIndex( 2 );
+		dialogueBox.transform.SetSiblingIndex( 3 );
 		moveDialog.Move( 0.3f, new Vector3( 0f, -1000f, 0f ) , new Vector3( 0f, -350f, 0  ) );
 
 		//Start Second Dialogue
@@ -97,18 +104,23 @@ public class StateTutorial3 : StateMachineBehaviour
 
 		yield return new WaitForSeconds( 1.0f );
 
-		
-		//Build Level
-
-		TutorialManager.Instance.BuildTutorialLevel( 2 );
-		
 		//Activate the Game Container
 		gameOuterContainer.transform.SetSiblingIndex( 1 );
 		gameContainer.SetActive( true );
+
+		isSectionComplete = false;
+
+		while( !isSectionComplete )
+		{
+			yield return null;
+		}
+
+		Debug.Log( "Finished Level" );
 	}
 
 	private void SectionOver()
 	{
 		isSectionComplete = true;
 	}
+
 }

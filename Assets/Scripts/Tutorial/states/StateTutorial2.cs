@@ -40,6 +40,9 @@ public class StateTutorial2 : StateMachineBehaviour
 		anim = animator;
 		isSectionComplete = false;
 
+		//Reset Error and Correct Counts
+		TutorialManager.Instance.ResetCounts();
+		
 		//Hide the previous Game Symbols
 		TutorialManager.Instance.DisableMemorySymbols( 0 );
 		TutorialManager.Instance.EnableMemorySymbols( 1 );
@@ -89,6 +92,7 @@ public class StateTutorial2 : StateMachineBehaviour
 	{
 		
 		Debug.Log( "Starting Tutorial 2" );
+		TutorialManager.Instance.DisableBackground();
 	
 		//Display MemoryPhase Screen
 		memoryPhaseOuterContainer.transform.SetSiblingIndex( 1 );
@@ -97,7 +101,7 @@ public class StateTutorial2 : StateMachineBehaviour
 
 		
 		//Play Dialog
-		dialogueBox.transform.SetSiblingIndex( 2 );
+		dialogueBox.transform.SetSiblingIndex( 3 );
 		moveDialog.Move( 0.3f, new Vector3( 0f, -1000f, 0f ) , new Vector3( 0f, -350f, 0  ) );
 
 		yield return new WaitForSeconds( 1f );

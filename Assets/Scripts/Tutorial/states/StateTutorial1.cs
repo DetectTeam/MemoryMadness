@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MemoryMadness;
 
 public class StateTutorial1 : StateMachineBehaviour 
 {
@@ -36,6 +37,10 @@ public class StateTutorial1 : StateMachineBehaviour
 
 	public override void OnStateEnter( Animator animator, AnimatorStateInfo stateInfo, int layerIndex )
 	{
+		
+		//Reset Error and Correct Counts
+		TutorialManager.Instance.ResetCounts();
+		
 		anim = animator;
 
 		dialogueBox = GameObject.Find( "DialogueBox" );
@@ -87,7 +92,7 @@ public class StateTutorial1 : StateMachineBehaviour
 		Debug.Log( "Transitioning to Game Phase" );
 	
 		//Hide Dialogue Box
-		dialogueBox.transform.SetSiblingIndex( 2 );
+		dialogueBox.transform.SetSiblingIndex( 3 );
 		
 		moveDialog.Move( 0.3f , new Vector3( 0f, -350f, 0f ) , new Vector3( 0f, -1000f, 0f ) );
 		

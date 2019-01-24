@@ -75,7 +75,10 @@ namespace  MemoryMadness
 				//Messenger.Broadcast( "DisplayNextSentence" );
 				//Messenger.Broadcast( "IncrementDialogCount" );
 				if( !isTutorial )
+				{
 					Messenger.Broadcast<int>( "IncreaseScore" , 100 );
+					Messenger.Broadcast( "CorrectSelection" );
+				}
 			}
 			else if( !isCorrect && interactive )
 			{
@@ -87,6 +90,7 @@ namespace  MemoryMadness
 				{
 					Messenger.Broadcast( "RemoveHeart" );
 					Messenger.Broadcast<int>( "DecreaseScore" , 100 );
+					Messenger.Broadcast( "IncorrectSelection" );
 				}
 			}
 		}
