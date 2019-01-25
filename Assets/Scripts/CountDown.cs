@@ -25,8 +25,6 @@ namespace MemoryMadness
 
 		private float tmpTime;
 
-		
-
 		private void OnEnable()
 		{
 			Messenger.AddListener( "ResetTimer", ResetTimer );

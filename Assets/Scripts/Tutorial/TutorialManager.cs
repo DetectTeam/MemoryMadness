@@ -41,6 +41,9 @@ namespace MemoryMadness
 		//Bools
 		[SerializeField] private Button btnContinue;
 		[SerializeField] private Button tutOneButtonOne;
+
+		[SerializeField] private bool isTimerActive;
+		public bool IsTimerActive { get{ return isTimerActive; } set{ isTimerActive = value; } }
 		//Bools End
 	
 		private void OnEnable()
@@ -185,12 +188,10 @@ namespace MemoryMadness
 				heart.transform.localScale = new Vector3( 0.5f, 0.5f, 0.5f );
 
 				Messenger.Broadcast( "RemoveHeart" );
-				
-
+			
 				ToggleSymbolHighlights( 3 );
 				isButtonNeeded = false;
 			}
-
 		}
 
 		private void TutOneButtonOneClick()
@@ -284,6 +285,10 @@ namespace MemoryMadness
 			
 			if( currentLevel >= 3 )
 				DialogueManager.Instance.IsSectionComplete = true;
+
+			//Stop timer countdown
+			if( isTimerActive )
+				Messenger.Broadcast( "StopCountDown" );
 		}
 
 		public void DisableBackground()
@@ -295,6 +300,19 @@ namespace MemoryMadness
 		{
 			errorCount = 0;
 			correctCount = 0;
+		}
+
+
+		[SerializeField] private GameObject countdownTimer;
+		public void EnableCountdownTimer()
+		{
+			countdownTimer.SetActive( true );
+		}
+
+		[SerializeField] private GameObject inGameTimer;
+		public void EnableInGameTimer()
+		{
+			inGameTimer.SetActive( true );
 		}
 	}
 }

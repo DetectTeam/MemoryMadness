@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MemoryMadness;
 
-public class StateTutorial3 : StateMachineBehaviour 
-{
+public class StateTutorial4 : StateMachineBehaviour {
 
 	[SerializeField] private float delay = 1.0f;
 	[SerializeField] private GameObject memoryPhaseOuterContainer;
@@ -18,16 +17,6 @@ public class StateTutorial3 : StateMachineBehaviour
 	private bool isSectionComplete = false;
 	public bool IsSectionComplete { get{ return isSectionComplete; } set{ isSectionComplete = value; } }
 
-	public void OnEnable()
-	{
-		//Messenger.AddListener( "SectionOver" , SectionOver );
-	}
-
-	public void OnDisable()
-	{
-		//Messenger.RemoveListener( "SectionOver" , SectionOver );
-	}
-	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) 
 	{
 		anim = animator;
@@ -38,7 +27,7 @@ public class StateTutorial3 : StateMachineBehaviour
 
 		TutorialManager.Instance.CurrentLevel = 3;
 		//Reset Error and Correct Counts
-		Debug.Log( "Tutorial 3" );
+		
 		TutorialManager.Instance.ResetCounts();
 		
 		//Get the memory Phase Container
@@ -47,7 +36,6 @@ public class StateTutorial3 : StateMachineBehaviour
 
 		gameOuterContainer = (GameObject)GameObject.Find( "GameOuterContainer" );
 		gameContainer = gameOuterContainer.transform.Find( "GameContainer" ).gameObject;
-
 
 		if( !gameContainer )
 		{
@@ -64,8 +52,7 @@ public class StateTutorial3 : StateMachineBehaviour
 		}
 
 		moveDialog = dialogueBox.GetComponent<MoveTo>(); 
-		
-		
+			
 		if( !memoryPhaseContainer )
 		{
 			Debug.Log( "Memory phase container not found" );
@@ -75,15 +62,14 @@ public class StateTutorial3 : StateMachineBehaviour
 		CoRoutineSlave.Instance.ExecCoroutine( Sequence() );
 	}
 
-
 	private IEnumerator Sequence()
 	{
-		Debug.Log( "Starting Tutorial 3" );
+		Debug.Log( "Starting Tutorial 4" );
 
 		TutorialManager.Instance.DisableBackground();
 
-		TutorialManager.Instance.BuildTutorialLevel( 2 );
-	
+		TutorialManager.Instance.BuildTutorialLevel( 3 );
+
 		//Display MemoryPhase Screen
 		memoryPhaseOuterContainer.transform.SetSiblingIndex( 1 );
 		memoryPhaseContainer.SetActive( true );
@@ -93,7 +79,7 @@ public class StateTutorial3 : StateMachineBehaviour
 		dialogueBox.transform.SetSiblingIndex( 3 );
 		moveDialog.Move( 0.3f, new Vector3( 0f, -1000f, 0f ) , new Vector3( 0f, -350f, 0  ) );
 
-		//Start Second Dialogue
+		//Start Dialogue
 		DialogueManager.Instance.StartDialogue( dialogues[0] );
 
 		DialogueManager.Instance.IsSectionComplete = false;
@@ -104,12 +90,20 @@ public class StateTutorial3 : StateMachineBehaviour
 			yield return null;
 		}
 
-		Debug.Log( "Got this far ...3" );
-		
 		//Hide dialog box
 		moveDialog.Move( 0.3f, new Vector3( 0f, -350f, 0f ) , new Vector3( 0f, -1000f, 0  ) );
 
 		yield return new WaitForSeconds( 1.0f );
+
+		//Activate the timer .
+		TutorialManager.Instance.IsTimerActive = true;
+
+		TutorialManager.Instance.EnableCountdownTimer();
+
+		yield return new WaitForSeconds( 5.0f );
+
+
+		TutorialManager.Instance.EnableInGameTimer();
 
 		//Activate the Game Container
 		gameOuterContainer.transform.SetSiblingIndex( 1 );
@@ -117,20 +111,19 @@ public class StateTutorial3 : StateMachineBehaviour
 
 		DialogueManager.Instance.IsSectionComplete = false;
 
+		//Wait for user to exhaust dialogue
 		while( !DialogueManager.Instance.IsSectionComplete )
 		{
 			yield return null;
 		}
+		
 
-		yield return new WaitForSeconds( 2.0f );
-		Debug.Log( "Finished Level" );
-
-		anim.SetInteger( "Tutorial" , 4 );
+		Debug.Log( "Time for tutorial 5" );
+		anim.SetInteger( "Tutorial" , 5 );
 	}
 
 	private void SectionOver()
 	{
 		isSectionComplete = true;
 	}
-
 }

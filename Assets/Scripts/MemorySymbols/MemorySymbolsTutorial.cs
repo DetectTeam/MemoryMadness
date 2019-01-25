@@ -49,6 +49,8 @@ namespace  MemoryMadness
 		[SerializeField] private GameObject rune;
 		public GameObject Rune { get{ return rune; } set{ rune = value; } }
 
+		[SerializeField] private bool isTimerEnabled;
+
 
 		private void OnDisable()
 		{
