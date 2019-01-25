@@ -24,6 +24,9 @@ namespace MemoryMadness
 		private bool isButtonNeeded = true;
 		public bool IsButtonNeeded { get{ return isButtonNeeded; } set{ isButtonNeeded = value; } }
 		//End bools
+
+		private bool isExit;
+		public bool IsExit { get{ return isExit; } set{ isExit = value; } }
 		
 		//GameObjects
 		[SerializeField] private GameObject score;

@@ -19,29 +19,12 @@ public class StateTutorial1 : StateMachineBehaviour
 	[SerializeField] private GameObject[] symbolHighlights;
 
 	[SerializeField] private int buttonCount;
+	[SerializeField] private IEnumerator currentCoRoutine;
 
 	private MoveTo moveDialog;
 
 	private bool isSectionComplete = false;
 	public bool IsSectionComplete { get{ return isSectionComplete; } set{ isSectionComplete = value; } }
-
-	public void Awake()
-	{
-		Debug.Log( "State Tut 1 awake" );
-		//Messenger.AddListener( "SectionOver" , SectionOver );
-	}
-	
-
-	public void OnEnable()
-	{
-		Debug.Log( "State Tutorial 1" );
-		//Messenger.AddListener( "SectionOver" , SectionOver );
-	}
-
-	public void OnDisable()
-	{
-		//Messenger.RemoveListener( "SectionOver" , SectionOver );
-	}
 
 	public override void OnStateEnter( Animator animator, AnimatorStateInfo stateInfo, int layerIndex )
 	{
@@ -74,7 +57,7 @@ public class StateTutorial1 : StateMachineBehaviour
 		if( !gameContainer )
 			Debug.Log( "GameContainer Not Found" );
 	
-		CoRoutineSlave.Instance.ExecCoroutine( Sequence() );
+		currentCoRoutine = CoRoutineSlave.Instance.ExecCoroutine( Sequence() );
 	}
 	
 	private void SectionOver()
@@ -91,40 +74,64 @@ public class StateTutorial1 : StateMachineBehaviour
 		yield return new WaitForSeconds( 1.5f );
 		
 		//Display first Dialogue. 
-		DialogueManager.Instance.StartDialogue( dialogues[0] );
+		if( DialogueManager.Instance )
+			DialogueManager.Instance.StartDialogue( dialogues[0] );
 
 		//Wait for user to exhaust dialogue
-		while( !DialogueManager.Instance.IsSectionComplete )
+		while( DialogueManager.Instance && !DialogueManager.Instance.IsSectionComplete  )
+		{
 			yield return null;
+			
+			if( DialogueManager.Instance == null )
+				break;
+		}
 	
-		DialogueManager.Instance.IsSectionComplete = false;
+		
+		if( DialogueManager.Instance )
+			DialogueManager.Instance.IsSectionComplete = false;
+		
 		Debug.Log( "Transitioning to Game Phase" );
 	
 		//Hide Dialogue Box
-		dialogueBox.transform.SetSiblingIndex( 3 );
+
+		if( dialogueBox )
+			dialogueBox.transform.SetSiblingIndex( 3 );
 		
-		moveDialog.Move( 0.3f , new Vector3( 0f, -350f, 0f ) , new Vector3( 0f, -1000f, 0f ) );
+		
+		if( moveDialog )
+			moveDialog.Move( 0.3f , new Vector3( 0f, -350f, 0f ) , new Vector3( 0f, -1000f, 0f ) );
 		
 		yield return new WaitForSeconds( 1.5f );
 
 		//Activate the Game Container
-		gameOuterContainer.transform.SetSiblingIndex( 1 );
-		gameContainer.SetActive( true );
+		if( gameOuterContainer )
+			gameOuterContainer.transform.SetSiblingIndex( 1 );
+		
+		if( gameContainer )
+			gameContainer.SetActive( true );
 
 		yield return new WaitForSeconds( 1f );
 
 		//Display DialogueBox on Game Screen
-		moveDialog.Move( 0.3f, new Vector3( 0f, -1000f, 0f ) , new Vector3( 0f, -350f, 0f ) );
+		if( moveDialog )
+			moveDialog.Move( 0.3f, new Vector3( 0f, -1000f, 0f ) , new Vector3( 0f, -350f, 0f ) );
 		
 		//Start Second Dialogue
-		DialogueManager.Instance.StartDialogue( dialogues[1] );
+		if( DialogueManager.Instance )
+		 DialogueManager.Instance.StartDialogue( dialogues[1] );
 
 		//Wait for user to exhaust dialogue
-		while( !DialogueManager.Instance.IsSectionComplete )
+		while( DialogueManager.Instance && !DialogueManager.Instance.IsSectionComplete )
+		{
 			yield return null;
+			if( DialogueManager.Instance == null )
+				break;
+			
+		}
 
 		//Hide Dialogue Box
-		moveDialog.Move( 0.3f, new Vector3( 0f, -350f, 0f ) , new Vector3( 0f, -1000f, 0f ) );
+		if( moveDialog )
+			moveDialog.Move( 0.3f, new Vector3( 0f, -350f, 0f ) , new Vector3( 0f, -1000f, 0f ) );
 
 		//Clear Dialogue Box
 		
@@ -132,22 +139,16 @@ public class StateTutorial1 : StateMachineBehaviour
 
 		Debug.Log( "On to Tutorial 2" );
 
-		anim.SetInteger( "Tutorial" , 2 );
+		if( anim )
+			anim.SetInteger( "Tutorial" , 2 );
+		else
+			Debug.Log( "Anim does not exist...." );
 	}
 
-	private void MoveDialogueBox( Vector3 startPosition, Vector3 endPosition )
-	{
-		var moveTo = dialogueBox.GetComponent<MoveTo>();
+	
 
-		if( !moveTo )
-		{
-			Debug.Log( "Move To not found..." );
-			return;
-		}
-
-		moveTo.Delay = 0.3f;
-		moveTo.StartPosition = startPosition;
-		moveTo.Target = endPosition;
-		moveTo.Move();
-	}
+	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+       Debug.Log( "ON STATE EXIT CALLLLLLLEEEEEDDDDDDDDDD" );
+    }
 }

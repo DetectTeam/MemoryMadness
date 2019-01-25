@@ -24,17 +24,6 @@ public class StateTutorial2 : StateMachineBehaviour
 	private bool isSectionComplete = false;
 	public bool IsSectionComplete { get{ return isSectionComplete; } set{ isSectionComplete = value; } }
 
-
-	public void OnEnable()
-	{
-		//Messenger.AddListener( "SectionOver" , SectionOver );
-	}
-
-	public void OnDisable()
-	{
-		//Messenger.RemoveListener( "SectionOver" , SectionOver );
-	}
-
 	public override void OnStateEnter( Animator animator, AnimatorStateInfo stateInfo, int layerIndex )
 	{
 		anim = animator;
@@ -69,7 +58,7 @@ public class StateTutorial2 : StateMachineBehaviour
 			return;
 		}
 
-
+		
 		dialogueBox = GameObject.Find( "DialogueBox" );
 		
 		if( !dialogueBox )
@@ -78,6 +67,7 @@ public class StateTutorial2 : StateMachineBehaviour
 			return;
 		}
 
+		
 		moveDialog = dialogueBox.GetComponent<MoveTo>(); 
 		
 		
@@ -88,68 +78,83 @@ public class StateTutorial2 : StateMachineBehaviour
 		}
 
 		CoRoutineSlave.Instance.ExecCoroutine( Sequence() );
-
 	}
 
 	//Tutorial 2	
 	private IEnumerator Sequence()
 	{
-		
 		Debug.Log( "Starting Tutorial 2" );
 		TutorialManager.Instance.DisableBackground();
 	
 		//Display MemoryPhase Screen
-		memoryPhaseOuterContainer.transform.SetSiblingIndex( 1 );
-		memoryPhaseContainer.SetActive( true );
+		if( memoryPhaseOuterContainer )
+			memoryPhaseOuterContainer.transform.SetSiblingIndex( 1 );
+		
+		if( memoryPhaseContainer )
+			memoryPhaseContainer.SetActive( true );
+		
 		yield return new WaitForSeconds( delay );
 
-		
 		//Play Dialog
-		dialogueBox.transform.SetSiblingIndex( 3 );
-		moveDialog.Move( 0.3f, new Vector3( 0f, -1000f, 0f ) , new Vector3( 0f, -350f, 0  ) );
+		if( dialogueBox )
+			dialogueBox.transform.SetSiblingIndex( 3 );
+		
+		if( moveDialog )
+			moveDialog.Move( 0.3f, new Vector3( 0f, -1000f, 0f ) , new Vector3( 0f, -350f, 0  ) );
 
 		yield return new WaitForSeconds( 1f );
 
 		//Display first Dialogue. 
-		DialogueManager.Instance.StartDialogue( dialogues[0] );
+		if( DialogueManager.Instance )
+			DialogueManager.Instance.StartDialogue( dialogues[0] );
 
 		//Wait for user to exhaust dialogue
-		while( !DialogueManager.Instance.IsSectionComplete)
+		while( DialogueManager.Instance && !DialogueManager.Instance.IsSectionComplete )
 			yield return null;
 
 		//Hide dialog box
-		moveDialog.Move( 0.3f, new Vector3( 0f, -350f, 0f ) , new Vector3( 0f, -1000f, 0  ) );
+		if( moveDialog )
+			moveDialog.Move( 0.3f, new Vector3( 0f, -350f, 0f ) , new Vector3( 0f, -1000f, 0  ) );
 
 		yield return new WaitForSeconds( 1.0f );
 
 		//Activate the Game Container
-		gameOuterContainer.transform.SetSiblingIndex( 1 );
-		gameContainer.SetActive( true );
+		if( gameOuterContainer )
+			gameOuterContainer.transform.SetSiblingIndex( 1 );
+		
+		if( gameContainer )
+			gameContainer.SetActive( true );
 
 		yield return new WaitForSeconds( 1.0f );
 
 		//Show dialog Box
-		moveDialog.Move( 0.3f, new Vector3( 0f, -1000f, 0f ) , new Vector3( 0f, -350f, 0  ) );
+		if( moveDialog )
+			moveDialog.Move( 0.3f, new Vector3( 0f, -1000f, 0f ) , new Vector3( 0f, -350f, 0  ) );
 
 		yield return new WaitForSeconds( 1.0f );
 
 		//Display first Dialogue. 
-		DialogueManager.Instance.StartDialogue( dialogues[1] );
-		
-		DialogueManager.Instance.IsSectionComplete = false;
+		if( DialogueManager.Instance )
+		{
+			DialogueManager.Instance.StartDialogue( dialogues[1] );
+			DialogueManager.Instance.IsSectionComplete = false;
+		}
 		
 		//Wait for user to exhaust dialogue
-		while( !DialogueManager.Instance.IsSectionComplete )
+		while( DialogueManager.Instance && !DialogueManager.Instance.IsSectionComplete )
 			yield return null;
+		
 
 		//Show dialog Box
-		moveDialog.Move( 0.3f, new Vector3( 0f, -350f, 0f ) , new Vector3( 0f, -1000f, 0  ) );
+		if( moveDialog )
+			moveDialog.Move( 0.3f, new Vector3( 0f, -350f, 0f ) , new Vector3( 0f, -1000f, 0  ) );
 
 		yield return new WaitForSeconds( 1.0f );
 
-		Debug.Log( "Done !!!!" );
-
-		anim.SetInteger( "Tutorial" , 3 );
+	
+		if( anim )
+			anim.SetInteger( "Tutorial" , 3 );
+		
 		Debug.Log( "State Tut 2 Im done here..." );
 	}
 

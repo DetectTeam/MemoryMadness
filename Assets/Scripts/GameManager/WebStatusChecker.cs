@@ -41,6 +41,6 @@ public class WebStatusChecker : Singleton<WebStatusChecker>
             webAccessStatus = true;
         }
 
-		Messenger.Broadcast<bool>( "WebAccessStatus", webAccessStatus );
+		//Messenger.Broadcast<bool>( "WebAccessStatus", webAccessStatus );
 	}
 }
