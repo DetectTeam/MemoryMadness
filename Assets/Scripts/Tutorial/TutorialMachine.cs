@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialMachine : Singleton<TutorialMachine> {
+public class TutorialMachine : MonoBehaviour {
 
 
 }

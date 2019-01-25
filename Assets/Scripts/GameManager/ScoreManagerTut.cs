@@ -30,7 +30,7 @@ public class ScoreManagerTut : MonoBehaviour
                  Destroy(gameObject);    
             
         //     //Sets this to not be destroyed when reloading scene
-             DontDestroyOnLoad(gameObject);
+            // DontDestroyOnLoad(gameObject);
 	}
 	private void OnEnable()
 	{

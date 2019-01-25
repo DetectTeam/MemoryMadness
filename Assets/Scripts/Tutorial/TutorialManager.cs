@@ -56,18 +56,12 @@ namespace MemoryMadness
 		{
 			 //Check if instance already exists
              if (Instance == null)
-                
-                //if not, set instance to this
                  Instance = this;
-            
-            //If instance already exists and it's not this:
              else if (Instance != this)
-                
-                 //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
-                 Destroy(gameObject);    
+                Destroy(gameObject);    
             
         	//Sets this to not be destroyed when reloading scene
-             DontDestroyOnLoad(gameObject);
+            // DontDestroyOnLoad(gameObject);
 		}
 	
 		private void OnEnable()
@@ -200,17 +194,19 @@ namespace MemoryMadness
 			if( btnClickCount == 8 )
 			{
 				Messenger.Broadcast<int>( "DecreaseScore" , 100 );
+				
+				iTween.Stop( score );
 				score.transform.localScale = new Vector3( 1.0f, 1.0f, 1.0f );
-				iTween.Stop();
-
+			
 				ScaleTo( heart );
 			}
 
 			if( btnClickCount == 9 )
 			{
-				iTween.Stop();
+				
 				heart.transform.localScale = new Vector3( 0.5f, 0.5f, 0.5f );
-
+				iTween.Stop( heart );
+				
 				Messenger.Broadcast( "RemoveHeart" );
 			
 				ToggleSymbolHighlights( 3 );

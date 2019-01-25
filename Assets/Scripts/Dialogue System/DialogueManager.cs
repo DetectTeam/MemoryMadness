@@ -31,7 +31,7 @@ using TMPro;
                  //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
                  Destroy(gameObject);    
         //     //Sets this to not be destroyed when reloading scene
-             DontDestroyOnLoad(gameObject);
+             //DontDestroyOnLoad(gameObject);
 		}
 
 

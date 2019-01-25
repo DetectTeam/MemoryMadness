@@ -22,6 +22,9 @@ public class FileUploadHandler : MonoBehaviour
 	{
 		Messenger.AddListener<string>( "PUT" , PUT  );
 		Messenger.AddListener<bool>( "WebAccessStatus" , WebAccessStatus );
+
+		Messenger.MarkAsPermanent( "PUT" );
+		Messenger.MarkAsPermanent( "WebAccessStatus" );
 	}
 
 	private void OnDisable()
