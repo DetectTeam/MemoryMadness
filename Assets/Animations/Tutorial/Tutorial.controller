@@ -69,6 +69,17 @@ MonoBehaviour:
     sentences:
     - Introduce Named Colours......
   dialogueBox: {fileID: 0}
+--- !u!114 &114381493709696208
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f0f1bd658c6430296d35140c4d44c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114598345643416326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -628,7 +639,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101237084079345098}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114381493709696208}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

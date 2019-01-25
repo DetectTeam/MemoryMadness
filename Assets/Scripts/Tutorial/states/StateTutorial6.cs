@@ -123,7 +123,9 @@ public class StateTutorial6 : StateMachineBehaviour
 			yield return null;
 		}
 		
-		Debug.Log( "Time for tutorial 5" );
+		yield return new WaitForSeconds( 2.0f );
+		Debug.Log( "Time for tutorial 7" );
+		anim.SetInteger( "Tutorial" , 6 );
 		
 	}
 
