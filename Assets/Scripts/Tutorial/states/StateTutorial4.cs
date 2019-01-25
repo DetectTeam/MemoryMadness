@@ -99,6 +99,7 @@ public class StateTutorial4 : StateMachineBehaviour {
 		TutorialManager.Instance.IsTimerActive = true;
 
 		TutorialManager.Instance.EnableCountdownTimer();
+		TutorialManager.Instance.StartCountdownTimer();
 
 		yield return new WaitForSeconds( 5.0f );
 
@@ -117,7 +118,7 @@ public class StateTutorial4 : StateMachineBehaviour {
 			yield return null;
 		}
 		
-
+		yield return new WaitForSeconds( 2.0f );
 		Debug.Log( "Time for tutorial 5" );
 		anim.SetInteger( "Tutorial" , 5 );
 	}

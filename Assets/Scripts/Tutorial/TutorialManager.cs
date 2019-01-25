@@ -309,6 +309,11 @@ namespace MemoryMadness
 			countdownTimer.SetActive( true );
 		}
 
+		public void StartCountdownTimer()
+		{
+			countdownTimer.GetComponent<CountdownTutorial>().StartTimer();
+		}
+
 		[SerializeField] private GameObject inGameTimer;
 		public void EnableInGameTimer()
 		{

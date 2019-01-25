@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using MemoryMadness;
 
-public class StateTutorial5 : StateMachineBehaviour {
-
+public class StateTutorial6 : StateMachineBehaviour 
+{
 	[SerializeField] private float delay = 1.0f;
 	[SerializeField] private GameObject memoryPhaseOuterContainer;
 	[SerializeField] private GameObject memoryPhaseContainer;
@@ -64,11 +64,11 @@ public class StateTutorial5 : StateMachineBehaviour {
 
 	private IEnumerator Sequence()
 	{
-		Debug.Log( "Starting Tutorial 5" );
+		Debug.Log( "Starting Tutorial 6" );
 
 		TutorialManager.Instance.DisableBackground();
 
-		TutorialManager.Instance.BuildTutorialLevel( 4 );
+		TutorialManager.Instance.BuildTutorialLevel( 5 );
 
 		//Display MemoryPhase Screen
 		memoryPhaseOuterContainer.transform.SetSiblingIndex( 1 );
@@ -123,9 +123,8 @@ public class StateTutorial5 : StateMachineBehaviour {
 			yield return null;
 		}
 		
-		yield return new WaitForSeconds( 2.0f );
-		Debug.Log( "Time for tutorial 6" );
-		anim.SetInteger( "Tutorial" , 6 );
+		Debug.Log( "Time for tutorial 5" );
+		
 	}
 
 	private void SectionOver()
