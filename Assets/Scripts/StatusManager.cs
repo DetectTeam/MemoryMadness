@@ -23,6 +23,12 @@ namespace MemoryMadness
 			Messenger.AddListener( "Failure", Failure );
 			Messenger.AddListener( "Timeout", TimeOut );
 			Messenger.AddListener( "ResetMessage", ResetMessages );
+
+			Messenger.MarkAsPermanent( "Success" );
+			Messenger.MarkAsPermanent( "Failure" );
+			Messenger.MarkAsPermanent( "Timeout" );
+			Messenger.MarkAsPermanent( "ResetMessage" );
+
 		}
 
 		private void OnDisable()

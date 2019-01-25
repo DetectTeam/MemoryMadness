@@ -13,10 +13,10 @@ namespace MemoryMadness
 		Ended	
 	}
 		
-	public class SessionManager : Singleton<SessionManager>
+	public class SessionManager : MonoBehaviour//Singleton<SessionManager>
 	{
 		public static int SessionID;
-		//public static SessionManager Instance = null;
+		public static SessionManager Instance = null;
 		
 		private int orderCount = 1;
 		[SerializeField] private int trialNumber = 0;
@@ -26,9 +26,30 @@ namespace MemoryMadness
 		
 		private SessionState sessionState; 
 	
+		
+		private void Awake()
+		{
+			//DontDestroyOnLoad(gameObject);
+			 //Check if instance already exists
+             if (Instance == null)
+                
+                //if not, set instance to this
+                 Instance = this;
+            
+            //If instance already exists and it's not this:
+             else if (Instance != this)
+                
+                 //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+                 Destroy(gameObject);    
+            
+        //     //Sets this to not be destroyed when reloading scene
+             DontDestroyOnLoad(gameObject);
+		}
+		
 		private void OnEnable()
 		{
 			Messenger.AddListener( "CreatePlayerSelection" , CreatePlayerSelection );
+			
 			Messenger.AddListener< string >( "CorrectSlotPosition" , SetCorrectSlot );
 			//Messenger.AddListener< int >( "SetSelectionOrder", SetOrderSlot );
 			Messenger.AddListener< int >( "PlayerSelection", SetPlayerSelection );
@@ -36,6 +57,13 @@ namespace MemoryMadness
 			Messenger.AddListener< int , int ,int  >( "SelectedShapeDetails" , SetSelectedShapeDetails );
 			Messenger.AddListener< int, int >( "EndSession", EndSession );
 			//Messenger.AddListener(  "DecrementLife", UpdateLifeCount );
+
+			Messenger.MarkAsPermanent ( "CreatePlayerSelection" );
+			Messenger.MarkAsPermanent ( "CorrectSlotPosition" );
+			Messenger.MarkAsPermanent ( "PlayerSelection" );
+			Messenger.MarkAsPermanent ( "RecordTime" );
+			Messenger.MarkAsPermanent ( "SelectedShapeDetails" );
+			Messenger.MarkAsPermanent ( "EndSession" );
 		}
 
 		private void OnDisable()

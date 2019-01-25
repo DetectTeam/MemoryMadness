@@ -30,11 +30,13 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                 if (m_Instance == null)
                 {
                     // Search for existing instance.
+                    Debug.Log( "Searching for existing Instance...." );
                     m_Instance = (T)FindObjectOfType(typeof(T));
  
                     // Create new instance if one doesn't already exist.
                     if (m_Instance == null)
                     {
+                        Debug.Log( "Instance is nulll" );
                         // Need to create a new GameObject to attach the singleton to.
                         var singletonObject = new GameObject();
                         m_Instance = singletonObject.AddComponent<T>();

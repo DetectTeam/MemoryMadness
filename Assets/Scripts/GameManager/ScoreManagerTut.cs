@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ScoreManager : MonoBehaviour 
+public class ScoreManagerTut : MonoBehaviour 
 {
 
-	//public static ScoreManager Instance = null;
+	public static ScoreManagerTut Instance = null;
 	
 	[SerializeField] private TextMeshProUGUI scoreText;
 	[SerializeField] private int score;
@@ -17,20 +17,20 @@ public class ScoreManager : MonoBehaviour
 
 	void Awake()
 	{
-		// 	 //Check if instance already exists
-        //      if (Instance == null)
+			 //Check if instance already exists
+             if (Instance == null)
                 
-        //         //if not, set instance to this
-        //          Instance = this;
+                //if not, set instance to this
+                 Instance = this;
             
-        //     //If instance already exists and it's not this:
-        //      else if (Instance != this)
+            //If instance already exists and it's not this:
+             else if (Instance != this)
                 
-        //          //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
-        //          Destroy(gameObject);    
+                 //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+                 Destroy(gameObject);    
             
-        // //     //Sets this to not be destroyed when reloading scene
-        //      DontDestroyOnLoad(gameObject);
+        //     //Sets this to not be destroyed when reloading scene
+             DontDestroyOnLoad(gameObject);
 	}
 	private void OnEnable()
 	{

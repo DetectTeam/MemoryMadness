@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Splash.unity
+    guid: 849bc41ec6966457aa464ab8ac7ff2a9
+  - enabled: 1
     path: Assets/Scenes/Memory_Madness_Random_Level.unity
     guid: ed81141ccb0ab439fa6131c6826cf3dd
   - enabled: 1

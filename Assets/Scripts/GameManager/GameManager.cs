@@ -7,9 +7,9 @@ using UnityEngine.Events;
 namespace MemoryMadness
 {
 	
-	public class GameManager : Singleton<GameManager>
+	public class GameManager : MonoBehaviour //Singleton<GameManager>
 	{
-		//public static GameManager Instance = null;
+		public static GameManager Instance = null;
 		public UnityEvent setupEvent;
 		public UnityEvent startGameEvent;
 		public UnityEvent playingGameEvent;
@@ -23,30 +23,31 @@ namespace MemoryMadness
 		[SerializeField] private int currentLevel = 1;
 		public int CurrentLevel { get{ return currentLevel; } set{ currentLevel = value; }  }
 
-		// private void Awake()
-		// {
-		// 	if( Instance == null )
-		// 	{
-		// 		Instance = this;
-		// 	}
-		// 	else
-		// 	{
-		// 		Destroy( gameObject );
-		// 	}
-		// }
-
 		private void OnEnable()
 		{
-			
-			
 			Messenger.AddListener<int>( "SetWinCount", SetWinCount );
+			Messenger.MarkAsPermanent( "SetWinCount" );
+
 			Messenger.AddListener( "CorrectButtonClick", IncrementCorrectButtonClickCount );
+			Messenger.MarkAsPermanent( "CorrectButtonClick" );
+
 			Messenger.AddListener( "ResetCorrectButtonCount", ResetCorrectButtonClickCount );
+			Messenger.MarkAsPermanent( "ResetCorrectButtonCount");
+
 			Messenger.AddListener( "ResetLevelGenerator", ResetRandomLevelGenerator );
+			Messenger.MarkAsPermanent( "ResetLevelGenerator");
+
 			Messenger.AddListener( "DisableRandomLevelGenerator", DisableRandomLevelGenerator );
+			Messenger.MarkAsPermanent( "DisableRandomLevelGenerator");
+
 			Messenger.AddListener( "ResetSDGenerator" , ResetSDLevelGenerator );
+			Messenger.MarkAsPermanent( "ResetSDGenerator" );
+
 			Messenger.AddListener( "DecrementLife" , DecrementLifeCount );
+			Messenger.MarkAsPermanent( "DecrementLife"  );
+
 			Messenger.AddListener( "ChangeLevel", ChangeLevel );
+			Messenger.MarkAsPermanent( "ChangeLevel" );
 		}
 
 		private void OnDisable()
@@ -64,6 +65,15 @@ namespace MemoryMadness
 		private void Awake()
 		{
 			//DontDestroyOnLoad(gameObject);
+			 //Check if instance already exists
+             if (Instance == null)
+                //if not, set instance to this
+                 Instance = this;
+             else if (Instance != this)
+                Destroy(gameObject);    
+            
+     
+             //DontDestroyOnLoad(gameObject);
 		}
 
 		// Use this for initialization

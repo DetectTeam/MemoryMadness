@@ -15,8 +15,10 @@ namespace MemoryMadness
 		NameableNonColour
 	}
 
-	public class StageManager : Singleton<StageManager>
+	public class StageManager : MonoBehaviour//Singleton<StageManager>
 	{
+		public static StageManager Instance = null;
+		
 		[SerializeField] private int levelCount = 0;
 		public int LevelCount { get{ return levelCount; } }
 		[SerializeField] private int levelsPerStage;
@@ -45,10 +47,22 @@ namespace MemoryMadness
 		[SerializeField] private static LevelType currentLevelType;	
 		public LevelType CurrentLevelType { get{ return currentLevelType; } }
 
-		//public static StageManager Instance = null;
+	
 
 		private void Awake()
 		{
+			//Check if instance already exists
+             if (Instance == null)
+                //if not, set instance to this
+                 Instance = this;
+        	//If instance already exists and it's not this:
+             else if (Instance != this)
+                 //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+                 Destroy(gameObject);    
+            
+             //Sets this to not be destroyed when reloading scene
+             //DontDestroyOnLoad(gameObject);
+			
 			LoadStage();
 			levelCount = LoadLevel();
 			RefreshStage();
@@ -58,8 +72,14 @@ namespace MemoryMadness
 		private void OnEnable()
 		{
 			Messenger.AddListener( "IncrementLevel", IncrementLevel );
+			Messenger.MarkAsPermanent( "IncrementLevel" );
+			
 			Messenger.AddListener( "IncrementStage", IncrementStage );
+			Messenger.MarkAsPermanent( "IncrementStage" );
+			
 			Messenger.AddListener( LoadNextLevelMessage, LoadNextLevel );
+			Messenger.MarkAsPermanent( LoadNextLevelMessage );
+			
 		}
 
 		private void OnDisable()

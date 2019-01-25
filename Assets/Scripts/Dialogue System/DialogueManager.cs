@@ -6,8 +6,10 @@ using TMPro;
 
 
 
-	public class DialogueManager : Singleton<DialogueManager> 
+	public class DialogueManager : MonoBehaviour//Singleton<DialogueManager> 
 	{
+		public static DialogueManager Instance;
+		
 		//[SerializeField] private TextMeshProUGUI nameText;
 		[SerializeField] private TextMeshProUGUI dialogueText;
 		[SerializeField] private Queue<string> sentences; 
@@ -17,6 +19,20 @@ using TMPro;
 		private bool isSectionComplete;
 
 		public bool IsSectionComplete { get{ return isSectionComplete; } set{ isSectionComplete = value; } }
+
+		private void Awake()
+		{
+			//Check if instance already exists
+             if (Instance == null)
+                //if not, set instance to this
+                 Instance = this;
+            //If instance already exists and it's not this:
+             else if (Instance != this)
+                 //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+                 Destroy(gameObject);    
+        //     //Sets this to not be destroyed when reloading scene
+             DontDestroyOnLoad(gameObject);
+		}
 
 
 		private void OnEnable()

@@ -9,8 +9,10 @@ using System.Linq;
 /// </summary>
 namespace  MemoryMadness
 {
-	public class RandomLevelGenerator_V2 : Singleton<RandomLevelGenerator_V2>
+	public class RandomLevelGenerator_V2 : MonoBehaviour//Singleton<RandomLevelGenerator_V2>
 	{ 
+		public static RandomLevelGenerator_V2 Instance = null;
+		
 		[SerializeField] private ColourPicker colorPicker;  //List of colours used in the level
 		[SerializeField] private ShapePicker namedShapePicker; //nameable sprites 
 		[SerializeField] private ShapePicker unamedShapePicker; //unanameable sprites
@@ -30,10 +32,23 @@ namespace  MemoryMadness
 		[SerializeField] private List<Symbol> memoryPhaseSymbols;
 		public List<Symbol> MemoryPhaseSymbols { get{ return memoryPhaseSymbols; } }
 
+		private void Awake()
+		{
+			//Check if instance already exists
+             if (Instance == null)
+                //if not, set instance to this
+                 Instance = this;
+        	//If instance already exists and it's not this:
+             else if (Instance != this)
+                 //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+                 Destroy(gameObject);   
+		}
+		
 		private void OnEnable()
 		{
 			//Reset the correct button count to zero
 			Messenger.Broadcast( "ResetCorrectButtonCount" );
+			
 
 			CheckCurrentStage( StageManager.Instance.CurrentStage );
 			LoadLists();
