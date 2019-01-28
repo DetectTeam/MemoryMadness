@@ -90,7 +90,7 @@ namespace MemoryMadness
 			trialNumber ++;
 
 			//Get Device unique identifier for test only.
-			session.SessionID = SystemInfo.deviceUniqueIdentifier.ToString();
+			session.SessionID = trialNumber.ToString();
 
 			PlayerPrefs.SetInt( "SessionID" , trialNumber );
 			
@@ -98,7 +98,7 @@ namespace MemoryMadness
 
 			sessionState = SessionState.Started;
 
-			session.UserID = "DummyID0001";
+			session.UserID = SystemInfo.deviceUniqueIdentifier;
 			session.SessionName = "Session_Name";
 			session.Date = System.DateTime.Now.ToString( "dd_MM_yyyy" );
 			session.AbsoluteTimeOfResponse = System.DateTime.Now.ToString( "hh_mm" );
