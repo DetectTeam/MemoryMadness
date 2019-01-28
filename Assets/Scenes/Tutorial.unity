@@ -33050,7 +33050,7 @@ Prefab:
     - target: {fileID: 114287186726360998, guid: ff28619e33ca1430ca39a9df983850fe,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114287186726360998, guid: ff28619e33ca1430ca39a9df983850fe,
         type: 2}
@@ -33070,7 +33070,7 @@ Prefab:
     - target: {fileID: 114287186726360998, guid: ff28619e33ca1430ca39a9df983850fe,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: ToggleSymbolHighlights
+      value: IncrementButtonClickCount
       objectReference: {fileID: 0}
     - target: {fileID: 114287186726360998, guid: ff28619e33ca1430ca39a9df983850fe,
         type: 2}

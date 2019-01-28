@@ -13,7 +13,7 @@ public class ITweenPunchScale : MonoBehaviour , IEffect
 
 
 	[Range( 0.25f, 2.0f ) ]
-	[SerializeField] private float x,y;
+	[SerializeField] private float x, y = 0.25f;
 	
 	// Use this for initialization
 

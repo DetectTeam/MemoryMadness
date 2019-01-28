@@ -20,7 +20,9 @@ namespace MemoryMadness
 		[SerializeField] private int correctCount = 0;
 		public int CorrectCount { get{ return correctCount; } set{ correctCount = value; } }
 		[SerializeField] private int dialogCount = 0;
+		
 		[SerializeField] private int btnClickCount = 0;
+		public int ButtonClickCount { get{ return btnClickCount; } set{ btnClickCount = value; } }
 		//End ints
 
 		//bools
@@ -174,6 +176,12 @@ namespace MemoryMadness
 		public void DisableGameSymbols( int index )
 		{
 			gameSymbolsSets[ index ].SetActive( false );
+	
+		}
+
+		public void IncrementButtonClickCount()
+		{
+			ButtonClickCount ++;
 		}
 
 		private void TaskOnClick()
@@ -185,6 +193,12 @@ namespace MemoryMadness
 			{
 				isButtonNeeded = false;
 				ToggleSymbolHighlights( 0 );
+			
+			}
+
+			if( btnClickCount == 5 )
+			{
+				ToggleSymbolHighlights( 1 );
 			}
 
 			if( btnClickCount == 7 )

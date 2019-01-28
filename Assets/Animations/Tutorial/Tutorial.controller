@@ -137,8 +137,8 @@ MonoBehaviour:
     - Click continue when you are ready to proceed......
   - name: 
     sentences:
-    - 'This is the main game screen. The symbols you just saw are somewhere in this
-      grid. '
+    - This is the main game screen. The symbols you just saw are somewhere in this
+      grid.
     - 'Select the highlighted symbol. This is one of the symbols you just memorized.
 
 '
@@ -218,7 +218,7 @@ MonoBehaviour:
   - name: 
     sentences:
     - In this tutorial you will learn what happens when you a make an incorrect selection
-    - 'Select the symbol highlighted above. '
+    - Select the symbol highlighted above.
     - You have chosen incorrectly. You lose some points.
     - You also lose a life. When all of your lives are gone you lose the level.
     - Choose the second symbol highlighted above.

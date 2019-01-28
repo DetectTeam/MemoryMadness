@@ -75,7 +75,7 @@ public class Highlight : MonoBehaviour
 	[SerializeField] private float fadeSpeed;
 	private void FadeOut( float time )
 	{
-		float maximum = 1.0f;
+		//float maximum = 1.0f;
 		float minimum = 0.0f;
 
 		alpha = Mathf.Lerp( alpha, minimum, time * fadeSpeed * Time.deltaTime );
