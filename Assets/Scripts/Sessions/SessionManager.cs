@@ -29,6 +29,8 @@ namespace MemoryMadness
 		
 		private void Awake()
 		{
+			
+			Debug.Log( "Session Manager Running..." );
 			//DontDestroyOnLoad(gameObject);
 			 //Check if instance already exists
              if (Instance == null)
@@ -87,7 +89,8 @@ namespace MemoryMadness
 
 			trialNumber ++;
 
-			session.SessionID = trialNumber;
+			//Get Device unique identifier for test only.
+			session.SessionID = SystemInfo.deviceUniqueIdentifier.ToString();
 
 			PlayerPrefs.SetInt( "SessionID" , trialNumber );
 			
@@ -107,7 +110,14 @@ namespace MemoryMadness
 			session.TrialNumber = trialNumber;
 			session.ApplicationQuit = "0";
 		
-			SetStudyItems( session, RandomLevelGenerator.Instance.MemoryPhaseSymbols );
+
+			//Debug.Log( RandomLevelGenerator );
+
+			if( RandomLevelGenerator_V2.Instance )
+				SetStudyItems( session, RandomLevelGenerator_V2.Instance.MemoryPhaseSymbols );
+			else
+				Debug.Log( "Study Item Problem" );
+
 			SetTestSlotItems();
 
 			if( StageManager.Instance.CurrentLevelType == LevelType.NameableColour ||
@@ -154,9 +164,13 @@ namespace MemoryMadness
 	
 		private void SetStudyItems( Session session, List<Symbol> source )
 		{
+			
+			Debug.Log( "Study Items" );
 			for( int i = 0; i < source.Count; i++ )
 			{
 				StudyItem item = new StudyItem(); 
+
+				Debug.Log( item );
 				
 				item.StudyCellNumber = source[i].Index;
 			 	item.ColourCode = source[i].BackgroundColor.ColourCode;

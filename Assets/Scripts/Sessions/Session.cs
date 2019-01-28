@@ -28,7 +28,7 @@ namespace MemoryMadness
 	[System.Serializable]
 	public class Session  
 	{
-		public int SessionID { get; set; }
+		public string SessionID { get; set; }
 		public string SessionName{ get; set; }
 		public string SessionTimeStamp { get; set; }
 		public string UserID { get; set; } 

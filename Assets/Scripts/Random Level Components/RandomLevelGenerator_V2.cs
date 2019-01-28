@@ -34,6 +34,8 @@ namespace  MemoryMadness
 
 		private void Awake()
 		{
+			Debug.Log( "Random Level Generator Working..." );
+			
 			//Check if instance already exists
              if (Instance == null)
                 //if not, set instance to this
