@@ -46,7 +46,8 @@ MonoBehaviour:
   dialogues:
   - name: 
     sentences:
-    - Introduce the timer in memory phase
+    - In this section time is now a factor. You will have 4 seconds to memorize the
+      symbols and 30 sesonds to find them.
   dialogueBox: {fileID: 0}
 --- !u!114 &114330912992993032
 MonoBehaviour:
@@ -67,7 +68,8 @@ MonoBehaviour:
   dialogues:
   - name: 
     sentences:
-    - Introduce Named Colours......
+    - "In this level we introduce you to some alternative shapes. \nMemorize the shape
+      and colour and click continue when you are ready."
   dialogueBox: {fileID: 0}
 --- !u!114 &114381493709696208
 MonoBehaviour:
@@ -110,7 +112,7 @@ MonoBehaviour:
   dialogues:
   - name: 
     sentences:
-    - Introduce Colour ......
+    - In this level colour is important. Remember the symbol and the colour.
   dialogueBox: {fileID: 0}
 --- !u!114 &114677691706611474
 MonoBehaviour:
@@ -129,18 +131,19 @@ MonoBehaviour:
   dialogues:
   - name: 
     sentences:
-    - Welcome ...............
-    - Memorize the above symbols.....
-    - Click continue when you are ready  to proceed......
+    - Welcome to the tutorial
+    - You will need to remember these symbols.
+    - Click continue when you are ready to proceed......
   - name: 
     sentences:
-    - This is the main game screen. this is where all the magic happens
-    - 'Prompt user to find symbols...
+    - 'This is the main game screen. The symbols you just saw are somewhere in this
+      grid. '
+    - 'Select the highlighted symbol. This is one of the symbols you just memorized.
 
 '
     - Good Job you found the first Symbol ( with a little help ) and you got some
-      points too . Now select the second symbol.
-    - ' Good Job ... You have successfully completed your first level. Click continue
+      points too . Now select the second symbol you memorized.
+    - ' Well done ... You have successfully completed your first level. Click continue
       to proceed to the second tutorial'
   dialogueBox: {fileID: 0}
   gameOuterContainer: {fileID: 0}
@@ -190,7 +193,8 @@ MonoBehaviour:
   dialogues:
   - name: 
     sentences:
-    - Free Play Level
+    - In this section you will complete a level on your own. Memorize the symbols
+      above and click continue when you are ready.
   dialogueBox: {fileID: 0}
 --- !u!114 &114959745503403134
 MonoBehaviour:
@@ -212,13 +216,13 @@ MonoBehaviour:
     - Memorize the symbols and click continue when you are ready
   - name: 
     sentences:
-    - In this tutorial you wil learn the consequneces for failure...
-    - Prompt first selection
-    - You have chosen incorrectly. You lose some points...
-    - Life Decreases
-    - Choose Second Symbol
-    - You have failed the level message
-    - Thats it for this Tutorial ...on to the next
+    - In this tutorial you will learn what happens when you a make an incorrect selection
+    - 'Select the symbol highlighted above. '
+    - You have chosen incorrectly. You lose some points.
+    - You also lose a life. When all of your lives are gone you lose the level.
+    - Choose the second symbol highlighted above.
+    - You have run out of lives. You have failed the level.
+    - Click to proceed to the next tutorial
   dialogueBox: {fileID: 0}
   gameOuterContainer: {fileID: 0}
   gameContainer: {fileID: 0}
@@ -959,13 +963,13 @@ AnimatorStateMachine:
     m_Position: {x: 756, y: 96, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102949895559032392}
-    m_Position: {x: 552, y: 300, z: 0}
+    m_Position: {x: 180, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102049750207434212}
-    m_Position: {x: 744, y: 216, z: 0}
+    m_Position: {x: 504, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102081072269943448}
-    m_Position: {x: 1092, y: 216, z: 0}
+    m_Position: {x: 792, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102148647344615238}
     m_Position: {x: -420, y: 0, z: 0}
