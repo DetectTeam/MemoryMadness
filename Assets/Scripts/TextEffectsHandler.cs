@@ -30,6 +30,7 @@ public class TextEffectsHandler : MonoBehaviour
 	{
 		Messenger.AddListener( "TriggerEffect", TriggerEffect );
 		Messenger.MarkAsPermanent( "TriggerEffect" );
+		TriggerEffect();
 	}
 
 	private void OnDisable()
@@ -38,8 +39,7 @@ public class TextEffectsHandler : MonoBehaviour
 	}
 
 	private void TriggerEffect()
-	{
-		
+	{	
 		iEffect.Play( target );
 	}	
 }

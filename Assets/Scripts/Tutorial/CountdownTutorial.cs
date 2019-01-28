@@ -76,7 +76,7 @@ public class CountdownTutorial : MonoBehaviour
 		{
 			if( isLevelTimeOut )
 			{
-				//Messenger.Broadcast( "Timeout" );
+				Messenger.Broadcast( "Timeout" );
 				//Messenger.Broadcast( "ChangeLevel" );		
 			}
 			else

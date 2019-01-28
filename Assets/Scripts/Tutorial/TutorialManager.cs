@@ -42,6 +42,8 @@ namespace MemoryMadness
 		[SerializeField] private GameObject[] gameSymbolsSets;
 
 		[SerializeField] private GameObject endLevelCover;
+		[SerializeField] private GameObject endTutorial;
+		public GameObject EndTutorial { get{ return endTutorial; } set{ endTutorial = value; } }
 		//Gameobjects End
 
 		//Bools

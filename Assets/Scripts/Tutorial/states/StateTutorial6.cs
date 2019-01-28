@@ -146,7 +146,7 @@ public class StateTutorial6 : StateMachineBehaviour
 		Debug.Log( "Time for tutorial 7" );
 		
 		if( anim )
-			anim.SetInteger( "Tutorial" , 6 );
+			anim.SetInteger( "Tutorial" , 7 );
 		
 	}
 
