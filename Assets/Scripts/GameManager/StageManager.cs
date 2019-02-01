@@ -98,6 +98,7 @@ namespace MemoryMadness
 			if( levelCount < levelsPerStage )
 			{
 				//Request a Reset of the random level generator
+				Messenger.Broadcast( "CurrentLevel" );
 				Messenger.Broadcast( "ResetLevelGenerator" );
 				levelCount ++;
 				memoryPhaseScreen.SetActive( true );

@@ -9,20 +9,24 @@ namespace MemoryMadness
 	[System.Serializable]
 	public class ShapeInfo
 	{
-		public int ShapeCode { get; set; }
-		public int ColourCode{ get; set; }
+		private string shapeCode = "NA";
+		public string ShapeCode { get{ return shapeCode; } set{ shapeCode = value; } } 
+
+		private string colourCode = "NA";
+		public string ColourCode { get{ return colourCode; } set{ colourCode = value; } } 
 	}
 	
 	[System.Serializable]
 	public class StudyItem : ShapeInfo
 	{
-		public int StudyCellNumber { get; set; }
+		private string studyCellNumber = "NA";
+		public string StudyCellNumber { get{ return studyCellNumber; } set{ studyCellNumber = value; } }
 	}
 
 	[System.Serializable]
 	public class TestSlot : ShapeInfo
 	{
-		public int CellNumber { get; set; }
+		public string CellNumber { get; set; }
 	}
 
 	[System.Serializable]
@@ -35,7 +39,7 @@ namespace MemoryMadness
 		public string Date { get; set; }
 		public string AbsoluteTimeOfResponse { get; set; }
 		public int Stage { get; set; } // Stage 1 - 4
-		public int Level { get; set; } // level 1 - 8
+		//public int Level { get; set; } // level 1 - 8
 		public int StudyCellSize { get; set; }
 		public List<StudyItem> StudyItems; //Items in MemoryPhase
 		public List<TestSlot> TestSlots; //Record of items in the test phase

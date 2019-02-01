@@ -25,6 +25,8 @@ namespace MemoryMadness
 		[SerializeField] private PlayerSelection playerSelection;
 		
 		private SessionState sessionState; 
+
+		private int currentLevel = 1;
 	
 		
 		private void Awake()
@@ -58,6 +60,8 @@ namespace MemoryMadness
 			Messenger.AddListener< float >( "RecordTime", SetPlayerSelectionTime );
 			Messenger.AddListener< int , int ,int  >( "SelectedShapeDetails" , SetSelectedShapeDetails );
 			Messenger.AddListener< int, int >( "EndSession", EndSession );
+			Messenger.AddListener( "CurrentLevel", IncrementLevel );
+
 			//Messenger.AddListener(  "DecrementLife", UpdateLifeCount );
 
 			Messenger.MarkAsPermanent ( "CreatePlayerSelection" );
@@ -66,6 +70,7 @@ namespace MemoryMadness
 			Messenger.MarkAsPermanent ( "RecordTime" );
 			Messenger.MarkAsPermanent ( "SelectedShapeDetails" );
 			Messenger.MarkAsPermanent ( "EndSession" );
+			Messenger.MarkAsPermanent ( "CurrentLevel" );
 		}
 
 		private void OnDisable()
@@ -77,11 +82,13 @@ namespace MemoryMadness
 			Messenger.RemoveListener< int >( "PlayerSelection", SetPlayerSelection );
 			Messenger.RemoveListener< int , int ,int  >( "SelectedShapeDetails" , SetSelectedShapeDetails );
 			Messenger.RemoveListener< int, int >( "EndSession", EndSession );
+			Messenger.AddListener( "CurrentLevel", IncrementLevel );
 			//Messenger.RemoveListener(  "DecrementLife", UpdateLifeCount );
 		}
 
 		public void CreateSession()
 		{
+			
 			if( PlayerPrefs.HasKey( "SessionID" ) )
 				trialNumber = PlayerPrefs.GetInt( "SessionID" );
 
@@ -101,10 +108,9 @@ namespace MemoryMadness
 			session.UserID = SystemInfo.deviceUniqueIdentifier;
 			session.SessionName = "Session_Name";
 			session.Date = System.DateTime.Now.ToString( "dd_MM_yyyy" );
-			session.AbsoluteTimeOfResponse = System.DateTime.Now.ToString( "hh_mm" );
+			session.AbsoluteTimeOfResponse = System.DateTime.Now.ToString( "HH:mm:ss tt" );
 			session.SessionTimeStamp =  System.DateTime.Now.ToString( "yyyy_MM_dd_hh_mm_ss" );
 			session.Stage = StageManager.Instance.CurrentStage;
-			session.Level = StageManager.Instance.CurrentLevel + 1;
 			session.SymbolArraySize = CalculateSymbolArraySize( StageManager.Instance.CurrentStage );
 			session.StudyCellSize = CalculateSymbolArraySize( StageManager.Instance.CurrentStage );			
 			session.TrialNumber = trialNumber;
@@ -164,20 +170,29 @@ namespace MemoryMadness
 	
 		private void SetStudyItems( Session session, List<Symbol> source )
 		{
-			
+			string notAvailable = "NA";
 			Debug.Log( "Study Items" );
 			for( int i = 0; i < source.Count; i++ )
 			{
 				StudyItem item = new StudyItem(); 
 
-				Debug.Log( item );
-				
-				item.StudyCellNumber = source[i].Index;
-			 	item.ColourCode = source[i].BackgroundColor.ColourCode;
-			 	item.ShapeCode = source[i].CurrentShape.ShapeCode;
+				item.StudyCellNumber = source[i].Index.ToString();
+			 	item.ColourCode = source[i].BackgroundColor.ColourCode.ToString();
+			 	item.ShapeCode = source[i].CurrentShape.ShapeCode.ToString();
 
 				session.StudyItems.Add( item );
-			}	
+			}
+
+		   	for( int x = source.Count; x < 4; x++ )
+			{
+				StudyItem item = new StudyItem(); 
+				
+				item.StudyCellNumber = notAvailable;
+			 	item.ColourCode = notAvailable;
+			 	item.ShapeCode = notAvailable;
+
+				session.StudyItems.Add( item );
+			}
 		}
 
 		private void SetTestSlotItems()
@@ -188,10 +203,10 @@ namespace MemoryMadness
 			{
 				MemorySymbols memSymbolsScript = symbolList[i].GetComponent<MemorySymbols>();
 				TestSlot slot = new TestSlot();
-				slot.ColourCode = memSymbolsScript.ColourCode;
-				slot.ShapeCode = memSymbolsScript.ShapeCode;
+				slot.ColourCode = memSymbolsScript.ColourCode.ToString();
+				slot.ShapeCode = memSymbolsScript.ShapeCode.ToString();
 
-				slot.CellNumber = i+1;
+				slot.CellNumber = (i+1).ToString();
 				session.TestSlots.Add( slot );
 			}
 		}
@@ -199,6 +214,8 @@ namespace MemoryMadness
 		private void CreatePlayerSelection()
 		{
 			playerSelection = new PlayerSelection();
+			playerSelection.Level = currentLevel;
+			
 		}
 
 		private void SetCorrectSlot( string slot  )
@@ -275,7 +292,7 @@ namespace MemoryMadness
 		{
 			int maxCount = 0;
 			int paddingCount = 0;
-			string notAvailable = "N/A";
+			string notAvailable = "NA";
 
 			if( symbolCount ==  2 )
 				maxCount = 3;
@@ -289,10 +306,10 @@ namespace MemoryMadness
 			for( int x = 0; x < paddingCount; x++ )
 			{
 				playerSelection = new PlayerSelection();
-
+				playerSelection.Level = currentLevel;
 				playerSelection.RelativeTime = notAvailable;
 				playerSelection.ReactionTime = notAvailable;
-				playerSelection.Selection = ( selectionCount++ ).ToString();
+				playerSelection.Selection = ( selectionCount + 1 ).ToString();
 				playerSelection.Repeat = notAvailable;
 				playerSelection.Interrupt = notAvailable;
 				playerSelection.Lure = notAvailable;
@@ -335,6 +352,19 @@ namespace MemoryMadness
 				trialNumber = 0;
 
 			sessionState = SessionState.Ended;
+		}
+
+		private void IncrementLevel()
+		{
+			currentLevel ++;
+			
+			if( currentLevel > 8 )
+				currentLevel = 1;
+		}
+
+		private void OnApplicationPause()
+		{
+
 		}
 
 		private void OnApplicationQuit()
