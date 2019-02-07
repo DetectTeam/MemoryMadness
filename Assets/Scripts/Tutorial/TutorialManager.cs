@@ -196,10 +196,6 @@ namespace MemoryMadness
 			
 			}
 
-			if( btnClickCount == 5 )
-			{
-				ToggleSymbolHighlights( 1 );
-			}
 
 			if( btnClickCount == 7 )
 			{
