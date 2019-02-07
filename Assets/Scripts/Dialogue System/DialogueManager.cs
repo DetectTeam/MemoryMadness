@@ -20,6 +20,8 @@ using TMPro;
 
 		public bool IsSectionComplete { get{ return isSectionComplete; } set{ isSectionComplete = value; } }
 
+		private Coroutine typeSentence;
+
 		private void Awake()
 		{
 			//Check if instance already exists
@@ -43,8 +45,7 @@ using TMPro;
 
 		private void OnDisable()
 		{
-			Messenger.RemoveListener( "DisplayNextSentence" , DisplayNextSentence );
-			
+			Messenger.RemoveListener( "DisplayNextSentence" , DisplayNextSentence );	
 		}
 
 		private void Start () 
@@ -81,8 +82,14 @@ using TMPro;
 
 			string sentence = sentences.Dequeue();
 			dialogueText.text = "";
-			StopCoroutine( TypeSentence( "" ) );
-			StartCoroutine( TypeSentence( sentence ) );
+			
+			if( typeSentence != null ) 
+				StopCoroutine( typeSentence );
+			else
+				Debug.Log( "Nothing to stop !!!!" );
+			 
+			 
+			 typeSentence =  StartCoroutine( TypeSentence( sentence ) );
 		}
 
 		private IEnumerator TypeSentence( string sentence )
