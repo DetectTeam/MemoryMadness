@@ -13,7 +13,6 @@ using TMPro;
 		//[SerializeField] private TextMeshProUGUI nameText;
 		[SerializeField] private TextMeshProUGUI dialogueText;
 		[SerializeField] private Queue<string> sentences; 
-		[SerializeField] private Animator animator;
 		[SerializeField] private Button btnContinue;
 
 		private bool isSectionComplete;

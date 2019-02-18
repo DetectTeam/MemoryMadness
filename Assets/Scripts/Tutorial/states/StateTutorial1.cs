@@ -109,8 +109,7 @@ public class StateTutorial1 : StateMachineBehaviour
                 break;
         }
 
-       
-
+    
         ToggleDialogBox(0.3f, new Vector3(0f, -350, 0f), new Vector3(0f, -1000f, 0f));
 
         yield return new WaitForSeconds(0.6f);
