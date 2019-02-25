@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 namespace MemoryMadness
@@ -44,6 +45,8 @@ namespace MemoryMadness
 		[SerializeField] private GameObject[] gameSymbolsSets;
 
 		[SerializeField] private GameObject endLevelCover;
+		[SerializeField] private TextMeshProUGUI errorText;
+		[SerializeField] private TextMeshProUGUI correctText;
 		[SerializeField] private GameObject endTutorial;
 		public GameObject EndTutorial { get{ return endTutorial; } set{ endTutorial = value; } }
 		//Gameobjects End
@@ -278,6 +281,8 @@ namespace MemoryMadness
 			if( correctCount == 2 )
 			{
 				Debug.Log( "Trigger Success" );
+				errorText.gameObject.SetActive( false );
+				correctText.gameObject.SetActive( true );
 				EnableBackground();
 			}
 		}
@@ -288,6 +293,8 @@ namespace MemoryMadness
 			{
 				Debug.Log( "You Lose" );
 				EnableBackground();
+				correctText.gameObject.SetActive( false);
+				errorText.gameObject.SetActive( true );
 			
 			}
 		}
