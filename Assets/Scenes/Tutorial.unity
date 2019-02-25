@@ -9524,7 +9524,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 636.7163, y: 1614.5696}
+  m_Target: {x: 277.4019, y: 1059.0737}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
