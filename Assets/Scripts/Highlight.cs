@@ -6,26 +6,26 @@ using UnityEngine.UI;
 public class Highlight : MonoBehaviour 
 {
 	[SerializeField] private float speed;
-	[SerializeField] private float scale;
-	[SerializeField] private Vector3 originalScale;
+//	[SerializeField] private float scale;
+	//[SerializeField] private Vector3 originalScale;
 	//[SerializeField] private float alpha;
 	 private Color color;
-	[SerializeField] private bool isScaling;
+	//[SerializeField] private bool isScaling;
 
 	[SerializeField] private float deltaTime;
 	[SerializeField] private Vector3 targetScale;
 
 	[SerializeField] private float mag; 
-	[SerializeField] private float mag2; 
+	//[SerializeField] private float mag2; 
 
 	private void OnEnable()
 	{
-		originalScale = transform.localScale;
+		//originalScale = transform.localScale;
 		color = gameObject.GetComponent<Image>().color;
 
-		mag2 = targetScale.magnitude; 
+		//mag2 = targetScale.magnitude; 
 		//StartCoroutine( DisplayHighLight() );
-		isScaling = true;
+		//isScaling = true;
 
 		Messenger.AddListener( "ToggleHighLight" , ToggleHighlight );
 
@@ -88,7 +88,7 @@ public class Highlight : MonoBehaviour
 		Debug.Log( "Reset Called" ); 
 		transform.localScale = new Vector3( 0.25f, 0.25f, 0.937f );
 		//transform.localScale = originalScale;
-		scale = 2;
+		//scale = 2;
 		alpha = 1;
 	}
 }

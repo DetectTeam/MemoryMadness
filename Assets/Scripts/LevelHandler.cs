@@ -9,10 +9,10 @@ namespace MemoryMadness
 	{
 
 
-		[SerializeField] private int levelCount = 0;
+		//[SerializeField] private int levelCount = 0;
 		
-		[SerializeField] private int levelsPerStage = 3;
-		[SerializeField] private int numberOfStages = 4;
+		//[SerializeField] private int levelsPerStage = 3;
+		//[SerializeField] private int numberOfStages = 4;
 
 
 
@@ -20,7 +20,7 @@ namespace MemoryMadness
 		[SerializeField] private int currentStage;
 
 		
-		[SerializeField] private bool isGameOver = false;
+		//[SerializeField] private bool isGameOver = false;
 
 		//Messages
 

@@ -22,12 +22,11 @@ public class CountdownTutorial : MonoBehaviour
 	[SerializeField] private bool isMemPhaseTimer;
 
 	private float previousTime;
-	private float tmpTime;
+	//private float tmpTime;
 	
 	private void OnEnable()
 	{
 		
-
 		Messenger.AddListener( "ResetTimer", ResetTimer );
 		Messenger.AddListener( "StopCountDown", StopTimer );
 		
@@ -48,7 +47,7 @@ public class CountdownTutorial : MonoBehaviour
 		
 		Messenger.RemoveListener( "ResetTimer", ResetTimer );
 		Messenger.RemoveListener( "StopCountDown", StopTimer );
-		timeLeft = tmpTime;
+		timeLeft = 0; //tmpTime;
 	}
 
 	private IEnumerator CountDownSequence()

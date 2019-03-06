@@ -38,9 +38,8 @@ namespace MemoryMadness
 
 				delay = Random.Range( 0.5f, 2.0f );
 
-				GameObject p = Instantiate( particle, new Vector3( x, y, z ) , Quaternion.identity );
+				Instantiate( particle, new Vector3( x, y, z ) , Quaternion.identity );
 			
-
 				yield return new WaitForSeconds( delay );
 			}
 		}

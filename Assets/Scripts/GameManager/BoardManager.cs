@@ -60,7 +60,7 @@ namespace MemoryMadness
 		[SerializeField] private GameObject endLevelBackground;
 		[SerializeField] private GameObject resultPanel;
 		[SerializeField] private float percentage = 65;
-		[SerializeField] private int currentPhase = 0;
+		//[SerializeField] private int currentPhase = 0;
 
 
 

@@ -22,7 +22,7 @@ namespace MemoryMadness
 
 		[SerializeField] private GameObject buttonContainer;
 
-		private int speed = 1;
+		//private int speed = 1;
 
 		private void OnEnable()
 		{		

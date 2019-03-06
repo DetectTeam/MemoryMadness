@@ -8,7 +8,7 @@ using UnityEngine.Networking;
 public class FileUploadHandler : MonoBehaviour 
 {
 	private string path = "";
-	private string destinationPath;
+	//private string destinationPath;
 
 	private string jsonString;
 
@@ -36,7 +36,7 @@ public class FileUploadHandler : MonoBehaviour
 	private IEnumerator Start()
 	{
 		path = GetPath() + "upload/";
-		destinationPath = GetPath() + "sent/";
+		//destinationPath = GetPath() + "sent/";
 		Debug.Log( path );
 
 		CheckDirectoryExists( path );	

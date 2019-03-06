@@ -67,7 +67,7 @@ using TMPro;
 			DisplayNextSentence();
 		}
 
-		private int count = 0;
+		//private int count = 0;
 		public void DisplayNextSentence()
 		{
 			Debug.Log( "Display next sentence: " + sentences.Count );

@@ -19,7 +19,7 @@ namespace MemoryMadness
 
 	public class ShapePicker : MonoBehaviour 
 	{
-			[SerializeField] private string name;
+			//[SerializeField] private string name;
 			[SerializeField] private List<Shape> imageList = new List<Shape>();
 			public List<Shape> ImageList { get{ return ImageList; } } 
 			private void OnEnable()

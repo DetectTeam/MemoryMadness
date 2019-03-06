@@ -18,9 +18,9 @@ namespace MemoryMadness
 		public static int SessionID;
 		public static SessionManager Instance = null;
 		
-		private int orderCount = 1;
+		//private int orderCount = 1;
 		[SerializeField] private int trialNumber = 0;
-		[SerializeField] private int levelSize = 20;
+		//[SerializeField] private int levelSize = 20;
 		[SerializeField] private Session session;
 		[SerializeField] private PlayerSelection playerSelection;
 		
@@ -101,7 +101,7 @@ namespace MemoryMadness
 
 			PlayerPrefs.SetInt( "SessionID" , trialNumber );
 			
-			orderCount = 1;
+			//orderCount = 1;
 
 			sessionState = SessionState.Started;
 
@@ -327,7 +327,7 @@ namespace MemoryMadness
 		private void SaveSession( )
 		{
 			PersistenceManager.Instance.Save( session );
-			string jsonString = JsonConvert.SerializeObject( session );	
+			//string jsonString = JsonConvert.SerializeObject( session );	
 		}	
 
 		//Fix This !!

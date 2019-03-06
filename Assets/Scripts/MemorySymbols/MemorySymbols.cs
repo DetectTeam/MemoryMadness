@@ -7,8 +7,8 @@ namespace MemoryMadness
 {
 	public class MemorySymbols : MonoBehaviour 
 	{
-		[SerializeField] private string name;
-		public string Name { get{ return name; } set{ name = value; } }
+		[SerializeField] private string _name;
+		public string Name { get{ return _name; } set{ _name = value; } }
 
 		[SerializeField] private int colourCode;
 		public int ColourCode { get{ return colourCode; } set{ colourCode = value; } }
@@ -60,7 +60,7 @@ namespace MemoryMadness
 		[SerializeField] private int slotNumber;
 		public int SlotNumber{ get{ return slotNumber; } set{ slotNumber = value; } }
 
-		private float previousTime = 0;
+		//private float previousTime = 0;
 
 		void OnEnable()
 		{
@@ -72,7 +72,7 @@ namespace MemoryMadness
 		void OnDisable()
 		{
 			//Reset();
-			previousTime = 0;
+			//previousTime = 0;
 		}
 		
 		void Start () 

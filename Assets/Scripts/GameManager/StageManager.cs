@@ -27,7 +27,7 @@ namespace MemoryMadness
 
 		[SerializeField] private int currentLevelTypeCount;
 
-		[SerializeField] private int maxNumLevelsPerStage = 7;
+		//[SerializeField] private int maxNumLevelsPerStage = 7;
 
 		[SerializeField] private static int currentStage;
 		public int CurrentStage { get{ return currentStage; } set{ currentStage = value; } }

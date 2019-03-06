@@ -35,10 +35,10 @@ namespace MemoryMadness
 		[SerializeField] private GameObject memoryPhaseContainer;
 		[SerializeField] private GameObject memorySymbolContainer;
 
-		[SerializeField] private int currentStage = 2;
+		//[SerializeField] private int currentStage = 2;
 		[SerializeField] private int memPhaseSymbolCount;
 		
-		[SerializeField] private int currentLevel = 0;
+		//[SerializeField] private int currentLevel = 0;
 		
 		// Use this for initialization
 
@@ -149,8 +149,8 @@ namespace MemoryMadness
 				memSymbolsScript.IsCorrect = false;
 				memSymbolsScript.IsColourSwitched = false;
 
-				int colourPickerIndex = 0;
-				int shapeIndex = 0;
+				//int colourPickerIndex = 0;
+				//int shapeIndex = 0;
 
 				
 				if( !isNoColour ) 
@@ -199,7 +199,7 @@ namespace MemoryMadness
 
 		private void GenerateMemoryPhaseSymbols()
 		{
-			GameObject randomSymbol;
+			//GameObject randomSymbol;
 			
 		    int currentSymbolCount = 20;
 

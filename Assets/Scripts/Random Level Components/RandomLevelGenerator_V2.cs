@@ -21,7 +21,7 @@ namespace  MemoryMadness
 		[SerializeField] private List<Colour>levelBackGroundColors = new List<Colour>();
 		[SerializeField] private List<Colour> backgroundColours = new List<Colour>();
 		[SerializeField] private GameObject symbolPrefab;
-		[SerializeField] private int currentStage = 3;
+		//[SerializeField] private int currentStage = 3;
 		[SerializeField] private int memPhaseSymbolCount;
 
 		[SerializeField] private int numOfSymbolsPerLevel = 20;
@@ -105,7 +105,7 @@ namespace  MemoryMadness
 		//Generate the memory phase symbols 
 		private void SetupSymbols()
 		{
-			bool isNoColour = false;
+			//bool isNoColour = false;
 			
 			if( levelSymbols.Count > 0 )
 			{
@@ -208,8 +208,8 @@ namespace  MemoryMadness
 				memSymbolsScript.IsCorrect = false;
 				memSymbolsScript.IsColourSwitched = false;
 
-				int colourPickerIndex = 0;
-				int shapeIndex = 0;
+				//int colourPickerIndex = 0;
+				//int shapeIndex = 0;
 					
 				if( !isNoColour  )
 				{
@@ -275,7 +275,7 @@ namespace  MemoryMadness
 
 		private void GenerateMemoryPhaseSymbolsNonColoured()
 		{
-			GameObject randomSymbol;
+			//GameObject randomSymbol;
 			
 		    int currentSymbolCount = 20;
 
@@ -364,23 +364,23 @@ namespace  MemoryMadness
 		}
 
 
-		private bool CheckColourInColourList( Color color , List<Color> colourList ) 
-		{
-			bool b = false;
+		// private bool CheckColourInColourList( Color color , List<Color> colourList ) 
+		// {
+		// 	bool b = false;
 			
-			Color colourInList = colourList.Find( x => x == color );
+		// 	Color colourInList = colourList.Find( x => x == color );
 
-			if( colourInList != null )
-				b = true;
+		// 	if( colourInList != null )
+		// 		b = true;
 			
-			return b;
-		}
+		// 	return b;
+		// }
 
         [SerializeField] private List<Color> tmpColours;
 		[SerializeField] private List<Color> tmpColoursShuffled;
 		private void ColourSwitchSymbols()
 		{		
-			bool  isSelectable = false;
+			//bool  isSelectable = false;
 
 			if( tmpColours.Count > 0 )
 				tmpColours.Clear();

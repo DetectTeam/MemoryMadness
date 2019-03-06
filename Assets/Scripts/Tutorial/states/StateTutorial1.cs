@@ -5,7 +5,7 @@ using MemoryMadness;
 
 public class StateTutorial1 : StateMachineBehaviour 
 {
-	[SerializeField] private float delay = 3.0f;
+	[SerializeField] private float delay = 1.5f;
 	[SerializeField] private Animator anim;
 	[SerializeField] private GameObject symbolContainer;
 	[SerializeField] private List<Dialogue> dialogues;
@@ -19,7 +19,7 @@ public class StateTutorial1 : StateMachineBehaviour
 	[SerializeField] private GameObject[] symbolHighlights;
 
 	[SerializeField] private int buttonCount;
-	[SerializeField] private IEnumerator currentCoRoutine;
+	//[SerializeField] private IEnumerator currentCoRoutine;
 
 	private MoveTo moveDialog;
 
@@ -56,13 +56,13 @@ public class StateTutorial1 : StateMachineBehaviour
         if (!gameContainer)
             Debug.Log("GameContainer Not Found");
 
-        currentCoRoutine = CoRoutineSlave.Instance.ExecCoroutine(Sequence());
+        CoRoutineSlave.Instance.ExecCoroutine(Sequence());
     }
 
 	//Tutorial 1	
 	private IEnumerator Sequence()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds( delay );
 
         //Display first Dialogue. 
         StartDialog(0);
