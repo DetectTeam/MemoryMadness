@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Splash.unity
     guid: 849bc41ec6966457aa464ab8ac7ff2a9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutorial.unity
     guid: 7428e5294598f4c5482d2486d96ec05c
   - enabled: 1
