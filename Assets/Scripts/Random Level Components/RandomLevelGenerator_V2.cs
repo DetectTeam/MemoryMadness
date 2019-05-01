@@ -35,6 +35,8 @@ namespace  MemoryMadness
 		[SerializeField] private List<string> letterList = new List<string>();
 		public List<string> LetterList { get{ return letterList; } set{ letterList = value; } }
 
+		[SerializeField] private List<GameObject> memoryPhaseGameObject = new List<GameObject>();
+
 		private void Awake()
 		{
 			Debug.Log( "Random Level Generator Working..." );
@@ -59,6 +61,50 @@ namespace  MemoryMadness
 			LoadLists();
 			SetBackgroundColours();
 			SetupSymbols();
+
+
+			Debug.Log( "!!!!!!!!!!!!!!!!!!!!!!!!!!" );
+
+			if( StageManager.Instance.CurrentLevelType == LevelType.UnNameableNonColour || StageManager.Instance.CurrentLevelType == LevelType.UnNameableColour )
+			{
+				Debug.Log( "This level is unnameable" );
+
+				//Disable letters and enable runes
+
+				//In Game
+
+				foreach( GameObject symbol in levelSymbols )
+				{
+					symbol.transform.Find( "Letter" ).gameObject.SetActive( false );
+					symbol.transform.Find( "Rune" ).gameObject.SetActive( true );
+				}
+
+				foreach( GameObject obj in memoryPhaseGameObject )
+				{
+					obj.transform.Find( "Letter" ).gameObject.SetActive( false );
+					obj.transform.Find( "Rune" ).gameObject.SetActive( true );
+				}
+
+				//MemoryPhase 
+			}
+			else
+			{
+				Debug.Log( "This level is Nameable" );
+				//Disable runes and enable letters
+
+				foreach( GameObject symbol in levelSymbols )
+				{
+					symbol.transform.Find( "Letter" ).gameObject.SetActive( true );
+					symbol.transform.Find( "Rune" ).gameObject.SetActive( false );
+				}
+
+				foreach( GameObject obj in memoryPhaseGameObject )
+				{
+					obj.transform.Find( "Letter" ).gameObject.SetActive( true );
+					obj.transform.Find( "Rune" ).gameObject.SetActive( false );
+				}
+
+			}
 		}
 
 		
@@ -79,6 +125,10 @@ namespace  MemoryMadness
 		//Load all colour and shape lists
 		private void LoadLists()
 		{
+			
+			if( letterList != null )
+				letterList.ShuffleList();
+			
 			if ( namedShapePicker != null )
 				namedShapes = namedShapePicker.GetShapeList();
 			else
@@ -228,6 +278,8 @@ namespace  MemoryMadness
 				levelSymbols[i].transform.Find( "Rune" ).GetComponent<Image>().sprite = RandomShapePicker( i , levelSprites ).Image;
 				memSymbolsScript.ShapeCode = RandomShapePicker( i, levelSprites ).ShapeCode;
 
+				memSymbolsScript.Letter.text = letterList[ i ];
+
 				levelSymbols[i].SetActive( true );
 			}
 		}
@@ -265,7 +317,16 @@ namespace  MemoryMadness
 
 				symbol.BackgroundColor = c;
 				symbol.CurrentShape = s;
-				symbol.Rune = memorySymbolsScript.Rune.GetComponent<Image>();
+				
+				
+				
+				symbol.Rune = memorySymbolsScript.Rune.GetComponent<Image>();	
+				
+				symbol.Letter = memorySymbolsScript.Letter.text;
+				
+				
+				//symbol.Rune = memorySymbolsScript.Rune.GetComponent<Image>();
+				//symbol.Letter = memorySymbolsScript.Letter.text;
 					
 				memorySymbolsScript.IsCorrect = true;
 				memorySymbolsScript.IsColourSwitched = true;
@@ -335,7 +396,13 @@ namespace  MemoryMadness
 
 			symbol.BackgroundColor = c;
 			symbol.CurrentShape = s;
+
+			
 			symbol.Rune = memorySymbolsScript.Rune.GetComponent<Image>();
+			
+			symbol.Letter = memorySymbolsScript.Letter.text;
+			
+			
 			
 			memorySymbolsScript.IsCorrect = true;
 			memorySymbolsScript.IsColourSwitched = true;

@@ -19,8 +19,8 @@ namespace MemoryMadness
 		private Image rune;
 		public Image Rune { get{ return rune; } set{ rune = value; } }
 
-		private TextMeshProUGUI letter;
-		public TextMeshProUGUI Letter { get{ return letter; } set{ letter = value; } }
+		private string letter;
+		public string Letter { get{ return letter; } set{ letter = value; } }
 	}
 
 }
