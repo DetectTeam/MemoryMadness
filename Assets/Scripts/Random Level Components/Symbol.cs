@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace MemoryMadness
 {
@@ -17,6 +18,9 @@ namespace MemoryMadness
 
 		private Image rune;
 		public Image Rune { get{ return rune; } set{ rune = value; } }
+
+		private TextMeshProUGUI letter;
+		public TextMeshProUGUI Letter { get{ return letter; } set{ letter = value; } }
 	}
 
 }

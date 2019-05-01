@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace MemoryMadness
 {
@@ -48,6 +49,10 @@ namespace MemoryMadness
 		//Symbols rune or symbol
 		[SerializeField] private GameObject rune;
 		public GameObject Rune { get{ return rune; } set{ rune = value; } }
+
+		//Letters to replace nameable symbols
+		[SerializeField] private TextMeshProUGUI letter;
+		public TextMeshProUGUI Letter { get{ return letter; } set{ letter = value; } }
 
 		//Button component of symbol
 		[SerializeField] private GameObject button;

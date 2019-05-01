@@ -32,6 +32,9 @@ namespace  MemoryMadness
 		[SerializeField] private List<Symbol> memoryPhaseSymbols;
 		public List<Symbol> MemoryPhaseSymbols { get{ return memoryPhaseSymbols; } }
 
+		[SerializeField] private List<string> letterList = new List<string>();
+		public List<string> LetterList { get{ return letterList; } set{ letterList = value; } }
+
 		private void Awake()
 		{
 			Debug.Log( "Random Level Generator Working..." );
