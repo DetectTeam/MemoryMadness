@@ -18476,7 +18476,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 260.05927, y: 2481.4844}
+  m_Target: {x: 223.21754, y: 2198.6074}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
@@ -20578,7 +20578,7 @@ RectTransform:
   m_GameObject: {fileID: 1474130674}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0166309, y: 1.118294, z: 0.9457031}
+  m_LocalScale: {x: 1.1564177, y: 1.4537822, z: 0.9457031}
   m_Children: []
   m_Father: {fileID: 621291648}
   m_RootOrder: 0
@@ -23142,7 +23142,7 @@ RectTransform:
   m_GameObject: {fileID: 1613844619}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.338654, y: 1.2247095, z: 1.0175793}
+  m_LocalScale: {x: 1.3553873, y: 1.6074312, z: 1.0175793}
   m_Children: []
   m_Father: {fileID: 2004355214}
   m_RootOrder: 0
