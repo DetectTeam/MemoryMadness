@@ -136,7 +136,7 @@ namespace  MemoryMadness
 			errorImage.SetActive( false );
 			
 			backgroundColor.SetActive( true );
-			rune.SetActive( true );
+			//rune.SetActive( true );
 			//EnableButton();
 		}
 	}
