@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 
 namespace MemoryMadness
@@ -21,6 +22,8 @@ namespace MemoryMadness
 		[SerializeField] private GameObject randomLevelGenerator;
 		[SerializeField] private GameObject sameDifferentLevelGenerator;
 		[SerializeField] private int currentLevel = 1;
+
+		[SerializeField] private TextMeshProUGUI userIdText;
 		public int CurrentLevel { get{ return currentLevel; } set{ currentLevel = value; }  }
 
 		private void OnEnable()
@@ -79,6 +82,9 @@ namespace MemoryMadness
 		// Use this for initialization
 		void Start () 
 		{
+			
+			userIdText.text = IDGenerator.Instance.UserID;
+			
 			ResetLifeCount();
 		}
 

@@ -105,7 +105,7 @@ namespace MemoryMadness
 
 			sessionState = SessionState.Started;
 
-			session.UserID = SystemInfo.deviceUniqueIdentifier;
+			//session.UserID = SystemInfo.deviceUniqueIdentifier;
 			session.SessionName = "Session_Name";
 			session.Date = System.DateTime.Now.ToString( "dd_MM_yyyy" );
 			session.AbsoluteTimeOfResponse = System.DateTime.Now.ToString( "HH:mm:ss tt" );
@@ -334,6 +334,7 @@ namespace MemoryMadness
 		public void EndSession( int levelCount , int levelsPerStage )
 		{
 			string jsonString = "";
+			session.UserID = IDGenerator.Instance.UserID;
 		
             PadSelections( session.SymbolArraySize, selectionCount );
 
