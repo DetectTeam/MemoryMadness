@@ -185,8 +185,6 @@ namespace MemoryMadness
 	
 		public void SetCurrentLevelType()
 		{
-			Debug.Log( "Setting Current Level Type " + currentLevelTypeCount + " " + stage.Count );
-			
 			if( currentLevelTypeCount < stage.Count  )
 			{
 				currentLevelType = stage[ currentLevelTypeCount ]; 

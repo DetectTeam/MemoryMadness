@@ -32,7 +32,7 @@ namespace MemoryMadness
 		private void Awake()
 		{
 			
-			Debug.Log( "Session Manager Running..." );
+			
 			//DontDestroyOnLoad(gameObject);
 			 //Check if instance already exists
              if (Instance == null)

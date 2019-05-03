@@ -145,14 +145,15 @@ namespace MemoryMadness
 			{
 				lifeCount = 2;
 			}
-			else if( currentStage >= 4 )
+			else if( currentStage == 2 )
+			{
+				lifeCount = 3;
+			}
+			else if( currentStage > 2 )
 			{
 				lifeCount = 4;
 			}
-			else
-			{
-				lifeCount = currentStage;
-			}
+			
 
 		}
 

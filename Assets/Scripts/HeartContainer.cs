@@ -34,18 +34,20 @@ namespace MemoryMadness
 	
 		private void DisplayHearts( )
 		{
-			 int currentStage = 2;
+			 int currentStage = 1;
 
 			if( PlayerPrefs.HasKey( currentStageStr ) )
 				currentStage = PlayerPrefs.GetInt( currentStageStr );
 
 			if( isTutorial )
-				currentStage = 2;
+				currentStage = 1;
 
 
-			if( currentStage <= 2 )
+			if( currentStage == 1 )
 				heartCount = 2;
-			else if( currentStage >= 4 )
+			else if( currentStage == 2 )
+				heartCount = 3;
+			else if ( currentStage >= 3 )
 				heartCount = 4;
 			else
 				heartCount = currentStage;

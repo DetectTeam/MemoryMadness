@@ -110,11 +110,11 @@ namespace  MemoryMadness
 		
 		private void CheckCurrentStage( int currentStage )
 		{
-			if( currentStage <= 2 )
+			if( currentStage <= 1 )
 				memPhaseSymbolCount = 2;
-			else if( currentStage == 3  )
+			else if( currentStage <= 2  )
 				memPhaseSymbolCount = 3;
-			else if( currentStage >=  4 )
+			else if( currentStage >=  3 )
 				memPhaseSymbolCount = 4;
 	
 			//Set the win count value in the game manager
@@ -512,6 +512,7 @@ namespace  MemoryMadness
 					{
 						//Set the symbol
 					    memorySymbolScript.Rune.GetComponent<Image>().sprite = memoryPhaseSymbols[i].Rune.sprite;
+						memorySymbolScript.Letter.text = memoryPhaseSymbols[i].Letter;
 						memorySymbolScript.IsColourSwitched = true;
 
 						break;
