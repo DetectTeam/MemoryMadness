@@ -89,17 +89,17 @@ namespace MemoryMadness
 		public void CreateSession()
 		{
 			
-			if( PlayerPrefs.HasKey( "SessionID" ) )
-				trialNumber = PlayerPrefs.GetInt( "SessionID" );
+			//if( PlayerPrefs.HasKey( "SessionID" ) )
+				//trialNumber = PlayerPrefs.GetInt( "SessionID" );
 
 			session = new Session();
 
-			trialNumber ++;
+			//trialNumber ++;
 
 			//Get Device unique identifier for test only.
 			session.SessionID = trialNumber.ToString();
 
-			PlayerPrefs.SetInt( "SessionID" , trialNumber );
+			//PlayerPrefs.SetInt( "SessionID" , trialNumber );
 			
 			//orderCount = 1;
 
@@ -113,7 +113,7 @@ namespace MemoryMadness
 			session.Stage = StageManager.Instance.CurrentStage;
 			session.SymbolArraySize = CalculateSymbolArraySize( StageManager.Instance.CurrentStage );
 			session.StudyCellSize = CalculateSymbolArraySize( StageManager.Instance.CurrentStage );			
-			session.TrialNumber = trialNumber;
+			session.TrialNumber = 0;
 			session.ApplicationQuit = "0";
 		
 
@@ -216,6 +216,7 @@ namespace MemoryMadness
 			playerSelection = new PlayerSelection();
 			playerSelection.Level = currentLevel;
 			
+			
 		}
 
 		private void SetCorrectSlot( string slot  )
@@ -243,10 +244,15 @@ namespace MemoryMadness
 		{
 			selectionCount ++;
 			playerSelection.Selection = selectionCount.ToString();
+			playerSelection.TimeOfSelection = System.DateTime.Now.ToString( "yyyy_MM_dd_hh_mm_ss" );
+			trialNumber ++;
+			playerSelection.TrialNumber = trialNumber;
 			
 			CheckSelectionCorrect( selection );
 			SetPlayerSelectionLure( selection );
 			SetPlayerSelectionOtherMiss( selection );
+
+			
 		}
 
 

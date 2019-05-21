@@ -9840,7 +9840,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 358.04843, y: 5195.2095}
+  m_Target: {x: 483.2256, y: 3487.5024}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
@@ -12649,7 +12649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 406e89c9bb9f54d718bb078488acc817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearPlayerPrefs: 0
+  clearPlayerPrefs: 1
 --- !u!4 &866987695
 Transform:
   m_ObjectHideFlags: 0
@@ -18522,7 +18522,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 223.21754, y: 2198.6074}
+  m_Target: {x: 356.13672, y: 3398.3108}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
@@ -21369,7 +21369,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 352.47458, y: 2038.9849}
+  m_Target: {x: 371.30334, y: 2148.016}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
@@ -28453,10 +28453,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelCount: 1
-  levelsPerStage: 8
+  levelsPerStage: 2
   currentLevelTypeCount: 0
   currentLevel: 0
-  numberOfStages: 4
+  numberOfStages: 3
   sameDifferentScreen: {fileID: 1648664523}
   randomGameContainer: {fileID: 2089274043}
   memoryPhaseScreen: {fileID: 2004355213}

@@ -8,6 +8,8 @@ namespace MemoryMadness
 	public class PlayerSelection 
 	{
 		public int Level { get; set; } 
+		public int TrialNumber { get; set; }
+		public string TimeOfSelection { get; set; }
 		public string RelativeTime { get; set; } //Relative time from absolute time of study array presentation to absolute time of response
 		public string ReactionTime { get; set; } //Time between last selection and current selection
 		public string Selection { get; set; }
@@ -22,5 +24,6 @@ namespace MemoryMadness
 		public string SelectedTestCellShape { get; set; }
 		public string SelectedTestCellColour { get; set; }
 		public string SelectedTestCellPosition{ get; set; }	
+		
 	}
 }
