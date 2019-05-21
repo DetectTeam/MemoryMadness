@@ -111,8 +111,23 @@ namespace MemoryMadness
 			session.AbsoluteTimeOfResponse = System.DateTime.Now.ToString( "HH:mm:ss tt" );
 			session.SessionTimeStamp =  System.DateTime.Now.ToString( "yyyy_MM_dd_hh_mm_ss" );
 			session.Stage = StageManager.Instance.CurrentStage;
-			session.SymbolArraySize = CalculateSymbolArraySize( StageManager.Instance.CurrentStage );
-			session.StudyCellSize = CalculateSymbolArraySize( StageManager.Instance.CurrentStage );			
+			//session.SymbolArraySize = CalculateSymbolArraySize( StageManager.Instance.CurrentStage );
+			//session.StudyCellSize = CalculateSymbolArraySize( StageManager.Instance.CurrentStage );	
+
+
+			int stage = StageManager.Instance.CurrentStage;
+			int size = 0;
+
+			if( stage == 1 )
+				size  = 2;
+			else if( stage == 2 )
+				size = 3;
+			else if( stage == 3 )
+				size = 4;
+
+			session.SymbolArraySize = size;
+			session.StudyCellSize = size;
+
 			session.TrialNumber = 0;
 			session.ApplicationQuit = "0";
 		

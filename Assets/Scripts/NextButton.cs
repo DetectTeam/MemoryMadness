@@ -32,6 +32,7 @@ namespace MemoryMadness
 				//Remove when testing is over ....!
 				if( currentStage > 3 )
 				{
+					PlayerPrefs.DeleteAll();
 					PlayerPrefs.SetInt( "CurrrentStage" , 1  );
 					Debug.Log( "Resetting Game .............." );
 					SceneManager.LoadSceneAsync( "Memory_Madness_Random_Level" );
