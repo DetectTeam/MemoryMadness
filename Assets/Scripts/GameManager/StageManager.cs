@@ -178,6 +178,8 @@ namespace MemoryMadness
 			
 			if( PlayerPrefs.HasKey( "CurrentLevel" ) )
 				level = PlayerPrefs.GetInt( "CurrentLevel" );
+				if( level > 8 )
+					level = 1;
 
 			return level;	
 		}
@@ -190,6 +192,7 @@ namespace MemoryMadness
 				currentLevelType = stage[ currentLevelTypeCount ]; 
 				currentLevelTypeCount ++;
 			}
+			
 		}
 
 		private void RefreshStage()

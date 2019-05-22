@@ -21379,7 +21379,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: 371.30334, y: 2148.016}
+  m_Target: {x: 261.7199, y: 1514.4343}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
@@ -28471,7 +28471,7 @@ MonoBehaviour:
   randomGameContainer: {fileID: 2089274043}
   memoryPhaseScreen: {fileID: 2004355213}
   resultsScreen: {fileID: 1766364037}
-  stage: 0200000002000000000000000000000001000000010000000300000003000000
+  stage: 0300000003000000030000000300000003000000030000000300000003000000
 --- !u!1 &1909409193
 GameObject:
   m_ObjectHideFlags: 0

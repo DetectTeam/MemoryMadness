@@ -49,9 +49,7 @@ namespace MemoryMadness
 				heartCount = 3;
 			else if ( currentStage >= 3 )
 				heartCount = 4;
-			else
-				heartCount = currentStage;
-
+	
 			for( int i = 0; i < heartCount; i++ )
 			{
 				hearts[ i ].SetActive( true );

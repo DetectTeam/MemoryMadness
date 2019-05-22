@@ -230,6 +230,9 @@ namespace MemoryMadness
 		{
 			playerSelection = new PlayerSelection();
 			playerSelection.Level = currentLevel;
+
+			if( currentLevel == 8 )
+				currentLevel = 1;
 			
 			
 		}
@@ -355,7 +358,7 @@ namespace MemoryMadness
 		public void EndSession( int levelCount , int levelsPerStage )
 		{
 			string jsonString = "";
-			session.UserID = IDGenerator.Instance.UserID;
+			session.UserID = "Eoghan_Testing";//IDGenerator.Instance.UserID;
 		
             PadSelections( session.SymbolArraySize, selectionCount );
 
@@ -370,8 +373,8 @@ namespace MemoryMadness
 				SaveSession();
 			}
 
-			if( trialNumber >= 32 )
-				trialNumber = 0;
+			//if( trialNumber >= 32 )
+				//trialNumber = 0;
 
 			sessionState = SessionState.Ended;
 		}
