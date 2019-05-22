@@ -28463,7 +28463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelCount: 1
-  levelsPerStage: 8
+  levelsPerStage: 2
   currentLevelTypeCount: 0
   currentLevel: 0
   numberOfStages: 3
@@ -28471,7 +28471,7 @@ MonoBehaviour:
   randomGameContainer: {fileID: 2089274043}
   memoryPhaseScreen: {fileID: 2004355213}
   resultsScreen: {fileID: 1766364037}
-  stage: 0300000003000000030000000300000003000000030000000300000003000000
+  stage: 0300000003000000000000000000000001000000010000000200000002000000
 --- !u!1 &1909409193
 GameObject:
   m_ObjectHideFlags: 0

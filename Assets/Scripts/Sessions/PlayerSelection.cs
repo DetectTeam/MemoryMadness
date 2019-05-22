@@ -24,6 +24,10 @@ namespace MemoryMadness
 		public string SelectedTestCellShape { get; set; }
 		public string SelectedTestCellColour { get; set; }
 		public string SelectedTestCellPosition{ get; set; }	
+		public int MaxNumberOfLives { get; set; }
+		public int LifeLost { get; set; }
+		public int NumberOfLivesRemaining { get; set; }
+		public int TimeOut { get; set; }
 		
 	}
 }

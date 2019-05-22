@@ -84,7 +84,7 @@ namespace MemoryMadness
 			
 			Messenger.AddListener( LoadNextLevelMessage, LoadNextLevel );
 			Messenger.MarkAsPermanent( LoadNextLevelMessage );
-			
+
 		}
 
 		private void OnDisable()
@@ -200,6 +200,5 @@ namespace MemoryMadness
 			stage.ShuffleList();
 		}
 
-		
 	}
 }

@@ -122,7 +122,8 @@ namespace MemoryMadness
 		public void DecrementLifeCount()
 		{
 			lifeCount --;
-			Messenger.Broadcast( "RemoveHeart" );
+		
+			Messenger.Broadcast( "DecreaseLifeCount" );
 
 			if( lifeCount == 0 )
 			{

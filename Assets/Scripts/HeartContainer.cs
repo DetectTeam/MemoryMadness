@@ -17,7 +17,7 @@ namespace MemoryMadness
 		[SerializeField] private int activeHearts = 0;
 		private void OnEnable()
 		{
-			Messenger.AddListener( "RemoveHeart", HideHeart );
+			Messenger.AddListener( "DecreaseLifeCount", HideHeart );
 			Messenger.AddListener( "ResetHearts", DisplayHearts );
 			//Messenger.AddListener<int>( "DisplayHearts" , DisplayHearts );
 			ResetHearts();
@@ -26,7 +26,7 @@ namespace MemoryMadness
 
 		private void OnDisable()
 		{
-			Messenger.RemoveListener( "RemoveHeart", HideHeart );
+			Messenger.RemoveListener( "DecreaseLifeCount", HideHeart );
 			Messenger.RemoveListener( "ResetHearts", DisplayHearts );
 			//Messenger.RemoveListener<int>( "DisplayHearts" , DisplayHearts );
 		}
@@ -57,6 +57,8 @@ namespace MemoryMadness
 			}
 
 			activeHearts = heartCount;
+
+			Messenger.Broadcast( "SetLifeCount" , heartCount );
 
 		
 			

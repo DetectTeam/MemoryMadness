@@ -62,6 +62,7 @@ namespace MemoryMadness
 			if( PlayerPrefs.HasKey( "CurrentLevel" ) )
 			{
 				currentPhase = PlayerPrefs.GetInt( "CurrentLevel" );
+				Debug.Log( currentPhase );
 				
 			}
 			else

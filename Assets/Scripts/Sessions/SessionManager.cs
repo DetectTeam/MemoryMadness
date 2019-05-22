@@ -23,6 +23,11 @@ namespace MemoryMadness
 		//[SerializeField] private int levelSize = 20;
 		[SerializeField] private Session session;
 		[SerializeField] private PlayerSelection playerSelection;
+
+		private int lifeCount;
+
+		private int timeOut;
+		
 		
 		private SessionState sessionState; 
 
@@ -61,6 +66,10 @@ namespace MemoryMadness
 			Messenger.AddListener< int , int ,int  >( "SelectedShapeDetails" , SetSelectedShapeDetails );
 			Messenger.AddListener< int, int >( "EndSession", EndSession );
 			Messenger.AddListener( "CurrentLevel", IncrementLevel );
+			Messenger.AddListener<int>( "SetLifeCount",  SetLifeCount );
+			Messenger.AddListener( "DecreaseLifeCount", DecreaseLifeCount );
+			Messenger.AddListener( "Timeout", Timeout );
+			
 
 			//Messenger.AddListener(  "DecrementLife", UpdateLifeCount );
 
@@ -71,6 +80,9 @@ namespace MemoryMadness
 			Messenger.MarkAsPermanent ( "SelectedShapeDetails" );
 			Messenger.MarkAsPermanent ( "EndSession" );
 			Messenger.MarkAsPermanent ( "CurrentLevel" );
+			Messenger.MarkAsPermanent ( "DecreaseLifeCount" );
+			Messenger.MarkAsPermanent ( "SetLifeCount" );
+			Messenger.MarkAsPermanent ( "Timeout" );
 		}
 
 		private void OnDisable()
@@ -82,7 +94,11 @@ namespace MemoryMadness
 			Messenger.RemoveListener< int >( "PlayerSelection", SetPlayerSelection );
 			Messenger.RemoveListener< int , int ,int  >( "SelectedShapeDetails" , SetSelectedShapeDetails );
 			Messenger.RemoveListener< int, int >( "EndSession", EndSession );
-			Messenger.AddListener( "CurrentLevel", IncrementLevel );
+			Messenger.RemoveListener( "CurrentLevel", IncrementLevel );
+			Messenger.RemoveListener<int>( "SetLifeCount", SetLifeCount );
+			Messenger.RemoveListener( "DecreaseLifeCount", DecreaseLifeCount );
+			Messenger.RemoveListener( "Timeout", Timeout );
+			
 			//Messenger.RemoveListener(  "DecrementLife", UpdateLifeCount );
 		}
 
@@ -231,6 +247,8 @@ namespace MemoryMadness
 			playerSelection = new PlayerSelection();
 			playerSelection.Level = currentLevel;
 
+			timeOut = 0;
+
 			if( currentLevel == 8 )
 				currentLevel = 1;
 			
@@ -253,6 +271,11 @@ namespace MemoryMadness
 			playerSelection.RelativeTime = relativeTime.ToString();
 			playerSelection.ReactionTime = time.ToString();
 
+			playerSelection.MaxNumberOfLives = lifeCount;
+			
+			Debug.Log( "Saving.........timeout" );
+			playerSelection.TimeOut = timeOut;
+
 			session.PlayerSelections.Add( playerSelection );
 			SaveSession(  );
 		}
@@ -273,13 +296,26 @@ namespace MemoryMadness
 			
 		}
 
-
+		
 		private void CheckSelectionCorrect( int selection )
 		{
 			if( selection == 1 )
+			{
 				playerSelection.Correct = "1";
+				playerSelection.LifeLost = 0;
+
+				playerSelection.NumberOfLivesRemaining = livesLeft;
+				
+			}
 			else
+			{
 				playerSelection.Correct = "0";
+				playerSelection.LifeLost = 1;
+				
+				livesLeft --;
+				
+				playerSelection.NumberOfLivesRemaining = livesLeft;
+			}
 			
 			Debug.Log( "Player Selection Correct : " + playerSelection.Correct );
 		}
@@ -343,6 +379,9 @@ namespace MemoryMadness
 				playerSelection.SelectedTestCellColour = notAvailable;
 				playerSelection.SelectedTestCellPosition = notAvailable;
 				playerSelection.SelectedTestCellShape = notAvailable;
+				playerSelection.MaxNumberOfLives = lifeCount;
+				playerSelection.NumberOfLivesRemaining = livesLeft;
+				playerSelection.TimeOut = timeOut;
 
 				session.PlayerSelections.Add( playerSelection );
 			}
@@ -358,7 +397,7 @@ namespace MemoryMadness
 		public void EndSession( int levelCount , int levelsPerStage )
 		{
 			string jsonString = "";
-			session.UserID = "Eoghan_Testing";//IDGenerator.Instance.UserID;
+			session.UserID = IDGenerator.Instance.UserID;
 		
             PadSelections( session.SymbolArraySize, selectionCount );
 
@@ -385,6 +424,32 @@ namespace MemoryMadness
 			
 			if( currentLevel > 8 )
 				currentLevel = 1;
+		}
+
+
+		private int livesLeft = 0;
+		private void SetLifeCount( int numLives )
+		{
+			lifeCount = numLives;
+			livesLeft = numLives;
+			//playerSelection.MaxNumberOfLives = lifeCount;
+			Debug.Log( "Current Life Count: " + lifeCount );
+		}
+
+
+		private int livesLost = 0;
+		private void DecreaseLifeCount()
+		{
+			
+			livesLost = 1;
+			Debug.Log( "Life Lost ...lives left " + livesLost );
+		}
+
+		private void Timeout()
+		{
+			Debug.Log( "Timed Out ............." );
+			timeOut = 1;
+			playerSelection.TimeOut = timeOut;
 		}
 
 		private void OnApplicationPause()

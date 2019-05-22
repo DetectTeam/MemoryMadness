@@ -7,6 +7,11 @@ public class PlayerPrefsHandler : MonoBehaviour {
 
 	[SerializeField] private bool clearPlayerPrefs;
 	// Use this for initialization
+
+	private void Start()
+	{
+		//PlayerPrefs.DeleteAll();
+	}
 	void Update ()
 	{
 			if( clearPlayerPrefs )
@@ -15,6 +20,11 @@ public class PlayerPrefsHandler : MonoBehaviour {
 				clearPlayerPrefs = false;
 			}
 	} 
+
+	public void DeletePlayerPrefs()
+	{
+		PlayerPrefs.DeleteAll();
+	}
 	
 	
 	
