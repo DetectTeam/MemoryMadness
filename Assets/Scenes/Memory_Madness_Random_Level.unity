@@ -23361,9 +23361,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114840676806698858, guid: 685e4e5afe6094ddcabc015e080ed063,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114840676806698858, guid: 685e4e5afe6094ddcabc015e080ed063,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 764508501}
+    - target: {fileID: 114840676806698858, guid: 685e4e5afe6094ddcabc015e080ed063,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114840676806698858, guid: 685e4e5afe6094ddcabc015e080ed063,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114840676806698858, guid: 685e4e5afe6094ddcabc015e080ed063,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114840676806698858, guid: 685e4e5afe6094ddcabc015e080ed063,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 866987694}
+    - target: {fileID: 114840676806698858, guid: 685e4e5afe6094ddcabc015e080ed063,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: DeletePlayerPrefs
+      objectReference: {fileID: 0}
+    - target: {fileID: 114840676806698858, guid: 685e4e5afe6094ddcabc015e080ed063,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114265410078871280, guid: 685e4e5afe6094ddcabc015e080ed063, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 685e4e5afe6094ddcabc015e080ed063, type: 3}
@@ -28463,7 +28498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelCount: 1
-  levelsPerStage: 2
+  levelsPerStage: 8
   currentLevelTypeCount: 0
   currentLevel: 0
   numberOfStages: 3
