@@ -143,6 +143,7 @@ namespace MemoryMadness
 		{
 			currentStage ++;
 			currentLevel = 0;
+			SessionManager.Instance.CurrentLevel = 1;
 			currentLevelTypeCount = 0;
 		
 			SaveStage();

@@ -15,8 +15,8 @@ public class FileUploadHandler : MonoBehaviour
 	private bool webAccessStatus;
 
 
-	private static readonly string PutSessionURL = "https://murmuring-fortress-76588.herokuapp.com/memorymadness/session";
-	//private static readonly string PutSessionURL = "http://localhost:5000/memorymadness/session";
+	//private static readonly string PutSessionURL = "https://murmuring-fortress-76588.herokuapp.com/memorymadness/session";
+	private static readonly string PutSessionURL = "http://localhost:5000/memorymadness/session";
 
 	private void OnEnable()
 	{

@@ -32,6 +32,8 @@ namespace MemoryMadness
 		private SessionState sessionState; 
 
 		private int currentLevel = 1;
+
+		public int CurrentLevel { get{ return currentLevel; } set{ currentLevel = value; } }
 	
 		
 		private void Awake()
@@ -248,11 +250,7 @@ namespace MemoryMadness
 			playerSelection.Level = currentLevel;
 
 			timeOut = 0;
-
-			if( currentLevel == 8 )
-				currentLevel = 1;
-			
-			
+	
 		}
 
 		private void SetCorrectSlot( string slot  )
@@ -276,6 +274,7 @@ namespace MemoryMadness
 			Debug.Log( "Saving.........timeout" );
 			playerSelection.TimeOut = timeOut;
 
+	
 			session.PlayerSelections.Add( playerSelection );
 			SaveSession(  );
 		}
@@ -389,6 +388,7 @@ namespace MemoryMadness
 
 		private void SaveSession( )
 		{
+	
 			PersistenceManager.Instance.Save( session );
 			//string jsonString = JsonConvert.SerializeObject( session );	
 		}	
