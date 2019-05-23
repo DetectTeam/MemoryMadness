@@ -35,7 +35,9 @@ namespace MemoryMadness
 
 		public int CurrentLevel { get{ return currentLevel; } set{ currentLevel = value; } }
 	
-		
+		private float trialTime;
+		private float startTime , endTime = 0 ;
+
 		private void Awake()
 		{
 			
@@ -106,7 +108,7 @@ namespace MemoryMadness
 
 		public void CreateSession()
 		{
-			
+					
 			//if( PlayerPrefs.HasKey( "SessionID" ) )
 				//trialNumber = PlayerPrefs.GetInt( "SessionID" );
 
@@ -274,7 +276,6 @@ namespace MemoryMadness
 			Debug.Log( "Saving.........timeout" );
 			playerSelection.TimeOut = timeOut;
 
-	
 			session.PlayerSelections.Add( playerSelection );
 			SaveSession(  );
 		}
@@ -381,6 +382,10 @@ namespace MemoryMadness
 				playerSelection.MaxNumberOfLives = lifeCount;
 				playerSelection.NumberOfLivesRemaining = livesLeft;
 				playerSelection.TimeOut = timeOut;
+				trialNumber ++;
+				playerSelection.TrialNumber = trialNumber;
+				playerSelection.TimeOfSelection = "";
+				
 
 				session.PlayerSelections.Add( playerSelection );
 			}
@@ -411,6 +416,8 @@ namespace MemoryMadness
 				Messenger.Broadcast<string>( "PUT" , jsonString );
 				SaveSession();
 			}
+
+
 
 			//if( trialNumber >= 32 )
 				//trialNumber = 0;

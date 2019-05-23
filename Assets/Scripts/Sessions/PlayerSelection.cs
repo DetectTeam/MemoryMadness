@@ -27,7 +27,6 @@ namespace MemoryMadness
 		public int MaxNumberOfLives { get; set; }
 		public int LifeLost { get; set; }
 		public int NumberOfLivesRemaining { get; set; }
-		public int TimeOut { get; set; }
-		
+		public int TimeOut { get; set; }	
 	}
 }
