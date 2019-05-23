@@ -58,7 +58,8 @@ namespace MemoryMadness
 
 			activeHearts = heartCount;
 
-			Messenger.Broadcast( "SetLifeCount" , heartCount );
+			if( !isTutorial )
+				Messenger.Broadcast( "SetLifeCount" , heartCount );
 
 		
 			
