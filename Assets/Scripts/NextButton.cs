@@ -28,7 +28,6 @@ namespace MemoryMadness
 				int currentStage = PlayerPrefs.GetInt( "CurrentStage" );
 				Debug.Log( "Current Stage : " + currentStage  );
 
-	
 				//Remove when testing is over ....!
 				if( currentStage > 3 )
 				{

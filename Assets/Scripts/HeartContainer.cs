@@ -37,10 +37,16 @@ namespace MemoryMadness
 			 int currentStage = 1;
 
 			if( PlayerPrefs.HasKey( currentStageStr ) )
+			{
 				currentStage = PlayerPrefs.GetInt( currentStageStr );
+				Debug.Log( "Current Stage : " + currentStage );
+			}
 
 			if( isTutorial )
 				currentStage = 1;
+
+
+			Debug.Log( "Current Stage :::: " + currentStage );
 
 
 			if( currentStage == 1 )

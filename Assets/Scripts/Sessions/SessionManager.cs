@@ -285,7 +285,7 @@ namespace MemoryMadness
 		{
 			selectionCount ++;
 			playerSelection.Selection = selectionCount.ToString();
-			playerSelection.TimeOfSelection = System.DateTime.Now.ToString( "yyyy_MM_dd_hh_mm_ss" );
+			playerSelection.TimeOfSelection = System.DateTime.Now.ToString( "yyyy_MM_dd_hh_mm_ss_ms" );
 			trialNumber ++;
 			playerSelection.TrialNumber = trialNumber;
 			
